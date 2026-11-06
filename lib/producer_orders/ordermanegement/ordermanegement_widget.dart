@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/currency/currency_utils.dart';
 import '/components/no_chat_producer_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1404,53 +1405,16 @@ class _OrdermanegementWidgetState extends State<OrdermanegementWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                      Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.min,
-                                                                        children: [
-                                                                          if (FFLocalizations.of(context).languageCode !=
-                                                                              'fr')
-                                                                            Text(
-                                                                              FFLocalizations.of(context).getText(
-                                                                                '8l2hqmbi' /* $ */,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
-                                                                                    color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                    fontSize: 16.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                  ),
-                                                                            ),
-                                                                          Text(
-                                                                            valueOrDefault<double>(
-                                                                              ordersItem.totalAmmount,
-                                                                              0.0,
-                                                                            ).toStringAsFixed(2),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
-                                                                                  color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                  fontSize: 16.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                          if (FFLocalizations.of(context).languageCode ==
-                                                                              'fr')
-                                                                            Text(
-                                                                              FFLocalizations.of(context).getText(
-                                                                                's6tuxxn8' /* € */,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
-                                                                                    color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                    fontSize: 16.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                  ),
-                                                                            ),
-                                                                        ],
-                                                                      ),
+                                                                      Text(
+                                      formatOrderCurrency(ordersItem.totalAmmount, ordersItem.currency),
+                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                        fontFamily: 'Satoshi',
+                                        color: FlutterFlowTheme.of(context).textprimary,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                                                     ],
                                                                   ),
                                                                 ),

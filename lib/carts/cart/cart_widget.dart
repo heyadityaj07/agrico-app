@@ -985,7 +985,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Text(
-                                                                      '\$${valueOrDefault<String>(
+                                                                      '${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${valueOrDefault<String>(
                                                                         functions
                                                                             .cartTotal(containerCartRecordList.toList())
                                                                             .toString(),

@@ -1035,7 +1035,7 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                               ),
                                                         ),
                                                         Text(
-                                                          'Price per kg: €${bracketItem.pricePerKg.toString()}',
+                                                                      'Price per kg: ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${bracketItem.pricePerKg.toString()}',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium

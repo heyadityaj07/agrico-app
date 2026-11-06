@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/currency/currency_utils.dart';
 import '/components/data_load_widget.dart';
 import '/components/producer_navbar_widget.dart';
 import '/components/suspend_widget.dart';
@@ -245,56 +246,19 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                           MainAxisAlignment
                                                                               .spaceBetween,
                                                                       children: [
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            if (FFLocalizations.of(context).languageCode !=
-                                                                                'fr')
-                                                                              Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  'kyma505l' /* $ */,
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 24.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
-                                                                              ),
-                                                                            Text(
-                                                                              valueOrDefault<String>(
-                                                                                valueOrDefault<double>(
-                                                                                  functions.totalRevnue(containerOrderRecordList.where((e) => e.orderStatus != 'Rejected').toList().map((e) => e.totalAmmount).toList()),
-                                                                                  0.0,
-                                                                                ).toStringAsFixed(2),
-                                                                                '0',
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontSize: 24.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                            ),
-                                                                            if (FFLocalizations.of(context).languageCode !=
-                                                                                'en')
-                                                                              Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  '84m0jt8i' /* € */,
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 24.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
-                                                                              ),
-                                                                          ],
-                                                                        ),
+                                                                        Text(
+                                            formatCurrencyTotals(groupOrderAmountsByCurrency(
+                                              containerOrderRecordList.where((e) => e.orderStatus != 'Rejected'),
+                                              (e) => e.totalAmmount,
+                                            )),
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              fontFamily: 'Satoshi',
+                                              color: FlutterFlowTheme.of(context).primaryText,
+                                              fontSize: 24.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                                                       ],
                                                                     ),
                                                                   ),
@@ -1057,60 +1021,19 @@ Value */
                                                                                 0.0,
                                                                           ),
                                                                     ),
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        if (FFLocalizations.of(context).languageCode !=
-                                                                            'fr')
-                                                                          Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'mdn0h40p' /* $ */,
-                                                                            ),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
-                                                                                  color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                  fontSize: 18.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            valueOrDefault<double>(
-                                                                              functions.totalRevnue(containerOrderRecordList.where((e) => e.orderStatus != 'Rejected').toList().map((e) => e.totalAmmount).toList()),
-                                                                              0.0,
-                                                                            ).toStringAsFixed(2),
-                                                                            '0',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Satoshi',
-                                                                                color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                fontSize: 18.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        ),
-                                                                        if (FFLocalizations.of(context).languageCode !=
-                                                                            'en')
-                                                                          Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '9javlu1n' /* € */,
-                                                                            ),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
-                                                                                  color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                  fontSize: 18.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                      ],
-                                                                    ),
+                                                                    Text(
+                                            formatCurrencyTotals(groupOrderAmountsByCurrency(
+                                              containerOrderRecordList.where((e) => e.orderStatus != 'Rejected'),
+                                              (e) => e.totalAmmount,
+                                            )),
+                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                              fontFamily: 'Satoshi',
+                                              color: FlutterFlowTheme.of(context).primarytheme,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
                                                                   ],
                                                                 ),
                                                               ),

@@ -23,8 +23,12 @@ Future<bool> flutterStripeDirect(
   String? locallanguage,
   List<dynamic>? vendors,
   String? producerId,
+  String? currency,
 ) async {
   try {
+    final paymentCurrency = currency ??
+        (FFLocalizations.of(context).languageCode == 'fr' ? 'EUR' : 'USD');
+
     final response = await http.post(
       Uri.parse(
           'https://us-central1-agricoo-b9c46.cloudfunctions.net/createFarmPaymentIntent'),
@@ -37,8 +41,7 @@ Future<bool> flutterStripeDirect(
         "customerId": customerId,
         "orderId": orderId,
         "producerId": producerId,
-        "currency":
-            FFLocalizations.of(context).languageCode == 'fr' ? 'EUR' : 'USD',
+        "currency": paymentCurrency,
         "vendors": vendors
       }),
     );
@@ -78,10 +81,10 @@ Future<bool> flutterStripeDirect(
               )
             : null,
         googlePay: Platform.isAndroid
-            ? const PaymentSheetGooglePay(
+            ? PaymentSheetGooglePay(
                 merchantCountryCode: 'US', // ← Stripe account country
                 testEnv: false, // ← RELEASE mate false
-                currencyCode: 'USD',
+                currencyCode: paymentCurrency,
               )
             : null,
       ),

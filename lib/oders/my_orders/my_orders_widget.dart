@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/currency/currency_utils.dart';
 import '/components/no_chat_producer_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -629,68 +630,22 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                                       .spaceBetween,
                                                               children: [
                                                                 Flexible(
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      if (FFLocalizations.of(context)
-                                                                              .languageCode !=
-                                                                          'fr')
-                                                                        Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '1vs8uomu' /* $ */,
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Satoshi',
-                                                                                color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                fontSize: 14.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
+                                                                  child: Text(
+                                                                    formatOrderCurrency(
+                                                                      ordersItem.totalAmmount,
+                                                                      ordersItem.currency,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily: 'Satoshi',
+                                                                          color: FlutterFlowTheme.of(context).primarytheme,
+                                                                          fontSize: 14.0,
+                                                                          letterSpacing: 0.0,
+                                                                          fontWeight: FontWeight.w500,
                                                                         ),
-                                                                      Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          ordersItem
-                                                                              .totalAmmount
-                                                                              .toString(),
-                                                                          '0',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Satoshi',
-                                                                              color: FlutterFlowTheme.of(context).primarytheme,
-                                                                              fontSize: 14.0,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                            ),
-                                                                      ),
-                                                                      if (FFLocalizations.of(context)
-                                                                              .languageCode ==
-                                                                          'fr')
-                                                                        Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            't9xpudyi' /* € */,
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Satoshi',
-                                                                                color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                fontSize: 14.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        ),
-                                                                    ],
                                                                   ),
-                                                                ),
+                                                                )
                                                               ],
                                                             ),
                                                           ),
@@ -1283,7 +1238,10 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                                       .spaceBetween,
                                                               children: [
                                                                 Text(
-                                                                  '\$${complatedordersItem.totalAmmount.toString()}',
+                                                                  formatOrderCurrency(
+                                                                    complatedordersItem.totalAmmount,
+                                                                    complatedordersItem.currency,
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium

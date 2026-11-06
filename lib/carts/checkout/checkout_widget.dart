@@ -1681,7 +1681,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                                           ),
                                                                                                         if (listItemItem.isVariableWeight)
                                                                                                           Text(
-                                                                                                            'Deposit due: €${listItemItem.depositAmount.toString()}',
+                                                                                                            'Deposit due: ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${listItemItem.depositAmount.toString()}',
                                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                   fontFamily: 'Satoshi',
                                                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
@@ -1729,7 +1729,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         children: [
                                                                                           Text(
-                                                                                            functions.totalsales(containerCartRecordList.toList()).toStringAsFixed(2),
+                                                                                            '${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${functions.totalsales(containerCartRecordList.toList()).toStringAsFixed(2)}',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Satoshi',
                                                                                                   color: FlutterFlowTheme.of(context).textprimary,
@@ -2058,6 +2058,13 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                     FFButtonWidget(
                                                                   onPressed:
                                                                       () async {
+                                                                    final orderCurrency =
+                                                                        FFLocalizations.of(
+                                                                                    context)
+                                                                                .languageCode ==
+                                                                            'fr'
+                                                                        ? 'EUR'
+                                                                        : 'USD';
                                                                     _model.farmUser =
                                                                         await UsersRecord.getDocumentOnce(
                                                                             pageViewFarmsRecord.userRef!);
@@ -2098,6 +2105,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                               widget.note,
                                                                           voucherCode:
                                                                               widget.vouchercode,
+                                                                          currency:
+                                                                              orderCurrency,
                                                                           serviceFee:
                                                                               functions.platformFeeAmount(
                                                                             functions.cartTotal(containerCartRecordList.toList()),
@@ -2156,6 +2165,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                               widget.note,
                                                                           voucherCode:
                                                                               widget.vouchercode,
+                                                                          currency:
+                                                                              orderCurrency,
                                                                           serviceFee:
                                                                               functions.platformFeeAmount(
                                                                             functions.cartTotal(containerCartRecordList.toList()),
@@ -2264,6 +2275,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                           .firstOrNull
                                                                           ?.farmRef
                                                                           ?.id,
+                                                                      orderCurrency,
                                                                     );
                                                                     if (_model
                                                                         .stripedocument!) {
