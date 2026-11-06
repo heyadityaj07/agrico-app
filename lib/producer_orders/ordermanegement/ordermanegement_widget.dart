@@ -1406,7 +1406,7 @@ class _OrdermanegementWidgetState extends State<OrdermanegementWidget> {
                                                                             ),
                                                                       ),
                                                                       Text(
-                                      formatOrderCurrency(ordersItem.totalAmmount, ordersItem.currency),
+                                      formatLanguageCurrency(ordersItem.totalAmmount, FFLocalizations.of(context).languageCode),
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         fontFamily: 'Satoshi',
                                         color: FlutterFlowTheme.of(context).textprimary,

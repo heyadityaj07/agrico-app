@@ -802,10 +802,7 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           .spaceBetween,
                                                                   children: [
                                                                     Text(
-                                            formatCurrencyTotals(groupOrderAmountsByCurrency(
-                                              containerOrderRecordList.where((e) => e.orderStatus != 'Rejected'),
-                                              (e) => e.totalAmmount,
-                                            )),
+                                            formatLanguageCurrency(functions.totalRevnue(containerOrderRecordList.where((e) => e.orderStatus != 'Rejected').map((e) => e.totalAmmount).toList()), FFLocalizations.of(context).languageCode),
                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                               fontFamily: 'Satoshi',
                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -1811,9 +1808,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           ),
                                                                     ),
                                                                     Text(
-                                                                        formatOrderCurrency(
+                                                                        formatLanguageCurrency(
                                                                           ordresItem.totalAmmount,
-                                                                          ordresItem.currency,
+                                                                          FFLocalizations.of(context).languageCode,
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                           fontFamily: 'Satoshi',

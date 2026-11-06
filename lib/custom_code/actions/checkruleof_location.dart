@@ -43,8 +43,7 @@ Future<bool> checkruleofLocation(
       consumerLocation.longitude,
     );
 
-    final radiusInMeters = radiusKm * 1000;
-    final isWithinRadius = distanceInMeters <= radiusInMeters;
+    final isWithinRadius = isWithinDeliveryRadius(distanceInMeters, radiusKm);
 
     // Detailed debug logs
     print('checkruleofLocation: --- Delivery Rule Check ---');

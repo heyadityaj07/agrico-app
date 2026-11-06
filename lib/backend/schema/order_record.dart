@@ -131,12 +131,6 @@ class OrderRecord extends FirestoreRecord {
   double get subTotal => _subTotal ?? 0.0;
   bool hasSubTotal() => _subTotal != null;
 
-  // "currency" field.
-  String? _currency;
-  String get currency => _currency ?? '';
-  bool hasCurrency() => _currency != null;
-  String? get currencyOrNull => _currency;
-
   // "is_suspend" field.
   bool? _isSuspend;
   bool get isSuspend => _isSuspend ?? false;
@@ -229,7 +223,6 @@ class OrderRecord extends FirestoreRecord {
         ? snapshotData['review']
         : ReviewStruct.maybeFromMap(snapshotData['review']);
     _subTotal = castToType<double>(snapshotData['sub_total']);
-    _currency = snapshotData['currency'] as String?;
     _isSuspend = snapshotData['is_suspend'] as bool?;
     _isFarmPickup = snapshotData['is_farm_pickup'] as bool?;
     _username = snapshotData['username'] as String?;
@@ -301,7 +294,6 @@ Map<String, dynamic> createOrderRecordData({
   bool? levaeReview,
   ReviewStruct? review,
   double? subTotal,
-  String? currency,
   bool? isSuspend,
   bool? isFarmPickup,
   String? username,
@@ -339,7 +331,6 @@ Map<String, dynamic> createOrderRecordData({
       'levae_review': levaeReview,
       'review': ReviewStruct().toMap(),
       'sub_total': subTotal,
-      'currency': currency,
       'is_suspend': isSuspend,
       'is_farm_pickup': isFarmPickup,
       'username': username,
@@ -394,7 +385,6 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e1?.levaeReview == e2?.levaeReview &&
         e1?.review == e2?.review &&
         e1?.subTotal == e2?.subTotal &&
-        e1?.currency == e2?.currency &&
         e1?.isSuspend == e2?.isSuspend &&
         e1?.isFarmPickup == e2?.isFarmPickup &&
         e1?.username == e2?.username &&
@@ -434,7 +424,6 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e?.levaeReview,
         e?.review,
         e?.subTotal,
-        e?.currency,
         e?.isSuspend,
         e?.isFarmPickup,
         e?.username,

@@ -833,8 +833,8 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                     children: [
                                                       Text(
                                                           ordersItem.isVariableWeight
-                                                              ? '${formatOrderCurrency(ordersItem.pricePerKg, containerOrderRecord.currency)}/kg'
-                                                              : formatOrderCurrency(rowProductRecord.price, containerOrderRecord.currency),
+                                                              ? '${formatLanguageCurrency(ordersItem.pricePerKg, FFLocalizations.of(context).languageCode)}/kg'
+                                                              : formatLanguageCurrency(rowProductRecord.price, FFLocalizations.of(context).languageCode),
                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                             fontFamily: 'Satoshi',
                                                             color: FlutterFlowTheme.of(context).textprimary,
@@ -963,7 +963,7 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       ),
                                 ),
                                 Text(
-                                      formatOrderCurrency(containerOrderRecord.totalAmmount, containerOrderRecord.currency),
+                                      formatLanguageCurrency(containerOrderRecord.totalAmmount, FFLocalizations.of(context).languageCode),
                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                         fontFamily: 'Satoshi',
                                         color: FlutterFlowTheme.of(context).textprimary,

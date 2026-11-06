@@ -23,11 +23,10 @@ Future<bool> flutterStripeDirect(
   String? locallanguage,
   List<dynamic>? vendors,
   String? producerId,
-  String? currency,
 ) async {
   try {
-    final paymentCurrency = currency ??
-        (FFLocalizations.of(context).languageCode == 'fr' ? 'EUR' : 'USD');
+    final paymentCurrency =
+        FFLocalizations.of(context).languageCode == 'fr' ? 'EUR' : 'USD';
 
     final response = await http.post(
       Uri.parse(

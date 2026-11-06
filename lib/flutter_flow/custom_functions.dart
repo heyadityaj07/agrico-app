@@ -664,6 +664,44 @@ double platformFeeAmount(
   return (cappedFee * 100).round() / 100;
 }
 
+bool meetsFarmMinimumOrder(
+  double productSubtotal,
+  double? minimumOrderAmount,
+) {
+  if (!productSubtotal.isFinite || productSubtotal < 0) return false;
+  if (minimumOrderAmount == null) return true;
+  if (!minimumOrderAmount.isFinite || minimumOrderAmount < 0) return false;
+  return (productSubtotal * 100).round() >=
+      (minimumOrderAmount * 100).round();
+}
+
+double selfManagedDeliveryFee(
+  double productSubtotal,
+  double? freeDeliveryThreshold,
+  double? flatDeliveryFee,
+) {
+  final subtotal =
+      productSubtotal.isFinite && productSubtotal >= 0 ? productSubtotal : 0.0;
+  final threshold = freeDeliveryThreshold != null &&
+          freeDeliveryThreshold.isFinite &&
+          freeDeliveryThreshold >= 0
+      ? freeDeliveryThreshold
+      : 0.0;
+  final fee = flatDeliveryFee != null &&
+          flatDeliveryFee.isFinite &&
+          flatDeliveryFee >= 0
+      ? flatDeliveryFee
+      : 0.0;
+
+  return (subtotal * 100).round() >= (threshold * 100).round() ? 0.0 : fee;
+}
+
+bool isWithinDeliveryRadius(double distanceMeters, double? radiusKm) {
+  if (!distanceMeters.isFinite || distanceMeters < 0) return false;
+  if (radiusKm == null || !radiusKm.isFinite || radiusKm <= 0) return false;
+  return distanceMeters <= radiusKm * 1000;
+}
+
 String? platformfees(
   double? totalamount,
   double? platformfee, [

@@ -10,7 +10,6 @@ import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'dart:math' as math;
 import 'package:styled_divider/styled_divider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
@@ -1860,27 +1859,15 @@ class _CartWidgetState extends State<CartWidget> {
                                                                   .farm!
                                                                   .selfManagedSetup
                                                                   .ownDelivery) {
-                                                                if (_model
-                                                                            .farm
-                                                                            ?.selfManagedSetup
-                                                                            .minimumAmmount !=
-                                                                        null
-                                                                    ? ((((valueOrDefault<double>(
-                                                                              functions.totalsales(containerCartRecordList.toList()),
-                                                                              0.0,
-                                                                            )) +
-                                                                                (math.min(
-                                                                                    (valueOrDefault<double>(
-                                                                                          functions.totalsales(containerCartRecordList.toList()),
-                                                                                          0.0,
-                                                                                        ) *
-                                                                                        _model.config!.platformFee),
-                                                                                valueOrDefault<double>(
-                                                                                  _model.config?.platformFeeCapOrNull,
-                                                                                  3.0,
-                                                                                ))))) >
-                                                                        _model.farm!.selfManagedSetup.minimumAmmount)
-                                                                    : true) {
+                                                                if (functions.meetsFarmMinimumOrder(
+                                                                      functions.totalsales(
+                                                                          containerCartRecordList
+                                                                              .toList()),
+                                                                      _model
+                                                                          .farm!
+                                                                          .selfManagedSetup
+                                                                          .minimumAmmount,
+                                                                    )) {
                                                                   context
                                                                       .pushNamed(
                                                                     CheckoutWidget
@@ -1957,7 +1944,12 @@ class _CartWidgetState extends State<CartWidget> {
                                                                       SnackBar(
                                                                         content:
                                                                             Text(
-                                                                          'Farm Delivery is currently unavailable. Please contact the farmer directly for assistance.',
+                                                                          FFLocalizations.of(context).getVariableText(
+                                                                            enText:
+                                                                                'Your order subtotal is below the minimum order amount of ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${_model.farm!.selfManagedSetup.minimumAmmount.toStringAsFixed(2)} for farm delivery. Please add more items.',
+                                                                            frText:
+                                                                                'Le sous-total de votre commande est inférieur au montant minimum de ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${_model.farm!.selfManagedSetup.minimumAmmount.toStringAsFixed(2)} pour la livraison par la ferme. Veuillez ajouter des articles.',
+                                                                          ),
                                                                           style:
                                                                               TextStyle(
                                                                             color:

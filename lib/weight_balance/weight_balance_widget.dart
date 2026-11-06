@@ -179,7 +179,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                         ),
                                   ),
                                   Text(
-                                    formatOrderCurrency(containerOrderRecord.finalTotalAmount, containerOrderRecord.currency),
+                                    formatLanguageCurrency(containerOrderRecord.finalTotalAmount, FFLocalizations.of(context).languageCode),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -214,7 +214,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                         ),
                                   ),
                                   Text(
-                                    formatOrderCurrency(containerOrderRecord.serviceFee, containerOrderRecord.currency),
+                                    formatLanguageCurrency(containerOrderRecord.serviceFee, FFLocalizations.of(context).languageCode),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -249,7 +249,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                         ),
                                   ),
                                   Text(
-                                    formatOrderCurrency(containerOrderRecord.initialDepositPaid, containerOrderRecord.currency),
+                                    formatLanguageCurrency(containerOrderRecord.initialDepositPaid, FFLocalizations.of(context).languageCode),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -284,7 +284,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                         ),
                                   ),
                                   Text(
-                                    formatOrderCurrency(containerOrderRecord.totalAmmount, containerOrderRecord.currency),
+                                    formatLanguageCurrency(containerOrderRecord.totalAmmount, FFLocalizations.of(context).languageCode),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -319,7 +319,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                         ),
                                   ),
                                   Text(
-                                    formatOrderCurrency(containerOrderRecord.finalBalanceAmount, containerOrderRecord.currency),
+                                    formatLanguageCurrency(containerOrderRecord.finalBalanceAmount, FFLocalizations.of(context).languageCode),
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -533,7 +533,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                                         ),
                                               ),
                                               Text(
-                                                '${itemItem.actualWeight.toString()} kg x ${formatOrderCurrency(itemItem.pricePerKg, containerOrderRecord.currency)}/kg',
+                                                '${itemItem.actualWeight.toString()} kg x ${formatLanguageCurrency(itemItem.pricePerKg, FFLocalizations.of(context).languageCode)}/kg',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -619,7 +619,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                                         ),
                                               ),
                                               Text(
-                                                formatOrderCurrency(itemItem.depositAmount, containerOrderRecord.currency),
+                                                formatLanguageCurrency(itemItem.depositAmount, FFLocalizations.of(context).languageCode),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -662,7 +662,7 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                                         ),
                                               ),
                                               Text(
-                                                formatOrderCurrency(itemItem.remainingBalance, containerOrderRecord.currency),
+                                                formatLanguageCurrency(itemItem.remainingBalance, FFLocalizations.of(context).languageCode),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

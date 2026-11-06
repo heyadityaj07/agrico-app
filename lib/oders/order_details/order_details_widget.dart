@@ -1714,7 +1714,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                               ),
                                                                             if (ordersItem.isVariableWeight)
                                                                               Text(
-                                                                                'Deposit paid: ${formatOrderCurrency(ordersItem.depositAmount * ordersItem.totalItems.toDouble(), orderDetailsOrderRecord.currency)}',
+                                                                                'Deposit paid: ${formatLanguageCurrency(ordersItem.depositAmount * ordersItem.totalItems.toDouble(), FFLocalizations.of(context).languageCode)}',
                                                                                 style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                       fontFamily: 'Satoshi',
                                                                                       color: FlutterFlowTheme.of(context).textsecondary,
@@ -1755,9 +1755,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                         if (!rowProductRecord
                                                                             .isVariableWeight)
                                                                           Text(
-                                                                              formatOrderCurrency(
+                                                                              formatLanguageCurrency(
                                                                                 rowProductRecord.price,
-                                                                                orderDetailsOrderRecord.currency,
+                                                                                FFLocalizations.of(context).languageCode,
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Satoshi',
@@ -2221,7 +2221,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          formatOrderCurrency(orderDetailsOrderRecord.subTotal, orderDetailsOrderRecord.currency),
+                                                          formatLanguageCurrency(orderDetailsOrderRecord.subTotal, FFLocalizations.of(context).languageCode),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -2477,9 +2477,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                     mainAxisSize: MainAxisSize.max,
                                                     children: [
                                                       Text(
-                                                        formatOrderCurrency(
+                                                        formatLanguageCurrency(
                                                           orderDetailsOrderRecord.totalAmmount,
-                                                          orderDetailsOrderRecord.currency,
+                                                          FFLocalizations.of(context).languageCode,
                                                         ),
                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                               fontFamily: 'Satoshi',
@@ -2567,7 +2567,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                               .balancePaymentStatus ==
                                                           'paid'))
                                                     Text(
-                                                      formatOrderCurrency(orderDetailsOrderRecord.finalBalanceAmount, orderDetailsOrderRecord.currency),
+                                                      formatLanguageCurrency(orderDetailsOrderRecord.finalBalanceAmount, FFLocalizations.of(context).languageCode),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium

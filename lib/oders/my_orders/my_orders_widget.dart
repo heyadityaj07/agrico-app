@@ -631,9 +631,9 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                               children: [
                                                                 Flexible(
                                                                   child: Text(
-                                                                    formatOrderCurrency(
+                                                                    formatLanguageCurrency(
                                                                       ordersItem.totalAmmount,
-                                                                      ordersItem.currency,
+                                                                      FFLocalizations.of(context).languageCode,
                                                                     ),
                                                                     style: FlutterFlowTheme.of(context)
                                                                         .bodyMedium
@@ -1238,9 +1238,9 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                                       .spaceBetween,
                                                               children: [
                                                                 Text(
-                                                                  formatOrderCurrency(
+                                                                  formatLanguageCurrency(
                                                                     complatedordersItem.totalAmmount,
-                                                                    complatedordersItem.currency,
+                                                                    FFLocalizations.of(context).languageCode,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)

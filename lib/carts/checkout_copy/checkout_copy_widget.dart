@@ -9,7 +9,6 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'dart:math' as math;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:styled_divider/styled_divider.dart';
@@ -547,25 +546,14 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                 Visibility(
                                                                               visible: () {
                                                                                 if (pageViewFarmsRecord.selfManagedSetup.ownDelivery &&
-                                                                                    ((((valueOrDefault<double>(
-                                                                                                  functions.totalsales(containerCartRecordList.toList()),
-                                                                                                  0.0,
-                                                                                                ) +
-                                                                                                math.min(
-                                                                                                    (valueOrDefault<double>(
-                                                                                                          functions.totalsales(containerCartRecordList.toList()),
-                                                                                                          0.0,
-                                                                                                        ) *
-                                                                                                        valueOrDefault<double>(
-                                                                                                          stackConfigRecord?.platformFee,
-                                                                                                          0.0,
-                                                                                                        ) /
-                                                                                                        100),
-                                                                                                    valueOrDefault<double>(
-                                                                                                    stackConfigRecord?.platformFeeCapOrNull,
-                                                                                                    3.0,
-                                                                                                  )))) >=
-                                                                                            pageViewFarmsRecord.selfManagedSetup.minimumAmmount))) {
+                                                                                    functions.meetsFarmMinimumOrder(
+                                                                                      functions.totalsales(
+                                                                                          containerCartRecordList
+                                                                                              .toList()),
+                                                                                      pageViewFarmsRecord
+                                                                                          .selfManagedSetup
+                                                                                          .minimumAmmount,
+                                                                                    )) {
                                                                                   return true;
                                                                                 } else if (pageViewFarmsRecord.agricooDelivery) {
                                                                                   return true;
@@ -697,25 +685,14 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                               child: Visibility(
                                                                                 visible: () {
                                                                                   if (pageViewFarmsRecord.selfManagedSetup.ownDelivery &&
-                                                                                      ((((valueOrDefault<double>(
-                                                                                                    functions.totalsales(containerCartRecordList.toList()),
-                                                                                                    0.0,
-                                                                                                  ) +
-                                                                                                  math.min(
-                                                                                                      (valueOrDefault<double>(
-                                                                                                            functions.totalsales(containerCartRecordList.toList()),
-                                                                                                            0.0,
-                                                                                                          ) *
-                                                                                                          valueOrDefault<double>(
-                                                                                                            stackConfigRecord?.platformFee,
-                                                                                                            0.0,
-                                                                                                          ) /
-                                                                                                          100),
-                                                                                                      valueOrDefault<double>(
-                                                                                                    stackConfigRecord?.platformFeeCapOrNull,
-                                                                                                    3.0,
-                                                                                                  )))) >=
-                                                                                              pageViewFarmsRecord.selfManagedSetup.minimumAmmount))) {
+                                                                                      functions.meetsFarmMinimumOrder(
+                                                                                        functions.totalsales(
+                                                                                            containerCartRecordList
+                                                                                                .toList()),
+                                                                                        pageViewFarmsRecord
+                                                                                            .selfManagedSetup
+                                                                                            .minimumAmmount,
+                                                                                      )) {
                                                                                     return true;
                                                                                   } else if (pageViewFarmsRecord.agricooDelivery) {
                                                                                     return true;
@@ -847,25 +824,14 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                       if (pageViewFarmsRecord
                                                                               .selfManagedSetup
                                                                               .ownDelivery &&
-                                                                          ((((valueOrDefault<double>(
-                                                                                        functions.totalsales(containerCartRecordList.toList()),
-                                                                                        0.0,
-                                                                                      ) +
-                                                                                      math.min(
-                                                                                          (valueOrDefault<double>(
-                                                                                                functions.totalsales(containerCartRecordList.toList()),
-                                                                                                0.0,
-                                                                                              ) *
-                                                                                              valueOrDefault<double>(
-                                                                                                stackConfigRecord?.platformFee,
-                                                                                                0.0,
-                                                                                              ) /
-                                                                                              100),
-                                                                                          valueOrDefault<double>(
-                                                                                                    stackConfigRecord?.platformFeeCapOrNull,
-                                                                                                    3.0,
-                                                                                                  )))) >=
-                                                                                  pageViewFarmsRecord.selfManagedSetup.minimumAmmount))) {
+                                                                          functions.meetsFarmMinimumOrder(
+                                                                            functions.totalsales(
+                                                                                containerCartRecordList
+                                                                                    .toList()),
+                                                                            pageViewFarmsRecord
+                                                                                .selfManagedSetup
+                                                                                .minimumAmmount,
+                                                                          )) {
                                                                         return true;
                                                                       } else if (pageViewFarmsRecord.agricooDelivery) {
                                                                         return true;
@@ -1262,25 +1228,14 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                 'no') &&
                                                                             () {
                                                                               if (pageViewFarmsRecord.selfManagedSetup.ownDelivery &&
-                                                                                  ((((valueOrDefault<double>(
-                                                                                                functions.totalsales(containerCartRecordList.toList()),
-                                                                                                0.0,
-                                                                                              ) +
-                                                                                              math.min(
-                                                                                                  (valueOrDefault<double>(
-                                                                                                        functions.totalsales(containerCartRecordList.toList()),
-                                                                                                        0.0,
-                                                                                                      ) *
-                                                                                                      valueOrDefault<double>(
-                                                                                                        stackConfigRecord?.platformFee,
-                                                                                                        0.0,
-                                                                                                      ) /
-                                                                                                      100),
-                                                                                                  valueOrDefault<double>(
-                                                                                                    stackConfigRecord?.platformFeeCapOrNull,
-                                                                                                    3.0,
-                                                                                                  )))) >=
-                                                                                          pageViewFarmsRecord.selfManagedSetup.minimumAmmount))) {
+                                                                                  functions.meetsFarmMinimumOrder(
+                                                                                    functions.totalsales(
+                                                                                        containerCartRecordList
+                                                                                            .toList()),
+                                                                                    pageViewFarmsRecord
+                                                                                        .selfManagedSetup
+                                                                                        .minimumAmmount,
+                                                                                  )) {
                                                                                 return true;
                                                                               } else if (pageViewFarmsRecord.agricooDelivery) {
                                                                                 return true;
@@ -1306,41 +1261,25 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                 (_model.selectedeliverymethod != 'uber')) {
                                                                               if (pageViewFarmsRecord.selfManagedSetup.ownDelivery) {
                                                                                 if (_model.postal1!) {
-                                                                                  if ((((valueOrDefault<double>(
-                                                                                                functions.totalsales(containerCartRecordList.toList()),
-                                                                                                0.0,
-                                                                                              ) +
-                                                                                              math.min(
-                                                                                                  (valueOrDefault<double>(
-                                                                                                        functions.totalsales(containerCartRecordList.toList()),
-                                                                                                        0.0,
-                                                                                                      ) *
-                                                                                                      valueOrDefault<double>(
-                                                                                                        stackConfigRecord?.platformFee,
-                                                                                                        0.0,
-                                                                                                      ) /
-                                                                                                      100),
-                                                                                                  valueOrDefault<double>(
-                                                                                                    stackConfigRecord?.platformFeeCapOrNull,
-                                                                                                    3.0,
-                                                                                                  )))) >=
-                                                                                          pageViewFarmsRecord.selfManagedSetup.minimumAmmount)) {
-                                                                                    _model.fee = (double var1, double var2) {
-                                                                                      return var1 >= var2;
-                                                                                    }(
-                                                                                            valueOrDefault<double>(
-                                                                                              functions.totalsales(containerCartRecordList.toList()),
-                                                                                              0.0,
-                                                                                            ),
-                                                                                            valueOrDefault<double>(
-                                                                                              pageViewFarmsRecord.selfManagedSetup.freedelievryAmmount,
-                                                                                              0.0,
-                                                                                            ))
-                                                                                        ? 0.0
-                                                                                        : valueOrDefault<double>(
-                                                                                            pageViewFarmsRecord.selfManagedSetup.flatDeliveryFee,
-                                                                                            0.0,
-                                                                                          );
+                                                                                  if (functions.meetsFarmMinimumOrder(
+                                                                                    functions.totalsales(
+                                                                                        containerCartRecordList
+                                                                                            .toList()),
+                                                                                    pageViewFarmsRecord
+                                                                                        .selfManagedSetup
+                                                                                        .minimumAmmount,
+                                                                                  )) {
+                                                                                    _model.fee = functions.selfManagedDeliveryFee(
+                                                                                      functions.totalsales(
+                                                                                          containerCartRecordList
+                                                                                              .toList()),
+                                                                                      pageViewFarmsRecord
+                                                                                          .selfManagedSetup
+                                                                                          .freedelievryAmmount,
+                                                                                      pageViewFarmsRecord
+                                                                                          .selfManagedSetup
+                                                                                          .flatDeliveryFee,
+                                                                                    );
                                                                                     _model.isAgricodeliver = false;
                                                                                     safeSetState(() {});
                                                                                   } else {
