@@ -332,6 +332,43 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
 
                                           final pageViewFarmsRecord =
                                               snapshot.data!;
+                                          final hasFarmDeliverySetup =
+                                              pageViewFarmsRecord
+                                                  .hasSelfManagedSetup();
+                                          final deliveryMinimumMet =
+                                              hasFarmDeliverySetup &&
+                                                  functions
+                                                      .meetsFarmMinimumOrder(
+                                            functions.totalsales(
+                                                containerCartRecordList
+                                                    .toList()),
+                                            pageViewFarmsRecord
+                                                .selfManagedSetup
+                                                .minimumAmmount,
+                                          );
+
+                                          if (!deliveryMinimumMet &&
+                                              _model.deliveryMethod != null &&
+                                              _model.deliveryMethod !=
+                                                  'farmpickup') {
+                                            SchedulerBinding.instance
+                                                .addPostFrameCallback((_) {
+                                              if (!mounted) return;
+                                              if (pageViewFarmsRecord
+                                                  .selfManagedSetup
+                                                  .clickCollect) {
+                                                _model.farmpickup = 'yes';
+                                                _model.deliveryMethod =
+                                                    'farmpickup';
+                                              } else {
+                                                _model.farmpickup = null;
+                                                _model.deliveryMethod = null;
+                                              }
+                                              _model.fee = 0.0;
+                                              _model.isAgricodeliver = false;
+                                              safeSetState(() {});
+                                            });
+                                          }
 
                                           return Container(
                                             width: double.infinity,
@@ -425,6 +462,57 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                               ),
                                                                             ),
                                                                           ),
+                                                                          if (!deliveryMinimumMet)
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                                                                              child: Container(
+                                                                                width: double.infinity,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                  borderRadius: BorderRadius.circular(12.0),
+                                                                                  border: Border.all(
+                                                                                    color: FlutterFlowTheme.of(context).boderdivder,
+                                                                                  ),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.all(12.0),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                    children: [
+                                                                                      Icon(
+                                                                                        Icons.info_outline,
+                                                                                        color: FlutterFlowTheme.of(context).primarytheme,
+                                                                                        size: 20.0,
+                                                                                      ),
+                                                                                      Expanded(
+                                                                                        child: Text(
+                                                                                          FFLocalizations.of(context).getVariableText(
+                                                                                            enText: !hasFarmDeliverySetup
+                                                                                                ? 'Delivery is currently unavailable for this farm. Please contact the farmer directly.'
+                                                                                                : pageViewFarmsRecord.selfManagedSetup.clickCollect
+                                                                                                    ? 'Your order is below the farm delivery minimum. Please choose Farm Pickup to continue.'
+                                                                                                    : 'Your order is below the farm delivery minimum. Add more items to enable delivery.',
+                                                                                            frText: !hasFarmDeliverySetup
+                                                                                                ? 'La livraison est actuellement indisponible pour cette ferme. Veuillez contacter directement l\'agriculteur.'
+                                                                                                : pageViewFarmsRecord.selfManagedSetup.clickCollect
+                                                                                                    ? 'Votre commande est inférieure au minimum de livraison de la ferme. Veuillez choisir le retrait à la ferme pour continuer.'
+                                                                                                    : 'Votre commande est inférieure au minimum de livraison de la ferme. Ajoutez des articles pour activer la livraison.',
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Satoshi',
+                                                                                                color: FlutterFlowTheme.of(context).textprimary,
+                                                                                                fontSize: 14.0,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FontWeight.normal,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ].divide(SizedBox(width: 10.0)),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
                                                                           if (pageViewFarmsRecord.doyouofferyourowndeliveryservice
                                                                               ? pageViewFarmsRecord.selfManagedSetup.clickCollect
                                                                               : false)
@@ -546,23 +634,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                 BoxDecoration(),
                                                                             child:
                                                                                 Visibility(
-                                                                              visible: () {
-                                                                                if (pageViewFarmsRecord.selfManagedSetup.ownDelivery &&
-                                                                                    functions.meetsFarmMinimumOrder(
-                                                                                      functions.totalsales(
-                                                                                          containerCartRecordList
-                                                                                              .toList()),
-                                                                                      pageViewFarmsRecord
-                                                                                          .selfManagedSetup
-                                                                                          .minimumAmmount,
-                                                                                    )) {
-                                                                                  return true;
-                                                                                } else if (pageViewFarmsRecord.agricooDelivery) {
-                                                                                  return true;
-                                                                                } else {
-                                                                                  return false;
-                                                                                }
-                                                                              }(),
+                                                                              visible: pageViewFarmsRecord.selfManagedSetup.ownDelivery &&
+                                                                                  deliveryMinimumMet,
                                                                               child: InkWell(
                                                                                 splashColor: Colors.transparent,
                                                                                 focusColor: Colors.transparent,
@@ -685,7 +758,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                 Container(
                                                                               decoration: BoxDecoration(),
                                                                               child: Visibility(
-                                                                                visible: pageViewFarmsRecord.agricooDelivery,
+                                                                                visible: pageViewFarmsRecord.agricooDelivery &&
+                                                                                    deliveryMinimumMet,
                                                                                 child: InkWell(
                                                                                   splashColor: Colors.transparent,
                                                                                   focusColor: Colors.transparent,
@@ -806,25 +880,12 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                 ),
                                                                 if ((_model.farmpickup ==
                                                                         'no') &&
-                                                                    () {
-                                                                      if (pageViewFarmsRecord
-                                                                              .selfManagedSetup
-                                                                              .ownDelivery &&
-                                                                          functions.meetsFarmMinimumOrder(
-                                                                            functions.totalsales(
-                                                                                containerCartRecordList
-                                                                                    .toList()),
-                                                                            pageViewFarmsRecord
-                                                                                .selfManagedSetup
-                                                                                .minimumAmmount,
-                                                                          )) {
-                                                                        return true;
-                                                                      } else if (pageViewFarmsRecord.agricooDelivery) {
-                                                                        return true;
-                                                                      } else {
-                                                                        return false;
-                                                                      }
-                                                                    }())
+                                                                    deliveryMinimumMet &&
+                                                                    (pageViewFarmsRecord
+                                                                            .selfManagedSetup
+                                                                            .ownDelivery ||
+                                                                        pageViewFarmsRecord
+                                                                            .agricooDelivery))
                                                                   Container(
                                                                     width: double
                                                                         .infinity,
@@ -1222,6 +1283,41 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                           () async {
                                                                         var _shouldSetState =
                                                                             false;
+                                                                        if (!deliveryMinimumMet &&
+                                                                            _model.farmpickup !=
+                                                                                'yes') {
+                                                                          if (pageViewFarmsRecord
+                                                                              .selfManagedSetup
+                                                                              .clickCollect) {
+                                                                            _model.farmpickup =
+                                                                                'yes';
+                                                                            _model.deliveryMethod =
+                                                                                'farmpickup';
+                                                                            _model.fee =
+                                                                                0.0;
+                                                                            _model.isAgricodeliver =
+                                                                                false;
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                          } else {
+                                                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                                              SnackBar(
+                                                                                content: Text(
+                                                                                  FFLocalizations.of(context).getVariableText(
+                                                                                    enText: 'Your order is below the delivery minimum. Add more items to enable delivery.',
+                                                                                    frText: 'Votre commande est inférieure au minimum de livraison. Ajoutez des articles pour activer la livraison.',
+                                                                                  ),
+                                                                                  style: TextStyle(
+                                                                                    color: FlutterFlowTheme.of(context).textprimary,
+                                                                                  ),
+                                                                                ),
+                                                                                duration: Duration(milliseconds: 4000),
+                                                                                backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                              ),
+                                                                            );
+                                                                            return;
+                                                                          }
+                                                                        }
                                                                         if (_model.farmpickup !=
                                                                                 null &&
                                                                             _model.farmpickup !=
@@ -1290,8 +1386,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                       SnackBar(
                                                                                         content: Text(
                                                                                           FFLocalizations.of(context).getVariableText(
-                                                                                            enText: 'Your order subtotal is below the minimum order amount for farm delivery.',
-                                                                                            frText: 'Le sous-total de votre commande est inférieur au montant minimum pour la livraison par la ferme.',
+                                                                                            enText: 'Your order is below the minimum order amount for delivery.',
+                                                                                            frText: 'Votre commande est inférieure au montant minimum pour la livraison.',
                                                                                           ),
                                                                                           style: TextStyle(
                                                                                             color: FlutterFlowTheme.of(context).textprimary,
@@ -2038,36 +2134,39 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                   onPressed:
                                                                       () async {
                                                                     if (_model.farmpickup !=
-                                                                            'yes' &&
-                                                                        _model.deliveryMethod !=
-                                                                            'uber' &&
-                                                                        pageViewFarmsRecord
-                                                                            .selfManagedSetup
-                                                                            .ownDelivery &&
-                                                                        !functions.meetsFarmMinimumOrder(
-                                                                          functions.totalsales(
-                                                                              containerCartRecordList
-                                                                                  .toList()),
-                                                                          pageViewFarmsRecord
-                                                                              .selfManagedSetup
-                                                                              .minimumAmmount,
-                                                                        )) {
-                                                                      ScaffoldMessenger.of(context).showSnackBar(
-                                                                        SnackBar(
-                                                                          content: Text(
-                                                                            FFLocalizations.of(context).getVariableText(
-                                                                              enText: 'Your order subtotal is below the minimum order amount for farm delivery.',
-                                                                              frText: 'Le sous-total de votre commande est inférieur au montant minimum pour la livraison par la ferme.',
+                                                                        'yes' &&
+                                                                        !deliveryMinimumMet) {
+                                                                      if (pageViewFarmsRecord
+                                                                          .selfManagedSetup
+                                                                          .clickCollect) {
+                                                                        _model.farmpickup =
+                                                                            'yes';
+                                                                        _model.deliveryMethod =
+                                                                            'farmpickup';
+                                                                        _model.fee =
+                                                                            0.0;
+                                                                        _model.isAgricodeliver =
+                                                                            false;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      } else {
+                                                                        ScaffoldMessenger.of(context).showSnackBar(
+                                                                          SnackBar(
+                                                                            content: Text(
+                                                                              FFLocalizations.of(context).getVariableText(
+                                                                                enText: 'Your order is below the delivery minimum. Add more items to enable delivery.',
+                                                                                frText: 'Votre commande est inférieure au minimum de livraison. Ajoutez des articles pour activer la livraison.',
+                                                                              ),
+                                                                              style: TextStyle(
+                                                                                color: FlutterFlowTheme.of(context).textprimary,
+                                                                              ),
                                                                             ),
-                                                                            style: TextStyle(
-                                                                              color: FlutterFlowTheme.of(context).textprimary,
-                                                                            ),
+                                                                            duration: Duration(milliseconds: 4000),
+                                                                            backgroundColor: FlutterFlowTheme.of(context).secondary,
                                                                           ),
-                                                                          duration: Duration(milliseconds: 4000),
-                                                                          backgroundColor: FlutterFlowTheme.of(context).secondary,
-                                                                        ),
-                                                                      );
-                                                                      return;
+                                                                        );
+                                                                        return;
+                                                                      }
                                                                     }
                                                                     _model.farmUser =
                                                                         await UsersRecord.getDocumentOnce(

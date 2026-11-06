@@ -1904,7 +1904,18 @@ class _CartWidgetState extends State<CartWidget> {
                                                                   if (_model
                                                                           .farm
                                                                           ?.agricooDelivery ==
-                                                                      true) {
+                                                                      true &&
+                                                                      _model.farm!
+                                                                          .hasSelfManagedSetup() &&
+                                                                      functions.meetsFarmMinimumOrder(
+                                                                        functions.totalsales(
+                                                                            containerCartRecordList
+                                                                                .toList()),
+                                                                        _model
+                                                                            .farm!
+                                                                            .selfManagedSetup
+                                                                            .minimumAmmount,
+                                                                      )) {
                                                                     context
                                                                         .pushNamed(
                                                                       CheckoutWidget
@@ -1967,7 +1978,18 @@ class _CartWidgetState extends State<CartWidget> {
                                                               } else {
                                                                 if (_model.farm
                                                                         ?.agricooDelivery ==
-                                                                    true) {
+                                                                    true &&
+                                                                    _model.farm!
+                                                                        .hasSelfManagedSetup() &&
+                                                                    functions.meetsFarmMinimumOrder(
+                                                                      functions.totalsales(
+                                                                          containerCartRecordList
+                                                                              .toList()),
+                                                                      _model
+                                                                          .farm!
+                                                                          .selfManagedSetup
+                                                                          .minimumAmmount,
+                                                                    )) {
                                                                   context
                                                                       .pushNamed(
                                                                     CheckoutWidget
@@ -2007,7 +2029,18 @@ class _CartWidgetState extends State<CartWidget> {
                                                                     SnackBar(
                                                                       content:
                                                                           Text(
-                                                                        'Farm Delivery is currently unavailable. Please contact the farmer directly for assistance.',
+                                                                        FFLocalizations.of(context).getVariableText(
+                                                                          enText: !_model
+                                                                                  .farm!
+                                                                                  .hasSelfManagedSetup()
+                                                                              ? 'Delivery is currently unavailable for this farm. Please contact the farmer directly.'
+                                                                              : 'Your order subtotal is below the minimum order amount of ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${_model.farm!.selfManagedSetup.minimumAmmount.toStringAsFixed(2)} for delivery. Please add more items or contact the farmer.',
+                                                                          frText: !_model
+                                                                                  .farm!
+                                                                                  .hasSelfManagedSetup()
+                                                                              ? 'La livraison est actuellement indisponible pour cette ferme. Veuillez contacter directement l\'agriculteur.'
+                                                                              : 'Le sous-total de votre commande est inférieur au montant minimum de ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${_model.farm!.selfManagedSetup.minimumAmmount.toStringAsFixed(2)} pour la livraison. Veuillez ajouter des articles ou contacter l\'agriculteur.',
+                                                                        ),
                                                                         style:
                                                                             TextStyle(
                                                                           color:
