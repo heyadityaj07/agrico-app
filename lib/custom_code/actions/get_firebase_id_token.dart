@@ -24,6 +24,6 @@ Future<String?> getFirebaseIdToken() async {
   // ✅ ALWAYS FRESH TOKEN
   final token = await user.getIdToken(true);
 
-  print('Fresh Auth Token: $token');
+  // P1-08: do not print the token — auth tokens must never leak to logs.
   return token;
 }

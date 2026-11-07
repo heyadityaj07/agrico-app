@@ -21,6 +21,11 @@ class CheckoutModel extends FlutterFlowModel<CheckoutWidget> {
 
   bool? isAgricodeliver = false;
 
+  /// True while the Pay action is creating the order/PaymentIntent and
+  /// presenting the payment sheet. Guard against duplicate submissions
+  /// (double taps) — P1-08.
+  bool isPaymentInProgress = false;
+
   ///  State fields for stateful widgets in this page.
 
   List<PaymentsRecord>? containerPreviousSnapshot;
@@ -68,7 +73,8 @@ class CheckoutModel extends FlutterFlowModel<CheckoutWidget> {
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   ConfigRecord? config;
   // Stores action output result for [Custom Action - flutterStripeDirect] action in Button widget.
-  bool? stripedocument;
+  // 'success' | 'failed' | 'ambiguous' (P1-08 follow-up).
+  String? paymentResult;
   // Model for suspend component.
   late SuspendModel suspendModel;
 

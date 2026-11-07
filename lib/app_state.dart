@@ -32,6 +32,10 @@ class FFAppState extends ChangeNotifier {
           prefs.getString('ff_orderdocument')?.ref ?? _orderdocument;
     });
     _safeInit(() {
+      _pendingpaymentdocument =
+          prefs.getString('ff_pendingpaymentdocument')?.ref ?? _pendingpaymentdocument;
+    });
+    _safeInit(() {
       _cartdocument = prefs.getString('ff_cartdocument')?.ref ?? _cartdocument;
     });
     _safeInit(() {
@@ -536,6 +540,18 @@ class FFAppState extends ChangeNotifier {
     value != null
         ? prefs.setString('ff_cartdocument', value.path)
         : prefs.remove('ff_cartdocument');
+  }
+
+  /// P1-08 follow-up: order reference of an ambiguous payment attempt.
+  /// While set, the checkout Pay flow reuses this SAME order (never creating
+  /// a new one) so the backend can recover the original PaymentIntent.
+  DocumentReference? _pendingpaymentdocument;
+  DocumentReference? get pendingpaymentdocument => _pendingpaymentdocument;
+  set pendingpaymentdocument(DocumentReference? value) {
+    _pendingpaymentdocument = value;
+    value != null
+        ? prefs.setString('ff_pendingpaymentdocument', value.path)
+        : prefs.remove('ff_pendingpaymentdocument');
   }
 
   int _cartlist = 0;

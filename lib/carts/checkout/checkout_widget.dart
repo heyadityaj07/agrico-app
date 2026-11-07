@@ -2134,9 +2134,37 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                     FFButtonWidget(
                                                                   onPressed:
                                                                       () async {
-                                                                    if (_model.farmpickup !=
-                                                                        'yes' &&
-                                                                        !deliveryMinimumMet) {
+                                                                    // P1-08 duplicate-submission guard: ignore taps while an
+                                                                    // order/PaymentIntent/payment sheet is already in flight.
+                                                                    if (_model
+                                                                        .isPaymentInProgress) {
+                                                                      return;
+                                                                    }
+                                                                    _model.isPaymentInProgress =
+                                                                        true;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    try {
+                                                                      // P1-08 follow-up: if an ambiguous payment attempt is still
+                                                                      // open, reuse that SAME order instead of creating a new one.
+                                                                      if (FFAppState()
+                                                                              .pendingpaymentdocument !=
+                                                                          null) {
+                                                                        _model.order =
+                                                                            await OrderRecord.getDocumentOnce(FFAppState().pendingpaymentdocument!);
+                                                                        if (_model.order == null ||
+                                                                            _model.order!.orderStatus !=
+                                                                                'Pending') {
+                                                                          // Stale/unusable reference: clear it and create a fresh order.
+                                                                          FFAppState().pendingpaymentdocument =
+                                                                              null;
+                                                                          _model.order =
+                                                                              null;
+                                                                        }
+                                                                      }
+                                                                      if (_model.farmpickup !=
+                                                                          'yes' &&
+                                                                          !deliveryMinimumMet) {
                                                                       if (pageViewFarmsRecord
                                                                           .selfManagedSetup
                                                                           .clickCollect) {
@@ -2197,11 +2225,15 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                           await FarmsRecord.getDocumentOnce(
                                                                               currentLoop1Item.farmRef!);
 
-                                                                      var orderRecordReference = OrderRecord
-                                                                          .collection
-                                                                          .doc();
-                                                                      await orderRecordReference
-                                                                          .set({
+                                                                      // P1-08 follow-up: only create a new order when no pending
+                                                                      // ambiguous-payment order is being reused.
+                                                                      if (_model.order ==
+                                                                          null) {
+                                                                        var orderRecordReference = OrderRecord
+                                                                            .collection
+                                                                            .doc();
+                                                                        await orderRecordReference
+                                                                            .set({
                                                                         ...createOrderRecordData(
                                                                           userRef:
                                                                               currentUserReference,
@@ -2314,9 +2346,10 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                             ),
                                                                           },
                                                                         ),
-                                                                      }, orderRecordReference);
-                                                                    }
-                                                                    _model.dynamicvendor =
+                                                                       }, orderRecordReference);
+                                                                     }
+                                                                     }
+                                                                     _model.dynamicvendor =
                                                                         await actions
                                                                             .manageproductlist(
                                                                       _model
@@ -2338,10 +2371,10 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    _model.stripedocument =
-                                                                        await actions
-                                                                            .flutterStripeDirect(
-                                                                      context,
+                                                                     _model.paymentResult =
+                                                                         await actions
+                                                                             .flutterStripeDirect(
+                                                                       context,
                                                                       (valueOrDefault<
                                                                               double>(
                                                                             functions.totalsales(containerCartRecordList.toList()),
@@ -2376,9 +2409,13 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                           ?.farmRef
                                                                           ?.id,
                                                                     );
-                                                                    if (_model
-                                                                        .stripedocument!) {
-                                                                      for (int loop2Index =
+                                                                     if (_model
+                                                                         .paymentResult ==
+                                                                         'success') {
+                                                                       // Payment confirmed: clear any pending ambiguous-payment state.
+                                                                       FFAppState().pendingpaymentdocument =
+                                                                           null;
+                                                                       for (int loop2Index =
                                                                               0;
                                                                           loop2Index <=
                                                                               _model.cart!.length - 1;
@@ -2526,36 +2563,81 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                             .cartdocument!
                                                                             .delete();
                                                                       }
-                                                                    } else {
-                                                                      ScaffoldMessenger.of(
-                                                                              context)
-                                                                          .showSnackBar(
-                                                                        SnackBar(
-                                                                          content:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getVariableText(
-                                                                              enText: 'payment failed ',
-                                                                              frText: 'échec du paiement',
-                                                                            ),
-                                                                            style:
-                                                                                TextStyle(
-                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                            ),
-                                                                          ),
-                                                                          duration:
-                                                                              Duration(milliseconds: 4000),
-                                                                          backgroundColor:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                        ),
-                                                                      );
-                                                                      await _model
-                                                                          .order!
-                                                                          .reference
-                                                                          .delete();
-                                                                    }
+                                                                     } else if (_model
+                                                                         .paymentResult ==
+                                                                         'ambiguous') {
+                                                                       // P1-08 follow-up: the payment outcome is UNKNOWN (e.g. the
+                                                                       // request timed out after the backend may have already
+                                                                       // created/confirmed a PaymentIntent). Do NOT report
+                                                                       // failure, do NOT delete the order and do NOT create a
+                                                                       // new one — the SAME order is reused on retry so the
+                                                                       // backend can recover the original PaymentIntent.
+                                                                       ScaffoldMessenger.of(
+                                                                               context)
+                                                                           .showSnackBar(
+                                                                         SnackBar(
+                                                                           content:
+                                                                               Text(
+                                                                             FFLocalizations.of(context).getVariableText(
+                                                                               enText: 'We could not confirm your payment status. Your order is saved — please try again shortly, or check your payment history before retrying.',
+                                                                               frText: 'Nous n\'avons pas pu confirmer votre paiement. Votre commande est enregistrée — réessayez dans un instant, ou vérifiez votre historique de paiement avant de réessayer.',
+                                                                             ),
+                                                                             style:
+                                                                                 TextStyle(
+                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                             ),
+                                                                           ),
+                                                                           duration:
+                                                                               Duration(milliseconds: 6000),
+                                                                           backgroundColor:
+                                                                               FlutterFlowTheme.of(context).primary,
+                                                                         ),
+                                                                       );
+                                                                       FFAppState().pendingpaymentdocument =
+                                                                           _model
+                                                                               .order
+                                                                               ?.reference;
+                                                                     } else {
+                                                                       // Confirmed failure or cancellation: clean up the fresh order.
+                                                                       FFAppState().pendingpaymentdocument =
+                                                                           null;
+                                                                       ScaffoldMessenger.of(
+                                                                               context)
+                                                                           .showSnackBar(
+                                                                         SnackBar(
+                                                                           content:
+                                                                               Text(
+                                                                             FFLocalizations.of(context).getVariableText(
+                                                                               enText: 'payment failed ',
+                                                                               frText: 'échec du paiement',
+                                                                             ),
+                                                                             style:
+                                                                                 TextStyle(
+                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                             ),
+                                                                           ),
+                                                                           duration:
+                                                                               Duration(milliseconds: 4000),
+                                                                           backgroundColor:
+                                                                               FlutterFlowTheme.of(context).primary,
+                                                                         ),
+                                                                       );
+                                                                       await _model
+                                                                           .order!
+                                                                           .reference
+                                                                           .delete();
+                                                                     }
 
                                                                     safeSetState(
                                                                         () {});
+                                                                    } finally {
+                                                                      // Re-enable Pay in every exit path (success, failure,
+                                                                      // cancellation, timeout).
+                                                                      _model.isPaymentInProgress =
+                                                                          false;
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    }
                                                                   },
                                                                   text: FFLocalizations.of(
                                                                           context)
