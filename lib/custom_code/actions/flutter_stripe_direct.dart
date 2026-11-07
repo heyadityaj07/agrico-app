@@ -14,6 +14,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 
 Future<bool> flutterStripeDirect(
   BuildContext context,
@@ -28,11 +29,19 @@ Future<bool> flutterStripeDirect(
     final paymentCurrency =
         FFLocalizations.of(context).languageCode == 'fr' ? 'EUR' : 'USD';
 
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final String? idToken = await currentUser?.getIdToken(true);
+    if (idToken == null || idToken.isEmpty) {
+      print("No authenticated user; payment cannot be created");
+      return false;
+    }
+
     final response = await http.post(
       Uri.parse(
           'https://us-central1-agricoo-b9c46.cloudfunctions.net/createFarmPaymentIntent'),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Bearer $idToken',
       },
       body: jsonEncode({
         "amount": amount ?? 0,

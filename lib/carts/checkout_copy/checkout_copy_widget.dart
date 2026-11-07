@@ -2081,7 +2081,8 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             Text(
                                                                                               _model.farmpickup == 'no'
                                                                                                   ? valueOrDefault<String>(
-                                                                                                      _model.fee?.toString(),
+                                                                                                      _model.fee
+                                                                                                          ?.toStringAsFixed(2),
                                                                                                       '0',
                                                                                                     )
                                                                                                   : '0',

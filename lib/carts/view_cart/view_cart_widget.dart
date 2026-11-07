@@ -897,8 +897,7 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                   ),
                                                 Text(
                                                   valueOrDefault<String>(
-                                                    functions
-                                                        .cartTotal(
+                                                    functions.totalsales(
                                                             containerCartRecordList
                                                                 .toList())
                                                         .toStringAsFixed(2),

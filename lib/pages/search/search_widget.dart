@@ -2428,8 +2428,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                         ),
                                                       Text(
                                                         valueOrDefault<String>(
-                                                          functions
-                                                              .cartTotal(
+                                                          functions.totalsales(
                                                                   containerCartRecordList
                                                                       .toList())
                                                               .toStringAsFixed(

@@ -1756,7 +1756,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                                           ),
                                                                                                         if (listItemItem.isVariableWeight)
                                                                                                           Text(
-                                                                                                            'Deposit due: ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${listItemItem.depositAmount.toString()}',
+                                                                                                            'Deposit due: ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${listItemItem.depositAmount.toStringAsFixed(2)}',
                                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                   fontFamily: 'Satoshi',
                                                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
@@ -1922,7 +1922,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                             Text(
                                                                                               _model.farmpickup == 'no'
                                                                                                   ? valueOrDefault<String>(
-                                                                                                      _model.fee?.toString(),
+                                                                                                      _model.fee
+                                                                                                          ?.toStringAsFixed(2),
                                                                                                       '0',
                                                                                                     )
                                                                                                   : '0',
