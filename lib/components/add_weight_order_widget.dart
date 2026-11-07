@@ -210,9 +210,9 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                                     content: Text(FFLocalizations.of(context)
                                         .getVariableText(
                                       enText:
-                                          'The entered weight is below the minimum or above the maximum for the selected product bracket. Are you sure you want to send this weight request to the customer?',
+                                          'The entered weight is below the minimum or above the maximum for the selected product bracket. The weight will be billed at the actual weight. If the weight is unusually high, we recommend using Chat with Customer to communicate the revised quantity and price. Are you sure you want to send this weight request to the customer?',
                                       frText:
-                                          'Le poids saisi est inférieur au minimum ou supérieur au maximum de la plage sélectionnée pour ce produit. Voulez-vous vraiment envoyer cette demande de poids au client ?',
+                                          'Le poids saisi est inférieur au minimum ou supérieur au maximum de la plage sélectionnée pour ce produit. Ce poids sera facturé au poids réel. Si le poids est exceptionnellement élevé, nous vous recommandons d’utiliser le chat avec le client pour communiquer la quantité et le prix révisés. Voulez-vous vraiment envoyer cette demande de poids au client ?',
                                     )),
                                     actions: [
                                       TextButton(
