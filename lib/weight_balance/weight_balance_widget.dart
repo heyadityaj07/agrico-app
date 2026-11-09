@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
+import '/components/customer_refund_status_card.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -359,6 +360,11 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                           ),
                         ),
                       ),
+                    ),
+                    CustomerRefundStatusCard(
+                      order: containerOrderRecord,
+                      margin: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 0.0, 16.0, 12.0),
                     ),
                     Expanded(
                       child: Builder(
@@ -839,9 +845,9 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                           message = localizations
                                               .getVariableText(
                                             enText:
-                                                'No additional payment is required. Any refund due will be processed separately.',
+                                                'No additional payment is required.',
                                             frText:
-                                                'Aucun paiement supplémentaire n’est requis. Tout remboursement dû sera traité séparément.',
+                                                'Aucun paiement supplémentaire n’est requis.',
                                           );
                                           break;
                                         case 'cancelled':
@@ -969,9 +975,9 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                               child: Text(
                                 FFLocalizations.of(context).getVariableText(
                                   enText:
-                                      'No additional payment is required. Any refund due will be processed separately.',
+                                      'No additional payment is required.',
                                   frText:
-                                      'Aucun paiement supplémentaire n’est requis. Tout remboursement dû sera traité séparément.',
+                                      'Aucun paiement supplémentaire n’est requis.',
                                 ),
                                 textAlign: TextAlign.center,
                                 style:

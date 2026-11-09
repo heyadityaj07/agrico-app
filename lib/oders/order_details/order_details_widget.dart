@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
 import '/components/consumer_navbar_widget.dart';
+import '/components/customer_refund_status_card.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -2722,9 +2723,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 context)
                                                             .getVariableText(
                                                           enText:
-                                                              'No additional payment is required. Any refund due will be processed separately.',
+                                                              'No additional payment is required.',
                                                           frText:
-                                                              'Aucun paiement supplémentaire n’est requis. Tout remboursement dû sera traité séparément.',
+                                                              'Aucun paiement supplémentaire n’est requis.',
                                                         ),
                                                         style: FlutterFlowTheme.of(
                                                                 context)
@@ -2763,6 +2764,13 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
+                                            CustomerRefundStatusCard(
+                                              order: orderDetailsOrderRecord,
+                                              margin:
+                                                  EdgeInsetsDirectional
+                                                      .fromSTEB(0.0, 12.0,
+                                                          0.0, 0.0),
+                                            ),
                                           ],
                                         ),
                                       ),
