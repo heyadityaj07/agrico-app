@@ -16,3 +16,4 @@ export 'checkruleof_location.dart' show checkruleofLocation;
 export 'send_localized_verification_email.dart'
     show sendLocalizedVerificationEmail;
 export 'update_order_actual_weight.dart' show updateOrderActualWeight;
+export 'send_weight_payment_request.dart' show sendWeightPaymentRequest;

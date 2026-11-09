@@ -19,6 +19,14 @@ class AddWeightOrderModel extends FlutterFlowModel<AddWeightOrderWidget> {
       );
     }
 
+    final weight = double.tryParse(val.trim());
+    if (weight == null || weight <= 0) {
+      return FFLocalizations.of(context).getVariableText(
+        enText: 'Enter a valid weight greater than zero',
+        frText: 'Saisissez un poids valide supérieur à zéro',
+      );
+    }
+
     return null;
   }
 

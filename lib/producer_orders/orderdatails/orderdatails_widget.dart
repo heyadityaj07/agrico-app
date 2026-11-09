@@ -765,6 +765,8 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                                             ordersItem.minWeight,
                                                                         maxWeight:
                                                                             ordersItem.maxWeight,
+                                                                        itemIndex:
+                                                                            ordersIndex,
                                                                       ),
                                                                     );
                                                                   },
@@ -1059,6 +1061,62 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                             .textsecondary,
                                         letterSpacing: 0.0,
                                       ),
+                                ),
+                              ),
+                            if ((containerOrderRecord.orderStatus ==
+                                    'Preparing') &&
+                                (containerOrderRecord.isVariableWeightOrder ==
+                                    true) &&
+                                (containerOrderRecord.isSuspend == false) &&
+                                (containerOrderRecord.orderItems
+                                        .where((e) =>
+                                            e.isVariableWeight &&
+                                            (e.actualWeight <= 0.0))
+                                        .toList()
+                                        .length ==
+                                    0) &&
+                                (containerOrderRecord.balancePaymentStatus !=
+                                    'payment_requested') &&
+                                (containerOrderRecord.balancePaymentStatus !=
+                                    'paid') &&
+                                (containerOrderRecord.balancePaymentStatus !=
+                                    'failed'))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await actions.sendWeightPaymentRequest(
+                                    context,
+                                    containerOrderRecord.reference.id,
+                                  );
+                                },
+                                text: FFLocalizations.of(context)
+                                    .getVariableText(
+                                  enText: 'Send Payment Request',
+                                  frText: 'Envoyer la demande de paiement',
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).primarytheme,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Satoshi',
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primarytheme,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
                                 ),
                               ),
                             if (((containerOrderRecord.orderStatus !=

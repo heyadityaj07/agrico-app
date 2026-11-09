@@ -15,12 +15,14 @@ class AddWeightOrderWidget extends StatefulWidget {
     this.productRef,
     this.minWeight,
     this.maxWeight,
+    this.itemIndex,
   });
 
   final DocumentReference? orderRef;
   final DocumentReference? productRef;
   final double? minWeight;
   final double? maxWeight;
+  final int? itemIndex;
 
   @override
   State<AddWeightOrderWidget> createState() => _AddWeightOrderWidgetState();
@@ -239,22 +241,29 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                               ) ??
                               false;
                           if (confirmDialogResponse) {
-                            await actions.updateOrderActualWeight(
+                            final saved =
+                                await actions.updateOrderActualWeight(
                               context,
                               widget.orderRef!.path,
                               widget.productRef!.path,
                               _model.actualWeightInputTextController.text,
+                              itemIndex: widget.itemIndex,
                             );
-                            Navigator.pop(context);
+                            if (saved) {
+                              Navigator.pop(context);
+                            }
                           }
                         } else {
-                          await actions.updateOrderActualWeight(
+                          final saved = await actions.updateOrderActualWeight(
                             context,
                             widget.orderRef!.path,
                             widget.productRef!.path,
                             _model.actualWeightInputTextController.text,
+                            itemIndex: widget.itemIndex,
                           );
-                          Navigator.pop(context);
+                          if (saved) {
+                            Navigator.pop(context);
+                          }
                         }
                       },
                       text: FFLocalizations.of(context).getText(
