@@ -191,6 +191,102 @@ class OrderRecord extends FirestoreRecord {
   double get finalBalanceAmount => _finalBalanceAmount ?? 0.0;
   bool hasFinalBalanceAmount() => _finalBalanceAmount != null;
 
+  // "refund_due_amount" field.
+  double? _refundDueAmount;
+  double get refundDueAmount => _refundDueAmount ?? 0.0;
+  bool hasRefundDueAmount() => _refundDueAmount != null;
+
+  // "refund_status" field.
+  String? _refundStatus;
+  String get refundStatus => _refundStatus ?? '';
+  bool hasRefundStatus() => _refundStatus != null;
+
+  // "refund_amount" field.
+  double? _refundAmount;
+  double get refundAmount => _refundAmount ?? 0.0;
+  bool hasRefundAmount() => _refundAmount != null;
+
+  // "refund_id" field.
+  String? _refundId;
+  String get refundId => _refundId ?? '';
+  bool hasRefundId() => _refundId != null;
+
+  // "refund_attempt" field.
+  int? _refundAttempt;
+  int get refundAttempt => _refundAttempt ?? 0;
+  bool hasRefundAttempt() => _refundAttempt != null;
+
+  // "refund_attempts" field.
+  List<dynamic>? _refundAttempts;
+  List<dynamic> get refundAttempts => _refundAttempts ?? const [];
+  bool hasRefundAttempts() => _refundAttempts != null;
+
+  // "refund_transfer_reversal_status" field.
+  String? _refundTransferReversalStatus;
+  String get refundTransferReversalStatus =>
+      _refundTransferReversalStatus ?? '';
+  bool hasRefundTransferReversalStatus() =>
+      _refundTransferReversalStatus != null;
+
+  // "refund_transfer_reversal_reason" field.
+  String? _refundTransferReversalReason;
+  String get refundTransferReversalReason =>
+      _refundTransferReversalReason ?? '';
+  bool hasRefundTransferReversalReason() =>
+      _refundTransferReversalReason != null;
+
+  // "refund_transfer_reversal_amount" field.
+  double? _refundTransferReversalAmount;
+  double get refundTransferReversalAmount =>
+      _refundTransferReversalAmount ?? 0.0;
+  bool hasRefundTransferReversalAmount() =>
+      _refundTransferReversalAmount != null;
+
+  // "refund_transfer_reversal_shortfall_amount" field.
+  double? _refundTransferReversalShortfallAmount;
+  double get refundTransferReversalShortfallAmount =>
+      _refundTransferReversalShortfallAmount ?? 0.0;
+  bool hasRefundTransferReversalShortfallAmount() =>
+      _refundTransferReversalShortfallAmount != null;
+
+  // "refund_transfer_reversal_partial" field.
+  bool? _refundTransferReversalPartial;
+  bool get refundTransferReversalPartial =>
+      _refundTransferReversalPartial ?? false;
+  bool hasRefundTransferReversalPartial() =>
+      _refundTransferReversalPartial != null;
+
+  // "reconciliationRequired" field.
+  bool? _reconciliationRequired;
+  bool get reconciliationRequired => _reconciliationRequired ?? false;
+  bool hasReconciliationRequired() => _reconciliationRequired != null;
+
+  // "reconciliation_issues" field.
+  Map<String, dynamic>? _reconciliationIssues;
+  Map<String, dynamic> get reconciliationIssues =>
+      _reconciliationIssues ?? const {};
+  bool hasReconciliationIssues() => _reconciliationIssues != null;
+
+  // "balance_paid_at" field.
+  DateTime? _balancePaidAt;
+  DateTime? get balancePaidAt => _balancePaidAt;
+  bool hasBalancePaidAt() => _balancePaidAt != null;
+
+  // "balance_payment_state" field.
+  String? _balancePaymentState;
+  String get balancePaymentState => _balancePaymentState ?? '';
+  bool hasBalancePaymentState() => _balancePaymentState != null;
+
+  // "balance_payment_intent_id" field.
+  String? _balancePaymentIntentId;
+  String get balancePaymentIntentId => _balancePaymentIntentId ?? '';
+  bool hasBalancePaymentIntentId() => _balancePaymentIntentId != null;
+
+  // "balance_payment_attempt" field.
+  int? _balancePaymentAttempt;
+  int get balancePaymentAttempt => _balancePaymentAttempt ?? 0;
+  bool hasBalancePaymentAttempt() => _balancePaymentAttempt != null;
+
   void _initializeFields() {
     _totalAmmount = castToType<double>(snapshotData['total_ammount']);
     _note = snapshotData['note'] as String?;
@@ -237,6 +333,35 @@ class OrderRecord extends FirestoreRecord {
     _balancePaymentStatus = snapshotData['balance_payment_status'] as String?;
     _finalBalanceAmount =
         castToType<double>(snapshotData['final_balance_amount']);
+    _refundDueAmount = castToType<double>(snapshotData['refund_due_amount']);
+    _refundStatus = snapshotData['refund_status'] as String?;
+    _refundAmount = castToType<double>(snapshotData['refund_amount']);
+    _refundId = snapshotData['refund_id'] as String?;
+    _refundAttempt = castToType<int>(snapshotData['refund_attempt']);
+    _refundAttempts = getDataList(snapshotData['refund_attempts']);
+    _refundTransferReversalStatus =
+        snapshotData['refund_transfer_reversal_status'] as String?;
+    _refundTransferReversalReason =
+        snapshotData['refund_transfer_reversal_reason'] as String?;
+    _refundTransferReversalAmount =
+        castToType<double>(snapshotData['refund_transfer_reversal_amount']);
+    _refundTransferReversalShortfallAmount = castToType<double>(
+        snapshotData['refund_transfer_reversal_shortfall_amount']);
+    _refundTransferReversalPartial =
+        snapshotData['refund_transfer_reversal_partial'] as bool?;
+    _reconciliationRequired =
+        snapshotData['reconciliationRequired'] as bool?;
+    _reconciliationIssues =
+        snapshotData['reconciliation_issues'] is Map
+            ? Map<String, dynamic>.from(
+                snapshotData['reconciliation_issues'] as Map)
+            : null;
+    _balancePaidAt = snapshotData['balance_paid_at'] as DateTime?;
+    _balancePaymentState = snapshotData['balance_payment_state'] as String?;
+    _balancePaymentIntentId =
+        snapshotData['balance_payment_intent_id'] as String?;
+    _balancePaymentAttempt =
+        castToType<int>(snapshotData['balance_payment_attempt']);
   }
 
   static CollectionReference get collection =>
@@ -306,6 +431,23 @@ Map<String, dynamic> createOrderRecordData({
   bool? isVariableWeightOrder,
   String? balancePaymentStatus,
   double? finalBalanceAmount,
+  double? refundDueAmount,
+  String? refundStatus,
+  double? refundAmount,
+  String? refundId,
+  int? refundAttempt,
+  List<dynamic>? refundAttempts,
+  String? refundTransferReversalStatus,
+  String? refundTransferReversalReason,
+  double? refundTransferReversalAmount,
+  double? refundTransferReversalShortfallAmount,
+  bool? refundTransferReversalPartial,
+  bool? reconciliationRequired,
+  Map<String, dynamic>? reconciliationIssues,
+  DateTime? balancePaidAt,
+  String? balancePaymentState,
+  String? balancePaymentIntentId,
+  int? balancePaymentAttempt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -343,6 +485,24 @@ Map<String, dynamic> createOrderRecordData({
       'is_variable_weight_order': isVariableWeightOrder,
       'balance_payment_status': balancePaymentStatus,
       'final_balance_amount': finalBalanceAmount,
+      'refund_due_amount': refundDueAmount,
+      'refund_status': refundStatus,
+      'refund_amount': refundAmount,
+      'refund_id': refundId,
+      'refund_attempt': refundAttempt,
+      'refund_attempts': refundAttempts,
+      'refund_transfer_reversal_status': refundTransferReversalStatus,
+      'refund_transfer_reversal_reason': refundTransferReversalReason,
+      'refund_transfer_reversal_amount': refundTransferReversalAmount,
+      'refund_transfer_reversal_shortfall_amount':
+          refundTransferReversalShortfallAmount,
+      'refund_transfer_reversal_partial': refundTransferReversalPartial,
+      'reconciliationRequired': reconciliationRequired,
+      'reconciliation_issues': reconciliationIssues,
+      'balance_paid_at': balancePaidAt,
+      'balance_payment_state': balancePaymentState,
+      'balance_payment_intent_id': balancePaymentIntentId,
+      'balance_payment_attempt': balancePaymentAttempt,
     }.withoutNulls,
   );
 
@@ -362,6 +522,7 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
   @override
   bool equals(OrderRecord? e1, OrderRecord? e2) {
     const listEquality = ListEquality();
+    const deepEquality = DeepCollectionEquality();
     return e1?.totalAmmount == e2?.totalAmmount &&
         e1?.note == e2?.note &&
         e1?.voucherCode == e2?.voucherCode &&
@@ -396,7 +557,30 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e1?.finalTotalAmount == e2?.finalTotalAmount &&
         e1?.isVariableWeightOrder == e2?.isVariableWeightOrder &&
         e1?.balancePaymentStatus == e2?.balancePaymentStatus &&
-        e1?.finalBalanceAmount == e2?.finalBalanceAmount;
+        e1?.finalBalanceAmount == e2?.finalBalanceAmount &&
+        e1?.refundDueAmount == e2?.refundDueAmount &&
+        e1?.refundStatus == e2?.refundStatus &&
+        e1?.refundAmount == e2?.refundAmount &&
+        e1?.refundId == e2?.refundId &&
+        e1?.refundAttempt == e2?.refundAttempt &&
+        deepEquality.equals(e1?.refundAttempts, e2?.refundAttempts) &&
+        e1?.refundTransferReversalStatus ==
+            e2?.refundTransferReversalStatus &&
+        e1?.refundTransferReversalReason ==
+            e2?.refundTransferReversalReason &&
+        e1?.refundTransferReversalAmount ==
+            e2?.refundTransferReversalAmount &&
+        e1?.refundTransferReversalShortfallAmount ==
+            e2?.refundTransferReversalShortfallAmount &&
+        e1?.refundTransferReversalPartial ==
+            e2?.refundTransferReversalPartial &&
+        e1?.reconciliationRequired == e2?.reconciliationRequired &&
+        deepEquality.equals(
+            e1?.reconciliationIssues, e2?.reconciliationIssues) &&
+        e1?.balancePaidAt == e2?.balancePaidAt &&
+        e1?.balancePaymentState == e2?.balancePaymentState &&
+        e1?.balancePaymentIntentId == e2?.balancePaymentIntentId &&
+        e1?.balancePaymentAttempt == e2?.balancePaymentAttempt;
   }
 
   @override
@@ -435,7 +619,24 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e?.finalTotalAmount,
         e?.isVariableWeightOrder,
         e?.balancePaymentStatus,
-        e?.finalBalanceAmount
+        e?.finalBalanceAmount,
+        e?.refundDueAmount,
+        e?.refundStatus,
+        e?.refundAmount,
+        e?.refundId,
+        e?.refundAttempt,
+        const DeepCollectionEquality().hash(e?.refundAttempts),
+        e?.refundTransferReversalStatus,
+        e?.refundTransferReversalReason,
+        e?.refundTransferReversalAmount,
+        e?.refundTransferReversalShortfallAmount,
+        e?.refundTransferReversalPartial,
+        e?.reconciliationRequired,
+        const DeepCollectionEquality().hash(e?.reconciliationIssues),
+        e?.balancePaidAt,
+        e?.balancePaymentState,
+        e?.balancePaymentIntentId,
+        e?.balancePaymentAttempt
       ]);
 
   @override

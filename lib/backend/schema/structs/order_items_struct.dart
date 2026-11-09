@@ -20,6 +20,9 @@ class OrderItemsStruct extends FFFirebaseStruct {
     double? finalItemPrice,
     double? remainingBalance,
     bool? weightLocked,
+    double? refundDue,
+    bool? weightBelowMinimum,
+    bool? weightAboveMaximum,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _productRef = productRef,
         _totalItems = totalItems,
@@ -33,6 +36,9 @@ class OrderItemsStruct extends FFFirebaseStruct {
         _finalItemPrice = finalItemPrice,
         _remainingBalance = remainingBalance,
         _weightLocked = weightLocked,
+        _refundDue = refundDue,
+        _weightBelowMinimum = weightBelowMinimum,
+        _weightAboveMaximum = weightAboveMaximum,
         super(firestoreUtilData);
 
   // "product_ref" field.
@@ -142,6 +148,29 @@ class OrderItemsStruct extends FFFirebaseStruct {
 
   bool hasWeightLocked() => _weightLocked != null;
 
+  // "refund_due" field.
+  double? _refundDue;
+  double get refundDue => _refundDue ?? 0.0;
+  set refundDue(double? val) => _refundDue = val;
+
+  void incrementRefundDue(double amount) => refundDue = refundDue + amount;
+
+  bool hasRefundDue() => _refundDue != null;
+
+  // "weight_below_minimum" field.
+  bool? _weightBelowMinimum;
+  bool get weightBelowMinimum => _weightBelowMinimum ?? false;
+  set weightBelowMinimum(bool? val) => _weightBelowMinimum = val;
+
+  bool hasWeightBelowMinimum() => _weightBelowMinimum != null;
+
+  // "weight_above_maximum" field.
+  bool? _weightAboveMaximum;
+  bool get weightAboveMaximum => _weightAboveMaximum ?? false;
+  set weightAboveMaximum(bool? val) => _weightAboveMaximum = val;
+
+  bool hasWeightAboveMaximum() => _weightAboveMaximum != null;
+
   static OrderItemsStruct fromMap(Map<String, dynamic> data) =>
       OrderItemsStruct(
         productRef: data['product_ref'] as DocumentReference?,
@@ -156,6 +185,9 @@ class OrderItemsStruct extends FFFirebaseStruct {
         finalItemPrice: castToType<double>(data['final_item_price']),
         remainingBalance: castToType<double>(data['remaining_balance']),
         weightLocked: data['weight_locked'] as bool?,
+        refundDue: castToType<double>(data['refund_due']),
+        weightBelowMinimum: data['weight_below_minimum'] as bool?,
+        weightAboveMaximum: data['weight_above_maximum'] as bool?,
       );
 
   static OrderItemsStruct? maybeFromMap(dynamic data) => data is Map
@@ -175,6 +207,9 @@ class OrderItemsStruct extends FFFirebaseStruct {
         'final_item_price': _finalItemPrice,
         'remaining_balance': _remainingBalance,
         'weight_locked': _weightLocked,
+        'refund_due': _refundDue,
+        'weight_below_minimum': _weightBelowMinimum,
+        'weight_above_maximum': _weightAboveMaximum,
       }.withoutNulls;
 
   @override
@@ -225,6 +260,18 @@ class OrderItemsStruct extends FFFirebaseStruct {
         ),
         'weight_locked': serializeParam(
           _weightLocked,
+          ParamType.bool,
+        ),
+        'refund_due': serializeParam(
+          _refundDue,
+          ParamType.double,
+        ),
+        'weight_below_minimum': serializeParam(
+          _weightBelowMinimum,
+          ParamType.bool,
+        ),
+        'weight_above_maximum': serializeParam(
+          _weightAboveMaximum,
           ParamType.bool,
         ),
       }.withoutNulls;
@@ -292,6 +339,21 @@ class OrderItemsStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        refundDue: deserializeParam(
+          data['refund_due'],
+          ParamType.double,
+          false,
+        ),
+        weightBelowMinimum: deserializeParam(
+          data['weight_below_minimum'],
+          ParamType.bool,
+          false,
+        ),
+        weightAboveMaximum: deserializeParam(
+          data['weight_above_maximum'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -311,7 +373,10 @@ class OrderItemsStruct extends FFFirebaseStruct {
         depositAmount == other.depositAmount &&
         finalItemPrice == other.finalItemPrice &&
         remainingBalance == other.remainingBalance &&
-        weightLocked == other.weightLocked;
+        weightLocked == other.weightLocked &&
+        refundDue == other.refundDue &&
+        weightBelowMinimum == other.weightBelowMinimum &&
+        weightAboveMaximum == other.weightAboveMaximum;
   }
 
   @override
@@ -327,7 +392,10 @@ class OrderItemsStruct extends FFFirebaseStruct {
         depositAmount,
         finalItemPrice,
         remainingBalance,
-        weightLocked
+        weightLocked,
+        refundDue,
+        weightBelowMinimum,
+        weightAboveMaximum
       ]);
 }
 
@@ -344,6 +412,9 @@ OrderItemsStruct createOrderItemsStruct({
   double? finalItemPrice,
   double? remainingBalance,
   bool? weightLocked,
+  double? refundDue,
+  bool? weightBelowMinimum,
+  bool? weightAboveMaximum,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -362,6 +433,9 @@ OrderItemsStruct createOrderItemsStruct({
       finalItemPrice: finalItemPrice,
       remainingBalance: remainingBalance,
       weightLocked: weightLocked,
+      refundDue: refundDue,
+      weightBelowMinimum: weightBelowMinimum,
+      weightAboveMaximum: weightAboveMaximum,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
