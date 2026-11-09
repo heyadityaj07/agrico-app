@@ -1119,6 +1119,53 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                               ),
+                            if ((containerOrderRecord.isVariableWeightOrder ==
+                                    true) &&
+                                (containerOrderRecord.refundDueAmount > 0) &&
+                                ((containerOrderRecord.refundStatus == '') ||
+                                    (containerOrderRecord.refundStatus ==
+                                        'failed')) &&
+                                ((containerOrderRecord.orderStatus ==
+                                        'Picked Up') ||
+                                    (containerOrderRecord.orderStatus ==
+                                        'In Transit') ||
+                                    (containerOrderRecord.orderStatus ==
+                                        'Delivered')))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await actions.createWeightRefund(
+                                    context,
+                                    containerOrderRecord.reference.id,
+                                  );
+                                },
+                                text:
+                                    'Refund customer ${formatLanguageCurrency(containerOrderRecord.refundDueAmount, FFLocalizations.of(context).languageCode)}',
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).primarytheme,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Satoshi',
+                                        color:
+                                            FlutterFlowTheme.of(context).alternate,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primarytheme,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                              ),
                             if (((containerOrderRecord.orderStatus !=
                                         'Delivered') &&
                                     (containerOrderRecord.orderStatus !=
@@ -1544,122 +1591,182 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                           return;
                                         }
 
-                                        _model.farm1 =
-                                            await FarmsRecord.getDocumentOnce(
-                                                containerOrderRecord.farmRef!);
-                                        _shouldSetState = true;
-                                        _model.farmaddress =
-                                            await actions.getAddressFromLatLng(
-                                          _model.farm1!.farmLocation!,
+                                        // P4-04 T5 F7: resolve the same
+                                        // trusted addresses the backend uses
+                                        // for the server-owned Uber payload.
+                                        final dispatchContext =
+                                            await actions
+                                                .resolveUberDispatchContext(
+                                          containerOrderRecord.reference.id,
                                         );
-                                        _shouldSetState = true;
+                                        final pickupAddress =
+                                            dispatchContext['pickup_address'] ??
+                                                '';
+                                        final dropoffAddress =
+                                            dispatchContext['dropoff_address'] ??
+                                                '';
+                                        if (pickupAddress.isEmpty ||
+                                            dropoffAddress.isEmpty) {
+                                          await actions.toast(
+                                            context,
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                                  'The delivery address could not be resolved from this order. Update the order address before dispatching.',
+                                              frText:
+                                                  'L’adresse de livraison n’a pas pu être déterminée à partir de cette commande. Mettez à jour l’adresse avant l’expédition.',
+                                            ),
+                                          );
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        // P4-04 T5 F2: request a FRESH quote
+                                        // associated with this order on every
+                                        // dispatch attempt. Never reuse the
+                                        // checkout display quote.
+                                        final quoteResponse =
+                                            await GetDeliveryQuoteCall.call(
+                                          pickupAddress: pickupAddress,
+                                          dropoffAddress: dropoffAddress,
+                                          orderId:
+                                              containerOrderRecord.reference.id,
+                                        );
+                                        final quoteId =
+                                            (quoteResponse.succeeded ?? false)
+                                                ? actions
+                                                    .classifyUberQuoteResponse(
+                                                    quoteResponse.jsonBody,
+                                                  )
+                                                : null;
+                                        if (quoteId == null) {
+                                          final quoteCode =
+                                              actions.uberDispatchErrorCode(
+                                            quoteResponse.jsonBody,
+                                          );
+                                          await actions.toast(
+                                            context,
+                                            _uberDispatchErrorMessage(
+                                              context,
+                                              quoteCode,
+                                              GetDeliveryQuoteCall.error(
+                                                quoteResponse.jsonBody,
+                                              ),
+                                            ),
+                                          );
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        // P4-04 T5 F3/F4: creation sends the
+                                        // persisted quote id and no test-only
+                                        // specifications.
                                         _model.apiResult7q6 =
                                             await CreateDeliveryCopyCall.call(
-                                          pickupAddress: _model.farmaddress,
-                                          dropoffAddress:
-                                              '${containerOrderRecord.delievryAddress.streetAdress}',
-                                          pickupName: _model.farm1?.farmName,
-                                          pickupPhoneNumber:
-                                              _model.farm1?.contactPhoneNo,
-                                          dropoffName: containerOrderRecord
-                                              .delievryAddress.fullName,
-                                          dropoffPhoneNumber:
-                                              containerOrderRecord
-                                                  .delievryAddress.phoneNo,
+                                          pickupAddress: pickupAddress,
+                                          dropoffAddress: dropoffAddress,
                                           manifestItemsJson: _model.manifestitem
                                               .map((e) => e.toMap())
                                               .toList(),
                                           orderId:
                                               containerOrderRecord.reference.id,
+                                          quoteId: quoteId,
                                           idToken: uberIdToken,
                                         );
 
                                         _shouldSetState = true;
-                                        if ((_model.apiResult7q6?.succeeded ??
-                                            false)) {
-                                          // The backend persists the Uber
-                                          // delivery ID, status and tracking URL
-                                          // itself; only the dispatch status
-                                          // transition is requested here.
-                                          final dispatchResult =
-                                              await actions
-                                                  .updateOrderFulfilmentStatus(
+
+                                        // P4-04 T5 F5: only a verified
+                                        // success envelope with a non-empty
+                                        // delivery id counts as success.
+                                        final createResult = actions
+                                            .classifyUberDeliveryCreateResponse(
+                                          _model.apiResult7q6?.jsonBody ?? '',
+                                          orderId: containerOrderRecord
+                                              .reference.id,
+                                        );
+                                        if (!createResult.succeeded) {
+                                          final createCode =
+                                              actions.uberDispatchErrorCode(
+                                            _model.apiResult7q6?.jsonBody ?? '',
+                                          );
+                                          await actions.toast(
                                             context,
-                                            containerOrderRecord.reference.id,
-                                            'Picked Up',
-                                          );
-                                          if (dispatchResult.isEmpty) return;
-                                          if (dispatchResult == 'changed') {
-                                            await containerOrderRecord.userRef!
-                                                .update({
-                                              ...mapToFirestore(
-                                                {
-                                                  'notification_count':
-                                                      FieldValue.increment(1),
-                                                },
+                                            _uberDispatchErrorMessage(
+                                              context,
+                                              createCode,
+                                              CreateDeliveryCopyCall.error(
+                                                _model.apiResult7q6?.jsonBody ??
+                                                    '',
                                               ),
-                                            });
-                                            triggerPushNotification(
-                                              notificationTitle:
-                                                  'Order Picked Up',
-                                              notificationText:
-                                                  'Your order has been picked up and is ready for transit.',
-                                              userRefs: [
-                                                containerOrderRecord.userRef!
-                                              ],
-                                              initialPageName: 'OrderDetails',
-                                              parameterData: {
-                                                'orderRef':
-                                                    containerOrderRecord
-                                                        .reference,
+                                            ),
+                                          );
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        // The backend persists the Uber
+                                        // delivery ID, status, tracking URL and
+                                        // costs itself; only the trusted
+                                        // fulfilment transition is requested
+                                        // here. An idempotent `alreadyCreated`
+                                        // response still goes through the
+                                        // server transition, which reports
+                                        // `alreadyAtStatus` without a duplicate
+                                        // notification.
+                                        final dispatchResult =
+                                            await actions
+                                                .updateOrderFulfilmentStatus(
+                                          context,
+                                          containerOrderRecord.reference.id,
+                                          'Picked Up',
+                                        );
+                                        if (dispatchResult.isEmpty) return;
+                                        if (dispatchResult == 'changed') {
+                                          await containerOrderRecord.userRef!
+                                              .update({
+                                            ...mapToFirestore(
+                                              {
+                                                'notification_count':
+                                                    FieldValue.increment(1),
                                               },
-                                            );
-                                          }
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'agrico is coming to pick up product',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
                                             ),
-                                          );
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                valueOrDefault<String>(
-                                                  CreateDeliveryCopyCall.error(
-                                                    (_model.apiResult7q6
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  ),
-                                                  'The delivery could not be created. Please retry.',
-                                                ),
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primarytheme,
-                                            ),
+                                          });
+                                          triggerPushNotification(
+                                            notificationTitle: 'Order Picked Up',
+                                            notificationText:
+                                                'Your order has been picked up and is ready for transit.',
+                                            userRefs: [
+                                              containerOrderRecord.userRef!
+                                            ],
+                                            initialPageName: 'OrderDetails',
+                                            parameterData: {
+                                              'orderRef':
+                                                  containerOrderRecord.reference,
+                                            },
                                           );
                                         }
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'agrico is coming to pick up product',
+                                              style: TextStyle(
+                                                color: FlutterFlowTheme.of(
+                                                        context)
+                                                    .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
                                       } else {
                                         if (containerOrderRecord.orderStatus ==
                                             'Picked Up') {
@@ -2080,4 +2187,56 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
       ),
     );
   }
+}
+
+/// P4-04 T5 — user-facing message for Uber quote/create failures.
+///
+/// Ambiguous/uncertain outcomes never claim failure or success; the producer
+/// is told to reopen the order and verify before retrying.
+String _uberDispatchErrorMessage(
+  BuildContext context,
+  String? code,
+  String? serverError,
+) {
+  final isFrench = FFLocalizations.of(context).languageCode == 'fr';
+  switch (code) {
+    case 'quote_expired':
+    case 'quote_unavailable':
+    case 'quote_order_mismatch':
+    case 'quote_context_mismatch':
+    case 'quote_fee_invalid':
+    case 'quote_currency_invalid':
+    case 'quote_expiry_missing':
+    case 'quote_expiry_malformed':
+    case 'quote_id_required':
+      return isFrench
+          ? 'Le devis de livraison a expiré ou ne correspond plus à la commande. Rouvrez la commande et réessayez.'
+          : 'The delivery quote has expired or no longer matches the order. Reopen the order and try again.';
+    case 'dispatch_in_progress':
+    case 'dispatch_reconciliation_required':
+    case 'dispatch_outcome_uncertain':
+    case 'dispatch_state_persistence_unavailable':
+    case 'dispatch_response_invalid':
+      return isFrench
+          ? 'Le résultat de la livraison n’a pas pu être confirmé. Rouvrez la commande pour vérifier son statut avant de réessayer.'
+          : 'The delivery outcome could not be confirmed. Reopen the order to verify its status before trying again.';
+    case 'order_not_dispatchable':
+      return isFrench
+          ? 'Cette commande ne peut plus être expédiée dans son état actuel.'
+          : 'This order can no longer be dispatched in its current state.';
+    case 'delivery_fields_required':
+      return isFrench
+          ? 'Les informations de livraison sont incomplètes dans la commande. Mettez-les à jour avant l’expédition.'
+          : 'The delivery information is incomplete in the order. Update it before dispatching.';
+    case 'dispatch_failed':
+      return isFrench
+          ? 'Uber a refusé la demande de livraison. L’essai a été enregistré et peut être réessayé.'
+          : 'Uber rejected the delivery request. The attempt was recorded and may be retried.';
+  }
+
+  final fallback = serverError?.trim() ?? '';
+  if (fallback.isNotEmpty) return fallback;
+  return isFrench
+      ? 'La livraison n’a pas pu être créée. Aucune confirmation n’a été reçue ; rouvrez la commande pour vérifier son statut.'
+      : 'The delivery could not be created. No confirmation was received; reopen the order to verify its status.';
 }

@@ -1443,6 +1443,29 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                       },
                                     ),
                                     if ((orderDetailsOrderRecord
+                                                .isAgricoDeliver ==
+                                            true) &&
+                                        orderDetailsOrderRecord
+                                            .deliveryStatus
+                                            .trim()
+                                            .isNotEmpty)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 4.0, 0.0, 4.0),
+                                        child: Text(
+                                          'Delivery status: ${orderDetailsOrderRecord.deliveryStatus}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Satoshi',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .textsecondary,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                    if ((orderDetailsOrderRecord
                                                     .trackingUrl !=
                                                 '') &&
                                         (orderDetailsOrderRecord

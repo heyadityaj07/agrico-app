@@ -118,4 +118,87 @@ void main() {
       }
     });
   });
+
+  group('P4-04 quote response validation', () {
+    test('accepts a non-empty quote id only', () {
+      expect(
+        classifyUberQuoteResponse({
+          'success': true,
+          'quote': {'id': 'quote-1', 'fee': 500},
+        }),
+        'quote-1',
+      );
+      expect(
+        classifyUberQuoteResponse({
+          'success': true,
+          'quote': {'id': '   '},
+        }),
+        isNull,
+      );
+      expect(
+        classifyUberQuoteResponse({
+          'success': false,
+          'quote': {'id': 'quote-1'},
+        }),
+        isNull,
+      );
+      expect(classifyUberQuoteResponse({'success': true}), isNull);
+      expect(classifyUberQuoteResponse(null), isNull);
+    });
+  });
+
+  group('P4-04 create response validation', () {
+    Map<String, dynamic> createResponse({
+      String orderId = 'order-1',
+      String? deliveryId = 'delivery-1',
+      bool alreadyCreated = false,
+    }) {
+      return {
+        'success': true,
+        'orderId': orderId,
+        if (alreadyCreated) 'alreadyCreated': true,
+        'delivery': {if (deliveryId != null) 'id': deliveryId},
+      };
+    }
+
+    test('accepts a new delivery with a non-empty id', () {
+      final result = classifyUberDeliveryCreateResponse(
+        createResponse(),
+        orderId: 'order-1',
+      );
+      expect(result.succeeded, isTrue);
+      expect(result.outcome, UberDeliveryCreateOutcome.created);
+      expect(result.deliveryId, 'delivery-1');
+    });
+
+    test('accepts an idempotent alreadyCreated response with the same id', () {
+      final result = classifyUberDeliveryCreateResponse(
+        createResponse(alreadyCreated: true),
+        orderId: 'order-1',
+      );
+      expect(result.succeeded, isTrue);
+      expect(result.outcome, UberDeliveryCreateOutcome.alreadyCreated);
+    });
+
+    test('treats empty, malformed or contradictory bodies as ambiguous', () {
+      final inputs = <dynamic>[
+        null,
+        '',
+        '{}',
+        [],
+        {'success': false, 'orderId': 'order-1', 'delivery': {'id': 'x'}},
+        {'success': true, 'orderId': 'order-2', 'delivery': {'id': 'x'}},
+        {'success': true, 'orderId': 'order-1', 'delivery': <String, dynamic>{}},
+        {'success': true, 'orderId': 'order-1', 'delivery': {'id': '  '}},
+      ];
+      for (final body in inputs) {
+        final result = classifyUberDeliveryCreateResponse(
+          body,
+          orderId: 'order-1',
+        );
+        expect(result.succeeded, isFalse);
+        expect(result.outcome, UberDeliveryCreateOutcome.ambiguous);
+      }
+    });
+  });
 }

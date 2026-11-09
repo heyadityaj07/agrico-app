@@ -19,3 +19,17 @@ export 'update_order_actual_weight.dart' show updateOrderActualWeight;
 export 'send_weight_payment_request.dart' show sendWeightPaymentRequest;
 export 'update_order_fulfilment_status.dart'
     show updateOrderFulfilmentStatus;
+export 'resolve_uber_dispatch_context.dart'
+    show resolveUberDispatchContext;
+export 'reconcile_uber_delivery.dart' show reconcileUberDelivery;
+export 'create_weight_refund.dart' show createWeightRefund;
+export 'dispatch_response_validation.dart'
+    show
+        dispatchOutcomeChanged,
+        dispatchOutcomeAlreadyAtStatus,
+        classifyDispatchSuccessResponse,
+        classifyUberQuoteResponse,
+        classifyUberDeliveryCreateResponse,
+        UberDeliveryCreateOutcome,
+        UberDeliveryCreateResult,
+        uberDispatchErrorCode;

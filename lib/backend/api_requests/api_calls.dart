@@ -650,12 +650,18 @@ class GetDeliveryQuoteCall {
   static Future<ApiCallResponse> call({
     String? pickupAddress = '',
     String? dropoffAddress = '',
+    String? orderId = '',
   }) async {
-    final ffApiRequestBody = '''
-{
-  "pickup_address": ${pickupAddress == null ? 'null' : '"${escapeStringForJson(pickupAddress)}"'},
-  "dropoff_address": ${dropoffAddress == null ? 'null' : '"${escapeStringForJson(dropoffAddress)}"'}
-}''';
+    // P4-04 T5 F2: the dispatch quote must be associated with the order so the
+    // backend can persist it and validate it during delivery creation. The
+    // checkout display quote intentionally omits `orderId` (display-only).
+    final quoteFields = <String>[
+      '"pickup_address": ${pickupAddress == null ? 'null' : '"${escapeStringForJson(pickupAddress)}"'}',
+      '"dropoff_address": ${dropoffAddress == null ? 'null' : '"${escapeStringForJson(dropoffAddress)}"'}',
+      if (orderId != null && orderId.trim().isNotEmpty)
+        '"orderId": "${escapeStringForJson(orderId.trim())}"',
+    ];
+    final ffApiRequestBody = '{\n  ${quoteFields.join(',\n  ')}\n}';
     return ApiManager.instance.makeApiCall(
       callName: 'getDeliveryQuote',
       apiUrl:
@@ -684,6 +690,7 @@ class GetDeliveryQuoteCall {
         response,
         r'''$.quote.id''',
       ));
+  static String? quoteId(dynamic response) => id(response);
   static int? fee(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.quote.fee''',
@@ -766,9 +773,14 @@ class CreateDeliveryCopyCall {
     String? dropoffPhoneNumber = '',
     dynamic manifestItemsJson,
     String? orderId = '',
+    String? quoteId = '',
     String? idToken = '',
   }) async {
     final manifestItems = _serializeJson(manifestItemsJson, true);
+    // P4-04 T5 F3/F4: `quote_id` is mandatory for order-associated creation.
+    // The legacy `test_specifications` block has been removed from the
+    // production request; robo-courier sandbox mode must use a separate
+    // test-only request, never this production body.
     final ffApiRequestBody = '''
 {
   "pickup_address": ${pickupAddress == null ? 'null' : '"${escapeStringForJson(pickupAddress)}"'},
@@ -778,11 +790,7 @@ class CreateDeliveryCopyCall {
   "dropoff_name": ${dropoffName == null ? 'null' : '"${escapeStringForJson(dropoffName)}"'},
   "dropoff_phone_number": ${dropoffPhoneNumber == null ? 'null' : '"${escapeStringForJson(dropoffPhoneNumber)}"'},
   "manifest_items": ${manifestItems},
-  "test_specifications": {
-    "robo_courier_specification": {
-      "mode": "auto"
-    }
-  },
+  "quote_id": ${quoteId == null ? 'null' : '"${escapeStringForJson(quoteId)}"'},
   "manifest_reference": ${orderId == null ? 'null' : '"${escapeStringForJson(orderId)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
@@ -807,6 +815,15 @@ class CreateDeliveryCopyCall {
     );
   }
 
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
+  static bool? alreadyCreated(dynamic response) =>
+      castToType<bool>(getJsonField(
+        response,
+        r'''$.alreadyCreated''',
+      ));
   static String? uberDeliveryId(dynamic response) =>
       castToType<String>(getJsonField(
         response,
