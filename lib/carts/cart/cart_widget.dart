@@ -469,7 +469,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                                                             ),
                                                                                           if (cartlistItem.isVariableWeight)
                                                                                             Text(
-                                                                                              functions.cartWeightDepositTotal(cartlistItem.depositAmount, cartlistItem.quantity).toString(),
+                                                                                              functions.totalsales([cartlistItem]).toStringAsFixed(2),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Satoshi',
                                                                                                     color: FlutterFlowTheme.of(context).textprimary,
@@ -479,7 +479,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                                                             ),
                                                                                           if (!cartlistItem.isVariableWeight)
                                                                                             Text(
-                                                                                              cartlistItem.pricePerProduct.toString(),
+                                                                                              functions.totalsales([cartlistItem]).toStringAsFixed(2),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Satoshi',
                                                                                                     color: FlutterFlowTheme.of(context).textprimary,

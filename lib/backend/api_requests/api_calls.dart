@@ -766,6 +766,7 @@ class CreateDeliveryCopyCall {
     String? dropoffPhoneNumber = '',
     dynamic manifestItemsJson,
     String? orderId = '',
+    String? idToken = '',
   }) async {
     final manifestItems = _serializeJson(manifestItemsJson, true);
     final ffApiRequestBody = '''
@@ -791,6 +792,8 @@ class CreateDeliveryCopyCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
+        if (idToken != null && idToken.isNotEmpty)
+          'Authorization': 'Bearer $idToken',
       },
       params: {},
       body: ffApiRequestBody,
@@ -822,6 +825,10 @@ class CreateDeliveryCopyCall {
   static String? error(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.error''',
+      ));
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
       ));
 }
 

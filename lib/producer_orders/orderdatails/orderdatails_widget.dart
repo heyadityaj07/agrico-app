@@ -1213,47 +1213,20 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                     } else {
                                       if (containerOrderRecord.orderStatus ==
                                           'Preparing') {
-                                        await containerOrderRecord.reference
-                                            .update(createOrderRecordData(
-                                          orderStatus: 'Picked Up',
-                                          pickedUpTime: getCurrentTimestamp,
-                                        ));
-                                        triggerPushNotification(
-                                          notificationTitle: 'Order Picked Up',
-                                          notificationText:
-                                              'Your order has been  ready for pickup .',
-                                          userRefs: [
-                                            containerOrderRecord.userRef!
-                                          ],
-                                          initialPageName: 'OrderDetails',
-                                          parameterData: {
-                                            'orderRef':
-                                                containerOrderRecord.reference,
-                                          },
+                                        final dispatchResult =
+                                            await actions
+                                                .updateOrderFulfilmentStatus(
+                                          context,
+                                          containerOrderRecord.reference.id,
+                                          'Picked Up',
                                         );
-
-                                        await containerOrderRecord.userRef!
-                                            .update({
-                                          ...mapToFirestore(
-                                            {
-                                              'notification_count':
-                                                  FieldValue.increment(1),
-                                            },
-                                          ),
-                                        });
-                                      } else {
-                                        if (containerOrderRecord.orderStatus ==
-                                            'Picked Up') {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'Delivered',
-                                            deliveredTime: getCurrentTimestamp,
-                                          ));
+                                        if (dispatchResult.isEmpty) return;
+                                        if (dispatchResult == 'changed') {
                                           triggerPushNotification(
                                             notificationTitle:
-                                                'Order Delivered',
+                                                'Order Picked Up',
                                             notificationText:
-                                                'Your order has been successfully delivered. Enjoy!',
+                                                'Your order has been  ready for pickup .',
                                             userRefs: [
                                               containerOrderRecord.userRef!
                                             ],
@@ -1273,6 +1246,45 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                               },
                                             ),
                                           });
+                                        }
+                                      } else {
+                                        if (containerOrderRecord.orderStatus ==
+                                            'Picked Up') {
+                                          final dispatchResult =
+                                              await actions
+                                                  .updateOrderFulfilmentStatus(
+                                            context,
+                                            containerOrderRecord.reference.id,
+                                            'Delivered',
+                                          );
+                                          if (dispatchResult.isEmpty) return;
+                                          if (dispatchResult == 'changed') {
+                                            triggerPushNotification(
+                                              notificationTitle:
+                                                  'Order Delivered',
+                                              notificationText:
+                                                  'Your order has been successfully delivered. Enjoy!',
+                                              userRefs: [
+                                                containerOrderRecord.userRef!
+                                              ],
+                                              initialPageName: 'OrderDetails',
+                                              parameterData: {
+                                                'orderRef':
+                                                    containerOrderRecord
+                                                        .reference,
+                                              },
+                                            );
+
+                                            await containerOrderRecord.userRef!
+                                                .update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'notification_count':
+                                                      FieldValue.increment(1),
+                                                },
+                                              ),
+                                            });
+                                          }
                                         }
                                       }
                                     }
@@ -1472,36 +1484,61 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                             safeSetState(() {});
                                           }
                                         } else {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'Picked Up',
-                                            pickedUpTime: getCurrentTimestamp,
-                                          ));
-                                          triggerPushNotification(
-                                            notificationTitle:
-                                                'Order Picked Up',
-                                            notificationText:
-                                                'Your order has been picked up and is ready for transit.',
-                                            userRefs: [
-                                              containerOrderRecord.userRef!
-                                            ],
-                                            initialPageName: 'OrderDetails',
-                                            parameterData: {
-                                              'orderRef': containerOrderRecord
-                                                  .reference,
-                                            },
+                                          final dispatchResult =
+                                              await actions
+                                                  .updateOrderFulfilmentStatus(
+                                            context,
+                                            containerOrderRecord.reference.id,
+                                            'Picked Up',
                                           );
-
-                                          await containerOrderRecord.userRef!
-                                              .update({
-                                            ...mapToFirestore(
-                                              {
-                                                'notification_count':
-                                                    FieldValue.increment(1),
+                                          if (dispatchResult.isEmpty) return;
+                                          if (dispatchResult == 'changed') {
+                                            triggerPushNotification(
+                                              notificationTitle:
+                                                  'Order Picked Up',
+                                              notificationText:
+                                                  'Your order has been picked up and is ready for transit.',
+                                              userRefs: [
+                                                containerOrderRecord.userRef!
+                                              ],
+                                              initialPageName: 'OrderDetails',
+                                              parameterData: {
+                                                'orderRef':
+                                                    containerOrderRecord
+                                                        .reference,
                                               },
-                                            ),
-                                          });
+                                            );
+
+                                            await containerOrderRecord.userRef!
+                                                .update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'notification_count':
+                                                      FieldValue.increment(1),
+                                                },
+                                              ),
+                                            });
+                                          }
                                           Navigator.pop(context);
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        final uberIdToken =
+                                            await actions.getFirebaseIdToken();
+                                        if (uberIdToken == null ||
+                                            uberIdToken.isEmpty) {
+                                          await actions.toast(
+                                            context,
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                                  'Your session has expired. Please sign in again.',
+                                              frText:
+                                                  'Votre session a expiré. Veuillez vous reconnecter.',
+                                            ),
+                                          );
                                           if (_shouldSetState)
                                             safeSetState(() {});
                                           return;
@@ -1534,73 +1571,50 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                               .toList(),
                                           orderId:
                                               containerOrderRecord.reference.id,
+                                          idToken: uberIdToken,
                                         );
 
                                         _shouldSetState = true;
                                         if ((_model.apiResult7q6?.succeeded ??
-                                            true)) {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            uberDeliveryId:
-                                                valueOrDefault<String>(
-                                              CreateDeliveryCopyCall
-                                                  .uberDeliveryId(
-                                                (_model.apiResult7q6
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ),
-                                              '-',
-                                            ),
-                                            deliveryStatus:
-                                                valueOrDefault<String>(
-                                              CreateDeliveryCopyCall
-                                                  .deliveryStatus(
-                                                (_model.apiResult7q6
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ),
-                                              '-',
-                                            ),
-                                            trackingUrl: valueOrDefault<String>(
-                                              CreateDeliveryCopyCall
-                                                  .trackingUrl(
-                                                (_model.apiResult7q6
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ),
-                                              '-',
-                                            ),
-                                          ));
-
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'Picked Up',
-                                            pickedUpTime: getCurrentTimestamp,
-                                          ));
-
-                                          await containerOrderRecord.userRef!
-                                              .update({
-                                            ...mapToFirestore(
-                                              {
-                                                'notification_count':
-                                                    FieldValue.increment(1),
-                                              },
-                                            ),
-                                          });
-                                          triggerPushNotification(
-                                            notificationTitle:
-                                                'Order Picked Up',
-                                            notificationText:
-                                                'Your order has been picked up and is ready for transit.',
-                                            userRefs: [
-                                              containerOrderRecord.userRef!
-                                            ],
-                                            initialPageName: 'OrderDetails',
-                                            parameterData: {
-                                              'orderRef': containerOrderRecord
-                                                  .reference,
-                                            },
+                                            false)) {
+                                          // The backend persists the Uber
+                                          // delivery ID, status and tracking URL
+                                          // itself; only the dispatch status
+                                          // transition is requested here.
+                                          final dispatchResult =
+                                              await actions
+                                                  .updateOrderFulfilmentStatus(
+                                            context,
+                                            containerOrderRecord.reference.id,
+                                            'Picked Up',
                                           );
+                                          if (dispatchResult.isEmpty) return;
+                                          if (dispatchResult == 'changed') {
+                                            await containerOrderRecord.userRef!
+                                                .update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'notification_count':
+                                                      FieldValue.increment(1),
+                                                },
+                                              ),
+                                            });
+                                            triggerPushNotification(
+                                              notificationTitle:
+                                                  'Order Picked Up',
+                                              notificationText:
+                                                  'Your order has been picked up and is ready for transit.',
+                                              userRefs: [
+                                                containerOrderRecord.userRef!
+                                              ],
+                                              initialPageName: 'OrderDetails',
+                                              parameterData: {
+                                                'orderRef':
+                                                    containerOrderRecord
+                                                        .reference,
+                                              },
+                                            );
+                                          }
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -1624,11 +1638,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                CreateDeliveryCopyCall.error(
-                                                  (_model.apiResult7q6
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                )!,
+                                                valueOrDefault<String>(
+                                                  CreateDeliveryCopyCall.error(
+                                                    (_model.apiResult7q6
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ),
+                                                  'The delivery could not be created. Please retry.',
+                                                ),
                                                 style: TextStyle(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1646,57 +1663,28 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       } else {
                                         if (containerOrderRecord.orderStatus ==
                                             'Picked Up') {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'In Transit',
-                                            inTransitTime: getCurrentTimestamp,
-                                          ));
-                                          triggerPushNotification(
-                                            notificationTitle:
-                                                'Order on the Way',
-                                            notificationText:
-                                                'Great news! Your order is in transit and moving toward you.',
-                                            userRefs: [
-                                              containerOrderRecord.userRef!
-                                            ],
-                                            initialPageName: 'OrderDetails',
-                                            parameterData: {
-                                              'orderRef': containerOrderRecord
-                                                  .reference,
-                                            },
+                                          final dispatchResult =
+                                              await actions
+                                                  .updateOrderFulfilmentStatus(
+                                            context,
+                                            containerOrderRecord.reference.id,
+                                            'In Transit',
                                           );
-
-                                          await containerOrderRecord.userRef!
-                                              .update({
-                                            ...mapToFirestore(
-                                              {
-                                                'notification_count':
-                                                    FieldValue.increment(1),
-                                              },
-                                            ),
-                                          });
-                                        } else {
-                                          if (containerOrderRecord
-                                                  .orderStatus ==
-                                              'In Transit') {
-                                            await containerOrderRecord.reference
-                                                .update(createOrderRecordData(
-                                              orderStatus: 'Delivered',
-                                              deliveredTime:
-                                                  getCurrentTimestamp,
-                                            ));
+                                          if (dispatchResult.isEmpty) return;
+                                          if (dispatchResult == 'changed') {
                                             triggerPushNotification(
                                               notificationTitle:
-                                                  'Order Delivered',
+                                                  'Order on the Way',
                                               notificationText:
-                                                  'Your order has been successfully delivered. Enjoy!',
+                                                  'Great news! Your order is in transit and moving toward you.',
                                               userRefs: [
                                                 containerOrderRecord.userRef!
                                               ],
                                               initialPageName: 'OrderDetails',
                                               parameterData: {
-                                                'orderRef': containerOrderRecord
-                                                    .reference,
+                                                'orderRef':
+                                                    containerOrderRecord
+                                                        .reference,
                                               },
                                             );
 
@@ -1709,6 +1697,49 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                 },
                                               ),
                                             });
+                                          }
+                                        } else {
+                                          if (containerOrderRecord
+                                                  .orderStatus ==
+                                              'In Transit') {
+                                            final dispatchResult =
+                                                await actions
+                                                    .updateOrderFulfilmentStatus(
+                                              context,
+                                              containerOrderRecord
+                                                  .reference.id,
+                                              'Delivered',
+                                            );
+                                            if (dispatchResult.isEmpty) return;
+                                            if (dispatchResult == 'changed') {
+                                              triggerPushNotification(
+                                                notificationTitle:
+                                                    'Order Delivered',
+                                                notificationText:
+                                                    'Your order has been successfully delivered. Enjoy!',
+                                                userRefs: [
+                                                  containerOrderRecord.userRef!
+                                                ],
+                                                initialPageName:
+                                                    'OrderDetails',
+                                                parameterData: {
+                                                  'orderRef':
+                                                      containerOrderRecord
+                                                          .reference,
+                                                },
+                                              );
+
+                                              await containerOrderRecord
+                                                  .userRef!
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'notification_count':
+                                                        FieldValue.increment(1),
+                                                  },
+                                                ),
+                                              });
+                                            }
                                           }
                                         }
                                       }

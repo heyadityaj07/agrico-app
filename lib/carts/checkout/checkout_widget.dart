@@ -1756,7 +1756,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                                           ),
                                                                                                         if (listItemItem.isVariableWeight)
                                                                                                           Text(
-                                                                                                            'Deposit due: ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${listItemItem.depositAmount.toStringAsFixed(2)}',
+                                                                                                            'Deposit due: ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${functions.totalsales([listItemItem]).toStringAsFixed(2)}',
                                                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                                   fontFamily: 'Satoshi',
                                                                                                                   color: FlutterFlowTheme.of(context).primarytheme,

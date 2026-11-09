@@ -1720,32 +1720,105 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                     if (_model.minTextController.text == '') {
                                       await actions.toast(
                                         context,
-                                        'Enter minimum weight',
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText: 'Enter minimum weight',
+                                          frText: 'Saisissez le poids minimum',
+                                        ),
                                       );
                                       return;
                                     } else if (_model.maxTextController.text == '') {
                                       await actions.toast(
                                         context,
-                                        'Enter maximum weight',
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText: 'Enter maximum weight',
+                                          frText: 'Saisissez le poids maximum',
+                                        ),
                                       );
                                       return;
                                     } else if (_model.priceTextController2.text ==
                                             '') {
                                       await actions.toast(
                                         context,
-                                        'Enter price per kg',
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText: 'Enter price per kg',
+                                          frText: 'Saisissez le prix par kg',
+                                        ),
+                                      );
+                                      return;
+                                    }
+
+                                    // P3-01: reject invalid brackets before they are
+                                    // persisted. Checkout validates the same invariants
+                                    // server-side; allowing them here would only surface
+                                    // the failure after the customer reaches payment.
+                                    final minWeight = double.tryParse(
+                                        _model.minTextController.text.trim());
+                                    final maxWeight = double.tryParse(
+                                        _model.maxTextController.text.trim());
+                                    final pricePerKg = double.tryParse(
+                                        _model.priceTextController2.text.trim());
+
+                                    if (minWeight == null ||
+                                        !minWeight.isFinite ||
+                                        minWeight <= 0) {
+                                      await actions.toast(
+                                        context,
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText: 'Enter a valid minimum weight',
+                                          frText: 'Saisissez un poids minimum valide',
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    if (maxWeight == null ||
+                                        !maxWeight.isFinite ||
+                                        maxWeight < minWeight) {
+                                      await actions.toast(
+                                        context,
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText:
+                                              'Maximum weight must be greater than or equal to minimum weight',
+                                          frText:
+                                              'Le poids maximum doit être supérieur ou égal au poids minimum',
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    if (pricePerKg == null ||
+                                        !pricePerKg.isFinite ||
+                                        pricePerKg <= 0) {
+                                      await actions.toast(
+                                        context,
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText: 'Enter a valid price per kg',
+                                          frText: 'Saisissez un prix par kg valide',
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    final duplicateBracket =
+                                        _model.selectedWeightBrackets.any(
+                                      (bracket) =>
+                                          bracket.minWeight == minWeight &&
+                                          bracket.maxWeight == maxWeight,
+                                    );
+                                    if (duplicateBracket) {
+                                      await actions.toast(
+                                        context,
+                                        FFLocalizations.of(context).getVariableText(
+                                          enText: 'This weight bracket already exists',
+                                          frText:
+                                              'Cette catégorie de poids existe déjà',
+                                        ),
                                       );
                                       return;
                                     }
 
                                     _model.addToSelectedWeightBrackets(
                                         ProductWeightStruct(
-                                      minWeight: double.tryParse(
-                                          _model.minTextController.text),
-                                      maxWeight: double.tryParse(
-                                          _model.maxTextController.text),
-                                      pricePerKg: double.tryParse(
-                                          _model.priceTextController2.text),
+                                      minWeight: minWeight,
+                                      maxWeight: maxWeight,
+                                      pricePerKg: pricePerKg,
                                     ));
                                     safeSetState(() {});
                                     safeSetState(() {
@@ -2517,6 +2590,20 @@ JPG, PNG (max ... */
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
                                           .validate()) {
+                                    return;
+                                  }
+                                  // P3-01: a variable-weight product without a bracket
+                                  // cannot be priced at checkout (the backend rejects it).
+                                  if (_model.switchListTileValue == true &&
+                                      _model.selectedWeightBrackets.isEmpty) {
+                                    await actions.toast(
+                                      context,
+                                      FFLocalizations.of(context).getVariableText(
+                                        enText: 'Add at least one weight bracket',
+                                        frText:
+                                            'Ajoutez au moins une catégorie de poids',
+                                      ),
+                                    );
                                     return;
                                   }
                                   if (_model.prodcutCategoryDropDownValue ==
