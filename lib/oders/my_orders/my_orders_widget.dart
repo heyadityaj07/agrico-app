@@ -660,8 +660,14 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                               if (ordersItem
                                                                       .isVariableWeightOrder &&
                                                                   (ordersItem
-                                                                          .balancePaymentStatus ==
-                                                                      'payment_requested'))
+                                                                              .balancePaymentStatus ==
+                                                                          'payment_requested' ||
+                                                                      ordersItem
+                                                                              .balancePaymentStatus ==
+                                                                          'failed') &&
+                                                                  ordersItem
+                                                                          .finalBalanceAmount >
+                                                                      0)
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(

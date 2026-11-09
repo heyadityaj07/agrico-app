@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -102,6 +103,29 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
               }
 
               final containerOrderRecord = snapshot.data!;
+
+              final balanceStatus =
+                  containerOrderRecord.balancePaymentStatus;
+              final hasPositiveBalance =
+                  containerOrderRecord.finalBalanceAmount > 0;
+              final isVariableOrder =
+                  containerOrderRecord.isVariableWeightOrder;
+              final canPayBalance = isVariableOrder &&
+                  hasPositiveBalance &&
+                  (balanceStatus == 'payment_requested' ||
+                      balanceStatus == 'failed') &&
+                  (!_model.isPaymentProcessing || balanceStatus == 'failed');
+              final showAwaitingConfirmation = isVariableOrder &&
+                  balanceStatus == 'payment_requested' &&
+                  _model.isPaymentProcessing;
+              final showNoPaymentRequired = isVariableOrder &&
+                  !hasPositiveBalance &&
+                  (balanceStatus == 'payment_requested' ||
+                      balanceStatus == 'failed');
+              final showRetryMessage = isVariableOrder &&
+                  balanceStatus == 'failed' &&
+                  hasPositiveBalance;
+              final showPaidMessage = isVariableOrder && balanceStatus == 'paid';
 
               return Container(
                 child: Column(
@@ -746,37 +770,240 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                   ),
                                 ),
                               ),
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    '7zm7brii' /* Pay balance */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 200.0,
-                                    height: 52.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primarytheme,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Satoshi',
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          letterSpacing: 0.0,
+                              if (canPayBalance)
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (_model.isPaymentProcessing &&
+                                          containerOrderRecord
+                                                  .balancePaymentStatus !=
+                                              'failed') {
+                                        return;
+                                      }
+                                      _model.isPaymentProcessing = true;
+                                      safeSetState(() {});
+
+                                      final result =
+                                          await actions.flutterStripeDirect(
+                                        context,
+                                        null,
+                                        containerOrderRecord.reference.id,
+                                        null,
+                                        FFLocalizations.of(context)
+                                            .languageCode,
+                                        null,
+                                        null,
+                                        isBalancePayment: true,
+                                      );
+
+                                      if (!mounted) {
+                                        return;
+                                      }
+
+                                      final localizations =
+                                          FFLocalizations.of(context);
+                                      String message;
+                                      var keepProcessing = false;
+
+                                      switch (result) {
+                                        case 'sheetCompleted':
+                                        case 'alreadyConfirmed':
+                                          keepProcessing = true;
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'Payment submitted — awaiting confirmation. The order will update once the payment is confirmed.',
+                                            frText:
+                                                'Paiement soumis — en attente de confirmation. La commande sera mise à jour dès que le paiement sera confirmé.',
+                                          );
+                                          break;
+                                        case 'alreadyPaid':
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'The balance is already paid.',
+                                            frText:
+                                                'Le solde est déjà payé.',
+                                          );
+                                          break;
+                                        case 'noPaymentRequired':
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'No additional payment is required.',
+                                            frText:
+                                                'Aucun paiement supplémentaire n’est requis.',
+                                          );
+                                          break;
+                                        case 'refundDue':
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'No additional payment is required. Any refund due will be processed separately.',
+                                            frText:
+                                                'Aucun paiement supplémentaire n’est requis. Tout remboursement dû sera traité séparément.',
+                                          );
+                                          break;
+                                        case 'cancelled':
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'Payment was cancelled. You can try again.',
+                                            frText:
+                                                'Le paiement a été annulé. Vous pouvez réessayer.',
+                                          );
+                                          break;
+                                        case 'ambiguous':
+                                          keepProcessing = true;
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'We could not confirm the payment yet. Please do not pay again; the order will update once the payment is confirmed.',
+                                            frText:
+                                                'Nous n’avons pas encore pu confirmer le paiement. Ne payez pas à nouveau ; la commande sera mise à jour dès que le paiement sera confirmé.',
+                                          );
+                                          break;
+                                        default:
+                                          message = localizations
+                                              .getVariableText(
+                                            enText:
+                                                'The payment could not be completed. You can try again.',
+                                            frText:
+                                                'Le paiement n’a pas pu être effectué. Vous pouvez réessayer.',
+                                          );
+                                      }
+
+                                      _model.isPaymentProcessing = keepProcessing;
+                                      safeSetState(() {});
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            message,
+                                            style: TextStyle(
+                                              color: FlutterFlowTheme.of(
+                                                      context)
+                                                  .secondaryBackground,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 6000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                         ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                      );
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '7zm7brii' /* Pay balance */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: 200.0,
+                                      height: 52.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primarytheme,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Satoshi',
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      borderRadius:
+                                          BorderRadius.circular(12.0),
+                                    ),
                                   ),
                                 ),
-                              ),
                             ].divide(SizedBox(width: 10.0)),
                           ),
+                          if (showAwaitingConfirmation)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Payment submitted — awaiting confirmation.',
+                                  frText:
+                                      'Paiement soumis — en attente de confirmation.',
+                                ),
+                                textAlign: TextAlign.center,
+                                style:
+                                    FlutterFlowTheme.of(context).bodySmall.override(
+                                          fontFamily: 'Satoshi',
+                                          color: FlutterFlowTheme.of(context)
+                                              .textsecondary,
+                                          letterSpacing: 0.0,
+                                        ),
+                              ),
+                            ),
+                          if (showPaidMessage)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getVariableText(
+                                  enText: 'Balance payment completed',
+                                  frText: 'Solde payé',
+                                ),
+                                textAlign: TextAlign.center,
+                                style:
+                                    FlutterFlowTheme.of(context).bodySmall.override(
+                                          fontFamily: 'Satoshi',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primarytheme,
+                                          letterSpacing: 0.0,
+                                        ),
+                              ),
+                            ),
+                          if (showNoPaymentRequired)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'No additional payment is required. Any refund due will be processed separately.',
+                                  frText:
+                                      'Aucun paiement supplémentaire n’est requis. Tout remboursement dû sera traité séparément.',
+                                ),
+                                textAlign: TextAlign.center,
+                                style:
+                                    FlutterFlowTheme.of(context).bodySmall.override(
+                                          fontFamily: 'Satoshi',
+                                          color: FlutterFlowTheme.of(context)
+                                              .textsecondary,
+                                          letterSpacing: 0.0,
+                                        ),
+                              ),
+                            ),
+                          if (showRetryMessage)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getVariableText(
+                                  enText:
+                                      'Your previous payment failed. You can try again.',
+                                  frText:
+                                      'Votre précédent paiement a échoué. Vous pouvez réessayer.',
+                                ),
+                                textAlign: TextAlign.center,
+                                style:
+                                    FlutterFlowTheme.of(context).bodySmall.override(
+                                          fontFamily: 'Satoshi',
+                                          color: FlutterFlowTheme.of(context)
+                                              .textsecondary,
+                                          letterSpacing: 0.0,
+                                        ),
+                              ),
+                            ),
                         ].divide(SizedBox(height: 10.0)),
                       ),
                     ),

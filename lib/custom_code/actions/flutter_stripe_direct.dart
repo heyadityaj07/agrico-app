@@ -17,9 +17,11 @@ import 'dart:io';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '/backend/currency/currency_utils.dart';
+
 // ---------------------------------------------------------------------------
-// Agrico payment environment configuration (P1-08).
-// Single source of truth for the checkout payment endpoint and mode.
+// Agrico payment environment configuration (P1-08 / P3-03).
+// Single source of truth for the payment endpoints and mode.
 //
 // Only one Firebase project/environment exists today (pre-launch test
 // project `agricoo-b9c46`, region `us-central1`). When moving to another
@@ -32,11 +34,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 const String _kPaymentsFunctionBaseUrl =
     'https://us-central1-agricoo-b9c46.cloudfunctions.net';
 const String _kCreateFarmPaymentIntentPath = 'createFarmPaymentIntent';
+const String _kCreateBalancePaymentIntentPath = 'createBalancePaymentIntent';
 // Keep this `true` until go-live: Google Pay must use the test environment
 // while the publishable key (`pk_test_...`) and backend are in test mode.
 const bool _kStripeTestMode = true;
 
-// P1-08 follow-up outcome classification returned by this action:
+// Outcome classification returned by this action.
+//
+// Farm-checkout mode (existing callers) — unchanged:
 //  - 'success':   payment sheet completed (or backend reports the payment as
 //                 already confirmed) — the caller may complete the order.
 //  - 'failed':    confirmed cancellation or a definitive rejection — the
@@ -45,6 +50,18 @@ const bool _kStripeTestMode = true;
 //                 or malformed response). The caller must NOT report failure
 //                 and must NOT delete/recreate the order — retry with the
 //                 SAME order so the backend can reuse the original intent.
+//
+// Balance-payment mode (`isBalancePayment: true`) — the caller must rely on
+// the Firestore order stream for the final paid state; a completed sheet is
+// NOT proof of settlement:
+//  - 'sheetCompleted'   : PaymentSheet returned; webhook confirmation pending.
+//  - 'alreadyConfirmed' : backend already recorded Stripe confirmation.
+//  - 'alreadyPaid'      : order balance is already settled.
+//  - 'noPaymentRequired': zero balance, no refund due.
+//  - 'refundDue'        : zero balance with a recorded refund due.
+//  - 'cancelled'        : user cancelled the sheet; retry remains possible.
+//  - 'failed'           : definitive payment rejection; retry possible.
+//  - 'ambiguous'        : unresolved/processing; do NOT start another attempt.
 Future<String> flutterStripeDirect(
   BuildContext context,
   double? amount,
@@ -52,11 +69,12 @@ Future<String> flutterStripeDirect(
   String? customerId,
   String? locallanguage,
   List<dynamic>? vendors,
-  String? producerId,
-) async {
+  String? producerId, {
+  bool isBalancePayment = false,
+}) async {
   try {
     final paymentCurrency =
-        FFLocalizations.of(context).languageCode == 'fr' ? 'EUR' : 'USD';
+        currencyCodeForLanguage(FFLocalizations.of(context).languageCode);
 
     final currentUser = FirebaseAuth.instance.currentUser;
     final String? idToken = await currentUser?.getIdToken(true);
@@ -65,33 +83,49 @@ Future<String> flutterStripeDirect(
       return 'failed';
     }
 
-    final response = await http
-        .post(
-          Uri.parse(
-              '$_kPaymentsFunctionBaseUrl/$_kCreateFarmPaymentIntentPath'),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer $idToken',
-          },
-          body: jsonEncode({
+    final endpointPath = isBalancePayment
+        ? _kCreateBalancePaymentIntentPath
+        : _kCreateFarmPaymentIntentPath;
+    final requestBody = isBalancePayment
+        ? <String, dynamic>{
+            "orderId": orderId,
+            "currency": paymentCurrency,
+            "locale": locallanguage,
+          }
+        : <String, dynamic>{
             "amount": amount ?? 0,
             "locale": locallanguage,
             "customerId": customerId,
             "orderId": orderId,
             "producerId": producerId,
             "currency": paymentCurrency,
-            "vendors": vendors
-          }),
+            "vendors": vendors,
+          };
+
+    final response = await http
+        .post(
+          Uri.parse('$_kPaymentsFunctionBaseUrl/$endpointPath'),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $idToken',
+          },
+          body: jsonEncode(requestBody),
         )
         .timeout(const Duration(seconds: 30));
 
     if (response.statusCode != 200) {
       final decodedBody = _decodeJson(response.body);
+      // Balance mode: an unreadable error body cannot prove a definitive
+      // failure, so treat it as unresolved instead of exposing a retry.
+      // Farm-checkout classification remains exactly as before.
+      if (isBalancePayment && decodedBody is! Map) {
+        return 'ambiguous';
+      }
       final errorDetail = decodedBody is Map
           ? (decodedBody['code'] ?? decodedBody['error'] ?? '')
           : '';
       print(
-          'createFarmPaymentIntent failed (${response.statusCode})${errorDetail.toString().isEmpty ? '' : ': $errorDetail'}');
+          '$endpointPath failed (${response.statusCode})${errorDetail.toString().isEmpty ? '' : ': $errorDetail'}');
       // 5xx or an unresolved/ambiguous backend payment state is not a
       // confirmed failure: classify it ambiguously so the caller never
       // treats it as "payment failed" and never deletes/recreates orders.
@@ -106,20 +140,30 @@ Future<String> flutterStripeDirect(
 
     final responseData = _decodeJson(response.body);
     if (responseData is! Map) {
-      print("createFarmPaymentIntent returned an unexpected response body");
+      print("$endpointPath returned an unexpected response body");
       return 'ambiguous';
     }
 
-    // P1-08 follow-up: the backend confirmed the payment is already done
-    // (e.g. a previous attempt succeeded but the response was lost). The
-    // caller should complete the order without presenting the sheet again.
-    if (responseData['alreadyConfirmed'] == true) {
+    if (isBalancePayment) {
+      if (responseData['alreadyPaid'] == true) {
+        return 'alreadyPaid';
+      }
+      if (responseData['alreadyConfirmed'] == true) {
+        return 'alreadyConfirmed';
+      }
+      if (responseData['noPaymentRequired'] == true) {
+        return responseData['refundDue'] == true
+            ? 'refundDue'
+            : 'noPaymentRequired';
+      }
+    } else if (responseData['alreadyConfirmed'] == true) {
+      // P1-08 farm-checkout follow-up: backend confirmed the payment is
+      // already done; the caller completes without presenting the sheet.
       print("Payment already confirmed for this order");
       return 'success';
     }
 
     final clientSecret = responseData['clientSecret'];
-
     if (clientSecret == null) {
       print("No clientSecret returned");
       return 'ambiguous';
@@ -136,7 +180,7 @@ Future<String> flutterStripeDirect(
       return 'ambiguous';
     }
 
-    // INIT PAYMENT SHEET
+    // INIT PAYMENT SHEET — shared by farm checkout and balance payment.
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: clientSecretStr,
@@ -160,7 +204,7 @@ Future<String> flutterStripeDirect(
     await Stripe.instance.presentPaymentSheet();
 
     print("PaymentSheet completed");
-    return 'success';
+    return isBalancePayment ? 'sheetCompleted' : 'success';
   } on TimeoutException catch (e) {
     // Ambiguous: the backend may still have created (or completed) a
     // PaymentIntent. The caller must not report failure or recreate orders.
@@ -195,7 +239,7 @@ Future<String> flutterStripeDirect(
     //    the order.
     print('Stripe Error: ${e.error.localizedMessage}');
     if (e.error.code == FailureCode.Canceled) {
-      return 'failed';
+      return isBalancePayment ? 'cancelled' : 'failed';
     }
     if (e.error.type == 'card_error' &&
         e.error.declineCode != null &&

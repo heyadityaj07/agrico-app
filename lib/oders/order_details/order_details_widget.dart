@@ -2522,6 +2522,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                         'payment_requested') ||
                                                     (orderDetailsOrderRecord
                                                             .balancePaymentStatus ==
+                                                        'failed') ||
+                                                    (orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
                                                         'paid')))
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -2565,6 +2568,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           'payment_requested') ||
                                                       (orderDetailsOrderRecord
                                                               .balancePaymentStatus ==
+                                                          'failed') ||
+                                                      (orderDetailsOrderRecord
+                                                              .balancePaymentStatus ==
                                                           'paid'))
                                                     Text(
                                                       formatLanguageCurrency(orderDetailsOrderRecord.finalBalanceAmount, FFLocalizations.of(context).languageCode),
@@ -2585,26 +2591,156 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                 ],
                                               ),
                                             if (orderDetailsOrderRecord
-                                                    .balancePaymentStatus ==
-                                                'payment_requested')
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getVariableText(
-                                                  enText:
-                                                      'Your producer has confirmed the final product weights. Contact the producer to arrange this balance payment.',
-                                                  frText:
-                                                      'Votre producteur a confirmé les poids finaux. Contactez-le pour régler ce solde.',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
+                                                    .isVariableWeightOrder &&
+                                                ((orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
+                                                        'payment_requested') ||
+                                                    (orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
+                                                        'failed')))
+                                              Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    orderDetailsOrderRecord
+                                                                .balancePaymentStatus ==
+                                                            'failed'
+                                                        ? FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                            enText:
+                                                                'Your previous balance payment failed. You can retry.',
+                                                            frText:
+                                                                'Votre précédent paiement du solde a échoué. Vous pouvez réessayer.',
+                                                          )
+                                                        : FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                            enText:
+                                                                'Your producer has confirmed the final product weights. Review the weights and pay the remaining balance.',
+                                                            frText:
+                                                                'Votre producteur a confirmé les poids finaux. Examinez les poids et réglez le solde restant.',
+                                                          ),
+                                                    style:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Satoshi',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .textsecondary,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                  ),
+                                                  if (orderDetailsOrderRecord
+                                                          .finalBalanceAmount >
+                                                      0)
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(0.0,
+                                                                  12.0, 0.0, 0.0),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          context.pushNamed(
+                                                            WeightBalanceWidget
+                                                                .routeName,
+                                                            queryParameters: {
+                                                              'orderRef':
+                                                                  serializeParam(
+                                                                orderDetailsOrderRecord
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        text: FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'xbld6r12' /* Review weights & pay */,
+                                                        ),
+                                                        options: FFButtonOptions(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 48.0,
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .textsecondary,
-                                                          letterSpacing: 0.0,
+                                                              .primarytheme,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Satoshi',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                          elevation: 0.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
                                                         ),
+                                                      ),
+                                                    )
+                                                  else
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(0.0,
+                                                                  8.0, 0.0, 0.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                          enText:
+                                                              'No additional payment is required. Any refund due will be processed separately.',
+                                                          frText:
+                                                              'Aucun paiement supplémentaire n’est requis. Tout remboursement dû sera traité séparément.',
+                                                        ),
+                                                        style: FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Satoshi',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .textsecondary,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                ],
                                               ),
                                             if (orderDetailsOrderRecord
                                                     .balancePaymentStatus ==
