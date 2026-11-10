@@ -1126,11 +1126,7 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                     (containerOrderRecord.refundStatus ==
                                         'failed')) &&
                                 ((containerOrderRecord.orderStatus ==
-                                        'Picked Up') ||
-                                    (containerOrderRecord.orderStatus ==
-                                        'In Transit') ||
-                                    (containerOrderRecord.orderStatus ==
-                                        'Delivered')))
+                                        'Picked Up')))
                               FFButtonWidget(
                                 onPressed: () async {
                                   await actions.createWeightRefund(
