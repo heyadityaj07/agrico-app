@@ -62,8 +62,32 @@ Future<String> reconcileUberDelivery(
     final body = _decodeJson(response.body);
     if (response.statusCode == 200 && body is Map) {
       if (body['reconciled'] == true) return 'reconciled';
-      if (body['notFound'] == true) return 'notFound';
-      if (body['blocked'] == true) return 'blocked';
+    }
+
+    // The backend communicates definite non-reconciled outcomes with error
+    // codes, not boolean flags. Map only the contract-proven codes; anything
+    // else (5xx/timeout/malformed body) stays ambiguous.
+    final code = body is Map ? body['code']?.toString() : null;
+    switch (code) {
+      case 'delivery_not_found':
+      case 'not_found':
+        return 'notFound';
+      case 'order_id_required':
+      case 'order_not_found':
+      case 'order_forbidden':
+      case 'farm_unavailable':
+      case 'farm_not_found':
+      case 'producer_unavailable':
+      case 'dispatch_claim_timestamp_unavailable':
+      case 'dispatch_in_progress':
+      case 'reconciliation_in_progress':
+      case 'delivery_id_mismatch':
+      case 'delivery_id_unavailable':
+      case 'delivery_reconciliation_rejected':
+      case 'delivery_order_mismatch':
+      case 'delivery_quote_mismatch':
+      case 'delivery_order_unverified':
+        return 'blocked';
     }
     return '';
   } catch (_) {

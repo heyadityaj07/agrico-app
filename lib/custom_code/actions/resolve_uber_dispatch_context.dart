@@ -66,6 +66,8 @@ Future<Map<String, String>> resolveUberDispatchContext(
     order['customer_address'],
     order['customerAddress'],
     order['address'],
+    _deliveryStructAddress(order['delievry_address']),
+    _deliveryStructAddress(order['delivery_address_struct']),
   ]);
 
   if (dropoff == null) {
@@ -81,6 +83,7 @@ Future<Map<String, String>> resolveUberDispatchContext(
         customer['full_address'],
         customer['fullAddress'],
         customer['location'],
+        _deliveryStructAddress(_customerDefaultDelivery(customer)),
       ]);
       if (dropoff != null) break;
     }
@@ -105,6 +108,37 @@ Future<Map<String, dynamic>?> _readReference(dynamic value) async {
   if (!snapshot.exists) return null;
   final data = snapshot.data();
   return data is Map ? Map<String, dynamic>.from(data) : null;
+}
+
+Map<String, dynamic>? _customerDefaultDelivery(
+  Map<String, dynamic> customer,
+) {
+  final rawList = customer['deliveryAddresses'] ?? customer['delivery_addresses'];
+  if (rawList is! List || rawList.isEmpty) return null;
+
+  final rawIndex =
+      customer['default_adress'] ?? customer['defaultAddress'] ?? customer['default_address'];
+  final index = rawIndex is int ? rawIndex : 0;
+  final selected =
+      index >= 0 && index < rawList.length ? rawList[index] : rawList.first;
+  return selected is Map ? Map<String, dynamic>.from(selected) : null;
+}
+
+String? _deliveryStructAddress(dynamic value) {
+  if (value is! Map) return null;
+  final parts = <String>[
+    (value['street_adress'] ??
+            value['streetAddress'] ??
+            value['street'] ??
+            value['address'] ??
+            '')
+        .toString()
+        .trim(),
+    (value['city'] ?? '').toString().trim(),
+    (value['state'] ?? '').toString().trim(),
+    (value['postal_code'] ?? value['postalCode'] ?? '').toString().trim(),
+  ].where((part) => part.isNotEmpty).toList();
+  return parts.isEmpty ? null : parts.join(', ');
 }
 
 String? _firstValue(List<dynamic> values) {
