@@ -666,7 +666,7 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                                               .balancePaymentStatus ==
                                                                           'failed') &&
                                                                   ordersItem
-                                                                          .finalBalanceAmount >
+                                                                          (ordersItem.settlementBalanceAmount() ?? 0.0) >
                                                                       0)
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional

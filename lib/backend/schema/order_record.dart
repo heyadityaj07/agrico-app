@@ -7,11 +7,27 @@ import '/backend/schema/util/firestore_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
+enum SettlementFormat { legacy, newFormat, malformed }
+
+int? _settlementMinorUnits(double value) {
+  if (!value.isFinite || value < 0) return null;
+  return (value * 100).round();
+}
+
 class OrderRecord extends FirestoreRecord {
+  bool _hasPersistedSettlementMarker = false;
+
   OrderRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
+    _hasPersistedSettlementMarker = [
+      'settlement_version',
+      'settlement_outcome',
+      'refund_credit_applied_amount',
+      'net_balance_due_amount',
+      'remaining_refund_due_amount',
+    ].any(data.containsKey);
     _initializeFields();
   }
 
@@ -191,6 +207,74 @@ class OrderRecord extends FirestoreRecord {
   double get finalBalanceAmount => _finalBalanceAmount ?? 0.0;
   bool hasFinalBalanceAmount() => _finalBalanceAmount != null;
 
+  // Credit-offset settlement fields (server-owned).
+  double? _refundCreditAppliedAmount;
+  double get refundCreditAppliedAmount => _refundCreditAppliedAmount ?? 0.0;
+  bool hasRefundCreditAppliedAmount() => _refundCreditAppliedAmount != null;
+
+  double? _netBalanceDueAmount;
+  double get netBalanceDueAmount => _netBalanceDueAmount ?? 0.0;
+  bool hasNetBalanceDueAmount() => _netBalanceDueAmount != null;
+
+  double? _remainingRefundDueAmount;
+  double get remainingRefundDueAmount => _remainingRefundDueAmount ?? 0.0;
+  bool hasRemainingRefundDueAmount() => _remainingRefundDueAmount != null;
+
+  int? _settlementVersion;
+  int get settlementVersion => _settlementVersion ?? 0;
+  bool hasSettlementVersion() => _settlementVersion != null;
+
+  SettlementFormat get settlementFormat {
+    final fieldsPresent = _hasPersistedSettlementMarker ||
+        hasRefundCreditAppliedAmount() ||
+        hasNetBalanceDueAmount() ||
+        hasRemainingRefundDueAmount() ||
+        hasSettlementVersion();
+    if (!fieldsPresent) {
+      final grossBalance = hasFinalBalanceAmount()
+          ? _settlementMinorUnits(finalBalanceAmount)
+          : null;
+      final grossRefund =
+          hasRefundDueAmount() ? _settlementMinorUnits(refundDueAmount) : null;
+      return grossBalance != null && grossRefund != null
+          ? SettlementFormat.legacy
+          : SettlementFormat.malformed;
+    }
+    final complete = hasFinalBalanceAmount() &&
+        hasRefundDueAmount() &&
+        hasRefundCreditAppliedAmount() &&
+        hasNetBalanceDueAmount() &&
+        hasRemainingRefundDueAmount() &&
+        hasSettlementVersion();
+    final grossBalance = _settlementMinorUnits(finalBalanceAmount);
+    final grossRefund = _settlementMinorUnits(refundDueAmount);
+    final credit = _settlementMinorUnits(refundCreditAppliedAmount);
+    final net = _settlementMinorUnits(netBalanceDueAmount);
+    final residual = _settlementMinorUnits(remainingRefundDueAmount);
+    if (!complete || grossBalance == null || grossRefund == null || credit == null ||
+        net == null || residual == null || settlementVersion < 0 ||
+        credit != (grossBalance < grossRefund ? grossBalance : grossRefund) ||
+        net != grossBalance - credit || residual != grossRefund - credit ||
+        (net > 0 && residual > 0)) {
+      return SettlementFormat.malformed;
+    }
+    return SettlementFormat.newFormat;
+  }
+
+  bool hasCreditOffsetSettlement() => settlementFormat == SettlementFormat.newFormat;
+
+  double? settlementBalanceAmount() => switch (settlementFormat) {
+        SettlementFormat.legacy => hasFinalBalanceAmount() ? finalBalanceAmount : null,
+        SettlementFormat.newFormat => netBalanceDueAmount,
+        SettlementFormat.malformed => null,
+      };
+
+  double? settlementRefundAmount() => switch (settlementFormat) {
+        SettlementFormat.legacy => hasRefundDueAmount() ? refundDueAmount : null,
+        SettlementFormat.newFormat => remainingRefundDueAmount,
+        SettlementFormat.malformed => null,
+      };
+
   // "refund_due_amount" field.
   double? _refundDueAmount;
   double get refundDueAmount => _refundDueAmount ?? 0.0;
@@ -333,6 +417,13 @@ class OrderRecord extends FirestoreRecord {
     _balancePaymentStatus = snapshotData['balance_payment_status'] as String?;
     _finalBalanceAmount =
         castToType<double>(snapshotData['final_balance_amount']);
+    _refundCreditAppliedAmount =
+        castToType<double>(snapshotData['refund_credit_applied_amount']);
+    _netBalanceDueAmount =
+        castToType<double>(snapshotData['net_balance_due_amount']);
+    _remainingRefundDueAmount =
+        castToType<double>(snapshotData['remaining_refund_due_amount']);
+    _settlementVersion = castToType<int>(snapshotData['settlement_version']);
     _refundDueAmount = castToType<double>(snapshotData['refund_due_amount']);
     _refundStatus = snapshotData['refund_status'] as String?;
     _refundAmount = castToType<double>(snapshotData['refund_amount']);
@@ -431,6 +522,10 @@ Map<String, dynamic> createOrderRecordData({
   bool? isVariableWeightOrder,
   String? balancePaymentStatus,
   double? finalBalanceAmount,
+  double? refundCreditAppliedAmount,
+  double? netBalanceDueAmount,
+  double? remainingRefundDueAmount,
+  int? settlementVersion,
   double? refundDueAmount,
   String? refundStatus,
   double? refundAmount,
@@ -485,6 +580,10 @@ Map<String, dynamic> createOrderRecordData({
       'is_variable_weight_order': isVariableWeightOrder,
       'balance_payment_status': balancePaymentStatus,
       'final_balance_amount': finalBalanceAmount,
+      'refund_credit_applied_amount': refundCreditAppliedAmount,
+      'net_balance_due_amount': netBalanceDueAmount,
+      'remaining_refund_due_amount': remainingRefundDueAmount,
+      'settlement_version': settlementVersion,
       'refund_due_amount': refundDueAmount,
       'refund_status': refundStatus,
       'refund_amount': refundAmount,
@@ -558,6 +657,10 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e1?.isVariableWeightOrder == e2?.isVariableWeightOrder &&
         e1?.balancePaymentStatus == e2?.balancePaymentStatus &&
         e1?.finalBalanceAmount == e2?.finalBalanceAmount &&
+        e1?.refundCreditAppliedAmount == e2?.refundCreditAppliedAmount &&
+        e1?.netBalanceDueAmount == e2?.netBalanceDueAmount &&
+        e1?.remainingRefundDueAmount == e2?.remainingRefundDueAmount &&
+        e1?.settlementVersion == e2?.settlementVersion &&
         e1?.refundDueAmount == e2?.refundDueAmount &&
         e1?.refundStatus == e2?.refundStatus &&
         e1?.refundAmount == e2?.refundAmount &&
@@ -620,6 +723,10 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e?.isVariableWeightOrder,
         e?.balancePaymentStatus,
         e?.finalBalanceAmount,
+        e?.refundCreditAppliedAmount,
+        e?.netBalanceDueAmount,
+        e?.remainingRefundDueAmount,
+        e?.settlementVersion,
         e?.refundDueAmount,
         e?.refundStatus,
         e?.refundAmount,

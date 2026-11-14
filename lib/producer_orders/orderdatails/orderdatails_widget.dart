@@ -1121,11 +1121,16 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                               ),
                             if ((containerOrderRecord.isVariableWeightOrder ==
                                     true) &&
-                                (containerOrderRecord.refundDueAmount > 0) &&
+                                ((containerOrderRecord
+                                            .settlementRefundAmount() ??
+                                        0.0) >
+                                    0) &&
                                 ((containerOrderRecord.refundStatus == '') ||
                                     (containerOrderRecord.refundStatus ==
                                         'failed')) &&
                                 ((containerOrderRecord.orderStatus ==
+                                        'Preparing') ||
+                                    (containerOrderRecord.orderStatus ==
                                         'Picked Up')))
                               FFButtonWidget(
                                 onPressed: () async {
@@ -1135,7 +1140,7 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   );
                                 },
                                 text:
-                                    'Refund customer ${formatLanguageCurrency(containerOrderRecord.refundDueAmount, FFLocalizations.of(context).languageCode)}',
+                                    'Refund customer ${formatLanguageCurrency(containerOrderRecord.settlementRefundAmount()!, FFLocalizations.of(context).languageCode)}',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,

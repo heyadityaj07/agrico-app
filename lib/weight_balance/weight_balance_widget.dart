@@ -107,26 +107,35 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
 
               final balanceStatus =
                   containerOrderRecord.balancePaymentStatus;
+              final displayedBalance =
+                  containerOrderRecord.settlementBalanceAmount();
+              final settlementIsValid = displayedBalance != null;
               final hasPositiveBalance =
-                  containerOrderRecord.finalBalanceAmount > 0;
+                  displayedBalance != null && displayedBalance > 0;
               final isVariableOrder =
                   containerOrderRecord.isVariableWeightOrder;
               final canPayBalance = isVariableOrder &&
+                  settlementIsValid &&
                   hasPositiveBalance &&
                   (balanceStatus == 'payment_requested' ||
                       balanceStatus == 'failed') &&
                   (!_model.isPaymentProcessing || balanceStatus == 'failed');
               final showAwaitingConfirmation = isVariableOrder &&
+                  settlementIsValid &&
                   balanceStatus == 'payment_requested' &&
                   _model.isPaymentProcessing;
               final showNoPaymentRequired = isVariableOrder &&
+                  settlementIsValid &&
                   !hasPositiveBalance &&
-                  (balanceStatus == 'payment_requested' ||
+                  (balanceStatus == 'refund_only' ||
+                      balanceStatus == 'paid' ||
+                      balanceStatus == 'payment_requested' ||
                       balanceStatus == 'failed');
               final showRetryMessage = isVariableOrder &&
+                  settlementIsValid &&
                   balanceStatus == 'failed' &&
                   hasPositiveBalance;
-              final showPaidMessage = isVariableOrder && balanceStatus == 'paid';
+              final showPaidMessage = isVariableOrder && settlementIsValid && balanceStatus == 'paid';
 
               return Container(
                 child: Column(
@@ -344,7 +353,9 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                         ),
                                   ),
                                   Text(
-                                    formatLanguageCurrency(containerOrderRecord.finalBalanceAmount, FFLocalizations.of(context).languageCode),
+                                    displayedBalance == null
+                                        ? 'Unavailable'
+                                        : formatLanguageCurrency(displayedBalance, FFLocalizations.of(context).languageCode),
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(

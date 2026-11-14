@@ -72,6 +72,80 @@ void main() {
   };
 
   group('OrderRecord refund/reconciliation alignment', () {
+    OrderRecord recordFrom(Map<String, dynamic> data) =>
+        OrderRecord.getDocumentFromData(data, _FakeDocumentReference());
+
+    test('classifies valid and malformed legacy settlement snapshots', () {
+      final valid = recordFrom({
+        'final_balance_amount': 10.0,
+        'refund_due_amount': 4.0,
+      });
+      expect(valid.settlementFormat, SettlementFormat.legacy);
+      expect(valid.settlementBalanceAmount(), 10.0);
+      expect(valid.settlementRefundAmount(), 4.0);
+
+      for (final data in [
+        {'final_balance_amount': 10.0},
+        {'refund_due_amount': 4.0},
+        {'final_balance_amount': -1.0, 'refund_due_amount': 0.0},
+        {'final_balance_amount': double.nan, 'refund_due_amount': 0.0},
+        {'final_balance_amount': 10.0, 'refund_due_amount': double.infinity},
+      ]) {
+        final malformed = recordFrom(data);
+        expect(malformed.settlementFormat, SettlementFormat.malformed);
+        expect(malformed.settlementBalanceAmount(), isNull);
+        expect(malformed.settlementRefundAmount(), isNull);
+      }
+    });
+
+    test('requires complete arithmetic for new-format settlements', () {
+      final valid = recordFrom({
+        'final_balance_amount': 10.0,
+        'refund_due_amount': 4.0,
+        'refund_credit_applied_amount': 4.0,
+        'net_balance_due_amount': 6.0,
+        'remaining_refund_due_amount': 0.0,
+        'settlement_version': 0,
+      });
+      expect(valid.settlementFormat, SettlementFormat.newFormat);
+      expect(valid.settlementBalanceAmount(), 6.0);
+      expect(valid.settlementRefundAmount(), 0.0);
+
+      for (final data in [
+        {
+          'settlement_version': 0,
+          'final_balance_amount': 10.0,
+          'refund_due_amount': 4.0,
+        },
+        {
+          'settlement_outcome': 'underpaid',
+          'final_balance_amount': 10.0,
+          'refund_due_amount': 4.0,
+        },
+        {
+          'final_balance_amount': 10.0,
+          'refund_due_amount': 4.0,
+          'refund_credit_applied_amount': 3.0,
+          'net_balance_due_amount': 7.0,
+          'remaining_refund_due_amount': 1.0,
+          'settlement_version': 0,
+        },
+        {
+          'final_balance_amount': 10.0,
+          'refund_due_amount': 4.0,
+          'refund_credit_applied_amount': 4.0,
+          'net_balance_due_amount': 6.0,
+          'remaining_refund_due_amount': 1.0,
+          'settlement_version': 0,
+        },
+      ]) {
+        final malformed = recordFrom(data);
+        expect(malformed.settlementFormat, SettlementFormat.malformed);
+        expect(malformed.settlementBalanceAmount(), isNull);
+        expect(malformed.settlementRefundAmount(), isNull);
+      }
+    });
+
     test('parses the server-owned refund, reversal and balance fields', () {
       final record = OrderRecord.getDocumentFromData(
         orderData,

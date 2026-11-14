@@ -2597,7 +2597,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                               .balancePaymentStatus ==
                                                           'paid'))
                                                     Text(
-                                                      formatLanguageCurrency(orderDetailsOrderRecord.finalBalanceAmount, FFLocalizations.of(context).languageCode),
+                                                      orderDetailsOrderRecord.settlementBalanceAmount() == null
+                                                          ? 'Unavailable'
+                                                          : formatLanguageCurrency(orderDetailsOrderRecord.settlementBalanceAmount()!, FFLocalizations.of(context).languageCode),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -2662,7 +2664,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             ),
                                                   ),
                                                   if (orderDetailsOrderRecord
-                                                          .finalBalanceAmount >
+                                                          (orderDetailsOrderRecord.settlementBalanceAmount() ?? 0.0) >
                                                       0)
                                                     Padding(
                                                       padding:

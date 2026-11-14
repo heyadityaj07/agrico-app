@@ -41,7 +41,7 @@ class CustomerRefundInfo {
   factory CustomerRefundInfo.fromOrder(OrderRecord order) {
     final rawStatus = order.refundStatus.trim();
     final normalizedStatus = rawStatus.toLowerCase();
-    final refundDueAmount = order.refundDueAmount;
+    final refundDueAmount = order.settlementRefundAmount() ?? 0.0;
     final refundAmount = order.refundAmount;
 
     // Display the recorded refund amount when the refund lifecycle has one;
