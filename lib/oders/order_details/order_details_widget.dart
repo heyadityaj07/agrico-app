@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
+import '/backend/orders/order_rejection_status.dart';
 import '/components/consumer_navbar_widget.dart';
 import '/components/customer_refund_status_card.dart';
+import '/components/order_rejection_status_card.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -75,6 +77,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
         }
 
         final orderDetailsOrderRecord = snapshot.data!;
+        final rejectionInfo =
+            OrderRejectionInfo.fromOrder(orderDetailsOrderRecord);
+        final rejectionBlocksPayment = rejectionInfo.blocksNewPayment;
 
         return GestureDetector(
           onTap: () {
@@ -165,6 +170,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                         } else if (orderDetailsOrderRecord.orderStatus ==
                             'Preparing') {
                           return Color(0x1CCB30E0);
+                        } else if (orderDetailsOrderRecord.orderStatus ==
+                            'Rejected') {
+                          return Color(0x1FE63946);
                         } else {
                           return Color(0x1FF58D2A);
                         }
@@ -195,6 +203,11 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                           .orderStatus ==
                                       'Preparing') {
                                     return Color(0xFFCB30E0);
+                                  } else if (orderDetailsOrderRecord
+                                          .orderStatus ==
+                                      'Rejected') {
+                                    return FlutterFlowTheme.of(context)
+                                        .tometoRed;
                                   } else {
                                     return FlutterFlowTheme.of(context).orange;
                                   }
@@ -246,6 +259,12 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
+                                    OrderRejectionStatusCard(
+                                      order: orderDetailsOrderRecord,
+                                      margin:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 12.0),
+                                    ),
                                     Builder(
                                       builder: (context) {
                                         if (orderDetailsOrderRecord
@@ -2539,7 +2558,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                       ),
                                                 ),
                                               ),
-                                            if (orderDetailsOrderRecord
+                                            if (!rejectionBlocksPayment &&
+                                                orderDetailsOrderRecord
                                                     .isVariableWeightOrder &&
                                                 ((orderDetailsOrderRecord
                                                             .balancePaymentStatus ==
@@ -2616,7 +2636,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                     ),
                                                 ],
                                               ),
-                                            if (orderDetailsOrderRecord
+                                            if (!rejectionBlocksPayment &&
+                                                orderDetailsOrderRecord
                                                     .isVariableWeightOrder &&
                                                 ((orderDetailsOrderRecord
                                                             .balancePaymentStatus ==
@@ -2663,8 +2684,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   0.0,
                                                             ),
                                                   ),
-                                                  if (orderDetailsOrderRecord
-                                                          (orderDetailsOrderRecord.settlementBalanceAmount() ?? 0.0) >
+                                                  if ((orderDetailsOrderRecord.settlementBalanceAmount() ?? 0.0) >
                                                       0)
                                                     Padding(
                                                       padding:
@@ -2789,7 +2809,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
-                                            CustomerRefundStatusCard(
+                                            if (!rejectionInfo.hasRejection)
+                                              CustomerRefundStatusCard(
                                               order: orderDetailsOrderRecord,
                                               margin:
                                                   EdgeInsetsDirectional

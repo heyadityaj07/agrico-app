@@ -1,7 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/orders/order_rejection_status.dart';
 import '/backend/refunds/customer_refund_status.dart';
 import '/components/customer_refund_status_card.dart';
+import '/components/order_rejection_status_card.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -155,8 +157,19 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget> {
                     }
 
                     final refunds = snapshot.data!
-                        .where(
-                            (order) => CustomerRefundInfo.fromOrder(order).hasRefund)
+                        .where((order) {
+                          final rejection =
+                              OrderRejectionInfo.fromOrder(order);
+                          if (rejection.hasRejection) {
+                            // A rejected order appears here only when the
+                            // trusted state records a refund obligation/lifecycle.
+                            return rejection.refundPhase !=
+                                    OrderRejectionRefundPhase.none &&
+                                rejection.refundPhase !=
+                                    OrderRejectionRefundPhase.notRequired;
+                          }
+                          return CustomerRefundInfo.fromOrder(order).hasRefund;
+                        })
                         .toList()
                       ..sort((a, b) {
                         final aDate = a.createdAt ??
@@ -198,7 +211,11 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget> {
                                     ),
                               ),
                             ),
-                            CustomerRefundStatusCard(order: order),
+                            if (OrderRejectionInfo.fromOrder(order)
+                                .hasRejection)
+                              OrderRejectionStatusCard(order: order)
+                            else
+                              CustomerRefundStatusCard(order: order),
                           ],
                         );
                       },

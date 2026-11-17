@@ -2,8 +2,10 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
+import '/backend/orders/order_rejection_status.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/add_weight_order_widget.dart';
+import '/components/order_rejection_status_card.dart';
 import '/components/rejectorder_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -92,6 +94,11 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  OrderRejectionStatusCard(
+                    order: containerOrderRecord,
+                    showProducerDetails: true,
+                    margin: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
+                  ),
                   Padding(
                     padding: EdgeInsets.all(12.0),
                     child: Column(
@@ -259,6 +266,10 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                               .orderStatus ==
                                           'Preparing') {
                                         return Color(0x1CCB30E0);
+                                      } else if (containerOrderRecord
+                                              .orderStatus ==
+                                          'Rejected') {
+                                        return Color(0x1FE63946);
                                       } else {
                                         return Color(0x1FF58D2A);
                                       }
@@ -293,6 +304,12 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                         .orderStatus ==
                                                     'Preparing') {
                                                   return Color(0xFFCB30E0);
+                                                } else if (containerOrderRecord
+                                                        .orderStatus ==
+                                                    'Rejected') {
+                                                  return FlutterFlowTheme.of(
+                                                          context)
+                                                      .tometoRed;
                                                 } else {
                                                   return FlutterFlowTheme.of(
                                                           context)
@@ -1927,22 +1944,13 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                               ),
-                            if ((containerOrderRecord.orderConfiramtionTime == null) &&
-                                ((containerOrderRecord.orderStatus !=
-                                        'Delivered') &&
-                                    (containerOrderRecord.orderStatus !=
-                                        'Rejected') &&
-                                    (containerOrderRecord.orderStatus !=
-                                        'Picked Up') &&
-                                    (containerOrderRecord.orderStatus !=
-                                        'In Transit') &&
-                                    (containerOrderRecord.orderStatus !=
-                                        'Canceled')))
+                            if (canProducerReject(containerOrderRecord))
                               Builder(
                                 builder: (context) => FFButtonWidget(
                                   onPressed: () async {
                                     await showDialog(
                                       context: context,
+                                      barrierDismissible: false,
                                       builder: (dialogContext) {
                                         return Dialog(
                                           elevation: 0,
@@ -1954,62 +1962,65 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                   Directionality.of(context)),
                                           child: RejectorderWidget(
                                             rejectAction: () async {
+                                              // Trusted backend endpoint: owns
+                                              // the status transition, payment
+                                              // cancellation/refund, inventory
+                                              // restoration and notification.
+                                              // No Firestore writes here.
+                                              final outcome =
+                                                  await actions.rejectOrder(
+                                                context,
+                                                containerOrderRecord
+                                                    .reference.id,
+                                              );
+                                              if (!context.mounted) return;
+                                              if (!isRejectOrderSuccess(
+                                                  outcome)) {
+                                                return;
+                                              }
+
+                                              // Reload the trusted server state
+                                              // before closing the dialog. The
+                                              // screen stream also updates.
                                               await containerOrderRecord
                                                   .reference
-                                                  .update(createOrderRecordData(
-                                                orderStatus: 'Rejected',
-                                              ));
-                                              for (int loop1Index = 1;
-                                                  loop1Index <=
-                                                      containerOrderRecord
-                                                              .orderItems
-                                                              .length -
-                                                          1;
-                                                  loop1Index++) {
-                                                final currentLoop1Item =
-                                                    containerOrderRecord
-                                                        .orderItems[loop1Index];
-
-                                                await currentLoop1Item
-                                                    .productRef!
-                                                    .update({
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'stock_quantity':
-                                                          FieldValue.increment(
-                                                              currentLoop1Item
-                                                                  .totalItems),
-                                                    },
-                                                  ),
-                                                });
-                                              }
-                                              triggerPushNotification(
-                                                notificationTitle:
-                                                    'Order Cancelled',
-                                                notificationText:
-                                                    'Sorry, your order ORD-${containerOrderRecord.reference.id} has been rejected by the producer.',
-                                                userRefs: [
-                                                  containerOrderRecord.userRef!
-                                                ],
-                                                initialPageName: 'OrderDetails',
-                                                parameterData: {
-                                                  'orderRef':
-                                                      containerOrderRecord
-                                                          .reference,
-                                                },
+                                                  .get();
+                                              if (!context.mounted) return;
+                                              Navigator.pop(dialogContext);
+                                              if (!context.mounted) return;
+                                              final message = FFLocalizations.of(
+                                                      context)
+                                                  .getVariableText(
+                                                enText: outcome ==
+                                                        RejectOrderOutcome
+                                                            .alreadyRejected
+                                                    ? 'This order was already rejected.'
+                                                    : 'The order was rejected.',
+                                                frText: outcome ==
+                                                        RejectOrderOutcome
+                                                            .alreadyRejected
+                                                    ? 'Cette commande avait déjà été refusée.'
+                                                    : 'La commande a été refusée.',
                                               );
-
-                                              await containerOrderRecord
-                                                  .userRef!
-                                                  .update({
-                                                ...mapToFirestore(
-                                                  {
-                                                    'notification_count':
-                                                        FieldValue.increment(1),
-                                                  },
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    message,
+                                                    style: TextStyle(
+                                                      color: FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                    ),
+                                                  ),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primarytheme,
+                                                  duration: const Duration(
+                                                      milliseconds: 4000),
                                                 ),
-                                              });
-                                              Navigator.pop(context);
+                                              );
                                             },
                                           ),
                                         );

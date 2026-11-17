@@ -1,6 +1,8 @@
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
+import '/backend/orders/order_rejection_status.dart';
 import '/components/customer_refund_status_card.dart';
+import '/components/order_rejection_status_card.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -104,6 +106,10 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
               }
 
               final containerOrderRecord = snapshot.data!;
+              final rejectionInfo =
+                  OrderRejectionInfo.fromOrder(containerOrderRecord);
+              final rejectionBlocksPayment =
+                  rejectionInfo.blocksNewPayment;
 
               final balanceStatus =
                   containerOrderRecord.balancePaymentStatus;
@@ -114,13 +120,15 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                   displayedBalance != null && displayedBalance > 0;
               final isVariableOrder =
                   containerOrderRecord.isVariableWeightOrder;
-              final canPayBalance = isVariableOrder &&
+              final canPayBalance = !rejectionBlocksPayment &&
+                  isVariableOrder &&
                   settlementIsValid &&
                   hasPositiveBalance &&
                   (balanceStatus == 'payment_requested' ||
                       balanceStatus == 'failed') &&
                   (!_model.isPaymentProcessing || balanceStatus == 'failed');
-              final showAwaitingConfirmation = isVariableOrder &&
+              final showAwaitingConfirmation = !rejectionBlocksPayment &&
+                  isVariableOrder &&
                   settlementIsValid &&
                   balanceStatus == 'payment_requested' &&
                   _model.isPaymentProcessing;
@@ -131,7 +139,8 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                       balanceStatus == 'paid' ||
                       balanceStatus == 'payment_requested' ||
                       balanceStatus == 'failed');
-              final showRetryMessage = isVariableOrder &&
+              final showRetryMessage = !rejectionBlocksPayment &&
+                  isVariableOrder &&
                   settlementIsValid &&
                   balanceStatus == 'failed' &&
                   hasPositiveBalance;
@@ -372,7 +381,13 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                         ),
                       ),
                     ),
-                    CustomerRefundStatusCard(
+                    OrderRejectionStatusCard(
+                      order: containerOrderRecord,
+                      margin: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 0.0, 16.0, 12.0),
+                    ),
+                    if (!rejectionInfo.hasRejection)
+                      CustomerRefundStatusCard(
                       order: containerOrderRecord,
                       margin: EdgeInsetsDirectional.fromSTEB(
                           16.0, 0.0, 16.0, 12.0),

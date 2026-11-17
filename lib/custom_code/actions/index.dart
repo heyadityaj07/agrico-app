@@ -23,6 +23,7 @@ export 'resolve_uber_dispatch_context.dart'
     show resolveUberDispatchContext;
 export 'reconcile_uber_delivery.dart' show reconcileUberDelivery;
 export 'create_weight_refund.dart' show createWeightRefund;
+export 'reject_order.dart' show rejectOrder;
 export 'dispatch_response_validation.dart'
     show
         dispatchOutcomeChanged,

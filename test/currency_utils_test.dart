@@ -14,6 +14,22 @@ void main() {
     });
   });
 
+  group('formatCurrencyAmount', () {
+    test('uses the recorded currency, not the language', () {
+      final eur = formatCurrencyAmount(10, 'eur');
+      final usd = formatCurrencyAmount(10, 'USD');
+
+      expect(eur.contains('€'), isTrue);
+      expect(usd.contains(r'$'), isTrue);
+    });
+
+    test('omits the amount when no currency is recorded', () {
+      expect(formatCurrencyAmount(10, null), isEmpty);
+      expect(formatCurrencyAmount(10, ''), isEmpty);
+      expect(formatCurrencyAmount(10, '   '), isEmpty);
+    });
+  });
+
   group('formatLanguageCurrency', () {
     test('French amounts use EUR formatting', () {
       final result = formatLanguageCurrency(10, 'fr');

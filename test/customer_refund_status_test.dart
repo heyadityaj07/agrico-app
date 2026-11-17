@@ -19,6 +19,11 @@ OrderRecord _order({
 }) {
   return OrderRecord.getDocumentFromData(
     <String, dynamic>{
+      // A legacy settlement snapshot is only trusted when both gross fields
+      // are present; the classifier treats a lone `refund_due_amount` as
+      // malformed (see `SettlementFormat`). These fixtures exercise the
+      // refund display, so provide the matching zero gross balance.
+      if (refundDueAmount != null) 'final_balance_amount': 0.0,
       if (refundDueAmount != null) 'refund_due_amount': refundDueAmount,
       if (refundStatus != null) 'refund_status': refundStatus,
       if (refundAmount != null) 'refund_amount': refundAmount,

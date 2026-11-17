@@ -1,3 +1,4 @@
+import '/backend/orders/order_rejection_status.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -19,6 +20,8 @@ class RejectorderWidget extends StatefulWidget {
 
 class _RejectorderWidgetState extends State<RejectorderWidget> {
   late RejectorderModel _model;
+  final SingleFlightGuard _guard = SingleFlightGuard();
+  bool _submitting = false;
 
   @override
   void setState(VoidCallback callback) {
@@ -83,11 +86,38 @@ class _RejectorderWidgetState extends State<RejectorderWidget> {
                 ),
               ),
               Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                child: Text(
+                  FFLocalizations.of(context).getVariableText(
+                    enText:
+                        'If a payment was collected, a full refund will be started automatically. Agrico handles the inventory and refund processing. This action cannot be undone.',
+                    frText:
+                        'Si un paiement a été encaissé, un remboursement intégral sera lancé automatiquement. Agrico gère le stock et le traitement du remboursement. Cette action est irréversible.',
+                  ),
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                        fontFamily: 'Satoshi',
+                        color: FlutterFlowTheme.of(context).textsecondary,
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              ),
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 12.0),
                 child: FFButtonWidget(
-                  onPressed: () async {
-                    await widget.rejectAction?.call();
-                  },
+                  onPressed: (widget.rejectAction == null || _submitting)
+                      ? null
+                      : () async {
+                          if (_guard.busy) return;
+                          setState(() => _submitting = true);
+                          try {
+                            await _guard.run(() => widget.rejectAction!());
+                          } finally {
+                            if (mounted) {
+                              setState(() => _submitting = false);
+                            }
+                          }
+                        },
                   text: FFLocalizations.of(context).getText(
                     'c7gs4n4i' /* Yes, Reject */,
                   ),
@@ -113,9 +143,11 @@ class _RejectorderWidgetState extends State<RejectorderWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                 child: FFButtonWidget(
-                  onPressed: () async {
-                    Navigator.pop(context);
-                  },
+                  onPressed: _submitting
+                      ? null
+                      : () async {
+                          Navigator.pop(context);
+                        },
                   text: FFLocalizations.of(context).getText(
                     'g3bm68av' /* Cancel */,
                   ),

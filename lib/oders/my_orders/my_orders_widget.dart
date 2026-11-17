@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/currency/currency_utils.dart';
+import '/backend/orders/order_rejection_status.dart';
 import '/components/no_chat_producer_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -476,6 +477,10 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                                             'Preparing') {
                                                                           return Color(
                                                                               0x1CCB30E0);
+                                                                        } else if (ordersItem.orderStatus ==
+                                                                            'Rejected') {
+                                                                          return Color(
+                                                                              0x1FE63946);
                                                                         } else {
                                                                           return Color(
                                                                               0x1FF58D2A);
@@ -507,6 +512,8 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                                                   return FlutterFlowTheme.of(context).primarytheme;
                                                                                 } else if (ordersItem.orderStatus == 'Preparing') {
                                                                                   return Color(0xFFCB30E0);
+                                                                                } else if (ordersItem.orderStatus == 'Rejected') {
+                                                                                  return FlutterFlowTheme.of(context).tometoRed;
                                                                                 } else {
                                                                                   return FlutterFlowTheme.of(context).orange;
                                                                                 }
@@ -659,14 +666,17 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                                             children: [
                                                               if (ordersItem
                                                                       .isVariableWeightOrder &&
+                                                                  !OrderRejectionInfo.fromOrder(
+                                                                          ordersItem)
+                                                                      .blocksNewPayment &&
                                                                   (ordersItem
                                                                               .balancePaymentStatus ==
                                                                           'payment_requested' ||
                                                                       ordersItem
                                                                               .balancePaymentStatus ==
                                                                           'failed') &&
-                                                                  ordersItem
-                                                                          (ordersItem.settlementBalanceAmount() ?? 0.0) >
+                                                                  (ordersItem.settlementBalanceAmount() ??
+                                                                          0.0) >
                                                                       0)
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
