@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/checkout/checkout_v1_client.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,9 +18,11 @@ class EditaddressWidget extends StatefulWidget {
   const EditaddressWidget({
     super.key,
     required this.editaddressdata,
+    required this.editaddressindex,
   });
 
   final DeliveryAdressStruct? editaddressdata;
+  final int editaddressindex;
 
   @override
   State<EditaddressWidget> createState() => _EditaddressWidgetState();
@@ -1027,63 +1030,66 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                             return;
                                           }
 
-                                          await currentUserReference!.update({
-                                            ...mapToFirestore(
-                                              {
-                                                'delivery_Addresses':
-                                                    FieldValue.arrayRemove([
-                                                  getDeliveryAdressFirestoreData(
-                                                    updateDeliveryAdressStruct(
-                                                      widget.editaddressdata,
-                                                      clearUnsetFields: false,
-                                                    ),
-                                                    true,
-                                                  )
-                                                ]),
-                                              },
-                                            ),
-                                          });
-
-                                          await currentUserReference!.update({
-                                            ...mapToFirestore(
-                                              {
-                                                'delivery_Addresses':
-                                                    FieldValue.arrayUnion([
-                                                  getDeliveryAdressFirestoreData(
-                                                    updateDeliveryAdressStruct(
-                                                      DeliveryAdressStruct(
-                                                        label: _model
-                                                            .textController1
-                                                            .text,
-                                                        fullName: _model
-                                                            .textController2
-                                                            .text,
-                                                        streetAdress: _model
-                                                            .apartmenttextfieldTextController
-                                                            .text,
-                                                        city: _model.city,
-                                                        phoneNo: FFAppState()
-                                                            .phonnumber,
-                                                        instruction: _model
-                                                            .textController5
-                                                            .text,
-                                                        cratedAt:
-                                                            getCurrentTimestamp,
-                                                        state: _model.state,
-                                                        postalCode: _model
-                                                            .postalcodeTextController
-                                                            .text,
-                                                        location:
-                                                            _model.location,
-                                                      ),
-                                                      clearUnsetFields: false,
-                                                    ),
-                                                    true,
-                                                  )
-                                                ]),
-                                              },
-                                            ),
-                                          });
+                                          final replacement =
+                                              DeliveryAdressStruct(
+                                            label: _model.textController1.text,
+                                            fullName:
+                                                _model.textController2.text,
+                                            streetAdress: _model
+                                                .apartmenttextfieldTextController
+                                                .text,
+                                            city: _model.city,
+                                            phoneNo: FFAppState().phonnumber,
+                                            instruction:
+                                                _model.textController5.text,
+                                            cratedAt: getCurrentTimestamp,
+                                            state: _model.state,
+                                            postalCode: _model
+                                                .postalcodeTextController.text,
+                                            location: _model.location,
+                                          );
+                                          final result = await FirebaseFirestore
+                                              .instance
+                                              .runTransaction<
+                                                  DeliveryAddressMutationResult>(
+                                            (transaction) async {
+                                              final snapshot =
+                                                  await transaction.get(
+                                                currentUserReference!,
+                                              );
+                                              if (!snapshot.exists) {
+                                                return DeliveryAddressMutationResult
+                                                    .userMissing;
+                                              }
+                                              final latestUser =
+                                                  UsersRecord.fromSnapshot(
+                                                snapshot,
+                                              );
+                                              return applyEditDeliveryAddress(
+                                                user: latestUser,
+                                                index:
+                                                    widget.editaddressindex,
+                                                expected:
+                                                    widget.editaddressdata,
+                                                replacement: replacement,
+                                                write: (data) =>
+                                                    transaction.update(
+                                                  currentUserReference!,
+                                                  data,
+                                                ),
+                                              );
+                                            },
+                                          );
+                                          if (result !=
+                                              DeliveryAddressMutationResult
+                                                  .updated) {
+                                            await actions.toast(
+                                              context,
+                                              'This address changed. Please refresh the list and try again.',
+                                            );
+                                            Navigator.pop(context);
+                                            return;
+                                          }
                                           Navigator.pop(context);
                                         },
                                         text:

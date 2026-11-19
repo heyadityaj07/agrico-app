@@ -1,7 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
+import '/backend/checkout/checkout_v1_api.dart';
+import '/backend/checkout/checkout_v1_attempt_store.dart';
+import '/backend/checkout/checkout_v1_cart_cleanup.dart';
+import '/backend/checkout/checkout_v1_client.dart';
+import '/backend/checkout/checkout_v1_flow.dart';
+import '/backend/currency/currency_utils.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -45,6 +50,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
   late CheckoutModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _isResumingAttempt = false;
 
   @override
   void initState() {
@@ -56,6 +62,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
       _model.farmpickup = null;
       _model.deliveryMethod = null;
       safeSetState(() {});
+      await _resumeStoredCheckoutAttempt();
     });
 
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -70,6 +77,634 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
     _model.dispose();
 
     super.dispose();
+  }
+
+  // -------------------------------------------------------------------------
+  // Checkout-v1 integration
+  // -------------------------------------------------------------------------
+
+  Future<void> _startCheckoutV1Payment({
+    required FarmsRecord farm,
+    required List<CartRecord> selectedCart,
+    required DeliveryAdressStruct? selectedAddress,
+  }) async {
+    final userRef = currentUserReference;
+    if (userRef == null) {
+      _showCheckoutError('auth_required');
+      return;
+    }
+
+    final method = tryParseCheckoutDeliveryMethod(_model.deliveryMethod);
+    if (method == null) {
+      _showCheckoutMessage(
+        en: 'Please select a delivery method before paying.',
+        fr: 'Veuillez sélectionner un mode de livraison avant de payer.',
+      );
+      return;
+    }
+
+    if (!_farmSupportsMethod(farm, method)) {
+      _showCheckoutMessage(
+        en: 'This delivery method is no longer available for this farm.',
+        fr: "Ce mode de livraison n'est plus disponible pour cette ferme.",
+      );
+      return;
+    }
+
+    final address = method == CheckoutDeliveryMethod.pickup
+        ? null
+        : (selectedAddress == null
+            ? null
+            : CheckoutAddress.fromDeliveryAdress(selectedAddress));
+    if (method != CheckoutDeliveryMethod.pickup) {
+      final addressError = validateCheckoutAddress(address);
+      if (addressError != null) {
+        _showCheckoutError(addressError);
+        return;
+      }
+    }
+
+    final currentCart = await queryCartRecordOnce(parent: userRef);
+    final validation = validateCheckoutCart(
+      selectedCart: selectedCart,
+      currentCart: currentCart,
+      farmId: farm.reference.id,
+    );
+    if (!validation.isValid) {
+      _showCheckoutError(validation.errorCode ?? 'cart_line_invalid');
+      return;
+    }
+
+    final capturedLines = validation.lines;
+    final currency = currencyCodeForLanguage(
+      FFLocalizations.of(context).languageCode,
+    );
+    final payload = CheckoutPayload(
+      farmId: farm.reference.id,
+      currency: currency,
+      deliveryMethod: method,
+      items: capturedLines.map(
+        (line) => CheckoutItem(
+          productId: line.productId,
+          quantity: line.quantity,
+          weightBracket: line.weightBracket,
+        ),
+      ),
+      address: address,
+      deliveryTime: _model.selectedDeliveryTime,
+      tip: widget.tip ?? 0,
+      note: widget.note,
+      voucherCode: widget.vouchercode,
+    );
+
+    final store = SharedPreferencesCheckoutAttemptStore(ownerUid: userRef.id);
+    final loadedAttempt = await store.load();
+    if (loadedAttempt.isInvalid) {
+      _showCheckoutAttemptRecoveryMessage(loadedAttempt.invalidReason);
+      return;
+    }
+    final existing = loadedAttempt.attempt;
+    final resolution = resolveCheckoutAttempt(
+      existing: existing,
+      payload: payload,
+      cartLines: capturedLines,
+    );
+    var attempt = resolution.attempt;
+
+    if (attempt.phase == CheckoutAttemptPhase.needsReview) {
+      _showCheckoutSupportMessage();
+      return;
+    }
+
+    if (!resolution.reused &&
+        existing != null &&
+        existing.isOpen &&
+        existing.orderId != null) {
+      final canContinue = await _supersedePreviousAttempt(existing, store);
+      if (!canContinue) return;
+    }
+
+    await store.save(attempt);
+
+    // A bind response can be lost after the backend persisted the quote. Reuse
+    // the order's bound, unexpired quote instead of trying to bind a new one.
+    if (attempt.orderId != null &&
+        method == CheckoutDeliveryMethod.uber &&
+        attempt.quoteId == null) {
+      final recoveredQuoteId = await _recoverBoundQuoteId(attempt.orderId!);
+      if (recoveredQuoteId != null) {
+        attempt = attempt.copyWith(quoteId: recoveredQuoteId);
+        await store.save(attempt);
+      }
+    }
+
+    // A previous cancellation request must be completed before any new
+    // PaymentIntent is attempted.
+    if (attempt.cancelRequested && attempt.orderId != null) {
+      await _cancelStoredAttempt(attempt, store);
+      return;
+    }
+
+    // Reopening an attempt that was already presented to PaymentSheet must
+    // first observe the backend-owned order; never assume failure.
+    if (attempt.orderId != null &&
+        attempt.phase == CheckoutAttemptPhase.awaitingFinalization) {
+      final state = await _observeCheckoutOrder(attempt.orderId!);
+      final decision = decideCheckoutFinalization(state);
+      if (decision == CheckoutFinalizationDecision.confirmed) {
+        await _finishConfirmedCheckout(attempt, store);
+        return;
+      }
+      if (decision == CheckoutFinalizationDecision.closed) {
+        await store.clear();
+        _showCheckoutMessage(
+          en: 'The previous checkout is no longer active. Please try again.',
+          fr: "La commande précédente n'est plus active. Veuillez réessayer.",
+        );
+        return;
+      }
+      if (decision == CheckoutFinalizationDecision.needsSupport) {
+        await store.save(
+          attempt.copyWith(phase: CheckoutAttemptPhase.needsReview),
+        );
+        _showCheckoutSupportMessage();
+        return;
+      }
+      // Still pending: retry the same order/PaymentIntent safely below.
+    }
+
+    final request = buildCheckoutOrderRequest(
+      checkoutRequestId: attempt.checkoutRequestId,
+      payload: payload,
+    );
+
+    final result = await createCheckoutV1Intent(
+      api: CheckoutV1Api(),
+      attempt: attempt,
+      request: request,
+      saveAttempt: store.save,
+      presentPayment: (orderId, quoteId, _) async {
+        return actions.flutterStripeDirect(
+          context,
+          null,
+          orderId,
+          null,
+          FFLocalizations.of(context).languageCode,
+          null,
+          null,
+          useOrderTotals: true,
+          quoteId: quoteId,
+        );
+      },
+    );
+
+    attempt = result.attempt;
+    if (result.deliveryFee != null) {
+      _model.fee = result.deliveryFee;
+      safeSetState(() {});
+    }
+
+    switch (result.outcome) {
+      case CheckoutV1FlowOutcome.awaitingFinalization:
+        if (result.orderId != null) {
+          await _waitForCheckoutFinalization(result.orderId!, attempt, store);
+        }
+        break;
+      case CheckoutV1FlowOutcome.cancelled:
+        await store.clear();
+        _showCheckoutMessage(
+          en: 'Payment cancelled. Your reservation was released.',
+          fr: 'Paiement annulé. Votre réservation a été libérée.',
+        );
+        break;
+      case CheckoutV1FlowOutcome.expired:
+        await store.clear();
+        _showCheckoutMessage(
+          en: 'This checkout expired. Please try again.',
+          fr: 'Cette commande a expiré. Veuillez réessayer.',
+        );
+        break;
+      case CheckoutV1FlowOutcome.terminal:
+        await store.clear();
+        _showCheckoutError(result.errorCode ?? 'checkout_unavailable');
+        break;
+      case CheckoutV1FlowOutcome.needsSupport:
+        await store.save(
+          attempt.copyWith(phase: CheckoutAttemptPhase.needsReview),
+        );
+        _showCheckoutSupportMessage();
+        break;
+      case CheckoutV1FlowOutcome.retryable:
+        _showCheckoutMessage(
+          en: 'We could not complete the payment request. Your order is saved — please retry shortly.',
+          fr: "Nous n'avons pas pu finaliser la demande de paiement. Votre commande est enregistrée — veuillez réessayer.",
+        );
+        break;
+    }
+  }
+
+  bool _farmSupportsMethod(FarmsRecord farm, CheckoutDeliveryMethod method) {
+    switch (method) {
+      case CheckoutDeliveryMethod.pickup:
+        return farm.selfManagedSetup.clickCollect;
+      case CheckoutDeliveryMethod.producer:
+        return farm.doyouofferyourowndeliveryservice &&
+            farm.selfManagedSetup.ownDelivery;
+      case CheckoutDeliveryMethod.uber:
+        return farm.agricooDelivery;
+    }
+  }
+
+  /// Closes an older open attempt before a changed cart starts a new one.
+  ///
+  /// A payment that may already be in flight is never cancelled here.
+  Future<bool> _supersedePreviousAttempt(
+    CheckoutAttempt existing,
+    CheckoutAttemptStore store,
+  ) async {
+    final orderId = existing.orderId;
+    if (orderId == null) {
+      await store.clear();
+      return true;
+    }
+
+    final state = await _observeCheckoutOrder(orderId);
+    final decision = decideCheckoutFinalization(state);
+    if (decision == CheckoutFinalizationDecision.confirmed) {
+      await _finishConfirmedCheckout(existing, store);
+      return false;
+    }
+    if (decision == CheckoutFinalizationDecision.closed) {
+      await store.clear();
+      return true;
+    }
+    if (decision == CheckoutFinalizationDecision.needsSupport) {
+      await store.save(
+        existing.copyWith(phase: CheckoutAttemptPhase.needsReview),
+      );
+      _showCheckoutSupportMessage();
+      return false;
+    }
+    if (existing.phase == CheckoutAttemptPhase.awaitingFinalization) {
+      _showCheckoutMessage(
+        en: 'A previous payment is still being confirmed. Please wait before starting a new checkout.',
+        fr: 'Un paiement précédent est encore en cours de confirmation. Veuillez patienter avant de recommencer.',
+      );
+      return false;
+    }
+
+    final result = await cancelCheckoutV1Attempt(
+      api: CheckoutV1Api(),
+      attempt: existing,
+      saveAttempt: store.save,
+      errorCode: 'checkout_cart_changed',
+    );
+
+    switch (result.outcome) {
+      case CheckoutV1FlowOutcome.cancelled:
+      case CheckoutV1FlowOutcome.expired:
+        await store.clear();
+        return true;
+      case CheckoutV1FlowOutcome.awaitingFinalization:
+        await _waitForCheckoutFinalization(
+          result.orderId ?? orderId,
+          result.attempt,
+          store,
+        );
+        return false;
+      case CheckoutV1FlowOutcome.needsSupport:
+        _showCheckoutSupportMessage();
+        return false;
+      case CheckoutV1FlowOutcome.terminal:
+      case CheckoutV1FlowOutcome.retryable:
+        _showCheckoutMessage(
+          en: 'Your previous checkout could not be closed safely. Please retry before changing the cart.',
+          fr: "Votre commande précédente n'a pas pu être fermée en toute sécurité. Veuillez réessayer avant de modifier le panier.",
+        );
+        return false;
+    }
+  }
+
+  Future<void> _cancelStoredAttempt(
+    CheckoutAttempt attempt,
+    CheckoutAttemptStore store,
+  ) async {
+    final result = await cancelCheckoutV1Attempt(
+      api: CheckoutV1Api(),
+      attempt: attempt,
+      saveAttempt: store.save,
+    );
+
+    switch (result.outcome) {
+      case CheckoutV1FlowOutcome.cancelled:
+      case CheckoutV1FlowOutcome.expired:
+        await store.clear();
+        _showCheckoutMessage(
+          en: 'Payment cancelled. Your reservation was released.',
+          fr: 'Paiement annulé. Votre réservation a été libérée.',
+        );
+        break;
+      case CheckoutV1FlowOutcome.awaitingFinalization:
+        await _waitForCheckoutFinalization(
+          result.orderId ?? attempt.orderId!,
+          result.attempt,
+          store,
+        );
+        break;
+      case CheckoutV1FlowOutcome.needsSupport:
+        _showCheckoutSupportMessage();
+        break;
+      case CheckoutV1FlowOutcome.terminal:
+      case CheckoutV1FlowOutcome.retryable:
+        _showCheckoutMessage(
+          en: 'We could not confirm the cancellation yet. Your order is saved — please retry shortly.',
+          fr: "Nous n'avons pas pu confirmer l'annulation. Votre commande est enregistrée — veuillez réessayer.",
+        );
+        break;
+    }
+  }
+
+  Future<CheckoutFinalizationState> _observeCheckoutOrder(
+    String orderId,
+  ) async {
+    try {
+      final snapshot = await OrderRecord.collection.doc(orderId).get();
+      final data = snapshot.data();
+      return classifyCheckoutFinalization(
+        data is Map ? data.cast<String, dynamic>() : null,
+      );
+    } catch (_) {
+      return CheckoutFinalizationState.unknown;
+    }
+  }
+
+  /// Recovers a quote that the backend bound before the response reached the
+  /// app. Expired quotes are deliberately not reused so the flow cancels and
+  /// restarts instead of paying against a stale fee.
+  Future<String?> _recoverBoundQuoteId(String orderId) async {
+    try {
+      final snapshot = await OrderRecord.collection.doc(orderId).get();
+      final data = snapshot.data();
+      if (data is! Map) return null;
+      final state =
+          (data['uber_quote_state'] as String?)?.trim().toLowerCase();
+      final quoteId = data['uber_quote_id'];
+      if (state != 'bound' ||
+          quoteId is! String ||
+          quoteId.trim().isEmpty) {
+        return null;
+      }
+
+      final expires = data['uber_quote_expires_at'];
+      DateTime? expiry;
+      if (expires is Timestamp) {
+        expiry = expires.toDate();
+      } else if (expires is DateTime) {
+        expiry = expires;
+      }
+      if (expiry != null && !expiry.isAfter(DateTime.now())) {
+        return null;
+      }
+      return quoteId.trim();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Re-opens an interrupted attempt after an app restart without creating a
+  /// new order or PaymentIntent.
+  Future<void> _resumeStoredCheckoutAttempt() async {
+    if (_isResumingAttempt || !mounted) return;
+    final userRef = currentUserReference;
+    if (userRef == null) return;
+
+    _isResumingAttempt = true;
+    try {
+      final store = SharedPreferencesCheckoutAttemptStore(
+        ownerUid: userRef.id,
+      );
+      final loadedAttempt = await store.load();
+      if (loadedAttempt.isInvalid) {
+        _showCheckoutAttemptRecoveryMessage(loadedAttempt.invalidReason);
+        return;
+      }
+      final attempt = loadedAttempt.attempt;
+      if (attempt == null || attempt.orderId == null) return;
+      if (attempt.phase != CheckoutAttemptPhase.awaitingFinalization &&
+          attempt.phase != CheckoutAttemptPhase.needsReview) {
+        return;
+      }
+
+      final state = await _observeCheckoutOrder(attempt.orderId!);
+      switch (decideCheckoutFinalization(state)) {
+        case CheckoutFinalizationDecision.confirmed:
+          await _finishConfirmedCheckout(attempt, store);
+          break;
+        case CheckoutFinalizationDecision.closed:
+          await store.clear();
+          break;
+        case CheckoutFinalizationDecision.needsSupport:
+          await store.save(
+            attempt.copyWith(phase: CheckoutAttemptPhase.needsReview),
+          );
+          _showCheckoutSupportMessage();
+          break;
+        case CheckoutFinalizationDecision.pending:
+          _showCheckoutMessage(
+            en: 'A payment for this checkout is still being confirmed. Your order is saved.',
+            fr: 'Un paiement pour cette commande est encore en cours de confirmation. Votre commande est enregistrée.',
+          );
+          break;
+      }
+    } finally {
+      _isResumingAttempt = false;
+    }
+  }
+
+  Future<void> _waitForCheckoutFinalization(
+    String orderId,
+    CheckoutAttempt attempt,
+    CheckoutAttemptStore store,
+  ) async {
+    var dialogOpen = false;
+    if (mounted) {
+      dialogOpen = true;
+      showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (dialogContext) => const Dialog(
+          child: Padding(
+            padding: EdgeInsets.all(24.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 24.0,
+                  height: 24.0,
+                  child: CircularProgressIndicator(strokeWidth: 2.5),
+                ),
+                SizedBox(width: 16.0),
+                Expanded(
+                  child: Text(
+                    'Confirming payment…',
+                    style: TextStyle(fontSize: 15.0),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ).whenComplete(() => dialogOpen = false);
+    }
+
+    final deadline = DateTime.now().add(const Duration(seconds: 45));
+    var state = CheckoutFinalizationState.unknown;
+    while (mounted && DateTime.now().isBefore(deadline)) {
+      state = await _observeCheckoutOrder(orderId);
+      if (decideCheckoutFinalization(state) !=
+          CheckoutFinalizationDecision.pending) {
+        break;
+      }
+      await Future<void>.delayed(const Duration(seconds: 2));
+    }
+
+    if (dialogOpen && mounted) {
+      dialogOpen = false;
+      Navigator.of(context, rootNavigator: true).pop();
+    }
+
+    switch (decideCheckoutFinalization(state)) {
+      case CheckoutFinalizationDecision.confirmed:
+        await _finishConfirmedCheckout(attempt, store);
+        break;
+      case CheckoutFinalizationDecision.closed:
+        await store.clear();
+        _showCheckoutMessage(
+          en: 'This checkout is no longer active.',
+          fr: "Cette commande n'est plus active.",
+        );
+        break;
+      case CheckoutFinalizationDecision.needsSupport:
+        await store.save(
+          attempt.copyWith(phase: CheckoutAttemptPhase.needsReview),
+        );
+        _showCheckoutSupportMessage();
+        break;
+      case CheckoutFinalizationDecision.pending:
+        _showCheckoutMessage(
+          en: 'Payment received. Final confirmation is still processing — your order is saved and will update automatically.',
+          fr: 'Paiement reçu. La confirmation finale est en cours — votre commande est enregistrée et sera mise à jour automatiquement.',
+        );
+        break;
+    }
+  }
+
+  Future<void> _finishConfirmedCheckout(
+    CheckoutAttempt attempt,
+    CheckoutAttemptStore store,
+  ) async {
+    final userRef = currentUserReference;
+    final orderId = attempt.orderId;
+    if (userRef == null || orderId == null) return;
+
+    try {
+      await clearPurchasedCartLines(
+        userRef: userRef,
+        purchasedLines: attempt.cartLines,
+      );
+    } catch (_) {
+      // Keep the attempt so the same safe cart cleanup can be retried after the
+      // app is reopened; the order is already paid and must not be recreated.
+      _showCheckoutMessage(
+        en: 'Payment confirmed, but the cart could not be cleared yet. Please reopen the app to finish.',
+        fr: 'Paiement confirmé, mais le panier n\'a pas encore pu être vidé. Veuillez rouvrir l\'application pour terminer.',
+      );
+      return;
+    }
+
+    await store.clear();
+    final orderRef = OrderRecord.collection.doc(orderId);
+    FFAppState().orderdocument = orderRef;
+    FFAppState().pendingpaymentdocument = null;
+    safeSetState(() {});
+
+    if (!mounted) return;
+    context.goNamed(
+      CheckoutfinalWidget.routeName,
+      queryParameters: {
+        'orderRef': serializeParam(orderRef, ParamType.DocumentReference),
+      }.withoutNulls,
+    );
+  }
+
+  void _showCheckoutSupportMessage() {
+    _showCheckoutMessage(
+      en: 'This checkout requires support or reconciliation. Please contact support with your order reference.',
+      fr: "Cette commande nécessite une assistance ou une réconciliation. Veuillez contacter le support avec votre référence de commande.",
+    );
+  }
+
+  void _showCheckoutAttemptRecoveryMessage(String? reason) {
+    // The malformed value is deliberately left in local storage for diagnosis.
+    // Do not generate a new request ID or overwrite it from the UI.
+    if (reason != null) {
+      debugPrint('Checkout attempt rejected: $reason');
+    }
+    _showCheckoutMessage(
+      en: 'A saved checkout could not be verified. Please contact support before retrying; the saved checkout data was kept for review.',
+      fr: "Une commande enregistrée n'a pas pu être vérifiée. Veuillez contacter le support avant de réessayer ; les données enregistrées ont été conservées pour examen.",
+    );
+  }
+
+  void _showCheckoutError(String code) {
+    final message = switch (code) {
+      'cart_empty' => (en: 'Your cart is empty.', fr: 'Votre panier est vide.'),
+      'multi_farm_cart' => (
+          en: 'Your cart contains items from more than one farm. Please keep one farm per checkout.',
+          fr: 'Votre panier contient des articles de plusieurs fermes. Veuillez ne garder qu\'une ferme par commande.',
+        ),
+      'checkout_cart_changed' => (
+          en: 'Your cart changed. Please review it and try again.',
+          fr: 'Votre panier a changé. Veuillez le vérifier et réessayer.',
+        ),
+      'cart_line_invalid' => (
+          en: 'One of your cart items is invalid. Please remove it and add it again.',
+          fr: 'Un article de votre panier est invalide. Veuillez le retirer et le rajouter.',
+        ),
+      'delivery_address_required' => (
+          en: 'Please add a delivery address.',
+          fr: 'Veuillez ajouter une adresse de livraison.',
+        ),
+      'delivery_address_invalid' => (
+          en: 'Please complete your delivery address before paying.',
+          fr: 'Veuillez compléter votre adresse de livraison avant de payer.',
+        ),
+      'auth_required' => (
+          en: 'Please sign in again to complete checkout.',
+          fr: 'Veuillez vous reconnecter pour finaliser la commande.',
+        ),
+      _ => (
+          en: 'We could not complete the checkout. Please retry shortly.',
+          fr: 'Nous n\'avons pas pu finaliser la commande. Veuillez réessayer.',
+        ),
+    };
+    _showCheckoutMessage(en: message.en, fr: message.fr);
+  }
+
+  void _showCheckoutMessage({required String en, required String fr}) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          FFLocalizations.of(context).getVariableText(enText: en, frText: fr),
+          style: TextStyle(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+          ),
+        ),
+        duration: const Duration(milliseconds: 6000),
+        backgroundColor: FlutterFlowTheme.of(context).primary,
+      ),
+    );
   }
 
   @override
@@ -207,23 +842,19 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                     if (_model.columnPreviousSnapshot != null &&
                         !UsersRecordDocumentEquality().equals(
                             columnUsersRecord, _model.columnPreviousSnapshot)) {
+                      final selectedAddress =
+                          resolveSelectedDeliveryAddress(columnUsersRecord);
                       safeSetState(() {
-                        _model.textController1?.text = columnUsersRecord
-                            .deliveryAddresses
-                            .elementAtOrNull(columnUsersRecord.defaultAdress)!
-                            .fullName;
+                        _model.textController1?.text =
+                            selectedAddress?.fullName ?? '';
                       });
                       safeSetState(() {
-                        _model.textController2?.text = columnUsersRecord
-                            .deliveryAddresses
-                            .elementAtOrNull(columnUsersRecord.defaultAdress)!
-                            .streetAdress;
+                        _model.textController2?.text =
+                            selectedAddress?.streetAdress ?? '';
                       });
                       safeSetState(() {
-                        _model.textController3?.text = columnUsersRecord
-                            .deliveryAddresses
-                            .elementAtOrNull(columnUsersRecord.defaultAdress)!
-                            .phoneNo;
+                        _model.textController3?.text =
+                            selectedAddress?.phoneNo ?? '';
                       });
 
                       safeSetState(() {});
@@ -247,6 +878,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                   }
 
                   final columnUsersRecord = snapshot.data!;
+                  final selectedDeliveryAddress =
+                      resolveSelectedDeliveryAddress(columnUsersRecord);
 
                   return Column(
                     mainAxisSize: MainAxisSize.max,
@@ -273,6 +906,10 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                             }
                             List<ConfigRecord> stackConfigRecordList =
                                 snapshot.data!;
+                            // Retained from the generated tree; checkout-v1
+                            // totals are server-owned, so this local is no
+                            // longer read by the Pay action.
+                            // ignore: unused_local_variable
                             final stackConfigRecord =
                                 stackConfigRecordList.isNotEmpty
                                     ? stackConfigRecordList.first
@@ -951,7 +1588,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                         width: double.infinity,
                                                                                         child: TextFormField(
                                                                                           controller: _model.textController1 ??= TextEditingController(
-                                                                                            text: columnUsersRecord.deliveryAddresses.elementAtOrNull(columnUsersRecord.defaultAdress)?.fullName,
+                                                                                            text: selectedDeliveryAddress?.fullName,
                                                                                           ),
                                                                                           focusNode: _model.textFieldFocusNode1,
                                                                                           autofocus: false,
@@ -1038,7 +1675,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                         width: double.infinity,
                                                                                         child: TextFormField(
                                                                                           controller: _model.textController2 ??= TextEditingController(
-                                                                                            text: columnUsersRecord.deliveryAddresses.elementAtOrNull(columnUsersRecord.defaultAdress)?.streetAdress,
+                                                                                            text: selectedDeliveryAddress?.streetAdress,
                                                                                           ),
                                                                                           focusNode: _model.textFieldFocusNode2,
                                                                                           autofocus: false,
@@ -1125,7 +1762,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                         width: double.infinity,
                                                                                         child: TextFormField(
                                                                                           controller: _model.textController3 ??= TextEditingController(
-                                                                                            text: columnUsersRecord.deliveryAddresses.elementAtOrNull(columnUsersRecord.defaultAdress)?.phoneNo,
+                                                                                            text: selectedDeliveryAddress?.phoneNo,
                                                                                           ),
                                                                                           focusNode: _model.textFieldFocusNode3,
                                                                                           autofocus: false,
@@ -1347,7 +1984,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                   pageViewFarmsRecord.selfManagedSetup.deliveryRadiuskm,
                                                                                   0.0,
                                                                                 ),
-                                                                                columnUsersRecord.deliveryAddresses.elementAtOrNull(columnUsersRecord.defaultAdress)?.location,
+                                                                                selectedDeliveryAddress?.location,
                                                                               );
                                                                               _shouldSetState = true;
                                                                               if (() {
@@ -1422,7 +2059,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                               } else {
                                                                                 if (pageViewFarmsRecord.agricooDelivery) {
                                                                                   _model.apiResultzlq = await ValidateAccessCall.call(
-                                                                                    address: '${columnUsersRecord.deliveryAddresses.elementAtOrNull(columnUsersRecord.defaultAdress)?.streetAdress}',
+                                                                                    address: '${selectedDeliveryAddress?.streetAdress ?? ''}',
                                                                                   );
 
                                                                                   _shouldSetState = true;
@@ -1453,7 +2090,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                     _shouldSetState = true;
                                                                                     _model.apiResultmei = await GetDeliveryQuoteCall.call(
                                                                                       pickupAddress: _model.farmaddress2,
-                                                                                      dropoffAddress: '${columnUsersRecord.deliveryAddresses.elementAtOrNull(columnUsersRecord.defaultAdress)?.streetAdress}',
+                                                                                      dropoffAddress: '${selectedDeliveryAddress?.streetAdress ?? ''}',
                                                                                     );
 
                                                                                     _shouldSetState = true;
@@ -2047,8 +2684,16 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                     children: [
                                                                                       Text(
-                                                                                        FFLocalizations.of(context).getText(
-                                                                                          'ld0mqmw0' /* Total to pay now */,
+                                                                                        // Uber's pre-order display quote is an
+                                                                                        // estimate; the bound backend quote and
+                                                                                        // PaymentSheet amount are authoritative.
+                                                                                        FFLocalizations.of(context).getVariableText(
+                                                                                          enText: _model.deliveryMethod == 'uber'
+                                                                                              ? 'Estimated total'
+                                                                                              : 'Total to pay now',
+                                                                                          frText: _model.deliveryMethod == 'uber'
+                                                                                              ? 'Total estimé'
+                                                                                              : 'Total à payer maintenant',
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Satoshi',
@@ -2132,513 +2777,31 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                         1.0),
                                                                 child:
                                                                     FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    // P1-08 duplicate-submission guard: ignore taps while an
-                                                                    // order/PaymentIntent/payment sheet is already in flight.
-                                                                    if (_model
-                                                                        .isPaymentInProgress) {
+                                                                  onPressed: () async {
+                                                                    // Checkout-v1: the backend owns order creation, inventory
+                                                                    // reservations, payment finalization and cart-safe completion.
+                                                                    if (_model.isPaymentInProgress) {
                                                                       return;
                                                                     }
-                                                                    _model.isPaymentInProgress =
-                                                                        true;
-                                                                    safeSetState(
-                                                                        () {});
+                                                                    _model.isPaymentInProgress = true;
+                                                                    safeSetState(() {});
                                                                     try {
-                                                                      // P1-08 follow-up: if an ambiguous payment attempt is still
-                                                                      // open, reuse that SAME order instead of creating a new one.
-                                                                      if (FFAppState()
-                                                                              .pendingpaymentdocument !=
-                                                                          null) {
-                                                                        _model.order =
-                                                                            await OrderRecord.getDocumentOnce(FFAppState().pendingpaymentdocument!);
-                                                                        if (_model.order == null ||
-                                                                            _model.order!.orderStatus !=
-                                                                                'Pending') {
-                                                                          // Stale/unusable reference: clear it and create a fresh order.
-                                                                          FFAppState().pendingpaymentdocument =
-                                                                              null;
-                                                                          _model.order =
-                                                                              null;
-                                                                        }
-                                                                      }
-                                                                      if (_model.farmpickup !=
-                                                                          'yes' &&
-                                                                          !deliveryMinimumMet) {
-                                                                      if (pageViewFarmsRecord
-                                                                          .selfManagedSetup
-                                                                          .clickCollect) {
-                                                                        _model.farmpickup =
-                                                                            'yes';
-                                                                        _model.deliveryMethod =
-                                                                            'farmpickup';
-                                                                        _model.fee =
-                                                                            0.0;
-                                                                        _model.isAgricodeliver =
-                                                                            false;
-                                                                        safeSetState(
-                                                                            () {});
-                                                                      } else {
-                                                                        ScaffoldMessenger.of(context).showSnackBar(
-                                                                          SnackBar(
-                                                                            content: Text(
-                                                                              FFLocalizations.of(context).getVariableText(
-                                                                                enText: 'Your order is below the delivery minimum. Add more items to enable delivery.',
-                                                                                frText: 'Votre commande est inférieure au minimum de livraison. Ajoutez des articles pour activer la livraison.',
-                                                                              ),
-                                                                              style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).textprimary,
-                                                                              ),
-                                                                            ),
-                                                                            duration: Duration(milliseconds: 4000),
-                                                                            backgroundColor: FlutterFlowTheme.of(context).secondary,
-                                                                          ),
-                                                                        );
-                                                                        return;
-                                                                      }
-                                                                    }
-                                                                    _model.farmUser =
-                                                                        await UsersRecord.getDocumentOnce(
-                                                                            pageViewFarmsRecord.userRef!);
-                                                                    _model.cart =
-                                                                        await queryCartRecordOnce(
-                                                                      parent:
-                                                                          currentUserReference,
-                                                                    );
-                                                                    _model.cartdata =
-                                                                        await actions
-                                                                            .farmOrderItems(
-                                                                      _model
-                                                                          .cart!
-                                                                          .toList(),
-                                                                    );
-                                                                    for (int loop1Index =
-                                                                            0;
-                                                                        loop1Index <=
-                                                                            _model.cartdata!.length -
-                                                                                1;
-                                                                        loop1Index++) {
-                                                                      final currentLoop1Item =
-                                                                          _model
-                                                                              .cartdata![loop1Index];
-                                                                      _model.farmn =
-                                                                          await FarmsRecord.getDocumentOnce(
-                                                                              currentLoop1Item.farmRef!);
-
-                                                                      // P1-08 follow-up: only create a new order when no pending
-                                                                      // ambiguous-payment order is being reused.
-                                                                      if (_model.order ==
-                                                                          null) {
-                                                                        var orderRecordReference = OrderRecord
-                                                                            .collection
-                                                                            .doc();
-                                                                        await orderRecordReference
-                                                                            .set({
-                                                                        ...createOrderRecordData(
-                                                                          userRef:
-                                                                              currentUserReference,
-                                                                          note:
-                                                                              widget.note,
-                                                                          voucherCode:
-                                                                              widget.vouchercode,
-                                                                          serviceFee:
-                                                                              functions.platformFeeAmount(
-                                                                            functions.cartTotal(containerCartRecordList.toList()),
-                                                                            stackConfigRecord?.platformFeeOrNull,
-                                                                            stackConfigRecord?.platformFeeCapOrNull,
-                                                                          ),
-                                                                          deliveryTip:
-                                                                              widget.tip,
-                                                                          deliveryFee:
-                                                                              0.0,
-                                                                          tax:
-                                                                              0.0,
-                                                                          createdAt:
-                                                                              getCurrentTimestamp,
-                                                                          delievryMethod:
-                                                                              _model.deliveryMethod,
-                                                                          delievryTime:
-                                                                              _model.selectedDeliveryTime,
-                                                                          orderStatus:
-                                                                              'Pending',
-                                                                          farmRef:
-                                                                              currentLoop1Item.farmRef,
-                                                                          subTotal: functions.ordertotal(currentLoop1Item
-                                                                              .cartItems
-                                                                              .toList()),
-                                                                          isSuspend:
-                                                                              false,
-                                                                          isFarmPickup:
-                                                                              _model.farmpickup == 'yes',
-                                                                          username:
-                                                                              currentUserDisplayName,
-                                                                          balancePaymentStatus:
-                                                                              'pending',
-                                                                          isVariableWeightOrder: currentLoop1Item
-                                                                              .cartItems
-                                                                              .where((e) => e.isVariableWeight == true)
-                                                                              .toList()
-                                                                              .isNotEmpty,
-                                                                        ),
-                                                                        ...mapToFirestore(
-                                                                          {
-                                                                            'order_items':
-                                                                                getOrderItemsListFirestoreData(
-                                                                              currentLoop1Item.cartItems,
-                                                                            ),
-                                                                          },
-                                                                        ),
-                                                                      });
-                                                                      _model.order =
-                                                                          OrderRecord
-                                                                              .getDocumentFromData({
-                                                                        ...createOrderRecordData(
-                                                                          userRef:
-                                                                              currentUserReference,
-                                                                          note:
-                                                                              widget.note,
-                                                                          voucherCode:
-                                                                              widget.vouchercode,
-                                                                          serviceFee:
-                                                                              functions.platformFeeAmount(
-                                                                            functions.cartTotal(containerCartRecordList.toList()),
-                                                                            stackConfigRecord?.platformFeeOrNull,
-                                                                            stackConfigRecord?.platformFeeCapOrNull,
-                                                                          ),
-                                                                          deliveryTip:
-                                                                              widget.tip,
-                                                                          deliveryFee:
-                                                                              0.0,
-                                                                          tax:
-                                                                              0.0,
-                                                                          createdAt:
-                                                                              getCurrentTimestamp,
-                                                                          delievryMethod:
-                                                                              _model.deliveryMethod,
-                                                                          delievryTime:
-                                                                              _model.selectedDeliveryTime,
-                                                                          orderStatus:
-                                                                              'Pending',
-                                                                          farmRef:
-                                                                              currentLoop1Item.farmRef,
-                                                                          subTotal: functions.ordertotal(currentLoop1Item
-                                                                              .cartItems
-                                                                              .toList()),
-                                                                          isSuspend:
-                                                                              false,
-                                                                          isFarmPickup:
-                                                                              _model.farmpickup == 'yes',
-                                                                          username:
-                                                                              currentUserDisplayName,
-                                                                          balancePaymentStatus:
-                                                                              'pending',
-                                                                          isVariableWeightOrder: currentLoop1Item
-                                                                              .cartItems
-                                                                              .where((e) => e.isVariableWeight == true)
-                                                                              .toList()
-                                                                              .isNotEmpty,
-                                                                        ),
-                                                                        ...mapToFirestore(
-                                                                          {
-                                                                            'order_items':
-                                                                                getOrderItemsListFirestoreData(
-                                                                              currentLoop1Item.cartItems,
-                                                                            ),
-                                                                          },
-                                                                        ),
-                                                                       }, orderRecordReference);
-                                                                     }
-                                                                     }
-                                                                     _model.dynamicvendor =
-                                                                        await actions
-                                                                            .manageproductlist(
-                                                                      _model
-                                                                          .cart
-                                                                          ?.toList(),
-                                                                      _model.farmpickup ==
-                                                                                  'no' &&
-                                                                              _model
-                                                                                      .isAgricodeliver !=
-                                                                                  true
-                                                                          ? _model
-                                                                              .fee
-                                                                              ?.toString()
-                                                                          : '0',
-                                                                    );
-                                                                    _model.config =
-                                                                        await queryConfigRecordOnce(
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ).then((s) =>
-                                                                            s.firstOrNull);
-                                                                     _model.paymentResult =
-                                                                         await actions
-                                                                             .flutterStripeDirect(
-                                                                       context,
-                                                                      (valueOrDefault<
-                                                                              double>(
-                                                                            functions.totalsales(containerCartRecordList.toList()),
-                                                                            0.0,
-                                                                          ) +
-                                                                          (_model.farmpickup ==
-                                                                                  'no'
-                                                                              ? valueOrDefault<
-                                                                                  double>(
-                                                                                  _model.fee,
-                                                                                  0.0,
-                                                                                )
-                                                                              : 0.0) +
-                                                                          (functions.platformFeeAmount(
-                                                                              functions.cartTotal(containerCartRecordList.toList()),
-                                                                              stackConfigRecord?.platformFeeOrNull,
-                                                                              stackConfigRecord?.platformFeeCapOrNull))),
-                                                                      _model
-                                                                          .order
-                                                                          ?.reference
-                                                                          .id,
-                                                                      currentUserReference
-                                                                          ?.id,
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .languageCode,
-                                                                      _model
-                                                                          .dynamicvendor
-                                                                          ?.toList(),
-                                                                      containerCartRecordList
-                                                                          .firstOrNull
-                                                                          ?.farmRef
-                                                                          ?.id,
-                                                                    );
-                                                                     if (_model
-                                                                         .paymentResult ==
-                                                                         'success') {
-                                                                       // Payment confirmed: clear any pending ambiguous-payment state.
-                                                                       FFAppState().pendingpaymentdocument =
-                                                                           null;
-                                                                       for (int loop2Index =
-                                                                              0;
-                                                                          loop2Index <=
-                                                                              _model.cart!.length - 1;
-                                                                          loop2Index++) {
-                                                                        final currentLoop2Item =
-                                                                            _model.cart![loop2Index];
-                                                                        if (_model.farmpickup ==
-                                                                            'yes') {
-                                                                          await _model
-                                                                              .order!
-                                                                              .reference
-                                                                              .update(createOrderRecordData(
-                                                                            deliveryFee:
-                                                                                0.0,
-                                                                            totalAmmount: (valueOrDefault<double>(
-                                                                                  functions.totalsales(containerCartRecordList.toList()),
-                                                                                  0.0,
-                                                                                ) +
-                                                                                (_model.farmpickup == 'no'
-                                                                                    ? valueOrDefault<double>(
-                                                                                        _model.fee,
-                                                                                        0.0,
-                                                                                      )
-                                                                                    : 0.0) +
-                                                                                (functions.platformFeeAmount(
-                                                                                  functions.cartTotal(containerCartRecordList.toList()),
-                                                                                  stackConfigRecord?.platformFeeOrNull,
-                                                                                  stackConfigRecord?.platformFeeCapOrNull,
-                                                                                ))),
-                                                                            isAgricoDeliver:
-                                                                                false,
-                                                                          ));
-                                                                          for (int loop3Index = 0;
-                                                                              loop3Index <= _model.order!.orderItems.length - 1;
-                                                                              loop3Index++) {
-                                                                            final currentLoop3Item =
-                                                                                _model.order!.orderItems[loop3Index];
-
-                                                                            await currentLoop3Item.productRef!.update({
-                                                                              ...mapToFirestore(
-                                                                                {
-                                                                                  'stock_quantity': FieldValue.increment(-(currentLoop3Item.totalItems)),
-                                                                                  'sold': FieldValue.increment(currentLoop3Item.totalItems),
-                                                                                },
-                                                                              ),
-                                                                            });
-                                                                          }
-                                                                        } else {
-                                                                          await _model
-                                                                              .order!
-                                                                              .reference
-                                                                              .update(createOrderRecordData(
-                                                                            delievryAddress:
-                                                                                updateDeliveryAdressStruct(
-                                                                              (currentUserDocument?.deliveryAddresses.toList() ?? []).elementAtOrNull(valueOrDefault(currentUserDocument?.defaultAdress, 0)),
-                                                                              clearUnsetFields: false,
-                                                                            ),
-                                                                            deliveryFee:
-                                                                                _model.fee,
-                                                                            totalAmmount: (valueOrDefault<double>(
-                                                                                  functions.totalsales(containerCartRecordList.toList()),
-                                                                                  0.0,
-                                                                                ) +
-                                                                                (_model.farmpickup == 'no'
-                                                                                    ? valueOrDefault<double>(
-                                                                                        _model.fee,
-                                                                                        0.0,
-                                                                                      )
-                                                                                    : 0.0) +
-                                                                                (functions.platformFeeAmount(
-                                                                                  functions.cartTotal(containerCartRecordList.toList()),
-                                                                                  stackConfigRecord?.platformFeeOrNull,
-                                                                                  stackConfigRecord?.platformFeeCapOrNull,
-                                                                                ))),
-                                                                            isAgricoDeliver:
-                                                                                _model.isAgricodeliver,
-                                                                          ));
-                                                                          for (int loop4Index = 0;
-                                                                              loop4Index <= _model.order!.orderItems.length - 1;
-                                                                              loop4Index++) {
-                                                                            final currentLoop4Item =
-                                                                                _model.order!.orderItems[loop4Index];
-
-                                                                            await currentLoop4Item.productRef!.update({
-                                                                              ...mapToFirestore(
-                                                                                {
-                                                                                  'stock_quantity': FieldValue.increment(-(currentLoop4Item.totalItems)),
-                                                                                  'sold': FieldValue.increment(currentLoop4Item.totalItems),
-                                                                                },
-                                                                              ),
-                                                                            });
-                                                                          }
-                                                                        }
-
-                                                                        triggerPushNotification(
-                                                                          notificationTitle:
-                                                                              '🔔 New Order Received!',
-                                                                          notificationText:
-                                                                              'You have a new order (ORD-${_model.order?.reference.id} from ${currentUserDisplayName}. Open the app to approve and start preparing.',
-                                                                          userRefs: [
-                                                                            _model.farmn!.userRef!
-                                                                          ],
-                                                                          initialPageName:
-                                                                              'Ordermanegement',
-                                                                          parameterData: {},
-                                                                        );
-
-                                                                        await _model
-                                                                            .farmn!
-                                                                            .userRef!
-                                                                            .update({
-                                                                          ...mapToFirestore(
-                                                                            {
-                                                                              'notification_count': FieldValue.increment(1),
-                                                                            },
-                                                                          ),
-                                                                        });
-                                                                        FFAppState().orderdocument = _model
-                                                                            .order
-                                                                            ?.reference;
-                                                                        FFAppState().cartdocument =
-                                                                            currentLoop2Item.reference;
-                                                                        safeSetState(
-                                                                            () {});
-                                                                      }
-
-                                                                      context
-                                                                          .goNamed(
-                                                                        CheckoutfinalWidget
-                                                                            .routeName,
-                                                                        queryParameters:
-                                                                            {
-                                                                          'orderRef':
-                                                                              serializeParam(
-                                                                            FFAppState().orderdocument,
-                                                                            ParamType.DocumentReference,
-                                                                          ),
-                                                                        }.withoutNulls,
+                                                                      await _startCheckoutV1Payment(
+                                                                        farm: pageViewFarmsRecord,
+                                                                        selectedCart: containerCartRecordList,
+                                                                        selectedAddress: selectedDeliveryAddress,
                                                                       );
-
-                                                                      if (FFAppState()
-                                                                              .cartdocument !=
-                                                                          null) {
-                                                                        await FFAppState()
-                                                                            .cartdocument!
-                                                                            .delete();
-                                                                      }
-                                                                     } else if (_model
-                                                                         .paymentResult ==
-                                                                         'ambiguous') {
-                                                                       // P1-08 follow-up: the payment outcome is UNKNOWN (e.g. the
-                                                                       // request timed out after the backend may have already
-                                                                       // created/confirmed a PaymentIntent). Do NOT report
-                                                                       // failure, do NOT delete the order and do NOT create a
-                                                                       // new one — the SAME order is reused on retry so the
-                                                                       // backend can recover the original PaymentIntent.
-                                                                       ScaffoldMessenger.of(
-                                                                               context)
-                                                                           .showSnackBar(
-                                                                         SnackBar(
-                                                                           content:
-                                                                               Text(
-                                                                             FFLocalizations.of(context).getVariableText(
-                                                                               enText: 'We could not confirm your payment status. Your order is saved — please try again shortly, or check your payment history before retrying.',
-                                                                               frText: 'Nous n\'avons pas pu confirmer votre paiement. Votre commande est enregistrée — réessayez dans un instant, ou vérifiez votre historique de paiement avant de réessayer.',
-                                                                             ),
-                                                                             style:
-                                                                                 TextStyle(
-                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                             ),
-                                                                           ),
-                                                                           duration:
-                                                                               Duration(milliseconds: 6000),
-                                                                           backgroundColor:
-                                                                               FlutterFlowTheme.of(context).primary,
-                                                                         ),
-                                                                       );
-                                                                       FFAppState().pendingpaymentdocument =
-                                                                           _model
-                                                                               .order
-                                                                               ?.reference;
-                                                                     } else {
-                                                                       // Confirmed failure or cancellation: clean up the fresh order.
-                                                                       FFAppState().pendingpaymentdocument =
-                                                                           null;
-                                                                       ScaffoldMessenger.of(
-                                                                               context)
-                                                                           .showSnackBar(
-                                                                         SnackBar(
-                                                                           content:
-                                                                               Text(
-                                                                             FFLocalizations.of(context).getVariableText(
-                                                                               enText: 'payment failed ',
-                                                                               frText: 'échec du paiement',
-                                                                             ),
-                                                                             style:
-                                                                                 TextStyle(
-                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                             ),
-                                                                           ),
-                                                                           duration:
-                                                                               Duration(milliseconds: 4000),
-                                                                           backgroundColor:
-                                                                               FlutterFlowTheme.of(context).primary,
-                                                                         ),
-                                                                       );
-                                                                       await _model
-                                                                           .order!
-                                                                           .reference
-                                                                           .delete();
-                                                                     }
-
-                                                                    safeSetState(
-                                                                        () {});
+                                                                    } catch (_) {
+                                                                      _showCheckoutMessage(
+                                                                        en: 'We could not complete the checkout. Your order is saved — please retry shortly.',
+                                                                        fr: "Nous n'avons pas pu finaliser la commande. Votre commande est enregistrée — veuillez réessayer.",
+                                                                      );
                                                                     } finally {
-                                                                      // Re-enable Pay in every exit path (success, failure,
-                                                                      // cancellation, timeout).
-                                                                      _model.isPaymentInProgress =
-                                                                          false;
-                                                                      safeSetState(
-                                                                          () {});
+                                                                      _model.isPaymentInProgress = false;
+                                                                      safeSetState(() {});
                                                                     }
                                                                   },
+
                                                                   text: FFLocalizations.of(
                                                                           context)
                                                                       .getText(

@@ -6,17 +6,21 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+
 import 'package:flutter/material.dart' hide RepeatMode;
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+
 import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '/backend/checkout/checkout_v1_client.dart';
 import '/backend/currency/currency_utils.dart';
 
 // ---------------------------------------------------------------------------
@@ -71,10 +75,13 @@ Future<String> flutterStripeDirect(
   List<dynamic>? vendors,
   String? producerId, {
   bool isBalancePayment = false,
+  bool useOrderTotals = false,
+  String? quoteId,
 }) async {
   try {
-    final paymentCurrency =
-        currencyCodeForLanguage(FFLocalizations.of(context).languageCode);
+    final paymentCurrency = currencyCodeForLanguage(
+      FFLocalizations.of(context).languageCode,
+    );
 
     final currentUser = FirebaseAuth.instance.currentUser;
     final String? idToken = await currentUser?.getIdToken(true);
@@ -92,15 +99,24 @@ Future<String> flutterStripeDirect(
             "currency": paymentCurrency,
             "locale": locallanguage,
           }
-        : <String, dynamic>{
-            "amount": amount ?? 0,
-            "locale": locallanguage,
-            "customerId": customerId,
-            "orderId": orderId,
-            "producerId": producerId,
-            "currency": paymentCurrency,
-            "vendors": vendors,
-          };
+        : useOrderTotals
+            // Backend-owned checkout-v1: the server derives every amount from the
+            // persisted order/quote. Never send amount, vendors or producer ID.
+            ? buildCheckoutV1PaymentIntentRequest(
+                orderId: orderId ?? '',
+                currency: paymentCurrency,
+                locale: locallanguage,
+                quoteId: quoteId,
+              )
+            : <String, dynamic>{
+                "amount": amount ?? 0,
+                "locale": locallanguage,
+                "customerId": customerId,
+                "orderId": orderId,
+                "producerId": producerId,
+                "currency": paymentCurrency,
+                "vendors": vendors,
+              };
 
     final response = await http
         .post(
@@ -125,7 +141,23 @@ Future<String> flutterStripeDirect(
           ? (decodedBody['code'] ?? decodedBody['error'] ?? '')
           : '';
       print(
-          '$endpointPath failed (${response.statusCode})${errorDetail.toString().isEmpty ? '' : ': $errorDetail'}');
+        '$endpointPath failed (${response.statusCode})${errorDetail.toString().isEmpty ? '' : ': $errorDetail'}',
+      );
+      if (useOrderTotals) {
+        // Checkout-v1 uses the shared server error classifier. Unknown/empty
+        // codes stay retryable and never become a definitive failure.
+        final outcome = classifyCheckoutErrorCode(errorDetail.toString());
+        if (outcome == CheckoutPaymentOutcome.alreadyConfirmed) {
+          return 'alreadyConfirmed';
+        }
+        if (outcome == CheckoutPaymentOutcome.needsSupport) {
+          return 'needsSupport';
+        }
+        if (outcome == CheckoutPaymentOutcome.terminal) {
+          return 'failed';
+        }
+        return 'ambiguous';
+      }
       // 5xx or an unresolved/ambiguous backend payment state is not a
       // confirmed failure: classify it ambiguously so the caller never
       // treats it as "payment failed" and never deletes/recreates orders.
@@ -156,6 +188,11 @@ Future<String> flutterStripeDirect(
             ? 'refundDue'
             : 'noPaymentRequired';
       }
+    } else if (useOrderTotals && responseData['alreadyConfirmed'] == true) {
+      // Checkout-v1: the webhook may already have finalized the payment.
+      // The caller still waits for the backend-owned order state.
+      print("Payment already confirmed for this checkout order");
+      return 'alreadyConfirmed';
     } else if (responseData['alreadyConfirmed'] == true) {
       // P1-08 farm-checkout follow-up: backend confirmed the payment is
       // already done; the caller completes without presenting the sheet.
@@ -204,7 +241,7 @@ Future<String> flutterStripeDirect(
     await Stripe.instance.presentPaymentSheet();
 
     print("PaymentSheet completed");
-    return isBalancePayment ? 'sheetCompleted' : 'success';
+    return isBalancePayment || useOrderTotals ? 'sheetCompleted' : 'success';
   } on TimeoutException catch (e) {
     // Ambiguous: the backend may still have created (or completed) a
     // PaymentIntent. The caller must not report failure or recreate orders.
@@ -239,7 +276,7 @@ Future<String> flutterStripeDirect(
     //    the order.
     print('Stripe Error: ${e.error.localizedMessage}');
     if (e.error.code == FailureCode.Canceled) {
-      return isBalancePayment ? 'cancelled' : 'failed';
+      return isBalancePayment || useOrderTotals ? 'cancelled' : 'failed';
     }
     if (e.error.type == 'card_error' &&
         e.error.declineCode != null &&

@@ -1,5 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/checkout/checkout_v1_client.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -11,9 +13,11 @@ class DeleteconfirmationdialogWidget extends StatefulWidget {
   const DeleteconfirmationdialogWidget({
     super.key,
     required this.address,
+    required this.addressIndex,
   });
 
   final DeliveryAdressStruct? address;
+  final int addressIndex;
 
   @override
   State<DeleteconfirmationdialogWidget> createState() =>
@@ -116,21 +120,36 @@ class _DeleteconfirmationdialogWidgetState
                   Expanded(
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await currentUserReference!.update({
-                          ...mapToFirestore(
-                            {
-                              'delivery_Addresses': FieldValue.arrayRemove([
-                                getDeliveryAdressFirestoreData(
-                                  updateDeliveryAdressStruct(
-                                    widget.address,
-                                    clearUnsetFields: false,
-                                  ),
-                                  true,
-                                )
-                              ]),
-                            },
-                          ),
-                        });
+                        final result = await FirebaseFirestore.instance
+                            .runTransaction<DeliveryAddressMutationResult>(
+                          (transaction) async {
+                            final snapshot = await transaction.get(
+                              currentUserReference!,
+                            );
+                            if (!snapshot.exists) {
+                              return DeliveryAddressMutationResult.userMissing;
+                            }
+                            final latestUser =
+                                UsersRecord.fromSnapshot(snapshot);
+                            return applyDeleteDeliveryAddress(
+                              user: latestUser,
+                              index: widget.addressIndex,
+                              expected: widget.address,
+                              write: (data) => transaction.update(
+                                currentUserReference!,
+                                data,
+                              ),
+                            );
+                          },
+                        );
+                        if (result != DeliveryAddressMutationResult.updated) {
+                          await actions.toast(
+                            context,
+                            'This address changed. Please refresh the list and try again.',
+                          );
+                          context.pop();
+                          return;
+                        }
                         context.pop();
                       },
                       text: FFLocalizations.of(context).getText(

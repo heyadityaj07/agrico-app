@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/checkout/checkout_v1_client.dart';
 import '/components/deleteconfirmationdialog_widget.dart';
 import '/components/no_chat_producer_widget.dart';
 import '/components/suspend_widget.dart';
@@ -214,6 +215,11 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                         builder: (context) {
                           final deliveryAdress =
                               containerUsersRecord.deliveryAddresses.toList();
+                          final resolvedDefaultIndex =
+                              resolveDeliveryAddressIndex(
+                            addressCount: deliveryAdress.length,
+                            defaultIndex: containerUsersRecord.defaultAdress,
+                          );
                           if (deliveryAdress.isEmpty) {
                             return NoChatProducerWidget(
                               message: FFLocalizations.of(context).getText(
@@ -297,8 +303,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                                                 ],
                                               ),
                                             ),
-                                            if (containerUsersRecord
-                                                    .defaultAdress ==
+                                            if (resolvedDefaultIndex ==
                                                 deliveryAdressIndex)
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -400,6 +405,8 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                                                                   EditaddressWidget(
                                                                 editaddressdata:
                                                                     deliveryAdressItem,
+                                                                editaddressindex:
+                                                                    deliveryAdressIndex,
                                                               ),
                                                             ),
                                                           );
@@ -422,8 +429,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                                if (containerUsersRecord
-                                                        .defaultAdress !=
+                                                if (resolvedDefaultIndex !=
                                                     deliveryAdressIndex)
                                                   Align(
                                                     alignment:
@@ -482,6 +488,8 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                                                                         DeleteconfirmationdialogWidget(
                                                                       address:
                                                                           deliveryAdressItem,
+                                                                      addressIndex:
+                                                                          deliveryAdressIndex,
                                                                     ),
                                                                   ),
                                                                 );
@@ -576,8 +584,7 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                                                       ),
                                             ),
                                           ),
-                                        if (containerUsersRecord
-                                                .defaultAdress !=
+                                        if (resolvedDefaultIndex !=
                                             deliveryAdressIndex)
                                           Column(
                                             mainAxisSize: MainAxisSize.max,
