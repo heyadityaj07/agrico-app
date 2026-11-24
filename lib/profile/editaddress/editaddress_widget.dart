@@ -155,12 +155,17 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     FlutterFlowIconButton(
@@ -197,11 +202,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -276,13 +286,20 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primarytheme,
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -309,11 +326,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -327,13 +349,19 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           isDense: true,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Satoshi',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
+                                              ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             'hpzxy6so' /* Enter Label */,
@@ -342,11 +370,17 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textsecondary,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -395,11 +429,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
@@ -429,11 +468,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -447,13 +491,19 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           isDense: true,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Satoshi',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
+                                              ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             '0dqqs09e' /* Enter Full Name */,
@@ -462,11 +512,17 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textsecondary,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -515,11 +571,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
@@ -549,11 +610,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -569,13 +635,19 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           isDense: true,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Satoshi',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
+                                              ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             'onpxs8y0' /* Enter apartment, floor, or lan... */,
@@ -584,11 +656,17 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textsecondary,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -637,11 +715,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
@@ -671,11 +754,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -690,13 +778,19 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           isDense: true,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Satoshi',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
+                                              ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             'j2ycw46k' /* Enter postal code */,
@@ -705,11 +799,17 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textsecondary,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -758,11 +858,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         maxLines: null,
                                         minLines: 1,
@@ -800,11 +905,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -844,11 +954,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -862,13 +977,19 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           isDense: true,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Satoshi',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
+                                              ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             '39gwhgs4' /* Enter Instructions (optional) */,
@@ -877,11 +998,17 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textsecondary,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -930,11 +1057,16 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
@@ -982,12 +1114,18 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 0.0,
                                           borderSide: BorderSide(
@@ -1019,6 +1157,7 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                               await actions.toast(
                                                 context,
                                                 'Enter Postal Code',
+                                                Colors.red,
                                               );
                                               return;
                                             }
@@ -1032,6 +1171,7 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                 frText:
                                                     'Veuillez saisir un numéro de téléphone valide.',
                                               ),
+                                              Colors.red,
                                             );
                                             return;
                                           }
@@ -1113,12 +1253,18 @@ class _EditaddressWidgetState extends State<EditaddressWidget> {
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 0.0,
                                           borderRadius:

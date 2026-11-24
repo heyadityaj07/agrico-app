@@ -67,8 +67,11 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                         '4wlj6guu' /* 🌿 Agricoo Delivery – Coming S... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -99,8 +102,11 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                     'hsuklm7z' /* We are preparing the launch of... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -109,9 +115,11 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                   'jbpth4u8' /* • Receiving multiple producers... */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       fontSize: 12.0,
                       letterSpacing: 0.0,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                     ),
               ),
               Text(
@@ -119,9 +127,11 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                   'cvzelehe' /* • Simplified logistics */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       fontSize: 12.0,
                       letterSpacing: 0.0,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                     ),
               ),
               Text(
@@ -129,9 +139,11 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                   'nkaks2g1' /* • Extended selling areas */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       fontSize: 12.0,
                       letterSpacing: 0.0,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                     ),
               ),
               Padding(
@@ -141,9 +153,12 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                     '7ithehfi' /* • Optimized transport costs */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         fontSize: 12.0,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -158,8 +173,11 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                     'gu8b3fr7' /* The service will be activated ... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -174,9 +192,12 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                     '3xu90t2c' /* 👉 Would you like to be notifi... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -214,10 +235,13 @@ class _FlavorsPlanWidgetState extends State<FlavorsPlanWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primarytheme,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: FlutterFlowTheme.of(context).alternate,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                       ),
                   elevation: 0.0,
                   borderRadius: BorderRadius.circular(8.0),

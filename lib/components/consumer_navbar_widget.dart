@@ -120,12 +120,15 @@ class _ConsumerNavbarWidgetState extends State<ConsumerNavbarWidget> {
                           'ilek9clf' /* Home */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: widget!.index == 0
                                   ? FlutterFlowTheme.of(context).primarytheme
                                   : FlutterFlowTheme.of(context).textsecondary,
                               fontSize: widget!.index == 0 ? 18.0 : 16.0,
                               letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ),
@@ -172,12 +175,15 @@ class _ConsumerNavbarWidgetState extends State<ConsumerNavbarWidget> {
                           '8vh5of1n' /* Map */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: widget!.index == 1
                                   ? FlutterFlowTheme.of(context).primarytheme
                                   : FlutterFlowTheme.of(context).textsecondary,
                               fontSize: widget!.index == 1 ? 18.0 : 16.0,
                               letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ),
@@ -223,12 +229,15 @@ class _ConsumerNavbarWidgetState extends State<ConsumerNavbarWidget> {
                           '8571g23a' /* Chat */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: widget!.index == 2
                                   ? FlutterFlowTheme.of(context).primarytheme
                                   : FlutterFlowTheme.of(context).textsecondary,
                               fontSize: widget!.index == 2 ? 18.0 : 16.0,
                               letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ),
@@ -298,11 +307,16 @@ class _ConsumerNavbarWidgetState extends State<ConsumerNavbarWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color:
                                               FlutterFlowTheme.of(context).card,
                                           fontSize: 10.0,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -316,12 +330,15 @@ class _ConsumerNavbarWidgetState extends State<ConsumerNavbarWidget> {
                         '2prll3qn' /* Cart */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: widget!.index == 3
                                 ? FlutterFlowTheme.of(context).primarytheme
                                 : FlutterFlowTheme.of(context).textsecondary,
                             fontSize: widget!.index == 3 ? 18.0 : 16.0,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -366,12 +383,15 @@ class _ConsumerNavbarWidgetState extends State<ConsumerNavbarWidget> {
                           'c51tyr90' /* Profile */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: widget!.index == 4
                                   ? FlutterFlowTheme.of(context).primarytheme
                                   : FlutterFlowTheme.of(context).textsecondary,
                               fontSize: widget!.index == 4 ? 18.0 : 16.0,
                               letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ),

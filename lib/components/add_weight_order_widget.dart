@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,10 +17,16 @@ class AddWeightOrderWidget extends StatefulWidget {
     super.key,
     this.orderRef,
     this.productRef,
+    this.minWeight,
+    this.maxWeight,
+    this.itemIndex,
   });
 
   final DocumentReference? orderRef;
   final DocumentReference? productRef;
+  final double? minWeight;
+  final double? maxWeight;
+  final int? itemIndex;
 
   @override
   State<AddWeightOrderWidget> createState() => _AddWeightOrderWidgetState();
@@ -78,8 +85,11 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                         'lasqzwp3' /* Product weight */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                     InkWell(
@@ -112,16 +122,22 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelMediumIsCustom,
                                 ),
                         hintText: FFLocalizations.of(context).getText(
                           '38vhln6u' /* Enter Product Weight */,
                         ),
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelMediumIsCustom,
                                 ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -156,8 +172,11 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       maxLines: null,
                       keyboardType: (FFKeyboardType.decimal).flutterValue,
@@ -167,6 +186,22 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                           .asValidator(context),
                     ),
                   ),
+                ),
+                Text(
+                  FFLocalizations.of(context).getVariableText(
+                    enText:
+                        'The customer will receive a payment request after all variable-weight products have confirmed weights.',
+                    frText:
+                        'Le client recevra une demande de paiement après la confirmation du poids de tous les produits vendus au poids.',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodySmall.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodySmallFamily,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                      ),
                 ),
                 Align(
                   alignment: AlignmentDirectional(0.0, -1.0),
@@ -179,13 +214,71 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                             !_model.formKey.currentState!.validate()) {
                           return;
                         }
-                        await actions.updateOrderActualWeight(
-                          context,
-                          widget!.orderRef!.path,
-                          widget!.productRef!.path,
-                          _model.actualWeightInputTextController.text,
-                        );
-                        Navigator.pop(context);
+                        if (functions.isWeightOutsideRange(
+                            _model.actualWeightInputTextController.text,
+                            widget!.minWeight!,
+                            widget!.maxWeight!)) {
+                          var confirmDialogResponse = await showDialog<bool>(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text(FFLocalizations.of(context)
+                                        .getVariableText(
+                                      enText: 'Weight outside selected range',
+                                      frText:
+                                          'Poids en dehors de la plage sélectionnée',
+                                    )),
+                                    content: Text(FFLocalizations.of(context)
+                                        .getVariableText(
+                                      enText:
+                                          'The entered weight is below the minimum or above the maximum for the selected product bracket. Are you sure you want to send this weight request to the customer?',
+                                      frText:
+                                          'Le poids saisi est inférieur au minimum ou supérieur au maximum de la plage sélectionnée pour ce produit. Voulez-vous vraiment envoyer cette demande de poids au client ?',
+                                    )),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, false),
+                                        child: Text(FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'Cancel',
+                                          frText: 'Annuler',
+                                        )),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, true),
+                                        child: Text(FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'Send weight request',
+                                          frText: 'Envoyer la demande de poids',
+                                        )),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ) ??
+                              false;
+                          if (confirmDialogResponse) {
+                            await actions.updateOrderActualWeight(
+                              context,
+                              widget!.orderRef!.path,
+                              widget!.productRef!.path,
+                              _model.actualWeightInputTextController.text,
+                              widget!.itemIndex!,
+                            );
+                            Navigator.pop(context);
+                          }
+                        } else {
+                          await actions.updateOrderActualWeight(
+                            context,
+                            widget!.orderRef!.path,
+                            widget!.productRef!.path,
+                            _model.actualWeightInputTextController.text,
+                            widget!.itemIndex!,
+                          );
+                          Navigator.pop(context);
+                        }
                       },
                       text: FFLocalizations.of(context).getText(
                         'vif6oghs' /* Add */,
@@ -197,13 +290,17 @@ class _AddWeightOrderWidgetState extends State<AddWeightOrderWidget> {
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primarytheme,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Satoshi',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).titleSmallFamily,
+                              color: FlutterFlowTheme.of(context).alternate,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
+                            ),
                         elevation: 0.0,
                         borderRadius: BorderRadius.circular(8.0),
                       ),

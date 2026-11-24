@@ -146,23 +146,15 @@ bool _isSupportedLocale(Locale locale) {
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
-    'ai7ralmk': {
+    'gra8kxai': {
       'en': 'Search by name, product, or location',
-      'fr': 'Recherche par nom, produit ou lieu',
+      'fr': '',
     },
     'yakvvh3d': {
       'en': 'Top Products',
       'fr': 'Meilleurs produits',
     },
     'j7kg3yv5': {
-      'en': 'See all',
-      'fr': 'Voir tout',
-    },
-    'g86cwtgu': {
-      'en': 'Along your route',
-      'fr': 'Sur votre route',
-    },
-    '44rmwyod': {
       'en': 'See all',
       'fr': 'Voir tout',
     },
@@ -214,13 +206,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ndho1cpl': {
       'en': 'Welcome to Agricou 🌾',
-      'fr': 'Bienvenue chez Agricoo 🌾',
+      'fr': 'Bienvenue à Agricou 🌾',
     },
     'j38olewa': {
       'en':
           'Local food, straight from the source. Discover nearby farmers and buy directly from local producers.',
       'fr':
-          'Les produits locaux, directement à la source. Découvrez les producteurs près de chez vous et achetez directement auprès d’eux.',
+          'Des produits locaux, directement du producteur. Découvrez les agriculteurs de votre région et achetez directement auprès des producteurs locaux.',
     },
     '8lz5af46': {
       'en': 'Next',
@@ -228,17 +220,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ybl7bnnq': {
       'en': 'Skip',
-      'fr': 'Passer',
+      'fr': 'Sauter',
     },
     '7vkiupws': {
       'en': 'Local food, along your way.',
-      'fr': 'Les producteurs locaux sur votre trajet.',
+      'fr': 'Dégustez les produits locaux en chemin.',
     },
     'z0gzhjd0': {
       'en':
           'Find local producers along your route and plan a convenient pickup.',
       'fr':
-          'Trouvez des producteurs sur votre itinéraire et prévoyez facilement votre retrait.',
+          'Trouvez des producteurs locaux le long de votre itinéraire et planifiez un point de retrait pratique.',
     },
     'put8qk9w': {
       'en': 'Next',
@@ -246,17 +238,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'te3zhikt': {
       'en': 'Skip',
-      'fr': 'Passer',
+      'fr': 'Sauter',
     },
     '8rv94tkq': {
       'en': 'Order local. Pick up simply.',
-      'fr': 'Commandez local. Récupérez simplement.',
+      'fr': 'Commandez local. Récupérez facilement.',
     },
     '942j4dl9': {
       'en':
           'Order ahead and collect fresh products directly from the producer.',
       'fr':
-          'Commandez à l\'avance et récupérez vos produits directement auprès du producteur.',
+          'Commandez à l\'avance et récupérez vos produits frais directement chez le producteur.',
     },
     '31fx1hfx': {
       'en': 'Get Started',
@@ -271,11 +263,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'el1kub40': {
       'en': 'Welcome back!',
-      'fr': 'Ravi de vous revoir!',
+      'fr': 'Content de te revoir!',
     },
     'pzjblwwk': {
       'en': 'Sign in to continue to Agricou',
-      'fr': 'Connectez-vous pour continuer sur Agricou',
+      'fr': 'Connectez-vous pour continuer vers Agricou',
     },
     'i5bd4qy4': {
       'en': 'Email',
@@ -315,7 +307,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nu2wy22o': {
       'en': 'New to Agricou?  Create an account: ',
-      'fr': 'Nouveau ici ?',
+      'fr': 'Vous découvrez Agricou ? Créez un compte :',
     },
     'nl23q85j': {
       'en': ' Sign up',
@@ -396,15 +388,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'We\'ve sent you a verification link. Please check your inbox and verify your email address to activate your account.',
       'fr':
-          'Si votre adresse e-mail est enregistrée, vous recevrez prochainement des instructions.',
+          'Nous vous avons envoyé un lien de vérification. Veuillez consulter votre boîte de réception et vérifier votre adresse courriel pour activer votre compte.',
     },
     'trizwxkr': {
       'en': 'I\'ve verified my email',
-      'fr': 'D\'accord',
+      'fr': 'J\'ai vérifié mon adresse e-mail',
     },
     'wpb4tvrs': {
       'en': 'Resend verification email',
-      'fr': 'D\'accord',
+      'fr': 'Renvoyer l\'e-mail de vérification',
     },
     '6saq6qmz': {
       'en': 'Home',
@@ -448,7 +440,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'at4ghctt': {
       'en': 'I agree to the ',
-      'fr': 'En vous inscrivant, vous acceptez nos conditions générales.',
+      'fr': 'J\'accepte',
     },
     'z5wvjph6': {
       'en': 'Terms of Service ',
@@ -456,7 +448,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8cltzvvs': {
       'en': 'and acknowledge the       ',
-      'fr': 'et',
+      'fr': 'et reconnaître le',
     },
     'imfcex6y': {
       'en': 'Privacy Policy',
@@ -464,11 +456,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'a6ge6hnw': {
       'en': 'I agree to the Producer ',
-      'fr': 'En vous inscrivant, vous acceptez nos conditions générales.',
+      'fr': 'J\'accepte la proposition du producteur',
     },
     'c0sw16yx': {
       'en': 'Terms & Conditions ',
-      'fr': 'Conditions d\'utilisation',
+      'fr': 'Conditions générales',
     },
     '814e9mi2': {
       'en': 'Create Account',
@@ -535,7 +527,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '69q3mcea': {
       'en': 'Sell my products directly to local customers',
-      'fr': 'Vendez vos produits directement aux consommateurs',
+      'fr': 'Vendre mes produits directement aux clients locaux',
     },
     'rg18qlw1': {
       'en': 'I’m a Consumer',
@@ -544,7 +536,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'kblruoqb': {
       'en': 'Discover local products and buy directly from producers',
       'fr':
-          'Découvrez des produits locaux et achetez directement aux producteurs',
+          'Découvrez les produits locaux et achetez directement auprès des producteurs',
     },
     'axjq2n4u': {
       'en': 'Continue',
@@ -560,10 +552,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'bfjdr7fv': {
       'en': 'Organic',
       'fr': 'Organique',
-    },
-    'xgvykmi1': {
-      'en': '4.5 km • 0.2 lbs CO₂ saved',
-      'fr': '4,5 km • 0,2 lb de CO₂ économisé',
     },
     '6tap2z6j': {
       'en': '\$',
@@ -651,11 +639,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jd8jdtqu': {
       'en': 'Choose a weight bracket',
-      'fr': '',
+      'fr': 'Choisissez une catégorie de poids',
     },
     '712ejhno': {
       'en': 'Live Pricing Breakdown',
-      'fr': '',
+      'fr': 'Détail des prix en direct',
     },
     'zyb0xsv9': {
       'en': 'Origin:',
@@ -766,7 +754,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8mfchhko': {
       'en': 'Break',
-      'fr': 'Du lundi au vendredi',
+      'fr': 'Casser',
     },
     '28obpcaq': {
       'en': 'Contact',
@@ -900,99 +888,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Keep shopping',
       'fr': 'Continuez vos achats',
     },
-    '12kd80r7': {
-      'en': 'Voucher code',
-      'fr': 'Code de réduction',
-    },
-    'w6raf6jr': {
-      'en': 'Apply a voucher',
-      'fr': 'Utiliser un bon d\'achat',
-    },
-    'v42f8c2h': {
-      'en': 'Add a note (optional)',
-      'fr': 'Ajouter une note (facultatif)',
-    },
-    'hu7eoscx': {
-      'en': 'Add instructions',
-      'fr': 'Ajouter des instructions',
-    },
     'pn0y3wya': {
       'en': 'Order Summary',
       'fr': 'Résumé de la commande',
     },
-    '3h0zszq6': {
-      'en': 'Subtotal',
-      'fr': 'Total',
-    },
-    's5upk5ku': {
-      'en': 'Service Fee',
-      'fr': 'Frais de service',
-    },
-    'x4hwy2qo': {
-      'en': '\$1.20',
-      'fr': '1,20 \$',
-    },
-    'cseix1nk': {
-      'en': 'Driver Tip',
-      'fr': 'Conseils aux conducteurs',
-    },
-    't7hdymy5': {
-      'en': 'Add tip',
-      'fr': 'Ajouter un pourboire',
-    },
-    '9mu92j0t': {
-      'en': 'Enter Tip Ammount',
-      'fr': 'Saisissez le montant du pourboire',
-    },
-    '5b1o6kg3': {
-      'en': 'Delivery Fee',
-      'fr': 'Frais de livraison',
-    },
-    'a4k6bgyv': {
-      'en': '\$2.00',
-      'fr': '2,00 \$',
-    },
-    'h1iky0sz': {
-      'en': 'Taxes',
-      'fr': 'Impôts',
-    },
-    'qymt3ngb': {
-      'en': '\$1.10',
-      'fr': '1,10 \$',
-    },
     'q0pku5c5': {
       'en': 'Subtotal',
-      'fr': 'Payer',
+      'fr': 'Total',
     },
     '9ghizzdt': {
       'en': '\$',
       'fr': '\$',
     },
     's066btzn': {
-      'en': '€',
-      'fr': '€',
-    },
-    'bdy251bd': {
-      'en': 'To Platform Fees',
-      'fr': 'Frais de plateforme',
-    },
-    'wf3w6fs7': {
-      'en': '\$',
-      'fr': '\$',
-    },
-    'o7f6q430': {
-      'en': '€',
-      'fr': '€',
-    },
-    'gzo8m73f': {
-      'en': 'Total',
-      'fr': 'Total',
-    },
-    '3yo2vzji': {
-      'en': '\$',
-      'fr': '\$',
-    },
-    'zl1uuu9z': {
       'en': '€',
       'fr': '€',
     },
@@ -1033,11 +941,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fw9wspbp': {
       'en': 'Agricoo delivery',
-      'fr': 'Livraison par Agricou',
+      'fr': 'Livraison Agricoo',
     },
     'nrvkre0y': {
       'en': 'Delivered by the Uber directly',
-      'fr': 'Livré directement par la ferme',
+      'fr': 'Livraison directe par Uber',
     },
     'wv0pqcfi': {
       'en': 'Charges',
@@ -1087,12 +995,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Bill Details',
       'fr': 'Détails de la facture',
     },
+    '51xq2vx4': {
+      'en': 'Product',
+      'fr': 'Produit',
+    },
     '5qs1gck7': {
-      'en': 'To Pay',
-      'fr': 'Payer',
+      'en': 'Items charged now',
+      'fr': 'Articles facturés maintenant',
     },
     'bkj5vxmz': {
-      'en': 'To Platform Fees',
+      'en': 'Platform fee',
       'fr': 'Frais de plateforme',
     },
     'ri8vndzg': {
@@ -1132,8 +1044,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '1,10 \$',
     },
     'ld0mqmw0': {
-      'en': 'Total Pay',
-      'fr': 'Rémunération totale',
+      'en': 'Total to pay now',
+      'fr': 'Total à payer maintenant',
     },
     'h1ary2hl': {
       'en': '\$',
@@ -1202,6 +1114,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     't9xpudyi': {
       'en': '€',
       'fr': '€',
+    },
+    'xbld6r12': {
+      'en': 'Review weights & pay',
+      'fr': 'Examiner les poids et la rémunération',
     },
     'shk98rve': {
       'en': 'Click And Collect',
@@ -1378,6 +1294,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Stripe Payment',
       'fr': 'Paiement Stripe',
     },
+    '9n4n9lh4': {
+      'en': 'Review weights & pay',
+      'fr': 'Examiner les poids et la rémunération',
+    },
+    'rdlr5vhe': {
+      'en': 'No additional payment is required.',
+      'fr': 'Aucun paiement supplémentaire n\'est requis.',
+    },
     'vvpsn1l2': {
       'en': 'Contact',
       'fr': 'Contact',
@@ -1389,29 +1313,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Myfavorites
   {
-    'zll5gg8c': {
+    'qn22l15c': {
       'en': 'Products',
-      'fr': 'Produits',
+      'fr': '',
     },
-    'ufwhunit': {
+    'w4gqzakq': {
       'en': 'Farms',
-      'fr': 'Fermes',
+      'fr': '',
     },
-    'de7ouydt': {
+    'dl3hkrfy': {
       'en': 'View Farm',
-      'fr': 'Voir la ferme',
-    },
-    'l5d5u4ux': {
-      'en': '\$',
-      'fr': '\$',
-    },
-    '3a3foko5': {
-      'en': '€',
-      'fr': '€',
-    },
-    'f8l50fru': {
-      'en': 'No favorites yet',
-      'fr': 'Pas encore de favoris',
+      'fr': '',
     },
     'ecm4ig0d': {
       'en': 'My Favorites',
@@ -1541,7 +1453,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'eumcs29k': {
       'en': 'display_name is required',
-      'fr': '',
+      'fr': 'Le nom d\'affichage est obligatoire.',
     },
     'gwsbs75t': {
       'en': 'Please choose an option from the dropdown',
@@ -1549,7 +1461,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'f80zxtn7': {
       'en': 'email is required',
-      'fr': '',
+      'fr': 'L\'adresse e-mail est requise.',
     },
     '0ws2vvox': {
       'en': 'Please choose an option from the dropdown',
@@ -1557,7 +1469,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rih1sdbx': {
       'en': 'phone_number is required',
-      'fr': '',
+      'fr': 'Le numéro de téléphone est requis.',
     },
     'fausi90e': {
       'en': 'Enter Valid Phone Number',
@@ -1565,7 +1477,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cfp5kc2w': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     'mxa4jkze': {
       'en': 'Home',
@@ -1648,13 +1560,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sdgmj0i2': {
       'en': 'How do I place an order?',
-      'fr': 'Je n\'ai pas reçu cette commande',
+      'fr': 'Comment passer une commande ?',
     },
     'xomscn2t': {
       'en':
           'Browse products from local farms, select a product, add it to your cart, choose your delivery address, and complete the payment at checkout.',
       'fr':
-          'Ma commande est indiquée comme livrée, mais je ne l\'ai pas reçue.',
+          'Parcourez les produits des fermes locales, sélectionnez un produit, ajoutez-le à votre panier, choisissez votre adresse de livraison et effectuez le paiement lors du passage à la caisse.',
     },
     'c0xzjh5n': {
       'en': ' ',
@@ -1666,7 +1578,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8v9x1lkc': {
       'en': 'How can I track my order?',
-      'fr': 'La portion de ce(s) produit(s) n\'est pas adéquate',
+      'fr': 'Comment puis-je suivre ma commande ?',
     },
     'zr68v6mv': {
       'en': ' ',
@@ -1675,11 +1587,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'c4iupjd0': {
       'en':
           'Open My Orders from your profile and select the order to view its current status and details.',
-      'fr': 'Bonjour le monde',
+      'fr':
+          'Ouvrez la section « Mes commandes » de votre profil et sélectionnez la commande pour consulter son statut actuel et ses détails.',
     },
     'p8leytn3': {
       'en': 'What should I do if my order is missing or marked as delivered?',
-      'fr': 'Signaler un incident de sécurité',
+      'fr':
+          'Que dois-je faire si ma commande est manquante ou marquée comme livrée ?',
     },
     'uitbpgyh': {
       'en': ' ',
@@ -1688,11 +1602,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '663btxao': {
       'en':
           'Check your delivery location and contact details first. If you still cannot find the order, contact Agricoo support with your order number.',
-      'fr': 'Bonjour le monde',
+      'fr':
+          'Vérifiez d\'abord votre adresse de livraison et vos coordonnées. Si vous ne trouvez toujours pas votre commande, contactez le service client d\'Agricoo en indiquant votre numéro de commande.',
     },
     'uhd1m8qq': {
       'en': 'What if an item is missing, damaged, or incorrect?',
-      'fr': 'Il manque quelques articles dans ma commande',
+      'fr':
+          'Que se passe-t-il si un article est manquant, endommagé ou incorrect ?',
     },
     '0l2op626': {
       'en': ' ',
@@ -1701,11 +1617,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '8qj7ec0z': {
       'en':
           'Contact support and provide your order number, the affected product name, and a clear photo when possible. Our team will review the issue.',
-      'fr': 'Bonjour le monde',
+      'fr':
+          'Contactez le service client et indiquez votre numéro de commande, le nom du produit concerné et, si possible, une photo nette. Notre équipe examinera le problème.',
     },
     'xrexzqh3': {
       'en': 'How do I contact a farmer?',
-      'fr': 'Les articles livrés sont incorrects ou erronés.',
+      'fr': 'Comment puis-je contacter un agriculteur ?',
     },
     'ur47pcpu': {
       'en': ' ',
@@ -1714,11 +1631,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'zoyu89t9': {
       'en':
           'Open the farmer’s profile or your order conversation and use the chat option to send the farmer a message.',
-      'fr': 'Bonjour le monde',
+      'fr':
+          'Ouvrez le profil du producteur ou la conversation relative à votre commande et utilisez l\'option de chat pour lui envoyer un message.',
     },
     'fjdfjwzo': {
       'en': 'How do I change my profile information',
-      'fr': 'La qualité des articles est médiocre.',
+      'fr': 'Comment puis-je modifier les informations de mon profil ?',
     },
     'gx3pbpv2': {
       'en': ' ',
@@ -1727,11 +1645,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ksttic8o': {
       'en':
           'Go to Profile → Personal Information to update your name, phone number, profile picture, and other available details.',
-      'fr': 'Bonjour le monde',
+      'fr':
+          'Rendez-vous dans Profil → Informations personnelles pour mettre à jour votre nom, votre numéro de téléphone, votre photo de profil et autres informations disponibles.',
     },
     'i9hcudug': {
       'en': 'Item(s) has spillage issue',
-      'fr': 'Le(s) produit(s) présente(nt) un problème de déversement',
+      'fr': 'Le(s) article(s) présente(nt) un problème de déversement',
     },
     'm46x6pp3': {
       'en': ' ',
@@ -1777,76 +1696,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // refundStatus
   {
-    'yxlkiovv': {
-      'en': 'Completed Refunds',
-      'fr': 'Remboursements effectués',
-    },
-    '03gdusq7': {
-      'en': 'Green Valley Farm',
-      'fr': 'Ferme de Green Valley',
-    },
-    'cv1d83f6': {
-      'en': 'To: UPI',
-      'fr': 'À : UPI',
-    },
-    'jv2c1k7i': {
-      'en': 'Completed On: 18 Apr 2025',
-      'fr': 'Terminé le : 18 avril 2025',
-    },
-    'v45lt3iu': {
-      'en': 'Deliverd',
-      'fr': 'Livré',
-    },
-    'gwfqeua9': {
-      'en': '€120',
-      'fr': '120 €',
-    },
-    'kf039wky': {
-      'en': 'Order ID: #123741852963',
-      'fr': 'Numéro de commande : #123741852963',
-    },
-    '5tu0kkyn': {
-      'en': 'Agricoo has initiated your refund',
-      'fr': 'Agricoo a lancé votre remboursement',
-    },
-    '6tbp5fna': {
-      'en': 'Completed On: 18 Apr 2025',
-      'fr': 'Terminé le : 18 avril 2025',
-    },
-    '95oqzre3': {
-      'en': 'Your bank has processed your refund',
-      'fr': 'Votre banque a traité votre remboursement.',
-    },
-    '0ql5asdc': {
-      'en': 'Completed On: 18 Apr 2025',
-      'fr': 'Terminé le : 18 avril 2025',
-    },
-    'k9tz997a': {
-      'en': 'Refund credited to your account',
-      'fr': 'Remboursement crédité sur votre compte',
-    },
-    'ekncel5p': {
-      'en': 'Completed On: 18 Apr 2025',
-      'fr': 'Terminé le : 18 avril 2025',
-    },
-    'oqcxzbb3': {
-      'en': 'Did this Issue resolved',
-      'fr': 'Ce problème a-t-il été résolu ?',
-    },
-    '1uuv3dvc': {
-      'en': 'YES',
-      'fr': 'OUI',
-    },
-    'pmmr9mea': {
-      'en': 'NO',
-      'fr': 'NON',
-    },
-    'dajev5e7': {
-      'en': 'Show Older Refunds',
-      'fr': 'Afficher les remboursements plus anciens',
-    },
     'mq8133kf': {
-      'en': 'Refund Status',
+      'en': 'Refunds',
       'fr': 'État du remboursement',
     },
     's1mmzn19': {
@@ -1923,7 +1774,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nfiog5qi': {
       'en': 'Item(s) quality is poor',
-      'fr': 'La qualité des articles est médiocre.',
+      'fr': 'La qualité du/des article(s) est médiocre',
     },
     'mgu0opsm': {
       'en': ' ',
@@ -1935,7 +1786,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2mdrbilr': {
       'en': 'Item(s) has spillage issue',
-      'fr': 'Le(s) article(s) présente(nt) un problème de déversement',
+      'fr': 'Le(s) produit(s) présente(nt) un problème de déversement',
     },
     '0323nj9c': {
       'en': ' ',
@@ -2008,7 +1859,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'These Terms of Service (“Terms”) govern access to and use of the Agricou mobile application, website and related services (collectively, the “Platform”).\n\nThe Platform is operated by The Pinnacle Of Data, 8 rue d’Hyères, 31240 L’Union, France (“Agricou”, “we”, “us” or “our”).\n\nBy creating an account or using Agricou, you agree to these Terms. If you do not agree, you must not use the Platform.',
       'fr':
-          'Les présentes Conditions Générales d’Utilisation (« Conditions ») régissent l’accès et l’utilisation de l’application mobile, du site web et des services associés d’Agricou (collectivement, la « Plateforme »). \n\nLa Plateforme est exploitée par The Pinnacle Of Data, 8 rue d’Hyères, 31240 L’Union, France (« Agricou », « nous », « notre »). \n\nEn créant un compte ou en utilisant Agricou, vous acceptez les présentes Conditions. Si vous ne les acceptez pas, vous ne devez pas utiliser la Plateforme.',
+          'Les présentes Conditions Générales d’Utilisation (« Conditions ») régissent l’accès et l’utilisation de l’application mobile, du site web et des services associés d’Agricou (collectivement, la « Plateforme »). La Plateforme est exploitée par The Pinnacle Of Data, 8 rue d’Hyères, 31240 L’Union, France (« Agricou », « nous », « notre »). En créant un compte ou en utilisant Agricou, vous acceptez les présentes Conditions. Si vous ne les acceptez pas, vous ne devez pas utiliser la Plateforme.',
     },
     'a3smlkq4': {
       'en': '1. Role of Agricou',
@@ -2018,7 +1869,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou is a digital platform designed to connect consumers with independent farmers, producers and other professional sellers (“Sellers”).\n\nUnless expressly stated otherwise, products displayed on Agricou are offered and sold by the Seller identified on the relevant product or order page, and not by The Pinnacle Of Data.\n\nAgricou provides the technical services facilitating discovery, ordering, payment and, where available, access to pickup or third-party delivery options.\n\nEach Seller remains responsible, to the extent required by applicable law, for the products it offers, the accuracy of its listings, prices, availability, regulatory compliance, product information, preparation and fulfilment of orders, and its obligations toward consumers.\n\nNothing in these Terms excludes any responsibility that Agricou is legally required to assume.',
       'fr':
-          'Agricou est une plateforme numérique conçue pour mettre en relation les consommateurs avec des agriculteurs, producteurs et autres vendeurs professionnels indépendants (« Vendeurs »). \n\nSauf mention contraire, les produits affichés sur Agricou sont proposés et vendus par le Vendeur identifié sur la page produit ou de commande correspondante, et non par The Pinnacle Of Data. \n\nAgricou fournit les services techniques facilitant la recherche, la commande, le paiement et, le cas échéant, l\'accès aux options de retrait en magasin ou de livraison par un tiers. \n\nChaque Vendeur demeure responsable, dans la mesure permise par la loi applicable, des produits qu\'il propose, de l\'exactitude de ses annonces, des prix, de la disponibilité, de la conformité réglementaire, des informations produits, de la préparation et de l\'exécution des commandes, ainsi que de ses obligations envers les consommateurs. \n\nAucune disposition des présentes Conditions générales n\'exclut les responsabilités qu\'Agricou est légalement tenue d\'assumer.',
+          'Agricou est une plateforme numérique conçue pour mettre en relation les consommateurs avec des agriculteurs, producteurs et autres vendeurs professionnels indépendants (« Vendeurs »). Sauf mention contraire, les produits affichés sur Agricou sont proposés et vendus par le Vendeur identifié sur la page produit ou de commande correspondante, et non par The Pinnacle Of Data. Agricou fournit les services techniques facilitant la recherche, la commande, le paiement et, le cas échéant, l\'accès aux options de retrait en magasin ou de livraison par un tiers. Chaque Vendeur demeure responsable, dans la mesure permise par la loi applicable, des produits qu\'il propose, de l\'exactitude de ses annonces, des prix, de la disponibilité, de la conformité réglementaire, des informations produits, de la préparation et de l\'exécution des commandes, ainsi que de ses obligations envers les consommateurs. Aucune disposition des présentes Conditions générales n\'exclut les responsabilités qu\'Agricou est légalement tenue d\'assumer.',
     },
     'clrwdlh7': {
       'en': '2. Eligibility and Accounts',
@@ -2028,7 +1879,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'You must have the legal capacity required to enter into a contract to use services involving purchases.\n\nYou agree to provide accurate, current and complete information and to keep your account information up to date.\n\nYou are responsible for maintaining the confidentiality of your login credentials and for activity performed through your account, except where such activity results from circumstances for which you are not legally responsible.\n\nYou must notify Agricou promptly if you suspect unauthorized access to your account.\n\nAgricou may restrict, suspend or terminate an account in the event of fraud, attempted fraud, unlawful activity, abuse of the Platform, serious or repeated violation of these Terms, security risk, or where required by law, subject to any applicable legal requirements.',
       'fr':
-          'Vous devez avoir la capacité juridique requise pour conclure un contrat d\'utilisation de services impliquant des achats. \n\nVous vous engagez à fournir des informations exactes, actuelles et complètes et à maintenir à jour les informations de votre compte. \n\nVous êtes responsable de la confidentialité de vos identifiants de connexion et des activités effectuées via votre compte, sauf si ces activités résultent de circonstances dont vous n\'êtes pas légalement responsable. \n\nVous devez informer Agricou sans délai si vous soupçonnez un accès non autorisé à votre compte. \n\nAgricou peut restreindre, suspendre ou résilier un compte en cas de fraude, de tentative de fraude, d\'activité illégale, d\'abus de la Plateforme, de violation grave ou répétée des présentes Conditions, de risque pour la sécurité ou lorsque la loi l\'exige, sous réserve des dispositions légales applicables.',
+          'Vous devez avoir la capacité juridique requise pour conclure un contrat d\'utilisation de services impliquant des achats. Vous vous engagez à fournir des informations exactes, actuelles et complètes et à maintenir à jour les informations de votre compte. Vous êtes responsable de la confidentialité de vos identifiants de connexion et des activités effectuées via votre compte, sauf si ces activités résultent de circonstances dont vous n\'êtes pas légalement responsable. Vous devez informer Agricou sans délai si vous soupçonnez un accès non autorisé à votre compte. Agricou peut restreindre, suspendre ou résilier un compte en cas de fraude, de tentative de fraude, d\'activité illégale, d\'abus de la Plateforme, de violation grave ou répétée des présentes Conditions, de risque pour la sécurité ou lorsque la loi l\'exige, sous réserve des dispositions légales applicables.',
     },
     'boynsa4i': {
       'en': '3. Sellers and Product Information',
@@ -2038,7 +1889,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Sellers using Agricou operate independently and are responsible for complying with the laws and regulations applicable to their activities and products.\n\nSellers are responsible for ensuring that product descriptions, origin information, composition, allergens, quantity, price, availability and any other legally required information they provide are accurate and not misleading.\n\nAgricou may perform checks, request supporting documents, remove or restrict listings, or suspend a Seller where reasonably necessary for legal compliance, consumer protection, security or enforcement of Platform rules.\n\nSuch measures do not constitute a general guarantee by Agricou regarding the quality, safety, legality or conformity of every product offered by Sellers.',
       'fr':
-          'Les vendeurs utilisant Agricou opèrent de manière indépendante et sont responsables du respect des lois et réglementations applicables à leurs activités et produits. \n\nIls doivent s\'assurer que les descriptions de produits, les informations relatives à l\'origine, la composition, les allergènes, la quantité, le prix, la disponibilité et toute autre information légalement requise sont exactes et non trompeuses. \n\nAgricou peut effectuer des vérifications, demander des justificatifs, supprimer ou restreindre des annonces, ou suspendre un vendeur lorsque cela est raisonnablement nécessaire pour le respect des obligations légales, la protection des consommateurs, la sécurité ou l\'application du règlement de la plateforme. \n\nCes mesures ne constituent pas une garantie générale d\'Agricou quant à la qualité, la sécurité, la légalité ou la conformité de tous les produits proposés par les vendeurs.',
+          'Les vendeurs utilisant Agricou opèrent de manière indépendante et sont responsables du respect des lois et réglementations applicables à leurs activités et produits. Ils doivent s\'assurer que les descriptions de produits, les informations relatives à l\'origine, la composition, les allergènes, la quantité, le prix, la disponibilité et toute autre information légalement requise sont exactes et non trompeuses. Agricou peut effectuer des vérifications, demander des justificatifs, supprimer ou restreindre des annonces, ou suspendre un vendeur lorsque cela est raisonnablement nécessaire pour le respect des obligations légales, la protection des consommateurs, la sécurité ou l\'application du règlement de la plateforme. Ces mesures ne constituent pas une garantie générale d\'Agricou quant à la qualité, la sécurité, la légalité ou la conformité de tous les produits proposés par les vendeurs.',
     },
     '3uuaao15': {
       'en': '4. Orders',
@@ -2048,7 +1899,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'When placing an order, you must review the product description, Seller information, quantities, price, applicable fees, pickup or delivery conditions and total amount before confirming the order.\n\nAn order may be subject to availability and acceptance in accordance with the information presented during checkout.\n\nIf an ordered product becomes unavailable, the consumer will be informed and any amount due for an unavailable product will be handled in accordance with applicable law and the relevant order conditions.\n\nAgricou may cancel or restrict a transaction where reasonably necessary because of suspected fraud, manifest pricing or technical errors, legal requirements, product safety concerns or Platform security.\n\nNothing in this section limits mandatory consumer rights.',
       'fr':
-          'Lors de la passation d\'une commande, vous devez vérifier la description du produit, les informations sur le vendeur, les quantités, le prix, les frais applicables, les conditions de retrait ou de livraison et le montant total avant de confirmer la commande. \n\nUne commande peut être soumise à disponibilité et à acceptation conformément aux informations présentées lors du paiement. \n\nSi un produit commandé devient indisponible, le consommateur en sera informé et tout montant dû pour un produit indisponible sera traité conformément à la loi applicable et aux conditions de commande pertinentes. \n\nAgricou peut annuler ou restreindre une transaction lorsque cela est raisonnablement nécessaire en cas de suspicion de fraude, d\'erreurs manifestes de prix ou techniques, d\'obligations légales, de problèmes de sécurité des produits ou de sécurité de la plateforme. \n\nRien dans cette section ne limite les droits obligatoires du consommateur.',
+          'Lors de la passation d\'une commande, vous devez vérifier la description du produit, les informations sur le vendeur, les quantités, le prix, les frais applicables, les conditions de retrait ou de livraison et le montant total avant de confirmer la commande. Une commande peut être soumise à disponibilité et à acceptation conformément aux informations présentées lors du paiement. Si un produit commandé devient indisponible, le consommateur en sera informé et tout montant dû pour un produit indisponible sera traité conformément à la loi applicable et aux conditions de commande pertinentes. Agricou peut annuler ou restreindre une transaction lorsque cela est raisonnablement nécessaire en cas de suspicion de fraude, d\'erreurs manifestes de prix ou techniques, d\'obligations légales, de problèmes de sécurité des produits ou de sécurité de la plateforme. Rien dans cette section ne limite les droits obligatoires du consommateur.',
     },
     'jwuatz9d': {
       'en': '5. Prices, Fees and Payments',
@@ -2058,7 +1909,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Prices, applicable taxes, delivery charges and other fees payable by the consumer will be displayed before the order is confirmed.\n\nPayments may be processed through independent payment service providers. Use of such services may also be subject to the provider’s applicable terms and privacy practices.\n\nAgricou does not store complete payment-card details where payment information is processed directly by an authorized payment service provider.\n\nAny Agricou service fee applicable to an order will be disclosed before payment.',
       'fr':
-          'Les prix, les taxes applicables, les frais de livraison et autres frais à la charge du consommateur seront affichés avant la confirmation de la commande. \n\nLes paiements peuvent être traités par des prestataires de services de paiement indépendants. L\'utilisation de ces services peut également être soumise aux conditions générales et à la politique de confidentialité du prestataire. \n\nAgricou ne conserve pas l\'intégralité des informations relatives aux cartes de paiement lorsque ces informations sont traitées directement par un prestataire de services de paiement agréé. \n\nTous les frais de service Agricou applicables à une commande seront indiqués avant le paiement.',
+          'Les prix, les taxes applicables, les frais de livraison et autres frais à la charge du consommateur seront affichés avant la confirmation de la commande. Les paiements peuvent être traités par des prestataires de services de paiement indépendants. L\'utilisation de ces services peut également être soumise aux conditions générales et à la politique de confidentialité du prestataire. Agricou ne conserve pas l\'intégralité des informations relatives aux cartes de paiement lorsque ces informations sont traitées directement par un prestataire de services de paiement agréé. Tous les frais de service Agricou applicables à une commande seront indiqués avant le paiement.',
     },
     'xejxcf6a': {
       'en': '6. Pickup and Delivery',
@@ -2068,7 +1919,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Depending on the Seller and location, orders may be collected directly from a Seller or delivered through an available delivery service.\n\nWhere delivery is performed by an independent third-party delivery provider, that provider is responsible for performing its service in accordance with its contractual and legal obligations.\n\nEstimated collection or delivery times may be affected by circumstances outside Agricou’s reasonable control.\n\nNothing in these Terms limits liability that cannot legally be excluded.',
       'fr':
-          'Selon le vendeur et le lieu, les commandes peuvent être retirées directement auprès du vendeur ou livrées par un service de livraison disponible. \n\nLorsque la livraison est effectuée par un prestataire de livraison tiers indépendant, ce dernier est responsable de l\'exécution de sa prestation conformément à ses obligations contractuelles et légales. \n\nLes délais estimés de retrait ou de livraison peuvent être affectés par des circonstances indépendantes de la volonté d\'Agricou. \n\nAucune disposition des présentes Conditions générales ne limite la responsabilité qui ne peut être légalement exclue.',
+          'Selon le vendeur et le lieu, les commandes peuvent être retirées directement auprès du vendeur ou livrées par un service de livraison disponible. Lorsque la livraison est effectuée par un prestataire de livraison tiers indépendant, ce dernier est responsable de l\'exécution de sa prestation conformément à ses obligations contractuelles et légales. Les délais estimés de retrait ou de livraison peuvent être affectés par des circonstances indépendantes de la volonté d\'Agricou. Aucune disposition des présentes Conditions générales ne limite la responsabilité qui ne peut être légalement exclue.',
     },
     'yucw8d7x': {
       'en': '7. Cancellations, Refunds and Consumer Rights',
@@ -2078,7 +1929,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Cancellation, return, refund and withdrawal rights depend on the nature of the product, the Seller, the stage of the order and applicable law.\n\nConsumers retain all mandatory rights granted to them by applicable consumer-protection legislation.\n\nCertain products may legally be excluded from the right of withdrawal, including, where the statutory requirements are met, goods liable to deteriorate or expire rapidly.\n\nWhere a statutory right of withdrawal applies, information concerning its exercise will be provided in accordance with applicable law.\n\nRefunds, where due, will be processed in accordance with applicable law and the applicable order conditions.',
       'fr':
-          'Les droits d\'annulation, de retour, de remboursement et de rétractation dépendent de la nature du produit, du vendeur, de l\'état d\'avancement de la commande et de la législation applicable. \n\nLes consommateurs conservent tous les droits impératifs que leur confère la législation applicable en matière de protection des consommateurs. \n\nCertains produits peuvent être légalement exclus du droit de rétractation, notamment, lorsque les conditions légales sont remplies, les biens susceptibles de se détériorer ou de se périmer rapidement. \n\nLorsqu\'un droit de rétractation légal s\'applique, les informations relatives à son exercice seront fournies conformément à la législation applicable. \n\nLes remboursements, le cas échéant, seront traités conformément à la législation applicable et aux conditions générales de vente.',
+          'Les droits d\'annulation, de retour, de remboursement et de rétractation dépendent de la nature du produit, du vendeur, de l\'état d\'avancement de la commande et de la législation applicable. Les consommateurs conservent tous les droits impératifs que leur confère la législation applicable en matière de protection des consommateurs. Certains produits peuvent être légalement exclus du droit de rétractation, notamment, lorsque les conditions légales sont remplies, les biens susceptibles de se détériorer ou de se périmer rapidement. Lorsqu\'un droit de rétractation légal s\'applique, les informations relatives à son exercice seront fournies conformément à la législation applicable. Les remboursements, le cas échéant, seront traités conformément à la législation applicable et aux conditions générales de vente.',
     },
     'cdc7vj53': {
       'en': '8. Product Quality, Safety and Complaints',
@@ -2088,7 +1939,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Sellers are responsible for ensuring that products they place on the market comply with applicable requirements, including applicable food-safety, hygiene, labelling and consumer-information requirements.\n\nConsumers should follow storage, preparation, consumption, allergen and safety information supplied with a product.\n\nIf a product is damaged, incorrect, unsafe, non-compliant or otherwise problematic, the consumer should report the issue promptly through Agricou or the available support channel.\n\nAgricou may facilitate communications between the consumer and Seller and may take measures concerning a listing or Seller account where appropriate.\n\nThis does not affect any legal remedies available to the consumer.',
       'fr':
-          'Les vendeurs sont responsables de s\'assurer que les produits qu\'ils mettent sur le marché sont conformes aux exigences applicables, notamment en matière de sécurité alimentaire, d\'hygiène, d\'étiquetage et d\'information des consommateurs. \n\nLes consommateurs doivent suivre les instructions de conservation, de préparation, de consommation, d\'allergènes et de sécurité fournies avec le produit. \n\nSi un produit est endommagé, non conforme, dangereux, dangereux ou présente tout autre problème, le consommateur doit le signaler rapidement à Agricou ou via le canal d\'assistance disponible. \n\nAgricou peut faciliter la communication entre le consommateur et le vendeur et prendre les mesures appropriées concernant une annonce ou un compte vendeur. \n\nCeci n\'affecte en rien les recours légaux dont dispose le consommateur.',
+          'Les vendeurs sont responsables de s\'assurer que les produits qu\'ils mettent sur le marché sont conformes aux exigences applicables, notamment en matière de sécurité alimentaire, d\'hygiène, d\'étiquetage et d\'information des consommateurs. Les consommateurs doivent suivre les instructions de conservation, de préparation, de consommation, d\'allergènes et de sécurité fournies avec le produit. Si un produit est endommagé, non conforme, dangereux, dangereux ou présente tout autre problème, le consommateur doit le signaler rapidement à Agricou ou via le canal d\'assistance disponible. Agricou peut faciliter la communication entre le consommateur et le vendeur et prendre les mesures appropriées concernant une annonce ou un compte vendeur. Ceci n\'affecte en rien les recours légaux dont dispose le consommateur.',
     },
     '7eomvy4u': {
       'en': '9. Prohibited Conduct',
@@ -2098,7 +1949,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Users may not use Agricou to commit or facilitate unlawful or fraudulent activity; impersonate another person; provide deliberately false information; interfere with Platform security or operation; attempt unauthorized access; distribute malicious software; manipulate reviews or transactions; harass other users or Sellers; or offer, purchase or distribute products prohibited by applicable law or Agricou policies.\n\nAgricou may take proportionate measures to protect users, Sellers, the Platform and third parties.',
       'fr':
-          'Les utilisateurs ne peuvent pas utiliser Agricou pour commettre ou faciliter une activité illégale ou frauduleuse ; usurper l’identité d’une autre personne ; fournir des informations délibérément fausses ; interférer avec la sécurité ou le fonctionnement de la plateforme ; tenter un accès non autorisé ; distribuer des logiciels malveillants ; manipuler les avis ou les transactions ; harceler d’autres utilisateurs ou vendeurs ; ou proposer, acheter ou distribuer des produits interdits par la loi applicable ou les politiques d’Agricou. \n\nAgricou peut prendre des mesures proportionnées pour protéger les utilisateurs, les vendeurs, la plateforme et les tiers.',
+          'Les utilisateurs ne peuvent pas utiliser Agricou pour commettre ou faciliter une activité illégale ou frauduleuse ; usurper l’identité d’une autre personne ; fournir des informations délibérément fausses ; interférer avec la sécurité ou le fonctionnement de la plateforme ; tenter un accès non autorisé ; distribuer des logiciels malveillants ; manipuler les avis ou les transactions ; harceler d’autres utilisateurs ou vendeurs ; ou proposer, acheter ou distribuer des produits interdits par la loi applicable ou les politiques d’Agricou. Agricou peut prendre des mesures proportionnées pour protéger les utilisateurs, les vendeurs, la plateforme et les tiers.',
     },
     't84ee0qo': {
       'en': '10. Reviews and User Content',
@@ -2108,7 +1959,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Where Agricou permits reviews, photographs, comments or other content, users remain responsible for the content they submit.\n\nContent must not be unlawful, fraudulent, defamatory, threatening, infringing, misleading or otherwise violate the rights of third parties.\n\nAgricou may moderate or remove content where permitted or required by law and in accordance with its applicable moderation policies.\n\nBy submitting content, you grant Agricou the rights reasonably necessary to host, reproduce and display that content for operation and promotion of the Platform, subject to applicable law.',
       'fr':
-          'Lorsque Agricou autorise les avis, les photos, les commentaires ou tout autre contenu, les utilisateurs restent responsables du contenu qu\'ils soumettent. \n\nLe contenu ne doit pas être illégal, frauduleux, diffamatoire, menaçant, contrefaisant, trompeur ou enfreindre les droits de tiers. \n\nAgricou peut modérer ou supprimer tout contenu lorsque la loi le permet ou l\'exige et conformément à ses politiques de modération applicables. \n\nEn soumettant du contenu, vous accordez à Agricou les droits raisonnablement nécessaires pour héberger, reproduire et afficher ce contenu aux fins d\'exploitation et de promotion de la Plateforme, sous réserve de la législation applicable.',
+          'Lorsque Agricou autorise les avis, les photos, les commentaires ou tout autre contenu, les utilisateurs restent responsables du contenu qu\'ils soumettent. Le contenu ne doit pas être illégal, frauduleux, diffamatoire, menaçant, contrefaisant, trompeur ou enfreindre les droits de tiers. Agricou peut modérer ou supprimer tout contenu lorsque la loi le permet ou l\'exige et conformément à ses politiques de modération applicables. En soumettant du contenu, vous accordez à Agricou les droits raisonnablement nécessaires pour héberger, reproduire et afficher ce contenu aux fins d\'exploitation et de promotion de la Plateforme, sous réserve de la législation applicable.',
     },
     'dh3sv8mw': {
       'en': '11. Third-Party Services',
@@ -2118,7 +1969,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may integrate services provided by third parties, including payment, mapping, authentication, communications and delivery services.\n\nThe availability and operation of those services may depend on their respective providers.\n\nAgricou is not responsible for a third party’s independent acts or omissions except where liability is imposed on Agricou by applicable law.\n',
       'fr':
-          'Agricou peut intégrer des services fournis par des tiers, notamment des services de paiement, de cartographie, d\'authentification, de communication et de livraison. \n\nLa disponibilité et le fonctionnement de ces services peuvent dépendre de leurs fournisseurs respectifs. \n\nAgricou n\'est pas responsable des actes ou omissions indépendants d\'un tiers, sauf lorsque la responsabilité d\'Agricou est imposée par la loi applicable.',
+          'Agricou peut intégrer des services fournis par des tiers, notamment des services de paiement, de cartographie, d\'authentification, de communication et de livraison. La disponibilité et le fonctionnement de ces services peuvent dépendre de leurs fournisseurs respectifs. Agricou n\'est pas responsable des actes ou omissions indépendants d\'un tiers, sauf lorsque la responsabilité d\'Agricou est imposée par la loi applicable.',
     },
     'u8tmd3xe': {
       'en': '12. Platform Availability',
@@ -2128,7 +1979,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou aims to maintain a reliable and secure Platform but does not guarantee uninterrupted or error-free availability.\n\nThe Platform may occasionally be unavailable because of maintenance, updates, security measures, technical incidents or circumstances outside Agricou’s reasonable control.\n\nAgricou may modify or update Platform functionality, provided that mandatory contractual and consumer rights are respected.',
       'fr':
-          'Agricou s’efforce de maintenir une plateforme fiable et sécurisée, mais ne garantit pas une disponibilité ininterrompue ni sans erreur. \n\nLa plateforme peut être occasionnellement indisponible en raison de travaux de maintenance, de mises à jour, de mesures de sécurité, d’incidents techniques ou de circonstances indépendantes de la volonté d’Agricou. \n\nAgricou peut modifier ou mettre à jour les fonctionnalités de la plateforme, sous réserve du respect des droits contractuels et des droits des consommateurs.',
+          'Agricou s’efforce de maintenir une plateforme fiable et sécurisée, mais ne garantit pas une disponibilité ininterrompue ni sans erreur. La plateforme peut être occasionnellement indisponible en raison de travaux de maintenance, de mises à jour, de mesures de sécurité, d’incidents techniques ou de circonstances indépendantes de la volonté d’Agricou. Agricou peut modifier ou mettre à jour les fonctionnalités de la plateforme, sous réserve du respect des droits contractuels et des droits des consommateurs.',
     },
     '3dhpeyyk': {
       'en': '13. Liability',
@@ -2138,7 +1989,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Each party remains responsible for liability imposed upon it by applicable law.\n\nTo the fullest extent permitted by applicable law, The Pinnacle Of Data is not liable for acts, omissions, representations or products of independent Sellers or third-party service providers where those matters are legally their responsibility.\n\nThe Pinnacle Of Data does not exclude or limit liability where such exclusion or limitation is prohibited by law.\n\nNothing in these Terms excludes or restricts mandatory consumer rights.',
       'fr':
-          'Chaque partie demeure responsable des obligations qui lui incombent en vertu de la loi applicable. \n\nDans toute la mesure permise par la loi applicable, The Pinnacle Of Data n\'est pas responsable des actes, omissions, déclarations ou produits de vendeurs indépendants ou de fournisseurs de services tiers lorsque ces éléments relèvent de leur responsabilité légale. \n\nThe Pinnacle Of Data n\'exclut ni ne limite sa responsabilité lorsque cette exclusion ou limitation est interdite par la loi. \n\nAucune disposition des présentes Conditions générales n\'exclut ni ne restreint les droits impératifs du consommateur.',
+          'Chaque partie demeure responsable des obligations qui lui incombent en vertu de la loi applicable. Dans toute la mesure permise par la loi applicable, The Pinnacle Of Data n\'est pas responsable des actes, omissions, déclarations ou produits de vendeurs indépendants ou de fournisseurs de services tiers lorsque ces éléments relèvent de leur responsabilité légale. The Pinnacle Of Data n\'exclut ni ne limite sa responsabilité lorsque cette exclusion ou limitation est interdite par la loi. Aucune disposition des présentes Conditions générales n\'exclut ni ne restreint les droits impératifs du consommateur.',
     },
     '8a4xzvh3': {
       'en': '14. Intellectual Property',
@@ -2148,7 +1999,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Agricou name, branding, application design, software, databases, graphics and other Platform materials belonging to The Pinnacle Of Data or its licensors are protected by applicable intellectual-property laws.\n\nExcept where expressly permitted, users may not copy, reproduce, distribute, modify, extract, commercially exploit or create derivative works from protected Agricou materials without prior authorization.\n\nNo ownership rights are transferred to users through use of the Platform.',
       'fr':
-          'Le nom Agricou, la marque, la conception de l\'application, les logiciels, les bases de données, les graphismes et autres éléments de la Plateforme appartenant à The Pinnacle Of Data ou à ses concédants de licence sont protégés par les lois applicables en matière de propriété intellectuelle. \n\nSauf autorisation expresse, les utilisateurs ne sont pas autorisés à copier, reproduire, distribuer, modifier, extraire, exploiter commercialement ou créer des œuvres dérivées à partir des éléments protégés d\'Agricou sans autorisation préalable. \n\nAucun droit de propriété n\'est transféré aux utilisateurs par l\'utilisation de la Plateforme.',
+          'Le nom Agricou, la marque, la conception de l\'application, les logiciels, les bases de données, les graphismes et autres éléments de la Plateforme appartenant à The Pinnacle Of Data ou à ses concédants de licence sont protégés par les lois applicables en matière de propriété intellectuelle. Sauf autorisation expresse, les utilisateurs ne sont pas autorisés à copier, reproduire, distribuer, modifier, extraire, exploiter commercialement ou créer des œuvres dérivées à partir des éléments protégés d\'Agricou sans autorisation préalable. Aucun droit de propriété n\'est transféré aux utilisateurs par l\'utilisation de la Plateforme.',
     },
     'o8vo6uno': {
       'en': '15. Privacy and Location Data',
@@ -2158,7 +2009,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Personal data is processed as described in the Agricou Privacy Policy.\n\nLocation permission is optional unless a particular feature technically requires location information. Users may manage permissions through their device settings.\n\nAgricou may use location information to provide location-dependent features, such as displaying nearby Sellers or relevant routes, subject to the Privacy Policy and the permissions granted by the user.',
       'fr':
-          'Les données personnelles sont traitées conformément à la Politique de confidentialité d\'Agricou. \n\nL\'autorisation de géolocalisation est facultative, sauf si une fonctionnalité particulière requiert techniquement ces informations. Les utilisateurs peuvent gérer les autorisations via les paramètres de leur appareil. \n\nAgricou peut utiliser les informations de géolocalisation pour fournir des fonctionnalités géolocalisées, telles que l\'affichage des vendeurs à proximité ou des itinéraires pertinents, sous réserve de la Politique de confidentialité et des autorisations accordées par l\'utilisateur.',
+          'Les données personnelles sont traitées conformément à la Politique de confidentialité d\'Agricou. L\'autorisation de géolocalisation est facultative, sauf si une fonctionnalité particulière requiert techniquement ces informations. Les utilisateurs peuvent gérer les autorisations via les paramètres de leur appareil. Agricou peut utiliser les informations de géolocalisation pour fournir des fonctionnalités géolocalisées, telles que l\'affichage des vendeurs à proximité ou des itinéraires pertinents, sous réserve de la Politique de confidentialité et des autorisations accordées par l\'utilisateur.',
     },
     '7g3zebyg': {
       'en': '16. Changes to these Terms',
@@ -2168,7 +2019,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may amend these Terms where necessary because of changes to the Platform, applicable law, security requirements or business operations.\n\nWhere required by law or where changes materially affect users’ contractual rights, users will receive appropriate notice before the changes take effect.\n\nThe version applicable to a transaction remains subject to applicable contractual and consumer-protection law.',
       'fr':
-          'Agricou peut modifier les présentes Conditions générales si nécessaire en raison de changements apportés à la Plateforme, à la législation applicable, aux exigences de sécurité ou à ses activités. \n\nLorsque la loi l’exige ou que les modifications affectent sensiblement les droits contractuels des utilisateurs, ces derniers seront informés avant leur entrée en vigueur. \n\nLa version applicable à une transaction reste soumise au droit contractuel et au droit de la consommation applicables.',
+          'Agricou peut modifier les présentes Conditions générales si nécessaire en raison de changements apportés à la Plateforme, à la législation applicable, aux exigences de sécurité ou à ses activités. Lorsque la loi l’exige ou que les modifications affectent sensiblement les droits contractuels des utilisateurs, ces derniers seront informés avant leur entrée en vigueur. La version applicable à une transaction reste soumise au droit contractuel et au droit de la consommation applicables.',
     },
     'vpi6y1on': {
       'en': '17. Governing Law and Disputes',
@@ -2178,7 +2029,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'These Terms are governed by French law, without depriving consumers residing in another country of mandatory protections that may apply to them under applicable law.\n\nConsumers are encouraged to contact Agricou first so that a complaint can be reviewed and an amicable solution sought.\n\nWhere applicable, consumers may also have access to an independent consumer mediation mechanism.\n\nNothing in these Terms deprives a consumer of the right to bring proceedings before a court having jurisdiction under applicable law.',
       'fr':
-          'Les présentes conditions générales sont régies par le droit français, sans pour autant priver les consommateurs résidant dans un autre pays des protections impératives dont ils peuvent bénéficier en vertu de la législation applicable. \n\nLes consommateurs sont invités à contacter Agricou en premier lieu afin que leur réclamation puisse être examinée et qu\'une solution amiable puisse être recherchée. \n\nLe cas échéant, les consommateurs peuvent également avoir accès à un mécanisme indépendant de médiation des consommateurs. \n\nAucune disposition des présentes conditions générales ne prive un consommateur du droit d\'intenter une action devant une juridiction compétente en vertu de la législation applicable.',
+          'Les présentes conditions générales sont régies par le droit français, sans pour autant priver les consommateurs résidant dans un autre pays des protections impératives dont ils peuvent bénéficier en vertu de la législation applicable. Les consommateurs sont invités à contacter Agricou en premier lieu afin que leur réclamation puisse être examinée et qu\'une solution amiable puisse être recherchée. Le cas échéant, les consommateurs peuvent également avoir accès à un mécanisme indépendant de médiation des consommateurs. Aucune disposition des présentes conditions générales ne prive un consommateur du droit d\'intenter une action devant une juridiction compétente en vertu de la législation applicable.',
     },
     's265kba1': {
       'en': '18. Contact',
@@ -2205,7 +2056,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'This Privacy Policy explains how personal data is collected, used, shared and protected when you use the Agricou mobile application, website and related services (the “Platform”).\n\nThe data controller is:\n\nThe Pinnacle Of Data – EURL\nSIREN: 929 478 485\n8 rue d’Hyères\n31240 L’Union, France\nEmail: support@agricou.com',
       'fr':
-          'La présente Politique de confidentialité explique comment vos données personnelles sont collectées, utilisées, partagées et protégées lorsque vous utilisez l’application mobile, le site web et les services associés d’Agricou (la « Plateforme »).\n\nLe responsable du traitement des données est :\n\nThe Pinnacle Of Data – EURL\n\nSIREN : 929 478 485\n\n8 rue d’Hyères\n\n31240 L’Union, France\n\nCourriel : support@agricou.com',
+          'La présente Politique de confidentialité explique comment vos données personnelles sont collectées, utilisées, partagées et protégées lorsque vous utilisez l’application mobile, le site web et les services associés d’Agricou (la « Plateforme »). Le responsable du traitement des données est : The Pinnacle Of Data – EURL, SIREN : 929 478 485, 8 rue d’Hyères, 31240 L’Union, France, Courriel : support@agricou.com',
     },
     '5u3mamda': {
       'en': '1. Personal Data We Collect',
@@ -2215,7 +2066,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Depending on how you use Agricou, we may process the following categories of personal data:\n\nAccount and identity data: name, email address, telephone number, account identifier, profile information, user role (consumer or producer), authentication information and account settings.\n\nProducer information: farm or business name, contact details, business information, address, product listings, photographs, availability and other information necessary to operate a producer account or comply with applicable legal requirements.\n\nLocation and route data: with the appropriate device permissions where required, Agricou may process your location, selected addresses, departure and destination points, routes and related location information to display nearby producers, provide map functions, search for producers along a route, calculate relevant routes or detours and enable location-dependent services.\n\nOrder and transaction data: products ordered, quantities, prices, Seller information, order history, pickup or delivery choices, delivery addresses, transaction status, refunds and information necessary to manage orders and customer support.\n\nPayment information: payments are processed using third-party payment service providers such as Stripe. Agricou may receive transaction identifiers, payment status and limited payment-related information necessary to manage transactions. Complete payment-card details are handled by the relevant payment provider rather than stored directly by Agricou where the payment integration operates in this manner.\n\nCommunications: messages exchanged through Agricou, communications with customer support, complaints, reports and other information you voluntarily provide.\n\nPhotos and content: profile pictures, producer/product photographs, reviews and other content uploaded through the Platform.\n\nTechnical and usage data: device information, operating system, app version, IP address, identifiers, logs, app interactions, diagnostic information, performance information and crash data where collected by the services used by Agricou.\n\nNotification information: notification preferences and technical identifiers required to send push notifications.\n\nWe do not intentionally request special-category personal data unless it is necessary and lawful for a specific purpose. Please avoid including unnecessary sensitive personal information in messages, reviews or other free-text fields.',
       'fr':
-          'Selon votre utilisation d\'Agricou, nous pouvons traiter les catégories de données personnelles suivantes :\n\nDonnées de compte et d\'identité : nom, adresse e-mail, numéro de téléphone, identifiant de compte, informations de profil, rôle de l\'utilisateur (consommateur ou producteur), informations d\'authentification et paramètres du compte.\n\nInformations sur le producteur : nom de l\'exploitation ou de l\'entreprise, coordonnées, informations sur l\'entreprise, adresse, liste des produits, photos, disponibilité et autres informations nécessaires à la gestion d\'un compte producteur ou au respect des obligations légales applicables.\n\nDonnées de localisation et d\'itinéraire : avec les autorisations requises de votre appareil, Agricou peut traiter votre localisation, les adresses sélectionnées, les points de départ et d\'arrivée, les itinéraires et les informations de localisation associées afin d\'afficher les producteurs à proximité, de fournir des fonctionnalités cartographiques, de rechercher des producteurs le long d\'un itinéraire, de calculer les itinéraires ou détours pertinents et d\'activer les services géolocalisés.\n\nDonnées de commande et de transaction : produits commandés, quantités, prix, informations sur le vendeur, historique des commandes, choix de retrait ou de livraison, adresses de livraison, statut des transactions, remboursements et informations nécessaires à la gestion des commandes et au service client.\n\nInformations de paiement : les paiements sont traités par des prestataires de services de paiement tiers tels que Stripe. Agricou peut recevoir les identifiants de transaction, le statut du paiement et certaines informations nécessaires à la gestion des transactions. Les données complètes des cartes de paiement sont traitées par le prestataire de paiement concerné et non stockées directement par Agricou lorsque l\'intégration des paiements fonctionne de cette manière.\n\nCommunications : messages échangés via Agricou, communications avec le service client, réclamations, signalements et autres informations que vous fournissez volontairement.\n\nPhotos et contenu : photos de profil, photos du producteur/produit, avis et autres contenus téléchargés via la plateforme.\n\nDonnées techniques et d\'utilisation : informations sur l\'appareil, système d\'exploitation, version de l\'application, adresse IP, identifiants, journaux, interactions avec l\'application, informations de diagnostic, informations de performance et données de plantage, lorsqu\'elles sont collectées par les services utilisés par Agricou.\n\nInformations de notification : préférences de notification et identifiants techniques nécessaires à l\'envoi de notifications push.\n\nNous ne demandons pas intentionnellement de données personnelles sensibles, sauf si cela est nécessaire et légal pour une finalité spécifique. Veuillez éviter d\'inclure des informations personnelles sensibles inutiles dans vos messages, avis ou autres champs de texte libre.',
+          'Selon votre utilisation d\'Agricou, nous pouvons traiter les catégories de données personnelles suivantes : \n\nDonnées de compte et d\'identité : nom, adresse e-mail, numéro de téléphone, identifiant de compte, informations de profil, rôle de l\'utilisateur (consommateur ou producteur), informations d\'authentification et paramètres du compte. \n\nInformations sur le producteur : nom de l\'exploitation ou de l\'entreprise, coordonnées, informations sur l\'entreprise, adresse, liste des produits, photos, disponibilité et autres informations nécessaires à la gestion d\'un compte producteur ou au respect des obligations légales applicables. \n\nDonnées de localisation et d\'itinéraire : avec les autorisations appropriées de votre appareil, Agricou peut traiter votre localisation, les adresses sélectionnées, les points de départ et d\'arrivée, les itinéraires et les informations de localisation associées afin d\'afficher les producteurs à proximité, de fournir des fonctions cartographiques, de rechercher des producteurs le long d\'un itinéraire, de calculer les itinéraires ou détours pertinents et d\'activer les services géolocalisés. \n\nDonnées de commande et de transaction : produits commandés, quantités, prix, informations sur le vendeur, historique des commandes, choix de retrait ou de livraison, adresses de livraison, statut des transactions, remboursements et informations nécessaires à la gestion des commandes et des clients. Informations de paiement : les paiements sont traités par des prestataires de services de paiement tiers tels que Stripe. Agricou peut recevoir les identifiants de transaction, le statut du paiement et certaines informations nécessaires à la gestion des transactions. Les informations complètes relatives aux cartes de paiement sont traitées par le prestataire de paiement concerné et non stockées directement par Agricou lorsque l\'intégration des paiements fonctionne de cette manière. \n\nCommunications : messages échangés via Agricou, communications avec le service client, réclamations, signalements et autres informations que vous fournissez volontairement. \n\nPhotos et contenu : photos de profil, photos de producteurs/produits, avis et autres contenus téléchargés via la plateforme. \n\nDonnées techniques et d\'utilisation : informations sur l\'appareil, système d\'exploitation, version de l\'application, adresse IP, identifiants, journaux, interactions avec l\'application, informations de diagnostic, informations de performance et données de plantage, lorsqu\'elles sont collectées par les services utilisés par Agricou. \n\nInformations de notification : préférences de notification et identifiants techniques nécessaires à l\'envoi de notifications push. \n\nNous ne demandons pas intentionnellement de données personnelles sensibles, sauf si cela est nécessaire et légal pour une finalité spécifique. Veuillez éviter d\'inclure des informations personnelles sensibles inutiles dans les messages, les avis ou autres champs de texte libre.',
     },
     'mtf8a3lp': {
       'en': '2. Why We Use Your Personal Data',
@@ -2225,7 +2076,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'We process personal data where necessary to:\n\n• create, authenticate and manage your Agricou account;\n• provide the Platform and its features;\n• connect consumers with producers and Sellers;\n• display nearby producers and products;\n• provide maps, route searches and location-based functionality;\n• process and manage orders, payments, pickup and delivery;\n• enable communications between relevant users;\n• provide customer support and handle complaints;\n• send transactional and service-related notifications;\n• maintain Platform security and prevent fraud or misuse;\n• diagnose crashes, maintain performance and improve the Platform;\n• comply with accounting, tax, consumer-protection, regulatory and other legal obligations; and\n• where legally permitted and subject to applicable choices or consent requirements, send marketing communications and measure or improve our services.',
       'fr':
-          'Nous traitons vos données personnelles lorsque cela est nécessaire pour :\n\n• créer, authentifier et gérer votre compte Agricou ;\n\n• fournir la Plateforme et ses fonctionnalités ;\n\n• mettre en relation les consommateurs avec les producteurs et les vendeurs ;\n\n• afficher les producteurs et les produits à proximité ;\n\n• fournir des cartes, des outils de recherche d’itinéraires et des fonctionnalités de géolocalisation ;\n\n• traiter et gérer les commandes, les paiements, les retraits et les livraisons ;\n\n• permettre la communication entre les utilisateurs concernés ;\n\n• assurer le support client et traiter les réclamations ;\n\n• envoyer des notifications transactionnelles et relatives au service ;\n\n• garantir la sécurité de la Plateforme et prévenir la fraude et les utilisations abusives ;\n\n• diagnostiquer les dysfonctionnements, maintenir les performances et améliorer la Plateforme ;\n\n• respecter nos obligations comptables, fiscales, de protection des consommateurs, réglementaires et autres obligations légales ; et\n\n• lorsque la loi le permet et sous réserve des choix ou des exigences de consentement applicables, envoyer des communications marketing et mesurer ou améliorer nos services.',
+          'Nous traitons les données personnelles lorsque cela est nécessaire pour : créer, authentifier et gérer votre compte Agricou ; fournir la Plateforme et ses fonctionnalités ; mettre en relation les consommateurs avec les producteurs et les vendeurs ; afficher les producteurs et les produits à proximité ; fournir des cartes, des outils de recherche d’itinéraires et des fonctionnalités de géolocalisation ; traiter et gérer les commandes, les paiements, les retraits et les livraisons ; permettre la communication entre les utilisateurs concernés ; fournir une assistance client et traiter les réclamations ; envoyer des notifications transactionnelles et relatives au service ; maintenir la sécurité de la Plateforme et prévenir la fraude ou les utilisations abusives ; diagnostiquer les pannes, maintenir les performances et améliorer la Plateforme ; respecter les obligations comptables, fiscales, de protection des consommateurs, réglementaires et autres obligations légales ; et, lorsque la loi le permet et sous réserve des choix ou des exigences de consentement applicables, envoyer des communications marketing et mesurer ou améliorer nos services.',
     },
     'do5wqefk': {
       'en': '3. Legal Bases for Processing',
@@ -2235,7 +2086,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Depending on the relevant processing activity, Agricou relies on one or more legal bases permitted by applicable data-protection law:\n\nPerformance of a contract: where processing is necessary to create and manage your account, provide requested Platform functionality, process an order or provide services requested by you.\n\nLegal obligation: where processing is necessary to comply with legal, regulatory, accounting, tax, consumer-protection or other obligations applicable to The Pinnacle Of Data.\n\nLegitimate interests: where necessary for purposes such as Platform security, fraud prevention, service administration, troubleshooting and improvement, provided those interests are not overridden by your rights and freedoms.\n\nConsent: where consent is required, including for certain permissions, marketing communications or other processing for which applicable law requires consent. Where processing is based on consent, you may withdraw it at any time without affecting processing lawfully carried out before withdrawal.',
       'fr':
-          'Selon l\'activité de traitement concernée, Agricou s\'appuie sur une ou plusieurs bases légales autorisées par la législation applicable en matière de protection des données :\n\nExécution d\'un contrat : lorsque le traitement est nécessaire à la création et à la gestion de votre compte, à la fourniture des fonctionnalités demandées sur la Plateforme, au traitement d\'une commande ou à la fourniture des services que vous avez sollicités.\n\nObligation légale : lorsque le traitement est nécessaire au respect des obligations légales, réglementaires, comptables, fiscales, de protection des consommateurs ou autres applicables à The Pinnacle Of Data.\n\nIntérêts légitimes : lorsque le traitement est nécessaire à des fins telles que la sécurité de la Plateforme, la prévention de la fraude, l\'administration du service, le dépannage et l\'amélioration, à condition que ces intérêts ne portent pas atteinte à vos droits et libertés.\n\nConsentement : lorsque le consentement est requis, notamment pour certaines autorisations, les communications marketing ou tout autre traitement pour lequel la loi applicable exige un consentement. Lorsque le traitement est fondé sur le consentement, vous pouvez le retirer à tout moment sans que cela n\'affecte la licéité du traitement effectué avant ce retrait.',
+          'Selon l\'activité de traitement concernée, Agricou s\'appuie sur une ou plusieurs bases légales autorisées par la législation applicable en matière de protection des données : \n\nExécution d\'un contrat : lorsque le traitement est nécessaire à la création et à la gestion de votre compte, à la fourniture des fonctionnalités demandées sur la Plateforme, au traitement d\'une commande ou à la fourniture des services que vous avez sollicités. \n\nObligation légale : lorsque le traitement est nécessaire au respect des obligations légales, réglementaires, comptables, fiscales, de protection des consommateurs ou autres applicables à The Pinnacle Of Data. \n\nIntérêts légitimes : lorsque le traitement est nécessaire à des fins telles que la sécurité de la Plateforme, la prévention de la fraude, l\'administration du service, le dépannage et l\'amélioration, à condition que ces intérêts ne portent pas atteinte à vos droits et libertés. \n\nConsentement : lorsque le consentement est requis, notamment pour certaines autorisations, les communications marketing ou tout autre traitement pour lequel la loi applicable exige un consentement. Lorsque le traitement est fondé sur le consentement, vous pouvez le retirer à tout moment sans que cela n\'affecte la licéité du traitement effectué avant ce retrait.',
     },
     '4nsdjex4': {
       'en': '4. Location Data',
@@ -2245,7 +2096,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou uses location information to provide location-dependent features, including displaying nearby producers and products, map functionality and searching for producers in relation to a journey or route.\n\nWhere device permission is required, you can allow or refuse location access and later change your choice through your device settings.\n\nRefusing or disabling location access will not prevent you from using features that do not require location data, although certain map, nearby-search or route-related features may become unavailable or less accurate.\n\nAgricou does not use location information for purposes unrelated to those disclosed to you without an appropriate legal basis.',
       'fr':
-          'Agricou utilise les données de géolocalisation pour fournir des fonctionnalités adaptées à la proximité, comme l\'affichage des producteurs et produits à proximité, la cartographie et la recherche de producteurs en lien avec un trajet ou un itinéraire.\n\nLorsque l\'autorisation de votre appareil est requise, vous pouvez autoriser ou refuser l\'accès à votre position et modifier votre choix ultérieurement dans les paramètres de votre appareil.\n\nRefuser ou désactiver l\'accès à la géolocalisation ne vous empêchera pas d\'utiliser les fonctionnalités qui ne nécessitent pas de données de localisation, mais certaines fonctionnalités liées à la carte, à la recherche de proximité ou aux itinéraires pourraient devenir indisponibles ou moins précises.\n\nAgricou n\'utilise pas les données de géolocalisation à des fins autres que celles qui vous ont été communiquées sans base légale appropriée.',
+          'Agricou utilise les données de géolocalisation pour fournir des fonctionnalités géolocalisées, comme l\'affichage des producteurs et produits à proximité, la cartographie et la recherche de producteurs en lien avec un trajet ou un itinéraire. Lorsque l\'autorisation de votre appareil est requise, vous pouvez autoriser ou refuser l\'accès à votre position et modifier votre choix ultérieurement dans les paramètres de votre appareil. Refuser ou désactiver l\'accès à votre position ne vous empêchera pas d\'utiliser les fonctionnalités qui ne nécessitent pas de données de localisation, mais certaines fonctionnalités liées à la carte, à la recherche de proximité ou aux itinéraires pourraient devenir indisponibles ou moins précises. Agricou n\'utilise pas les données de géolocalisation à des fins autres que celles qui vous ont été communiquées sans base légale appropriée.',
     },
     '6l2n62ah': {
       'en': '5. Payments',
@@ -2255,7 +2106,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou uses third-party payment services, including Stripe, to facilitate payment processing.\n\nPayment providers may process personal and payment information in accordance with their own privacy policies and applicable legal obligations.\n\nThe Pinnacle Of Data may retain transaction references, amounts, payment status and other information necessary for order administration, accounting, fraud prevention, refunds and legal compliance.',
       'fr':
-          'Agricou utilise des services de paiement tiers, notamment Stripe, pour faciliter le traitement des paiements.\n\nLes prestataires de paiement peuvent traiter les données personnelles et bancaires conformément à leurs propres politiques de confidentialité et aux obligations légales applicables.\n\nPinnacle Of Data peut conserver les références de transaction, les montants, le statut des paiements et toute autre information nécessaire à la gestion des commandes, à la comptabilité, à la prévention de la fraude, aux remboursements et au respect des obligations légales.',
+          'Agricou utilise des services de paiement tiers, notamment Stripe, pour faciliter le traitement des paiements. Les prestataires de paiement peuvent traiter les informations personnelles et de paiement conformément à leurs propres politiques de confidentialité et aux obligations légales applicables. The Pinnacle Of Data peut conserver les références de transaction, les montants, le statut des paiements et d\'autres informations nécessaires à la gestion des commandes, à la comptabilité, à la prévention de la fraude, aux remboursements et à la conformité légale.',
     },
     '1asgx6lz': {
       'en': '6. Delivery Services',
@@ -2265,7 +2116,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Where you request delivery through an integrated delivery service, including services provided through Uber or an applicable Uber delivery service, information necessary to arrange and perform the delivery may be transmitted to the relevant delivery provider.\n\nThis may include the pickup and delivery addresses, recipient information, contact information and order or delivery details reasonably necessary to perform the service.\n\nThe delivery provider may process personal data in accordance with its own privacy documentation and legal obligations.',
       'fr':
-          'Lorsque vous demandez une livraison via un service de livraison intégré, y compris les services fournis par Uber ou un service de livraison Uber applicable, les informations nécessaires à l\'organisation et à l\'exécution de la livraison peuvent être transmises au prestataire de livraison concerné. \n\nCes informations peuvent inclure les adresses de prise en charge et de livraison, les informations du destinataire, les coordonnées et les détails de la commande ou de la livraison raisonnablement nécessaires à l\'exécution du service. \n\nLe prestataire de livraison peut traiter les données personnelles conformément à sa propre politique de confidentialité et à ses obligations légales.',
+          'Lorsque vous demandez une livraison via un service de livraison intégré, y compris les services fournis par Uber ou un service de livraison Uber applicable, les informations nécessaires à l\'organisation et à l\'exécution de la livraison peuvent être transmises au prestataire de livraison concerné. Ces informations peuvent inclure les adresses de prise en charge et de livraison, les informations du destinataire, les coordonnées et les détails de la commande ou de la livraison raisonnablement nécessaires à l\'exécution du service. Le prestataire de livraison peut traiter les données personnelles conformément à sa propre politique de confidentialité et à ses obligations légales.',
     },
     'c1yvc7r5': {
       'en': '7. Authentication',
@@ -2275,7 +2126,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may provide authentication through Firebase/Google, Google Sign-In and Sign in with Apple.\n\nWhen you choose a third-party sign-in method, the relevant provider may process authentication and account information under its own privacy terms. Agricou receives the information necessary to create or authenticate your Agricou account according to the permissions and settings applicable to that service.\n\nAgricou does not claim to receive or store your Google or Apple account password.',
       'fr':
-          'Agricou peut proposer une authentification via Firebase/Google, la connexion Google et la connexion avec Apple. \n\nLorsque vous choisissez une méthode de connexion tierce, le fournisseur concerné peut traiter les informations d\'authentification et de compte conformément à sa propre politique de confidentialité. Agricou reçoit les informations nécessaires à la création ou à l\'authentification de votre compte \n\nAgricou, selon les autorisations et paramètres applicables à ce service. Agricou ne déclare pas recevoir ni stocker le mot de passe de votre compte Google ou Apple.',
+          'Agricou peut proposer une authentification via Firebase/Google, la connexion Google et la connexion avec Apple. Lorsque vous choisissez une méthode de connexion tierce, le fournisseur concerné peut traiter les informations d\'authentification et de compte conformément à sa propre politique de confidentialité. Agricou reçoit les informations nécessaires à la création ou à l\'authentification de votre compte Agricou, selon les autorisations et paramètres applicables à ce service. Agricou ne déclare pas recevoir ni stocker le mot de passe de votre compte Google ou Apple.',
     },
     'ry04oixn': {
       'en': '8. Service Providers and Recipients',
@@ -2285,7 +2136,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Personal data may be disclosed, where necessary and proportionate, to service providers supporting Agricou, including providers of:\n\n• cloud hosting, databases and authentication, including Google/Firebase;\n• payment processing, including Stripe;\n• mapping and location functionality;\n• delivery services, including applicable Uber services;\n• push notifications and communications;\n• analytics, diagnostics and crash reporting; and\n• technical infrastructure and support.\n\nRelevant information may also be shared with a Seller or producer where necessary to fulfil an order, arrange pickup or delivery, resolve a complaint or otherwise perform a transaction requested by the user.\n\nPersonal data may also be disclosed where required by law, a competent authority or legal proceedings, or where legally permitted and necessary to establish, exercise or defend legal claims.\n\nAgricou does not sell your personal data.',
       'fr':
-          'Les données personnelles peuvent être divulguées, lorsque cela est nécessaire et proportionné, aux prestataires de services d\'Agricou, notamment les fournisseurs de : \n- hébergement cloud, bases de données et authentification (y compris Google/Firebase) ; \n- traitement des paiements (y compris Stripe) ; \n- fonctionnalités de cartographie et de géolocalisation ; \n- services de livraison (y compris les services Uber applicables) ; \n- notifications push et communications ; \n- analyses, diagnostics et rapports d\'incidents ; \n- et infrastructure et assistance techniques. \n\nLes informations pertinentes peuvent également être partagées avec un vendeur ou un producteur lorsque cela est nécessaire pour exécuter une commande, organiser un enlèvement ou une livraison, résoudre une réclamation ou effectuer toute autre transaction demandée par l\'utilisateur. \n\nLes données personnelles peuvent également être divulguées lorsque la loi, une autorité compétente ou une procédure judiciaire l\'exigent, ou lorsque la loi le permet et que cela est nécessaire pour établir, exercer ou défendre des droits en justice. \n\nAgricou ne vend pas vos données personnelles.',
+          'Les données personnelles peuvent être divulguées, lorsque cela est nécessaire et proportionné, aux prestataires de services d\'Agricou, notamment les fournisseurs de : hébergement cloud, bases de données et authentification (y compris Google/Firebase) ; traitement des paiements (y compris Stripe) ; fonctionnalités de cartographie et de géolocalisation ; services de livraison (y compris les services Uber applicables) ; notifications push et communications ; analyses, diagnostics et rapports d\'incidents ; et infrastructure et assistance techniques. Les informations pertinentes peuvent également être partagées avec un vendeur ou un producteur lorsque cela est nécessaire pour exécuter une commande, organiser un enlèvement ou une livraison, résoudre une réclamation ou effectuer toute autre transaction demandée par l\'utilisateur. Les données personnelles peuvent également être divulguées lorsque la loi, une autorité compétente ou une procédure judiciaire l\'exigent, ou lorsque la loi le permet et que cela est nécessaire pour établir, exercer ou défendre des droits en justice. Agricou ne vend pas vos données personnelles.',
     },
     'nxvm6jrj': {
       'en': '9. International Data Transfers',
@@ -2295,7 +2146,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Some service providers used by Agricou may process personal data outside France or the European Economic Area.\n\nWhere personal data is transferred internationally, The Pinnacle Of Data will rely on an applicable transfer mechanism and safeguards required by data-protection law, where such safeguards are required. These may include an adequacy decision of the European Commission or appropriate contractual safeguards.\n\nFurther information about applicable safeguards may be requested using the contact details below.',
       'fr':
-          'Certains prestataires de services utilisés par Agricou peuvent traiter des données personnelles en dehors de la France ou de l\'Espace économique européen. \n\nEn cas de transfert international de données personnelles, The Pinnacle Of Data s\'appuiera sur un mécanisme de transfert applicable et sur les garanties requises par la législation en matière de protection des données, lorsque ces garanties sont nécessaires. Il peut s\'agir notamment d\'une décision d\'adéquation de la Commission européenne ou de garanties contractuelles appropriées. \n\nPour plus d\'informations sur les garanties applicables, veuillez utiliser les coordonnées ci-dessous.',
+          'Certains prestataires de services utilisés par Agricou peuvent traiter des données personnelles en dehors de la France ou de l\'Espace économique européen. En cas de transfert international de données personnelles, The Pinnacle Of Data s\'appuiera sur un mécanisme de transfert approprié et sur les garanties requises par la législation en matière de protection des données, lorsque ces garanties sont nécessaires. Il peut s\'agir notamment d\'une décision d\'adéquation de la Commission européenne ou de garanties contractuelles appropriées. Pour plus d\'informations sur les garanties applicables, veuillez utiliser les coordonnées ci-dessous.',
     },
     'an5oyu5i': {
       'en': '10. Data Retention',
@@ -2305,7 +2156,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'We retain personal data only for as long as necessary for the purposes for which it was collected and as required to meet applicable legal obligations.\n\nRetention periods vary depending on the nature of the information and the reason for processing. Account information is generally retained while the account remains active and may subsequently be retained for a limited period where necessary to establish, exercise or defend legal claims or comply with legal obligations.\n\nTransaction, invoice and accounting information may be retained for the periods required by applicable tax, accounting and commercial law.\n\nSupport requests, security logs and technical information are retained only for periods reasonably necessary for their respective purposes, subject to applicable legal requirements.\n\nWhen information is no longer required, it is deleted, anonymized or otherwise handled in accordance with applicable law.',
       'fr':
-          'Nous conservons les données personnelles uniquement pendant la durée nécessaire aux fins pour lesquelles elles ont été collectées et conformément aux obligations légales applicables. \n\nLes durées de conservation varient selon la nature des informations et la finalité du traitement. Les informations de compte sont généralement conservées tant que le compte est actif et peuvent être conservées ultérieurement pendant une période limitée si nécessaire pour la constatation, l\'exercice ou la défense de droits en justice ou pour le respect des obligations légales. \n\nLes informations relatives aux transactions, aux factures et à la comptabilité peuvent être conservées pendant les durées requises par la législation fiscale, comptable et commerciale applicable. \n\nLes demandes d\'assistance, les journaux de sécurité et les informations techniques sont conservés uniquement pendant les durées raisonnablement nécessaires à leurs finalités respectives, sous réserve des exigences légales applicables. \n\nLorsque les informations ne sont plus nécessaires, elles sont supprimées, anonymisées ou traitées conformément à la législation applicable.',
+          'Nous conservons les données personnelles uniquement pendant la durée nécessaire aux fins pour lesquelles elles ont été collectées et conformément aux obligations légales applicables. Les durées de conservation varient selon la nature des informations et la finalité du traitement. Les informations de compte sont généralement conservées tant que le compte est actif et peuvent être conservées ultérieurement pendant une période limitée si nécessaire pour la constatation, l\'exercice ou la défense de droits en justice ou pour le respect des obligations légales. Les informations relatives aux transactions, aux factures et à la comptabilité peuvent être conservées pendant les durées requises par la législation fiscale, comptable et commerciale applicable. Les demandes d\'assistance, les journaux de sécurité et les informations techniques sont conservés uniquement pendant les durées raisonnablement nécessaires à leurs finalités respectives, sous réserve des exigences légales applicables. Lorsque les informations ne sont plus nécessaires, elles sont supprimées, anonymisées ou traitées conformément à la législation applicable.',
     },
     'vipn2coe': {
       'en': '11. Security',
@@ -2315,7 +2166,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Pinnacle Of Data implements appropriate technical and organizational measures intended to protect personal data against unauthorized access, loss, alteration, disclosure or destruction, taking into account the nature of the data, risks and available technologies.\n\nNo online system can guarantee absolute security. Users should therefore also protect their login credentials and promptly report suspected unauthorized access.',
       'fr':
-          'Pinnacle Of Data met en œuvre des mesures techniques et organisationnelles appropriées visant à protéger les données personnelles contre tout accès non autorisé, perte, altération, divulgation ou destruction, en tenant compte de la nature des données, des risques et des technologies disponibles. \n\nAucun système en ligne ne peut garantir une sécurité absolue. Les utilisateurs doivent donc protéger leurs identifiants de connexion et signaler rapidement tout accès non autorisé suspecté.',
+          'Pinnacle Of Data met en œuvre des mesures techniques et organisationnelles appropriées visant à protéger les données personnelles contre tout accès non autorisé, perte, altération, divulgation ou destruction, en tenant compte de la nature des données, des risques et des technologies disponibles. Aucun système en ligne ne peut garantir une sécurité absolue. Les utilisateurs doivent donc protéger leurs identifiants de connexion et signaler rapidement tout accès non autorisé suspecté.',
     },
     'r9dk0pn6': {
       'en': '12. Your Data Protection Rights',
@@ -2325,7 +2176,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Subject to the conditions provided by applicable law, you may have the right to:\n\n• access your personal data;\n• correct inaccurate or incomplete data;\n• request deletion of your personal data;\n• request restriction of processing;\n• object to certain processing;\n• receive certain personal data in a portable format;\n• withdraw consent where processing is based on consent; and\n• provide instructions concerning your personal data where applicable under French law.\n\nYou may exercise applicable rights by contacting:\n\nsupport@agricou.com\n\nWe may need to verify your identity before responding to certain requests. Requests will be handled within the time limits required by applicable law.\n\nYou also have the right to lodge a complaint with the Commission Nationale de l\'Informatique et des Libertés (CNIL) or, where applicable, another competent data-protection authority.',
       'fr':
-          'Sous réserve des conditions prévues par la loi applicable, vous disposez des droits suivants : \n- accéder à vos données personnelles ; \n- rectifier les données inexactes ou incomplètes ; \n- demander l’effacement de vos données personnelles ; \n- demander la limitation du traitement ; \n- vous opposer à certains traitements ; \n- recevoir certaines données personnelles dans un format portable ; \n- retirer votre consentement lorsque le traitement est fondé sur celui-ci ; \n- et donner des instructions concernant vos données personnelles lorsque la loi française l’exige. \n\nVous pouvez exercer vos droits en contactant : support@agricou.com. Nous pourrions avoir besoin de vérifier votre identité avant de répondre à certaines demandes. Les demandes seront traitées dans les délais prévus par la loi applicable. \n\nVous avez également le droit de déposer une plainte auprès de la Commission Nationale de l\'Informatique et des Libertés (CNIL) ou, le cas échéant, auprès d\'une autre autorité compétente en matière de protection des données.',
+          'Sous réserve des conditions prévues par la loi applicable, vous disposez des droits suivants : accéder à vos données personnelles ; rectifier les données inexactes ou incomplètes ; demander l’effacement de vos données personnelles ; demander la limitation du traitement ; vous opposer à certains traitements ; recevoir certaines données personnelles dans un format portable ; retirer votre consentement lorsque le traitement est fondé sur celui-ci ; et donner des instructions concernant vos données personnelles lorsque la loi française l’exige. Vous pouvez exercer vos droits en contactant : support@agricou.com. Nous pourrions avoir besoin de vérifier votre identité avant de répondre à certaines demandes. Les demandes seront traitées dans les délais prévus par la loi applicable. Vous avez également le droit de déposer une plainte auprès de la Commission Nationale de l\'Informatique et des Libertés (CNIL) ou, le cas échéant, auprès d\'une autre autorité compétente en matière de protection des données.',
     },
     'bnc8alyg': {
       'en': '13. Account Deletion',
@@ -2335,7 +2186,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Where available, users may request deletion of their Agricou account through the application\'s account or privacy settings or by contacting support@agricou.com.\n\nAccount deletion does not necessarily result in immediate deletion of every item of personal data. Certain information may need to be retained where required by law or where a lawful basis exists for continued retention, including accounting, fraud prevention, dispute resolution or the establishment, exercise or defence of legal claims.\n\nData that no longer needs to be retained will be deleted or anonymized in accordance with applicable requirements.',
       'fr':
-          'Lorsque cette option est disponible, les utilisateurs peuvent demander la suppression de leur compte Agricou via les paramètres de compte ou de confidentialité de l\'application ou en contactant support@agricou.com. \n\nLa suppression d\'un compte n\'entraîne pas nécessairement la suppression immédiate de toutes les données personnelles. Certaines informations peuvent devoir être conservées lorsque la loi l\'exige ou lorsqu\'il existe une base légale justifiant leur conservation, notamment à des fins comptables, de prévention de la fraude, de résolution des litiges ou pour la constatation, l\'exercice ou la défense de droits en justice. \n\nLes données qui n\'ont plus besoin d\'être conservées seront supprimées ou anonymisées conformément à la réglementation applicable.',
+          'Lorsque cette option est disponible, les utilisateurs peuvent demander la suppression de leur compte Agricou via les paramètres de compte ou de confidentialité de l\'application ou en contactant support@agricou.com. La suppression d\'un compte n\'entraîne pas nécessairement la suppression immédiate de toutes les données personnelles. Certaines informations peuvent devoir être conservées lorsque la loi l\'exige ou lorsqu\'il existe une base légale justifiant leur conservation, notamment à des fins comptables, de prévention de la fraude, de résolution des litiges ou pour la constatation, l\'exercice ou la défense de droits en justice. Les données qui n\'ont plus besoin d\'être conservées seront supprimées ou anonymisées conformément à la réglementation applicable.',
     },
     'pk7vlzlj': {
       'en': '14. Marketing and Notifications',
@@ -2345,7 +2196,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Service communications necessary for account security, orders, transactions or important Platform information may be sent where permitted by law.\n\nMarketing communications will be handled in accordance with applicable consent and electronic-marketing requirements. Where applicable, users can unsubscribe from marketing emails using the unsubscribe mechanism provided.\n\nPush-notification permissions may be managed through the user\'s device settings.',
       'fr':
-          'Les communications de service nécessaires à la sécurité du compte, aux commandes, aux transactions ou aux informations importantes concernant la plateforme peuvent être envoyées lorsque la loi le permet. \n\nLes communications marketing seront traitées conformément aux exigences applicables en matière de consentement et de marketing électronique. Le cas échéant, les utilisateurs peuvent se désabonner des e-mails marketing en utilisant le mécanisme de désabonnement prévu à cet effet. \n\nLes autorisations de notifications push peuvent être gérées via les paramètres de l\'appareil de l\'utilisateur.',
+          'Les communications de service nécessaires à la sécurité du compte, aux commandes, aux transactions ou aux informations importantes concernant la plateforme peuvent être envoyées lorsque la loi le permet. Les communications marketing seront traitées conformément aux exigences applicables en matière de consentement et de marketing électronique. Le cas échéant, les utilisateurs peuvent se désabonner des e-mails marketing en utilisant le mécanisme de désabonnement prévu à cet effet. Les autorisations de notifications push peuvent être gérées via les paramètres de l\'appareil de l\'utilisateur.',
     },
     'uvbzcpxz': {
       'en': '15. Children',
@@ -2355,7 +2206,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou is not intended to enable minors to independently enter into transactions for which they do not have the required legal capacity.\n\nWe do not knowingly seek to collect children\'s personal data contrary to applicable law. If you believe a child\'s personal data has been processed improperly, please contact us.',
       'fr':
-          'Agricou n\'a pas pour but de permettre aux mineurs de conclure de manière autonome des transactions pour lesquelles ils ne disposent pas de la capacité juridique requise.\n\nNous ne cherchons pas sciemment à collecter des données personnelles d\'enfants en violation de la loi applicable. Si vous pensez que les données personnelles d\'un enfant ont été traitées de manière inappropriée, veuillez nous contacter.',
+          'Agricou n\'a pas pour but de permettre aux mineurs de conclure de manière indépendante des transactions pour lesquelles ils ne disposent pas de la capacité juridique requise. Nous ne cherchons pas sciemment à collecter des données personnelles d\'enfants en violation de la loi applicable. Si vous pensez que les données personnelles d\'un enfant ont été traitées de manière inappropriée, veuillez nous contacter.',
     },
     'txyy9cdi': {
       'en': '16. Changes to this Privacy Policy',
@@ -2365,7 +2216,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'We may update this Privacy Policy to reflect changes to Agricou, our processing activities, service providers or applicable legal requirements.\n\nWhere required, users will be informed of material changes and consent will be requested where a new processing activity requires it.\n\nThe current version will remain accessible through Agricou.',
       'fr':
-          'Nous pouvons mettre à jour la présente Politique de confidentialité afin de refléter les changements apportés à Agricou, à nos activités de traitement, à nos fournisseurs de services ou aux exigences légales applicables. \n\nLe cas échéant, les utilisateurs seront informés des modifications importantes et leur consentement sera demandé lorsqu\'une nouvelle activité de traitement l\'exige. \n\nLa version actuelle restera accessible via Agricou.',
+          'Nous pouvons mettre à jour la présente Politique de confidentialité afin de refléter les changements apportés à Agricou, à nos activités de traitement, à nos fournisseurs de services ou aux exigences légales applicables. Le cas échéant, les utilisateurs seront informés des modifications importantes et leur consentement sera demandé lorsqu\'une nouvelle activité de traitement l\'exige. La version actuelle restera accessible via Agricou.',
     },
     'srv1qcre': {
       'en': '17. Contact',
@@ -2379,7 +2230,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ujuvnhjq': {
       'en': 'Privacy Policy',
-      'fr': 'Politique de confidentialité',
+      'fr': 'politique de confidentialité',
     },
     '2uwvwwfo': {
       'en': 'Home',
@@ -2390,7 +2241,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '6ql646a0': {
       'en': 'Welcome to Agricou!',
-      'fr': 'Bienvenue chez Agricoo !',
+      'fr': 'Bienvenue à Agricou !',
     },
     'f1xt5ap1': {
       'en':
@@ -2734,7 +2585,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bo0u29wh': {
       'en': 'Click to Upload\nPDF, JPG, PNG (max 10MB)',
-      'fr': 'Cliquez pour téléverser\n\nPDF, JPG, PNG (10 Mo max.)',
+      'fr': 'Cliquez pour télécharger \nPDF, JPG, PNG (10 Mo max.)',
     },
     '0hyxvax9': {
       'en': 'Government ID',
@@ -2742,7 +2593,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5xnk02e1': {
       'en': 'Click to upload\nPDF, JPG, PNG (max 10MB)',
-      'fr': 'Cliquez pour téléverser\n\nPDF, JPG, PNG (10 Mo max.)',
+      'fr': 'Cliquez pour télécharger un fichier PDF, JPG ou PNG (10 Mo max.)',
     },
     '9wsdzuw9': {
       'en': 'Verification Process',
@@ -3144,7 +2995,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8q09w8nk': {
       'en': 'Repeat \nCustomers',
-      'fr': 'Clients réguliers\n',
+      'fr': 'Répéter \nClients',
     },
     '18p21kwm': {
       'en': 'Avg Order \nValue',
@@ -3245,7 +3096,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5sfe85if': {
       'en': 'Stripe Connect',
-      'fr': 'Bande Connecter',
+      'fr': 'Stripe Connect',
     },
     'ago0cfry': {
       'en': 'Complete Stripe Process',
@@ -3273,7 +3124,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7so1bk0u': {
       'en': 'Break',
-      'fr': 'Du lundi au vendredi',
+      'fr': 'Casser',
     },
     'gxxz5zpo': {
       'en': 'Edit Hours',
@@ -3637,7 +3488,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ia46asyd': {
       'en': 'Click to upload\nJPG, PNG (max 10MB)',
-      'fr': 'Cliquez pour téléverser\nJPG, PNG (10 Mo max.)',
+      'fr': 'Cliquez pour télécharger \nJPG, PNG (max 10 Mo)',
     },
     'ou3mkqau': {
       'en': 'Submit',
@@ -3645,7 +3496,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6gfqulpo': {
       'en': 'eg., Rainfall Affricate is required',
-      'fr': 'Par exemple, l\'affriqué de pluie est requis',
+      'fr': 'par exemple, l\'affriqué de pluie est requis',
     },
     'e6kg7huz': {
       'en': 'Please choose an option from the dropdown',
@@ -4315,6 +4166,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '€',
       'fr': '€',
     },
+    'ys0m22dn': {
+      'en': 'Choose a weight bracket',
+      'fr': 'Choisissez une catégorie de poids',
+    },
+    '4g8dwsn7': {
+      'en': 'Live Pricing Breakdown',
+      'fr': 'Détail des prix en direct',
+    },
     'tulxxrgv': {
       'en': '4.9 (420 reviews)',
       'fr': '4,9 (420 avis)',
@@ -4753,7 +4612,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wifmgipv': {
       'en': 'FlatDeliveryFee is required',
-      'fr': 'Des frais de livraison fixes sont requis',
+      'fr': 'Des frais de livraison fixes sont requis.',
     },
     'axave6ym': {
       'en': 'Please choose an option from the dropdown',
@@ -4960,8 +4819,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0fmbvpii': {
       'en': 'sell my farm produce & grow\nmy reach',
-      'fr':
-          'Vendre les produits de ma ferme et étendre ma portée\n\nmon réseau',
+      'fr': 'Je vends les produits de ma ferme et j\'étends ma portée.',
     },
     '4u7ogjiv': {
       'en': 'I’m a Consumer',
@@ -5142,7 +5000,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'AGRICOU – PRODUCER TERMS & CONDITIONS\nLast updated: 20 September 2026\n\nThese Producer Terms & Conditions (“Producer Terms”) govern the contractual relationship between The Pinnacle Of Data, operator of the Agricou platform (“Agricou”, “we”, “us” or “our”), and any farmer, producer or other professional seller who creates or uses a producer account on Agricou (“Producer”, “you” or “your”).\n\nThese Producer Terms supplement Agricou’s general Terms of Service and Privacy Policy. In the event of a conflict concerning the Producer’s professional use of Agricou, these Producer Terms shall prevail to the extent of that conflict.\n\nBy creating a Producer account, subscribing to a Producer plan or using Agricou to promote or sell products, you acknowledge that you have read and accepted these Producer Terms.',
       'fr':
-          'AGRICOU – CONDITIONS GÉNÉRALES PRODUCTEURS\nDernière mise à jour : 20 septembre 2026\n\nLes présentes Conditions Générales Producteurs (« Conditions Producteurs ») régissent la relation contractuelle entre The Pinnacle Of Data, opérateur de la plateforme Agricou (« Agricou », « nous », « notre »), et tout agriculteur, producteur ou autre vendeur professionnel créant ou utilisant un compte producteur sur Agricou (« Producteur », « vous », « votre »).\n\nCes Conditions Producteurs complètent les Conditions Générales d’Utilisation et la Politique de Confidentialité d’Agricou. En cas de conflit relatif à l’utilisation professionnelle d’Agricou par le Producteur, les présentes Conditions Producteurs prévaudront.\n\nEn créant un compte Producteur, en souscrivant à un abonnement Producteur ou en utilisant Agricou pour promouvoir ou vendre des produits, vous reconnaissez avoir lu et accepté les présentes Conditions Producteurs.',
+          'AGRICOU – CONDITIONS GÉNÉRALES PRODUCTEURS\nDernière mise à jour : 20 septembre 2026\n\nLes présentes Conditions Générales Producteurs (« Conditions Producteurs ») régissent la relation contractuelle entre The Pinnacle Of Data, opérateur de la plateforme Agricou (« Agricou », « nous », « notre »), et tout agriculteur, producteur ou autre vendeur professionnel qui crée ou utilise un compte producteur sur Agricou (« Producteur », « vous », « votre »).\n\nLes présentes Conditions Producteurs complètent les Conditions Générales d’Utilisation et la Politique de Confidentialité d’Agricou. En cas de conflit concernant l’utilisation professionnelle d’Agricou par le Producteur, les présentes Conditions Producteurs prévaudront.\n\nEn créant un compte Producteur, en souscrivant à un abonnement Producteur ou en utilisant Agricou pour promouvoir ou vendre des produits, vous reconnaissez avoir lu et accepté les présentes Conditions Producteurs.',
     },
     'aem1gaa0': {
       'en': '1. Purpose and Scope',
@@ -5152,7 +5010,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'These Producer Terms & Conditions (“Producer Terms”) govern the use of Agricou by farmers, agricultural producers and other professional sellers (“Producer”, “you” or “your”).\n\nAgricou is operated by The Pinnacle Of Data – EURL, SIREN 929 478 485, registered at 8 rue d’Hyères, 31240 L’Union, France (“Agricou”, “we”, “us” or “our”).\n\nAgricou provides a digital platform enabling Producers to present their activity and products and, depending on the subscription plan selected, offer products for sale to consumers, manage orders and access pickup and delivery functionalities.\n\nUnless expressly stated otherwise, Agricou acts as an intermediary platform and is not the seller, producer, manufacturer or owner of the products offered by Producers.\n\nThese Producer Terms supplement Agricou’s general Terms of Service and Privacy Policy. In the event of a conflict concerning professional use of Agricou by a Producer, these Producer Terms shall prevail to the extent of that conflict.',
       'fr':
-          'Les présentes Conditions Générales Producteurs (« Conditions Producteurs ») régissent l’utilisation d’Agricou par les agriculteurs, producteurs agricoles et autres vendeurs professionnels (« Producteur », « vous » ou « votre »).\n\nAgricou est exploité par The Pinnacle Of Data – EURL, SIREN 929 478 485, immatriculée au 8 rue d’Hyères, 31240 L’Union, France (« Agricou », « nous », « notre »).\n\nAgricou fournit une plateforme numérique permettant aux Producteurs de présenter leur activité et leurs produits et, selon la formule d’abonnement choisie, de proposer leurs produits à la vente aux consommateurs, de gérer leurs commandes et d’accéder aux services de retrait et de livraison.\n\nSauf mention contraire, Agricou agit en tant que plateforme d’intermédiation et n’est ni le vendeur, ni le producteur, ni le fabricant, ni le propriétaire des produits proposés par les Producteurs.\n\nLes présentes Conditions Producteurs complètent les Conditions Générales d’Utilisation et la Politique de Confidentialité d’Agricou. En cas de conflit concernant l’utilisation professionnelle d’Agricou par un Producteur, les présentes Conditions Producteur prévaudront dans la mesure de ce conflit.',
+          'Les présentes Conditions Générales Producteurs (« Conditions Producteurs ») régissent l’utilisation d’Agricou par les agriculteurs, producteurs agricoles et autres vendeurs professionnels (« Producteur », « vous » ou « votre »). Agricou est exploité par The Pinnacle Of Data – EURL, SIREN 929 478 485, immatriculée au 8 rue d’Hyères, 31240 L’Union, France (« Agricou », « nous », « notre »). Agricou fournit une plateforme numérique permettant aux Producteurs de présenter leur activité et leurs produits et, selon la formule d’abonnement choisie, de proposer leurs produits à la vente aux consommateurs, de gérer leurs commandes et d’accéder aux services de retrait et de livraison. Sauf mention contraire expresse, Agricou agit en tant que plateforme intermédiaire et n’est ni le vendeur, ni le producteur, ni le fabricant, ni le propriétaire des produits proposés par les Producteurs. Les présentes Conditions Producteurs complètent les conditions générales d’Agricou. Conditions d\'utilisation et politique de confidentialité. En cas de conflit concernant l\'utilisation professionnelle d\'Agricou par un producteur, les présentes conditions d\'utilisation prévaudront.',
     },
     'y70l5ihm': {
       'en': '2. Producer Eligibility and Account',
@@ -5162,7 +5020,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'A Producer account is intended for persons or entities acting in the course of a professional or commercial activity.\n\nThe Producer represents and warrants that they have the legal capacity and all registrations, authorisations, licences, certifications and other requirements necessary to carry out their activity and sell the products offered through Agricou.\n\nThe Producer must provide accurate, complete and current information when creating and maintaining their account.\n\nAgricou may request reasonable documents or information necessary to verify the Producer’s identity, professional activity, payment information or compliance with applicable requirements.\n\nThe Producer is responsible for maintaining the confidentiality and security of their account credentials and for activity conducted through their account, except where responsibility cannot legally be attributed to the Producer.\n\nThe Producer must promptly update any information that becomes inaccurate or incomplete.',
       'fr':
-          'Un compte Producteur est destiné aux personnes physiques ou morales exerçant une activité professionnelle ou commerciale.\n\nLe Producteur déclare et garantit avoir la capacité juridique et posséder toutes les inscriptions, autorisations, licences, certifications et autres qualifications nécessaires à l’exercice de son activité et à la vente des produits proposés par Agricou.\n\nLe Producteur doit fournir des informations exactes, complètes et à jour lors de la création et de la gestion de son compte.\n\nAgricou peut demander les documents ou informations nécessaires à la vérification de l’identité du Producteur, de son activité professionnelle, de ses informations de paiement ou de sa conformité aux exigences applicables.\n\nLe Producteur est responsable de la confidentialité et de la sécurité de ses identifiants de compte et des activités menées par son intermédiaire, sauf lorsque la responsabilité ne peut lui être légalement imputée.\n\nLe Producteur doit mettre à jour sans délai toute information inexacte ou incomplète.',
+          'Un compte Producteur est destiné aux personnes physiques ou morales exerçant une activité professionnelle ou commerciale. Le Producteur déclare et garantit avoir la capacité juridique et posséder toutes les inscriptions, autorisations, licences, certifications et autres qualifications nécessaires à l\'exercice de son activité et à la vente des produits proposés par Agricou. Le Producteur doit fournir des informations exactes, complètes et à jour lors de la création et de la gestion de son compte. Agricou peut demander les documents ou informations raisonnables nécessaires à la vérification de l\'identité du Producteur, de son activité professionnelle, de ses informations de paiement ou de sa conformité aux exigences applicables. Le Producteur est responsable de la confidentialité et de la sécurité de ses identifiants de compte et des activités menées par son intermédiaire, sauf lorsque la responsabilité ne peut lui être légalement imputée. Le Producteur doit mettre à jour sans délai toute information inexacte ou incomplète.',
     },
     '4jd264kb': {
       'en': '3. Producer Subscription Plans',
@@ -5172,7 +5030,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou currently offers the following Producer plans:\n\nRoots Plan\n\n€4.90 per month or €49 per year.\n\nThe Roots Plan provides visibility for the Producer and their products on Agricou. Products may be displayed but cannot be purchased through Agricou under this plan.\n\nSelling, Click & Collect, Farmer Delivery and Agricou Delivery are not included.\n\nHarvest Plan\n\n€29.90 per month or €299 per year.\n\nThe Harvest Plan allows the Producer to offer products for sale through Agricou and includes Click & Collect and Farmer Delivery according to the functionalities and rules made available by Agricou.\n\nWhere Farmer Delivery is used, the Producer is responsible for performing or organising the delivery and the applicable delivery fee is intended for the Producer, subject to the payment arrangements displayed on the Platform.\n\nAgricou Delivery is not included in the Harvest Plan.\n\nFlavors Plan\n\n€69.90 per month or €699 per year.\n\nThe Flavors Plan includes selling through Agricou, Click & Collect and Farmer Delivery, together with access to Agricou Delivery where that service is available and subject to the applicable conditions, geographical coverage, operational capacity and delivery rules.\n\nWhere Agricou Delivery is selected, the applicable delivery fee is intended for Agricou to cover or contribute to the delivery service.\n\nThe availability and precise functionality of each plan may depend on technical, operational and geographical conditions.',
       'fr':
-          'Agricou propose actuellement les formules Producteur suivantes :\n\nFormule Racines\n\n4,90 € par mois ou 49 € par an.\n\nLa formule Racines offre une visibilité au Producteur et à ses produits sur Agricou. Les produits peuvent être affichés, mais ne peuvent pas être achetés via Agricou avec cette formule.\n\nLa vente, le Click & Collect, la livraison par le Producteur et la livraison Agricou ne sont pas inclus.\n\nFormule Récolte\n\n29,90 € par mois ou 299 € par an.\n\nLa formule Récolte permet au Producteur de proposer ses produits à la vente via Agricou et inclut le Click & Collect et la livraison par le Producteur, conformément aux fonctionnalités et règles mises à disposition par Agricou.\n\nEn cas de livraison par le Producteur, ce dernier est responsable de l’exécution ou de l’organisation de la livraison et les frais de livraison applicables lui sont destinés, sous réserve des modalités de paiement affichées sur la plateforme.\n\nLa livraison Agricou n’est pas incluse dans la formule Récolte.\n\nFormule Saveurs\n\n69,90 € par mois ou 699 € par an.\n\nLe forfait Saveurs inclut la vente via Agricou, le Click & Collect et la livraison par le producteur, ainsi que l\'accès à la livraison Agricou là où ce service est disponible et sous réserve des conditions applicables, de la couverture géographique, des capacités opérationnelles et des règles de livraison.\n\nSi la livraison Agricou est choisie, les frais de livraison applicables sont destinés à être pris en charge par Agricou, en totalité ou en partie.\n\nLa disponibilité et les fonctionnalités précises de chaque forfait peuvent dépendre de conditions techniques, opérationnelles et géographiques.',
+          'Agricou propose actuellement les formules Producteur suivantes : Formule Racines : 4,90 € par mois ou 49 € par an. La formule Racines offre une visibilité au Producteur et à ses produits sur Agricou. Les produits peuvent être affichés, mais ne peuvent pas être achetés via Agricou dans le cadre de ce forfait. La vente, le Click & Collect, la livraison par le producteur et la livraison Agricou ne sont pas inclus. Forfait Récolte : 29,90 € par mois ou 299 € par an. Le forfait Récolte permet au producteur de proposer ses produits à la vente via Agricou et inclut le Click & Collect et la livraison par le producteur, conformément aux fonctionnalités et règles mises à disposition par Agricou. En cas de livraison par le producteur, ce dernier est responsable de l’exécution ou de l’organisation de la livraison et les frais de livraison applicables lui sont destinés, sous réserve des modalités de paiement affichées sur la plateforme. La livraison Agricou n’est pas incluse dans le forfait Récolte. Saveurs Abonnement \n\n69,90 € par mois ou 699 € par an.\n\nL\'abonnement Saveurs inclut la vente via Agricou, le Click & Collect et la livraison par le producteur, ainsi que l\'accès à la livraison Agricou lorsque ce service est disponible et sous réserve des conditions applicables, de la couverture géographique, des capacités opérationnelles et des règles de livraison.\n\nSi la livraison Agricou est sélectionnée, les frais de livraison applicables sont destinés à être couverts ou à contribuer au service de livraison par Agricou.\n\nLa disponibilité et les fonctionnalités précises de chaque abonnement peuvent dépendre de conditions techniques, opérationnelles et géographiques.',
     },
     'nyzurbn9': {
       'en': '4. Subscription Billing, Renewal and Changes',
@@ -5182,7 +5040,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The applicable subscription price and billing frequency are displayed before subscription.\n\nDepending on the option selected, subscriptions may be billed monthly or annually.\n\nWhere automatic renewal is offered and selected, the subscription will renew for the applicable billing period unless cancelled in accordance with the cancellation mechanism made available by Agricou.\n\nAny applicable taxes will be handled in accordance with applicable law and the information displayed at the time of subscription.\n\nAgricou may change subscription prices or the content of its plans prospectively. Where legally required, affected Producers will receive prior notice before the changes take effect and will have any termination rights required by applicable law.\n\nExcept where required by law or expressly stated otherwise, amounts already due for an elapsed subscription period are not refundable merely because the Producer stops using the Platform during that period.',
       'fr':
-          'Le prix de l\'abonnement et la fréquence de facturation sont affichés avant la souscription.\n\nSelon l\'option choisie, l\'abonnement peut être facturé mensuellement ou annuellement.\n\nEn cas de renouvellement automatique, l\'abonnement sera reconduit pour la période de facturation en cours, sauf annulation selon la procédure mise à disposition par Agricou.\n\nLes taxes applicables seront gérées conformément à la législation en vigueur et aux informations affichées lors de la souscription.\n\nAgricou se réserve le droit de modifier les prix des abonnements ou le contenu de ses offres. Lorsque la loi l\'exige, les producteurs concernés seront informés au préalable et disposeront des droits de résiliation prévus par la loi.\n\nSauf disposition légale contraire ou mention expresse, les sommes déjà dues pour une période d\'abonnement écoulée ne sont pas remboursables du seul fait de l\'arrêt d\'utilisation de la plateforme par le producteur pendant cette période.',
+          'Le prix de l\'abonnement et la fréquence de facturation sont affichés avant la souscription. Selon l\'option choisie, l\'abonnement peut être facturé mensuellement ou annuellement. En cas de renouvellement automatique, l\'abonnement sera reconduit pour la période de facturation applicable, sauf annulation selon la procédure d\'annulation mise à disposition par Agricou. Les taxes applicables seront gérées conformément à la législation en vigueur et aux informations affichées lors de la souscription. Agricou se réserve le droit de modifier les prix des abonnements ou le contenu de ses offres. Le cas échéant, les producteurs concernés seront informés au préalable et disposeront des droits de résiliation prévus par la loi. Sauf disposition légale contraire, les sommes dues pour une période d\'abonnement écoulée ne sont pas remboursables du seul fait de l\'arrêt d\'utilisation de la plateforme par le producteur pendant cette période.',
     },
     '6cf4mjwp': {
       'en': '5. Sales and Relationship with Consumers',
@@ -5192,7 +5050,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Where selling is enabled under the Producer’s plan, the Producer is the seller of the products purchased by the consumer.\n\nThe sales contract for the products is concluded between the Producer and the consumer. Agricou facilitates the transaction but does not become the seller or owner of the Producer’s products merely by providing the Platform.\n\nThe Producer is responsible for fulfilling all obligations applicable to the Producer-consumer relationship, including mandatory pre-contractual information, product conformity, product safety, pricing, invoicing where required, fulfilment, applicable consumer rights and handling of complaints relating to the products.\n\nNothing in these Producer Terms limits any mandatory rights available to consumers under applicable law.',
       'fr':
-          'Lorsque la vente est autorisée dans le cadre du plan du Producteur, ce dernier est le vendeur des produits achetés par le consommateur.\n\nLe contrat de vente des produits est conclu entre le Producteur et le consommateur. Agricou facilite la transaction, mais ne devient ni le vendeur ni le propriétaire des produits du Producteur du simple fait de fournir la Plateforme.\n\nLe Producteur est responsable du respect de toutes les obligations applicables à la relation producteur-consommateur, notamment l’information précontractuelle obligatoire, la conformité et la sécurité des produits, la tarification, la facturation le cas échéant, l’exécution des commandes, les droits des consommateurs et le traitement des réclamations relatives aux produits.\n\nAucune disposition des présentes Conditions du Producteur ne limite les droits impératifs dont disposent les consommateurs en vertu de la loi applicable.',
+          'Lorsque la vente est autorisée dans le cadre du plan du Producteur, ce dernier est le vendeur des produits achetés par le consommateur. Le contrat de vente des produits est conclu entre le Producteur et le consommateur. Agricou facilite la transaction, mais ne devient ni le vendeur ni le propriétaire des produits du Producteur du simple fait de fournir la Plateforme. Le Producteur est responsable du respect de toutes les obligations applicables à la relation producteur-consommateur, notamment l\'information précontractuelle obligatoire, la conformité et la sécurité des produits, la tarification, la facturation le cas échéant, l\'exécution des commandes, les droits applicables du consommateur et le traitement des réclamations relatives aux produits. Aucune disposition des présentes Conditions du Producteur ne limite les droits impératifs dont disposent les consommateurs en vertu de la loi applicable.',
     },
     '42cenl3w': {
       'en': '6. Prices, Product Payments and Agricou Service Fee',
@@ -5202,7 +5060,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer determines the selling price of their products, subject to applicable law and the technical rules of the Platform.\n\nAgricou currently charges the Producer 0% platform commission on the value of products sold through Agricou.\n\nAccordingly, the product sale amount is intended to be paid to the Producer, subject to payment processing, refunds, disputes, chargebacks, taxes and other adjustments that may lawfully apply.\n\nSeparately, Agricou may charge the consumer a service fee equal to 1% of the relevant order amount, capped at €3 per order.\n\nThis consumer service fee is charged by Agricou and is separate from the Producer’s product price. It does not constitute a commission deducted from the Producer’s product sale price.\n\nApplicable delivery fees may also be charged separately according to the delivery method selected.\n\nAgricou may modify its fee structure in the future subject to applicable notice requirements and these Producer Terms.',
       'fr':
-          'Le producteur fixe le prix de vente de ses produits, conformément à la législation applicable et aux règles techniques de la plateforme.\n\nActuellement, Agricou ne prélève aucune commission auprès du producteur sur la valeur des produits vendus via sa plateforme.\n\nLe montant de la vente est donc destiné au producteur, sous réserve du traitement des paiements, des remboursements, des litiges, des annulations de paiement, des taxes et autres ajustements légaux.\n\nPar ailleurs, Agricou peut facturer au consommateur des frais de service équivalant à 1 % du montant de la commande, plafonnés à 3 € par commande.\n\nCes frais de service sont facturés par Agricou et sont distincts du prix du produit. Ils ne constituent pas une commission déduite du prix de vente du produit.\n\nDes frais de livraison peuvent également être facturés séparément selon le mode de livraison choisi.\n\nAgricou se réserve le droit de modifier sa grille tarifaire ultérieurement, sous réserve des préavis applicables et des présentes Conditions générales du producteur.',
+          'Le producteur fixe le prix de vente de ses produits, conformément à la législation applicable et aux règles techniques de la plateforme. Agricou ne prélève actuellement aucune commission sur la valeur des produits vendus par son intermédiaire. Le montant de la vente est donc destiné au producteur, sous réserve du traitement des paiements, des remboursements, des litiges, des rétrofacturations, des taxes et autres ajustements légaux. Par ailleurs, Agricou peut facturer au consommateur des frais de service équivalents à 1 % du montant de la commande, plafonnés à 3 € par commande. Ces frais de service sont facturés par Agricou et sont distincts du prix du produit du producteur. Cela ne constitue pas une commission déduite du prix de vente du produit du producteur. Des frais de livraison peuvent également être facturés séparément selon le mode de livraison choisi. Agricou se réserve le droit de modifier sa grille tarifaire ultérieurement, sous réserve des préavis applicables et des présentes conditions générales du producteur.',
     },
     'v8ui54p4': {
       'en': '7. Payment Processing',
@@ -5212,7 +5070,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Payments may be processed through third-party payment service providers, including Stripe.\n\nThe Producer may be required to create, connect or maintain an account with the relevant payment provider and provide any identity, banking, tax or business information required by that provider.\n\nPayment services may also be governed by the payment provider’s own terms and conditions.\n\nAgricou does not guarantee that a payment will be authorised, completed or free from disputes, chargebacks, technical failures or regulatory review.\n\nThe Producer must cooperate reasonably in the investigation of payment disputes, suspected fraud, refunds and chargebacks relating to their transactions.',
       'fr':
-          'Les paiements peuvent être traités par des prestataires de services de paiement tiers, tels que Stripe.\n\nLe Producteur peut être amené à créer, connecter ou gérer un compte auprès du prestataire de paiement concerné et à fournir les informations d\'identité, bancaires, fiscales ou commerciales requises par ce dernier.\n\nLes services de paiement peuvent également être soumis aux conditions générales du prestataire de paiement.\n\nAgricou ne garantit pas l\'autorisation, la finalisation ni l\'absence de litiges, de rejets de paiement, de défaillances techniques ou de contrôles réglementaires liés aux paiements.\n\nLe Producteur est tenu de coopérer pleinement aux enquêtes relatives aux litiges de paiement, aux suspicions de fraude, aux remboursements et aux rejets de paiement concernant ses transactions.',
+          'Les paiements peuvent être traités par des prestataires de services de paiement tiers, notamment Stripe. Le producteur peut être tenu de créer, de connecter ou de gérer un compte auprès du prestataire de paiement concerné et de fournir toute information d\'identité, bancaire, fiscale ou commerciale requise par ce dernier. Les services de paiement peuvent également être soumis aux conditions générales du prestataire de paiement. Agricou ne garantit pas qu\'un paiement sera autorisé, finalisé ou exempt de litiges, de rétrofacturations, de défaillances techniques ou de contrôles réglementaires. Le producteur doit coopérer de manière raisonnable aux enquêtes relatives aux litiges de paiement, aux suspicions de fraude, aux remboursements et aux rétrofacturations concernant ses transactions.',
     },
     'yhc8f1xa': {
       'en': '8. Product Listings and Producer Information',
@@ -5222,7 +5080,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer is solely responsible for the accuracy, legality and completeness of information supplied concerning their activity and products.\n\nProduct listings must accurately describe the product offered, including where applicable its nature, quantity, weight or weight range, unit, price, origin, availability and any information required by applicable law.\n\nWhere products are sold according to variable weight or quantity, the Producer must comply with the applicable functionality and pricing rules implemented by Agricou and provide accurate information to the consumer.\n\nThe Producer must not publish misleading, deceptive, unlawful or materially inaccurate information.\n\nProducts that are unavailable must be marked unavailable or removed within a reasonable period.',
       'fr':
-          'Le producteur est seul responsable de l’exactitude, de la légalité et de l’exhaustivité des renseignements fournis concernant son activité et ses produits.\n\nLes fiches de produits doivent décrire avec précision le produit offert, y compris, le cas échéant, sa nature, la quantité, le poids ou la fourchette de poids, l’unité de mesure, le prix, l’origine, la disponibilité et tout renseignement exigé par la loi applicable.\n\nLorsque les produits sont vendus selon un poids ou une quantité variable, le producteur doit se conformer aux règles de fonctionnalité et de tarification applicables mises en œuvre par Agricou et fournir des renseignements exacts au consommateur.\n\nLe producteur ne doit pas publier de renseignements trompeurs, mensongers, illégaux ou matériellement inexacts.\n\nLes produits indisponibles doivent être signalés comme tels ou retirés dans un délai raisonnable.',
+          'Le producteur est seul responsable de l\'exactitude, de la légalité et de l\'exhaustivité des renseignements fournis concernant son activité et ses produits. Les fiches de produits doivent décrire avec précision le produit offert, y compris, le cas échéant, sa nature, sa quantité, son poids ou sa fourchette de poids, son unité, son prix, son origine, sa disponibilité et tout renseignement exigé par la loi applicable. Lorsque les produits sont vendus selon un poids ou une quantité variable, le producteur doit se conformer aux règles de fonctionnalité et de tarification applicables mises en œuvre par Agricou et fournir des renseignements exacts au consommateur. Le producteur ne doit pas publier de renseignements trompeurs, mensongers, illégaux ou matériellement inexacts. Les produits indisponibles doivent être signalés comme tels ou retirés dans un délai raisonnable.',
     },
     'yqsu1ueb': {
       'en': '9. Food Safety and Regulatory Compliance',
@@ -5232,7 +5090,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer remains responsible for compliance with all laws and regulations applicable to their activity and products.\n\nDepending on the products concerned, this may include requirements relating to food safety and hygiene, traceability, labelling, allergens, storage, temperature control, packaging, weights and measures, product origin, agricultural production, taxation and any required professional registration or authorisation.\n\nThe Producer must not offer products whose sale is prohibited or for which they do not possess the necessary legal authorisation.\n\nAgricou may remove or restrict a listing where reasonably necessary for legal compliance, consumer safety, Platform security or enforcement of these Producer Terms.',
       'fr':
-          'Le producteur demeure responsable du respect de toutes les lois et réglementations applicables à son activité et à ses produits.\n\nSelon les produits concernés, cela peut inclure des exigences relatives à la sécurité et à l\'hygiène alimentaires, à la traçabilité, à l\'étiquetage, aux allergènes, au stockage, au contrôle de la température, à l\'emballage, aux poids et mesures, à l\'origine des produits, à la production agricole, à la fiscalité et à toute inscription ou autorisation professionnelle requise.\n\nLe producteur ne doit pas proposer de produits dont la vente est interdite ou pour lesquels il ne possède pas l\'autorisation légale requise.\n\nAgricou peut supprimer ou restreindre une annonce lorsque cela est raisonnablement nécessaire pour des raisons de conformité légale, de sécurité des consommateurs, de sécurité de la plateforme ou d\'application des présentes Conditions générales du producteur.',
+          'Le producteur demeure responsable du respect de toutes les lois et réglementations applicables à son activité et à ses produits. Selon les produits concernés, cela peut inclure des exigences relatives à la sécurité et à l\'hygiène alimentaires, à la traçabilité, à l\'étiquetage, aux allergènes, au stockage, au contrôle de la température, à l\'emballage, aux poids et mesures, à l\'origine du produit, à la production agricole, à la fiscalité et à toute inscription ou autorisation professionnelle requise. Le producteur ne doit pas proposer de produits dont la vente est interdite ou pour lesquels il ne possède pas l\'autorisation légale nécessaire. Agricou peut supprimer ou restreindre une annonce lorsque cela est raisonnablement nécessaire pour le respect des obligations légales, la sécurité des consommateurs, la sécurité de la plateforme ou l\'application des présentes conditions générales du producteur.',
     },
     'cab20j5g': {
       'en': '10. Orders and Availability',
@@ -5242,7 +5100,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer is responsible for keeping product availability and relevant information reasonably up to date.\n\nWhen a valid order is accepted or otherwise becomes binding under the applicable purchasing process, the Producer must prepare and fulfil the order in accordance with the information communicated to the consumer.\n\nIf the Producer cannot fulfil an order, they must use the available Platform functionality or contact the relevant parties as soon as reasonably possible.\n\nRepeated unjustified cancellations, persistent inaccurate availability or failure to fulfil confirmed orders may result in restrictions or suspension in accordance with these Producer Terms.',
       'fr':
-          'Le Producteur est responsable de la mise à jour régulière des informations relatives à la disponibilité des produits et à leur contenu.\n\nLorsqu\'une commande valide est acceptée ou devient contraignante conformément au processus d\'achat applicable, le Producteur doit la préparer et l\'honorer conformément aux informations communiquées au consommateur.\n\nSi le Producteur est dans l\'impossibilité d\'honorer une commande, il doit utiliser les fonctionnalités de la Plateforme ou contacter les parties concernées dans les meilleurs délais.\n\nDes annulations injustifiées et répétées, des informations de disponibilité constamment erronées ou le non-respect des commandes confirmées peuvent entraîner des restrictions ou une suspension conformément aux présentes Conditions Générales du Producteur.',
+          'Le Producteur est responsable de la mise à jour raisonnable des informations relatives à la disponibilité des produits et à leur contenu. Lorsqu\'une commande valide est acceptée ou devient contraignante conformément au processus d\'achat applicable, le Producteur doit la préparer et l\'exécuter conformément aux informations communiquées au consommateur. Si le Producteur ne peut honorer une commande, il doit utiliser les fonctionnalités disponibles sur la Plateforme ou contacter les parties concernées dans les meilleurs délais. Des annulations injustifiées répétées, des informations de disponibilité constamment erronées ou le non-respect des commandes confirmées peuvent entraîner des restrictions ou une suspension conformément aux présentes Conditions Générales du Producteur.',
     },
     '3p12znso': {
       'en': '11. Click & Collect',
@@ -5252,7 +5110,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Where Click & Collect is available under the Producer’s plan, the Producer is responsible for preparing the order and making it available at the agreed location and within the communicated collection arrangements.\n\nThe Producer must provide accurate collection information and take reasonable steps to ensure that the correct order is provided to the correct customer.\n\nAny specific food preservation or safety requirements remain the Producer’s responsibility until responsibility for the products passes in accordance with applicable law.',
       'fr':
-          'Lorsque le service Click & Collect est disponible dans le cadre du plan du producteur, ce dernier est responsable de la préparation de la commande et de sa mise à disposition à l\'endroit convenu, selon les modalités de retrait communiquées.\n\nLe producteur doit fournir des informations de retrait exactes et prendre les mesures raisonnables pour s\'assurer que la bonne commande est remise au bon client.\n\nLe respect des exigences spécifiques en matière de conservation et de sécurité alimentaire demeure la responsabilité du producteur jusqu\'à ce que la responsabilité des produits soit transférée conformément à la législation applicable.',
+          'Lorsque le service Click & Collect est disponible dans le cadre du plan du producteur, ce dernier est responsable de la préparation de la commande et de sa mise à disposition à l\'endroit convenu et selon les modalités de retrait communiquées. Le producteur doit fournir des informations de retrait exactes et prendre les mesures raisonnables pour s\'assurer que la bonne commande est remise au bon client. Toute exigence spécifique en matière de conservation ou de sécurité alimentaire demeure la responsabilité du producteur jusqu\'à ce que la responsabilité des produits soit transférée conformément à la loi applicable.',
     },
     'irdbo6ux': {
       'en': '12. Farmer Delivery',
@@ -5262,7 +5120,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Where Farmer Delivery is available and selected, the Producer is responsible for organising and performing the delivery in accordance with the information presented to the consumer.\n\nThe Producer is responsible for defining and complying with any delivery conditions made available through Agricou, including applicable geographical areas, availability and operational conditions.\n\nThe applicable Farmer Delivery fee is intended for the Producer, subject to the payment arrangements displayed on the Platform.\n\nThe Producer remains responsible for appropriate transportation and handling of the products, including compliance with applicable food safety or temperature requirements.',
       'fr':
-          'Lorsque la livraison par le producteur est disponible et sélectionnée, ce dernier est responsable de l\'organisation et de la réalisation de la livraison conformément aux informations fournies au consommateur.\n\nLe producteur est responsable de la définition et du respect des conditions de livraison proposées par Agricou, notamment en ce qui concerne les zones géographiques, la disponibilité et les conditions opérationnelles.\n\nLes frais de livraison par le producteur sont à la charge du producteur, selon les modalités de paiement affichées sur la plateforme.\n\nLe producteur demeure responsable du transport et de la manutention appropriés des produits, y compris du respect des exigences applicables en matière de sécurité alimentaire et de température.',
+          'Lorsque la livraison par le producteur est disponible et sélectionnée, ce dernier est responsable de l\'organisation et de la réalisation de la livraison conformément aux informations présentées au consommateur. Le producteur est également responsable de la définition et du respect des conditions de livraison proposées par Agricou, notamment les zones géographiques concernées, la disponibilité des produits et les conditions opérationnelles. Les frais de livraison par le producteur sont à la charge de ce dernier, selon les modalités de paiement affichées sur la plateforme. Le producteur demeure responsable du transport et de la manutention appropriés des produits, y compris du respect des exigences applicables en matière de sécurité alimentaire et de température.',
     },
     'n06c7e1h': {
       'en': '13. Agricou Delivery',
@@ -5272,7 +5130,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Flavors Plan may provide access to an Agricou-organised delivery solution (“Agricou Delivery”) in eligible locations.\n\nAgricou Delivery may involve grouping orders and may rely on independent third-party delivery providers, including services provided through third-party delivery platforms.\n\nAvailability is not guaranteed for every Producer, consumer, address, product, date or time.\n\nThe delivery fee applicable to Agricou Delivery is intended for Agricou and may be used to cover or contribute to delivery and operational costs.\n\nThe Producer remains responsible for correctly preparing, packaging and identifying the products before collection and for complying with applicable requirements concerning the products.\n\nAgricou is not responsible for acts or omissions of independent third-party providers beyond the extent to which responsibility may legally be attributed to Agricou.',
       'fr':
-          'Le Plan Saveurs peut donner accès à un service de livraison organisé par Agricou (« Livraison Agricou ») dans les zones éligibles.\n\nLa Livraison Agricou peut impliquer le regroupement des commandes et faire appel à des prestataires de livraison tiers indépendants, notamment via des plateformes de livraison tierces.\n\nLa disponibilité n\'est pas garantie pour tous les producteurs, consommateurs, adresses, produits, dates ou heures.\n\nLes frais de livraison applicables à la Livraison Agricou sont destinés à Agricou et peuvent servir à couvrir ou à contribuer à ses coûts de livraison et d\'exploitation.\n\nLe producteur demeure responsable de la préparation, de l\'emballage et de l\'identification corrects des produits avant leur enlèvement, ainsi que du respect des exigences applicables.\n\nAgricou décline toute responsabilité pour les actes ou omissions des prestataires tiers indépendants, au-delà de la limite de responsabilité qui lui est légalement imputée.',
+          'Le Plan Saveurs peut donner accès à un service de livraison organisé par Agricou (« Livraison Agricou ») dans les zones éligibles. La Livraison Agricou peut impliquer le regroupement des commandes et faire appel à des prestataires de livraison tiers indépendants, y compris des services fournis par l\'intermédiaire de plateformes de livraison tierces. La disponibilité n\'est pas garantie pour tous les producteurs, consommateurs, adresses, produits, dates ou heures. Les frais de livraison applicables à la Livraison Agricou sont destinés à Agricou et peuvent servir à couvrir ou à contribuer à ses coûts de livraison et d\'exploitation. Le producteur demeure responsable de la préparation, de l\'emballage et de l\'identification corrects des produits avant leur enlèvement, ainsi que du respect des exigences applicables. Agricou n\'est pas responsable des actes ou omissions des prestataires tiers indépendants, au-delà de la mesure dans laquelle sa responsabilité peut être légalement imputée.',
     },
     '9df4puaz': {
       'en': '14. Cancellations, Refunds and Complaints',
@@ -5282,7 +5140,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Cancellations and refunds must be handled in accordance with applicable law, the nature of the product, the circumstances of the transaction and the rules displayed on Agricou.\n\nCertain products, including some perishable goods, may be subject to exceptions from statutory withdrawal rights where the legal conditions for those exceptions are satisfied.\n\nThe Producer is responsible for complaints concerning the quality, conformity, description, quantity or safety of products sold by the Producer.\n\nAgricou may facilitate communications, refunds or dispute resolution but doing so does not make Agricou the seller of the products.\n\nWhere a refund, chargeback or other adjustment results from the Producer’s breach, failure to fulfil an order, inaccurate listing or other circumstance attributable to the Producer, corresponding amounts may be recovered or adjusted to the extent permitted by law and the applicable payment arrangements.',
       'fr':
-          'Les annulations et les remboursements doivent être traités conformément à la législation applicable, à la nature du produit, aux circonstances de la transaction et aux règles affichées sur Agricou.\n\nCertains produits, notamment certains produits périssables, peuvent faire l\'objet d\'exceptions au droit de rétractation légal lorsque les conditions légales applicables sont remplies.\n\nLe producteur est responsable des réclamations relatives à la qualité, la conformité, la description, la quantité ou la sécurité des produits qu\'il vend.\n\nAgricou peut faciliter la communication, les remboursements ou le règlement des litiges, mais cette intervention ne fait pas d\'Agricou le vendeur des produits.\n\nSi un remboursement, une rétrofacturation ou tout autre ajustement résulte d\'un manquement du producteur, d\'un défaut d\'exécution de commande, d\'une fiche produit inexacte ou de toute autre circonstance imputable au producteur, les montants correspondants peuvent être recouvrés ou ajustés dans la mesure permise par la loi et les modalités de paiement applicables.',
+          'Les annulations et les remboursements doivent être traités conformément à la loi applicable, à la nature du produit, aux circonstances de la transaction et aux règles affichées sur Agricou. Certains produits, notamment certains produits périssables, peuvent faire l\'objet d\'exceptions au droit de rétractation légal lorsque les conditions légales de ces exceptions sont remplies. Le producteur est responsable des réclamations concernant la qualité, la conformité, la description, la quantité ou la sécurité des produits qu\'il vend. Agricou peut faciliter les communications, les remboursements ou le règlement des litiges, mais cela ne fait pas d\'Agricou le vendeur des produits. Lorsqu\'un remboursement, une rétrofacturation ou tout autre ajustement résulte d\'un manquement du producteur, d\'un défaut d\'exécution d\'une commande, d\'une fiche produit inexacte ou de toute autre circonstance imputable au producteur, les montants correspondants peuvent être recouvrés ou ajustés dans la mesure permise par la loi et les modalités de paiement applicables.',
     },
     'pmeecr99': {
       'en': '15. Ranking, Search and Visibility',
@@ -5292,7 +5150,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Products and Producers may be displayed or ranked according to parameters used by Agricou to provide relevant results to consumers.\n\nDepending on the functionality concerned, the principal parameters may include geographical proximity or relevance to a user’s selected location or route, product category and filters selected by the user, product availability, opening or collection availability, compatibility with the requested delivery or collection method, and other criteria directly selected by the user.\n\nTechnical or operational factors may also affect whether and where a listing appears.\n\nSubscription plans affect access to functionality as expressly described in these Producer Terms. For example, Roots provides visibility without selling functionality, while Harvest and Flavors provide additional commercial functionalities.\n\nUnless expressly identified on the Platform, payment of a subscription does not guarantee a particular position in search results, a minimum level of visibility, traffic, orders or sales.\n\nAgricou may modify its ranking systems over time. Material changes affecting Producers will be handled in accordance with applicable transparency requirements.',
       'fr':
-          'Les produits et les producteurs peuvent être affichés ou classés selon les paramètres utilisés par Agricou afin de fournir des résultats pertinents aux consommateurs.\n\nSelon la fonctionnalité concernée, les principaux paramètres peuvent inclure la proximité géographique ou la pertinence par rapport au lieu ou à l\'itinéraire sélectionné par l\'utilisateur, la catégorie de produit et les filtres sélectionnés par ce dernier, la disponibilité du produit, les horaires d\'ouverture ou de retrait, la compatibilité avec le mode de livraison ou de retrait demandé, ainsi que d\'autres critères directement sélectionnés par l\'utilisateur.\n\nDes facteurs techniques ou opérationnels peuvent également influencer l\'affichage et le positionnement d\'une annonce.\n\nLes formules d\'abonnement ont une incidence sur l\'accès aux fonctionnalités, comme indiqué dans les présentes Conditions générales pour les producteurs. Par exemple, l\'abonnement Roots offre une visibilité sans fonctionnalité de vente, tandis que les abonnements Harvest et Flavors offrent des fonctionnalités commerciales supplémentaires.\n\nSauf mention contraire sur la Plateforme, le paiement d\'un abonnement ne garantit pas un positionnement particulier dans les résultats de recherche, un niveau minimal de visibilité, de trafic, de commandes ou de ventes.\n\nAgricou se réserve le droit de modifier ses systèmes de classement. Les modifications importantes affectant les producteurs seront traitées conformément aux exigences de transparence applicables.',
+          'Les produits et les producteurs peuvent être affichés ou classés selon les paramètres utilisés par Agricou pour fournir des résultats pertinents aux consommateurs. Selon la fonctionnalité concernée, les principaux paramètres peuvent inclure la proximité géographique ou la pertinence par rapport au lieu ou à l\'itinéraire sélectionné par l\'utilisateur, la catégorie de produit et les filtres sélectionnés par l\'utilisateur, la disponibilité du produit, les horaires d\'ouverture ou de retrait, la compatibilité avec le mode de livraison ou de retrait demandé, et d\'autres critères directement sélectionnés par l\'utilisateur. Des facteurs techniques ou opérationnels peuvent également influencer l\'affichage et le positionnement d\'une annonce. Les formules d\'abonnement affectent l\'accès aux fonctionnalités, comme décrit expressément dans les présentes Conditions Producteur. Par exemple, Roots offre une visibilité sans fonctionnalité de vente, tandis que Harvest et Flavors offrent des fonctionnalités commerciales supplémentaires. Sauf indication contraire sur la Plateforme, le paiement d\'un abonnement ne garantit pas un positionnement particulier dans les résultats de recherche, un niveau minimal de visibilité, de trafic, de commandes ou de ventes. Agricou peut modifier ses systèmes de classement au fil du temps. Les modifications importantes affectant les producteurs seront traitées conformément aux exigences de transparence applicables.',
     },
     '2qbdbp1z': {
       'en': '16. Reviews and Consumer Content',
@@ -5302,7 +5160,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may allow consumers to publish ratings, reviews or other content concerning Producers or transactions.\n\nAgricou does not guarantee that reviews will be positive.\n\nAgricou may moderate or remove reviews or other content where reasonably necessary to enforce Platform rules, comply with law, address fraud or abuse, or protect users and the integrity of the Platform.\n\nProducers must not manipulate reviews, create false reviews, offer undisclosed incentives for misleading reviews or improperly pressure consumers to alter legitimate feedback.',
       'fr':
-          'Agricou peut permettre aux consommateurs de publier des évaluations, des commentaires ou d\'autres contenus concernant les producteurs ou les transactions.\n\nAgricou ne garantit pas que les commentaires seront positifs.\n\nAgricou peut modérer ou supprimer les commentaires ou autres contenus lorsque cela est raisonnablement nécessaire pour faire respecter les règles de la plateforme, se conformer à la loi, lutter contre la fraude ou les abus, ou protéger les utilisateurs et l\'intégrité de la plateforme.\n\nLes producteurs ne doivent pas manipuler les commentaires, créer de faux commentaires, offrir des incitations non divulguées pour des commentaires trompeurs ni exercer de pression indue sur les consommateurs pour qu\'ils modifient des commentaires légitimes.',
+          'Agricou peut autoriser les consommateurs à publier des évaluations, des commentaires ou d\'autres contenus concernant les producteurs ou les transactions. Agricou ne garantit pas que les commentaires seront positifs. Agricou peut modérer ou supprimer les commentaires ou autres contenus lorsque cela est raisonnablement nécessaire pour faire respecter les règles de la plateforme, se conformer à la loi, lutter contre la fraude ou les abus, ou protéger les utilisateurs et l\'intégrité de la plateforme. Les producteurs ne doivent pas manipuler les commentaires, créer de faux commentaires, offrir des incitations non divulguées pour des commentaires trompeurs ou exercer une pression indue sur les consommateurs pour qu\'ils modifient des commentaires légitimes.',
     },
     'pbtpb91o': {
       'en': '17. Producer Content and Intellectual Property',
@@ -5312,7 +5170,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer retains ownership of intellectual property rights they hold in photographs, logos, trademarks, descriptions and other content supplied to Agricou.\n\nBy uploading or submitting such content, the Producer grants Agricou a non-exclusive, worldwide, royalty-free licence, for the duration necessary to provide and promote the Agricou services, to host, store, reproduce, display, format and technically adapt that content for operation and promotion of the Platform and the Producer’s listings.\n\nThis licence does not transfer ownership of the Producer’s intellectual property to Agricou.\n\nThe Producer represents that they possess the rights necessary to provide and authorise use of the submitted content.\n\nAgricou retains all rights in the Agricou name, trademarks, software, interface, design, databases and other proprietary elements belonging to Agricou or its licensors.',
       'fr':
-          'Le Producteur conserve la propriété des droits de propriété intellectuelle qu\'il détient sur les photographies, logos, marques, descriptions et autres contenus fournis à Agricou.\n\nEn téléchargeant ou en soumettant ces contenus, le Producteur concède à Agricou une licence non exclusive, mondiale et gratuite, pour la durée nécessaire à la fourniture et à la promotion des services Agricou, autorisant l\'hébergement, le stockage, la reproduction, l\'affichage, la mise en forme et l\'adaptation technique de ces contenus pour le fonctionnement et la promotion de la Plateforme et des annonces du Producteur.\n\nCette licence n\'entraîne aucun transfert de propriété intellectuelle du Producteur à Agricou.\n\nLe Producteur déclare détenir les droits nécessaires pour fournir et autoriser l\'utilisation des contenus soumis.\n\nAgricou conserve tous les droits sur son nom, ses marques, ses logiciels, son interface, son design, ses bases de données et autres éléments propriétaires appartenant à Agricou ou à ses concédants de licence.',
+          'Le Producteur conserve la propriété des droits de propriété intellectuelle qu\'il détient sur les photographies, logos, marques, descriptions et autres contenus fournis à Agricou. En téléchargeant ou en soumettant ces contenus, le Producteur concède à Agricou une licence non exclusive, mondiale et gratuite, pour la durée nécessaire à la fourniture et à la promotion des services Agricou, autorisant l\'hébergement, le stockage, la reproduction, l\'affichage, le formatage et l\'adaptation technique de ces contenus pour l\'exploitation et la promotion de la Plateforme et des annonces du Producteur. Cette licence n\'entraîne aucun transfert de propriété intellectuelle du Producteur à Agricou. Le Producteur déclare posséder les droits nécessaires pour fournir et autoriser l\'utilisation des contenus soumis. Agricou conserve tous les droits sur son nom, ses marques, ses logiciels, son interface, son design, ses bases de données et autres éléments propriétaires appartenant à Agricou ou à ses concédants de licence.',
     },
     'f5yq0uro': {
       'en': '18. Data and Access to Data',
@@ -5322,7 +5180,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Personal data is processed in accordance with Agricou’s Privacy Policy and applicable data protection law.\n\nThrough the Platform, Producers may have access to information necessary to manage their activity, such as information relating to their products, orders and transactions, subject to applicable law, privacy requirements and the functionality of their plan.\n\nProducers must use consumer information obtained through Agricou only for legitimate purposes connected with the relevant transaction, customer service, legal obligations or another lawful basis.\n\nConsumer data obtained through Agricou must not be sold, misused or used for unrelated unsolicited marketing where such use is not lawful.\n\nAgricou may access and process data generated through use of the Platform for operating, securing, maintaining and improving its services, preventing fraud, providing support, performing analytics and complying with legal obligations, in accordance with applicable law and the Privacy Policy.\n\nFollowing termination, access to Platform data may cease. Agricou may retain certain information where required or permitted by law, including for accounting, security, fraud prevention, dispute management, legal claims and regulatory compliance, in accordance with applicable retention periods.',
       'fr':
-          'Les données personnelles sont traitées conformément à la Politique de confidentialité d\'Agricou et à la législation applicable en matière de protection des données.\n\nPar le biais de la Plateforme, les Producteurs peuvent accéder aux informations nécessaires à la gestion de leur activité, telles que les informations relatives à leurs produits, commandes et transactions, sous réserve de la législation applicable, des exigences en matière de protection des données et des fonctionnalités de leur abonnement.\n\nLes Producteurs doivent utiliser les informations des consommateurs obtenues via Agricou uniquement à des fins légitimes liées à la transaction concernée, au service client, aux obligations légales ou à tout autre fondement juridique.\n\nLes données des consommateurs obtenues via Agricou ne doivent pas être vendues, utilisées à mauvais escient ni utilisées à des fins de prospection commerciale non sollicitée et sans lien avec l\'activité, lorsque cette utilisation est illégale.\n\nAgricou peut accéder aux données générées par l\'utilisation de la Plateforme et les traiter afin d\'exploiter, de sécuriser, de maintenir et d\'améliorer ses services, de prévenir la fraude, de fournir une assistance, d\'effectuer des analyses et de se conformer à ses obligations légales, conformément à la législation applicable et à la Politique de confidentialité.\n\nAprès la résiliation de l\'abonnement, l\'accès aux données de la Plateforme peut être interrompu. Agricou peut conserver certaines informations lorsque la loi l\'exige ou le permet, notamment à des fins comptables, de sécurité, de prévention de la fraude, de gestion des litiges, de réclamations et de conformité réglementaire, conformément aux durées de conservation applicables.',
+          'Les données personnelles sont traitées conformément à la Politique de confidentialité d\'Agricou et à la législation applicable en matière de protection des données.\n\nPar le biais de la Plateforme, les Producteurs peuvent accéder aux informations nécessaires à la gestion de leur activité, telles que les informations relatives à leurs produits, commandes et transactions, sous réserve de la législation applicable, des exigences en matière de confidentialité et des fonctionnalités de leur abonnement.\n\nLes Producteurs doivent utiliser les informations des consommateurs obtenues via Agricou uniquement à des fins légitimes liées à la transaction concernée, au service client, aux obligations légales ou à tout autre fondement juridique.\n\nLes données des consommateurs obtenues via Agricou ne doivent pas être vendues, utilisées à mauvais escient ou utilisées à des fins de prospection commerciale non sollicitée et sans lien avec l\'activité, lorsque cette utilisation est illégale.\n\nAgricou peut accéder aux données générées par l\'utilisation de la Plateforme et les traiter afin d\'exploiter, de sécuriser, de maintenir et d\'améliorer ses services, de prévenir la fraude, de fournir une assistance, d\'effectuer des analyses et de se conformer aux obligations légales, conformément à la législation applicable et à la Politique de confidentialité.\n\nAprès la résiliation, l\'accès aux données de la Plateforme peut être interrompu. Cesser. Agricou peut conserver certaines informations lorsque la loi l’exige ou le permet, notamment à des fins de comptabilité, de sécurité, de prévention de la fraude, de gestion des litiges, de recours juridiques et de conformité réglementaire, conformément aux périodes de conservation applicables.',
     },
     'tkwly2wn': {
       'en': '19. Third-Party Services',
@@ -5332,7 +5190,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may integrate or rely upon services provided by third parties, including payment, authentication, mapping, analytics, notification, hosting and delivery providers.\n\nUse of certain functionality may therefore also be subject to the relevant third party’s terms, policies, availability and technical requirements.\n\nAgricou does not control independent third-party services and cannot guarantee their uninterrupted availability.',
       'fr':
-          'Agricou peut intégrer ou utiliser des services fournis par des tiers, notamment des prestataires de paiement, d\'authentification, de cartographie, d\'analyse, de notification, d\'hébergement et de livraison.\n\nL\'utilisation de certaines fonctionnalités peut donc être soumise aux conditions générales, politiques, disponibilités et exigences techniques des tiers concernés.\n\nAgricou n\'exerce aucun contrôle sur les services de tiers indépendants et ne peut garantir leur disponibilité continue.',
+          'Agricou peut intégrer ou s\'appuyer sur des services fournis par des tiers, notamment des prestataires de paiement, d\'authentification, de cartographie, d\'analyse, de notification, d\'hébergement et de livraison. L\'utilisation de certaines fonctionnalités peut donc également être soumise aux conditions générales, politiques, disponibilités et exigences techniques des tiers concernés. Agricou n\'exerce aucun contrôle sur les services de tiers indépendants et ne peut garantir leur disponibilité ininterrompue.',
     },
     '6gj4lsvc': {
       'en': '20. Prohibited Conduct',
@@ -5342,7 +5200,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Producers must not use Agricou to:\n\n- offer unlawful, prohibited, unsafe, fraudulent or misleading products;\n- impersonate another person or business;\n- provide intentionally false professional or product information;\n- manipulate orders, payments, reviews or Platform functionality;\n- interfere with the security or operation of Agricou;\n- introduce malware or malicious code;\nmisuse consumer personal data;\n- infringe intellectual property or other rights of third parties;\n- circumvent fees or technical restrictions through fraudulent or abusive means; or \n- use Agricou in violation of applicable law.',
       'fr':
-          'Les producteurs ne doivent pas utiliser Agricou pour :\n\n- proposer des produits illégaux, interdits, dangereux, frauduleux ou trompeurs ;\n\n- usurper l’identité d’une autre personne ou entreprise ;\n\n- fournir intentionnellement de fausses informations professionnelles ou relatives aux produits ;\n\n- manipuler les commandes, les paiements, les avis ou les fonctionnalités de la plateforme ;\n\n- nuire à la sécurité ou au fonctionnement d’Agricou ;\n\n- introduire des logiciels malveillants ou des codes malveillants ;\n\n- utiliser abusivement les données personnelles des consommateurs ;\n\n- enfreindre les droits de propriété intellectuelle ou autres droits de tiers ;\n\n- contourner les frais ou les restrictions techniques par des moyens frauduleux ou abusifs ; ou\n\n- utiliser Agricou en violation de la loi applicable.',
+          'Les producteurs ne doivent pas utiliser Agricou pour : proposer des produits illégaux, interdits, dangereux, frauduleux ou trompeurs ; usurper l’identité d’une autre personne ou entreprise ; fournir intentionnellement de fausses informations professionnelles ou relatives aux produits ; manipuler les commandes, les paiements, les avis ou les fonctionnalités de la plateforme ; nuire à la sécurité ou au fonctionnement d’Agricou ; introduire des logiciels malveillants ou des codes malveillants ; utiliser abusivement les données personnelles des consommateurs ; enfreindre les droits de propriété intellectuelle ou autres droits de tiers ; contourner les frais ou les restrictions techniques par des moyens frauduleux ou abusifs ; ou utiliser Agricou en violation de la loi applicable.',
     },
     'r9avo8ka': {
       'en': '21. Restriction and Suspension',
@@ -5352,7 +5210,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may restrict particular listings, functionality or access to an account where there are reasonable grounds relating to, among other things:\n\n- violation of these Producer Terms or the general Terms of Service;\n- unlawful or unsafe products;\nsuspected fraud or payment abuse;\n- material or repeated consumer complaints;\n- inaccurate or misleading information;\nrepeated failure to fulfil confirmed orders;\nmisuse of personal data;\n- infringement of third-party rights;\ncybersecurity or Platform integrity risks;\n- failure to pay amounts lawfully due to Agricou; or\n- a legal or regulatory requirement.\n\nWhere required by applicable law, Agricou will provide the Producer with the reasons for a restriction or suspension on a durable medium before or when the measure takes effect and provide an opportunity to clarify the relevant facts through the available complaint process.',
       'fr':
-          'Agricou peut restreindre la publication de certaines annonces, l\'accès à certaines fonctionnalités ou à un compte pour des motifs raisonnables, notamment :\n\n- violation des présentes Conditions Producteur ou des Conditions Générales d\'Utilisation ;\n\n- produits illégaux ou dangereux ;\n\n- suspicion de fraude ou d\'abus de paiement ;\n\n- plaintes importantes ou répétées de consommateurs ;\n\n- informations inexactes ou trompeuses ;\n\n- non-respect répété des commandes confirmées ;\n\n- utilisation abusive de données personnelles ;\n\n- atteinte aux droits de tiers ;\n\nrisques liés à la cybersécurité ou à l\'intégrité de la Plateforme ;\n\n- défaut de paiement des sommes légitimement dues à Agricou ; ou\n- obligation légale ou réglementaire.\n\nLorsque la loi applicable l\'exige, Agricou communiquera au Producteur les motifs de la restriction ou de la suspension sur un support durable avant ou au moment de la prise d\'effet de la mesure et lui offrira la possibilité de clarifier les faits pertinents via la procédure de réclamation prévue à cet effet.',
+          'Agricou peut restreindre certaines annonces, fonctionnalités ou l\'accès à un compte pour des motifs raisonnables liés notamment à : la violation des présentes Conditions Producteur ou des Conditions Générales d\'Utilisation ; la vente de produits illégaux ou dangereux ; des soupçons de fraude ou d\'abus de paiement ; des plaintes importantes ou répétées de consommateurs ; des informations inexactes ou trompeuses ; le non-respect répété des commandes confirmées ; l\'utilisation abusive de données personnelles ; la violation des droits de tiers ; des risques liés à la cybersécurité ou à l\'intégrité de la Plateforme ; le non-paiement des sommes légitimement dues à Agricou. ou une exigence légale ou réglementaire. Lorsque la loi applicable l\'exige, Agricou fournira au Producteur les raisons d\'une restriction ou d\'une suspension sur un support durable avant ou au moment où la mesure entre en vigueur et lui donnera l\'occasion de clarifier les faits pertinents par le biais du processus de plainte disponible.',
     },
     '5ermbq8c': {
       'en': '22. Termination',
@@ -5362,7 +5220,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer may terminate their relationship with Agricou and cancel their subscription using the mechanisms made available by Agricou, subject to any applicable billing period and amounts already due.\n\nAgricou may terminate the entire service relationship for the grounds described in these Producer Terms.\n\nWhere the EU Platform-to-Business rules require it, Agricou will provide a statement of reasons on a durable medium at least 30 days before termination of the entire intermediation service.\n\nThat notice period may not apply in circumstances permitted by applicable law, including certain legal or regulatory obligations, imperative reasons recognised by law or repeated violations of the applicable terms.\n\nTermination does not affect rights or obligations that arose before termination or provisions that by their nature are intended to survive termination.',
       'fr':
-          'Le Producteur peut résilier sa relation avec Agricou et annuler son abonnement via les mécanismes mis à sa disposition, sous réserve des périodes de facturation applicables et des montants déjà dus.\n\nAgricou peut résilier l\'intégralité de la relation de service pour les motifs décrits dans les présentes Conditions Producteur.\n\nLorsque la réglementation européenne relative aux plateformes et aux entreprises l\'exige, Agricou fournira un exposé des motifs sur un support durable au moins 30 jours avant la résiliation de l\'intégralité du service d\'intermédiation.\n\nCe délai de préavis peut ne pas s\'appliquer dans certaines circonstances autorisées par la loi applicable, notamment en cas d\'obligations légales ou réglementaires, de motifs impérieux reconnus par la loi ou de violations répétées des conditions applicables.\n\nLa résiliation n\'affecte pas les droits et obligations nés avant la résiliation ni les dispositions qui, par leur nature, sont destinées à survivre à la résiliation.',
+          'Le Producteur peut résilier sa relation avec Agricou et annuler son abonnement via les mécanismes mis à disposition par Agricou, sous réserve de toute période de facturation applicable et des montants déjà dus. Agricou peut résilier l\'intégralité de la relation de service pour les motifs décrits dans les présentes Conditions Producteur. Lorsque la réglementation européenne relative aux plateformes et aux entreprises l\'exige, Agricou fournira un exposé des motifs sur un support durable au moins 30 jours avant la résiliation de l\'intégralité du service d\'intermédiation. Ce délai de préavis peut ne pas s\'appliquer dans certaines circonstances autorisées par la loi applicable, notamment certaines obligations légales ou réglementaires, les motifs impérieux reconnus par la loi ou les violations répétées des conditions applicables. La résiliation n\'affecte pas les droits et obligations nés avant la résiliation ni les dispositions qui, par leur nature, sont destinées à survivre à la résiliation.',
     },
     '4ieion1f': {
       'en': '23. Internal Complaints',
@@ -5372,7 +5230,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'A Producer may contact Agricou regarding a decision affecting their account, a technical issue, payment matter or another issue relating to the provision of Agricou services at:\n\nsupport@agricou.com\n\nAgricou will review complaints in good faith and may request additional information reasonably necessary to investigate the matter.\n\nWhere applicable law requires a specific internal complaint-handling procedure or mediation mechanism, Agricou will provide the information required by that law.',
       'fr':
-          'Un producteur peut contacter Agricou concernant une décision affectant son compte, un problème technique, une question de paiement ou tout autre problème relatif à la prestation des services d\'Agricou à l\'adresse suivante :\n\nsupport@agricou.com\n\nAgricou examinera les réclamations de bonne foi et pourra demander des informations complémentaires raisonnablement nécessaires à l\'enquête.\n\nLorsque la loi applicable exige une procédure interne spécifique de traitement des réclamations ou un mécanisme de médiation, Agricou fournira les informations requises par cette loi.',
+          'Un producteur peut contacter Agricou concernant une décision affectant son compte, un problème technique, une question de paiement ou toute autre question relative à la prestation des services d\'Agricou à l\'adresse : support@agricou.com. Agricou examinera les plaintes de bonne foi et pourra demander des renseignements supplémentaires raisonnablement nécessaires à l\'enquête. Lorsque la loi applicable exige une procédure interne spécifique de traitement des plaintes ou un mécanisme de médiation, Agricou fournira les renseignements requis par cette loi.',
     },
     '4wvln33f': {
       'en': '24. Platform Availability',
@@ -5382,7 +5240,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou aims to provide a reliable service but does not guarantee that the Platform or any particular functionality will be available without interruption or error.\n\nThe Platform may be temporarily unavailable because of maintenance, updates, security incidents, third-party failures or circumstances beyond Agricou’s reasonable control.\n\nAgricou may develop, modify or discontinue functionality, subject to applicable contractual and legal requirements.\n\nNo subscription plan guarantees a minimum number of views, customers, orders, revenue or sales.',
       'fr':
-          'Agricou s\'efforce de fournir un service fiable, mais ne garantit pas la disponibilité ininterrompue et sans erreur de la Plateforme ni de ses fonctionnalités.\n\nLa Plateforme peut être temporairement indisponible en raison de travaux de maintenance, de mises à jour, d\'incidents de sécurité, de défaillances de tiers ou de circonstances indépendantes de la volonté d\'Agricou.\n\nAgricou se réserve le droit de développer, modifier ou interrompre certaines fonctionnalités, sous réserve des dispositions contractuelles et légales applicables.\n\nAucun abonnement ne garantit un nombre minimum de vues, de clients, de commandes, de revenus ou de ventes.',
+          'Agricou s\'efforce de fournir un service fiable, mais ne garantit pas la disponibilité ininterrompue et sans erreur de la Plateforme ni de ses fonctionnalités. La Plateforme peut être temporairement indisponible en raison de travaux de maintenance, de mises à jour, d\'incidents de sécurité, de défaillances de tiers ou de circonstances indépendantes de la volonté d\'Agricou. Agricou se réserve le droit de développer, modifier ou interrompre certaines fonctionnalités, sous réserve des dispositions contractuelles et légales applicables. Aucun abonnement ne garantit un nombre minimum de vues, de clients, de commandes, de revenus ou de ventes.',
     },
     'vp62gs08': {
       'en': '25. Producer Responsibility and Indemnification',
@@ -5392,7 +5250,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'The Producer is responsible for their professional activity, products, listings and fulfilment of sales and for compliance with obligations applicable to them.\n\nTo the extent permitted by applicable law, the Producer shall indemnify and hold Agricou harmless against third-party claims, losses, liabilities, damages and reasonable costs arising from the Producer’s unlawful conduct, products, breach of these Producer Terms, infringement of third-party rights or failure to comply with obligations legally incumbent upon the Producer.\n\nThis provision does not apply to the extent that the relevant loss or liability is caused by Agricou or where such limitation or allocation of responsibility is prohibited by applicable law.',
       'fr':
-          'Le Producteur est responsable de son activité professionnelle, de ses produits, de ses annonces et de l\'exécution des ventes, ainsi que du respect des obligations qui lui incombent.\n\nDans la mesure permise par la loi applicable, le Producteur indemnisera Agricou et le dégagera de toute responsabilité en cas de réclamations, pertes, responsabilités, dommages et frais raisonnables de tiers découlant d\'une conduite illicite du Producteur, de ses produits, d\'une violation des présentes Conditions du Producteur, d\'une atteinte aux droits de tiers ou d\'un manquement à ses obligations légales.\n\nCette disposition ne s\'applique pas si la perte ou la responsabilité en question est causée par Agricou ou si une telle limitation ou répartition de responsabilité est interdite par la loi applicable.',
+          'Le Producteur est responsable de son activité professionnelle, de ses produits, de ses annonces et de l\'exécution des ventes, ainsi que du respect des obligations qui lui incombent. Dans la mesure permise par la loi applicable, le Producteur indemnisera et dégagera Agricou de toute responsabilité en cas de réclamations, pertes, responsabilités, dommages et frais raisonnables de tiers découlant d\'une conduite illicite du Producteur, de ses produits, d\'une violation des présentes Conditions du Producteur, d\'une atteinte aux droits de tiers ou d\'un manquement aux obligations légales qui lui incombent. Cette disposition ne s\'applique pas si la perte ou la responsabilité en question est causée par Agricou ou si une telle limitation ou répartition de responsabilité est interdite par la loi applicable.',
     },
     '6pap5lby': {
       'en': '26. Agricou Liability',
@@ -5402,7 +5260,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Nothing in these Producer Terms excludes or limits liability where such exclusion or limitation is prohibited by applicable law.\n\nSubject to mandatory law, Agricou is responsible for providing the Platform services falling within its contractual obligations but is not responsible for the Producer’s products, professional activity, product information or obligations as seller.\n\nAgricou does not guarantee commercial success, consumer demand, sales volumes, uninterrupted availability of third-party services or a particular position in search results.\n\nTo the extent permitted by applicable law, Agricou shall not be liable for indirect or consequential losses that were not reasonably foreseeable as a result of a breach attributable to Agricou.\n\nAny contractual limitation of liability will apply only to the extent permitted by applicable law and will not exclude liability that cannot lawfully be excluded.',
       'fr':
-          'Aucune disposition des présentes Conditions Producteur n\'exclut ni ne limite la responsabilité lorsque cette exclusion ou limitation est interdite par la loi applicable.\n\nSous réserve des dispositions légales impératives, Agricou est responsable de la fourniture des services de la Plateforme relevant de ses obligations contractuelles, mais n\'est pas responsable des produits, de l\'activité professionnelle, des informations relatives aux produits ou des obligations du Producteur en tant que vendeur.\n\nAgricou ne garantit ni le succès commercial, ni la demande des consommateurs, ni les volumes de vente, ni la disponibilité ininterrompue des services tiers, ni un positionnement particulier dans les résultats de recherche.\n\nDans la mesure permise par la loi applicable, Agricou ne saurait être tenue responsable des dommages indirects ou consécutifs qui n\'étaient pas raisonnablement prévisibles et qui résultent d\'un manquement qui lui est imputable.\n\nToute limitation de responsabilité contractuelle ne s\'appliquera que dans la mesure permise par la loi applicable et n\'exclura pas la responsabilité qui ne peut être légalement exclue.',
+          'Aucune disposition des présentes Conditions générales du producteur n\'exclut ou ne limite la responsabilité lorsque cette exclusion ou limitation est interdite par la loi applicable. Sous réserve des dispositions légales impératives, Agricou est responsable de la fourniture des services de la Plateforme relevant de ses obligations contractuelles, mais n\'est pas responsable des produits, de l\'activité professionnelle, des informations sur les produits ou des obligations du producteur en tant que vendeur. Agricou ne garantit pas le succès commercial, la demande des consommateurs, les volumes de vente, la disponibilité ininterrompue des services tiers ni un positionnement particulier dans les résultats de recherche. Dans la mesure permise par la loi applicable, Agricou ne saurait être tenue responsable des pertes indirectes ou consécutives qui n\'étaient pas raisonnablement prévisibles et qui résultent d\'un manquement imputable à Agricou. Toute limitation contractuelle de responsabilité ne s\'appliquera que dans la mesure permise par la loi applicable et n\'exclura pas la responsabilité qui ne peut être légalement exclue.',
     },
     'peiwpwpr': {
       'en': '27. Changes to These Producer Terms',
@@ -5413,7 +5271,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou may amend these Producer Terms to reflect changes to the Platform, its commercial model, legal requirements, security requirements or other legitimate operational needs.\n\nAffected Producers will be informed of proposed changes on a durable medium.\n\nWhere the EU Platform-to-Business rules apply, changes will generally not take effect before the expiry of a reasonable and proportionate notice period of at least 15 days, with a longer period where necessary to allow Producers to make significant technical or commercial adaptations.\n\nExceptions may apply where permitted by law, including where an immediate change is required by a legal or regulatory obligation or to address an unforeseen and imminent security risk.',
       'fr':
-          'Agricou peut modifier les présentes Conditions Producteurs afin de tenir compte des évolutions de la Plateforme, de son modèle commercial, des exigences légales, des impératifs de sécurité ou de tout autre besoin opérationnel légitime.\n\nLes Producteurs concernés seront informés des modifications envisagées sur un support durable.\n\nLorsque la réglementation européenne relative aux transferts entre plateformes et entreprises s\'applique, les modifications n\'entreront généralement pas en vigueur avant l\'expiration d\'un préavis raisonnable et proportionné d\'au moins 15 jours, ce délai pouvant être plus long si nécessaire pour permettre aux Producteurs d\'effectuer des adaptations techniques ou commerciales significatives.\n\nDes exceptions peuvent s\'appliquer lorsque la loi le permet, notamment lorsqu\'une modification immédiate est requise par une obligation légale ou réglementaire ou pour faire face à un risque de sécurité imprévu et imminent.',
+          'Agricou peut modifier les présentes Conditions Producteurs afin de tenir compte des changements apportés à la Plateforme, à son modèle commercial, aux exigences légales, aux exigences de sécurité ou à d\'autres besoins opérationnels légitimes. Les Producteurs concernés seront informés des modifications proposées sur un support durable. Lorsque la réglementation européenne relative aux échanges entre plateformes et entreprises s\'applique, les modifications n\'entreront généralement pas en vigueur avant l\'expiration d\'un préavis raisonnable et proportionné d\'au moins 15 jours, ce délai pouvant être plus long si nécessaire pour permettre aux Producteurs d\'effectuer des adaptations techniques ou commerciales importantes. Des exceptions peuvent s\'appliquer lorsque la loi le permet, notamment lorsqu\'une modification immédiate est requise par une obligation légale ou réglementaire ou pour faire face à un risque de sécurité imprévu et imminent.',
     },
     '9g3cio99': {
       'en': '28. Governing Law and Disputes',
@@ -5423,7 +5281,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'These Producer Terms are governed by French law, subject to any mandatory rules that may apply.\n\nThe parties should first attempt to resolve disputes concerning the Agricou service amicably by contacting:\n\nsupport@agricou.com\n\nAny dispute that cannot be resolved amicably may be submitted to the competent courts determined in accordance with applicable law.\n\nNothing in this section deprives a party of rights or remedies that cannot lawfully be excluded by contract.',
       'fr':
-          'Les présentes Conditions Générales de Vente sont régies par le droit français, sous réserve des dispositions impératives applicables.\n\nEn cas de litige relatif au service Agricou, les parties sont invitées à tenter de le résoudre à l\'amiable en contactant :\n\nsupport@agricou.com\n\nTout litige ne pouvant être résolu à l\'amiable pourra être soumis aux juridictions compétentes, conformément au droit applicable.\n\nAucune disposition du présent article ne prive une partie des droits ou recours qui ne peuvent être légitimement exclus par contrat.',
+          'Les présentes Conditions Générales de Vente sont régies par le droit français, sous réserve des dispositions impératives applicables. Les parties sont invitées à tenter de résoudre tout litige relatif au service Agricou à l\'amiable en contactant : support@agricou.com. Tout litige ne pouvant être résolu à l\'amiable pourra être soumis aux juridictions compétentes, conformément au droit applicable. Aucune disposition du présent article ne prive une partie des droits ou recours qui ne peuvent être légitimement exclus par contrat.',
     },
     '8oickkp8': {
       'en': '29. Contact',
@@ -5433,13 +5291,144 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Agricou is operated by:\n\nThe Pinnacle Of Data – EURL\nSIREN: 929 478 485\n8 rue d’Hyères\n31240 L’Union, France\n\nEmail: support@agricou.com',
       'fr':
-          'Agricou est exploité par :\n\nThe Pinnacle Of Data – EURL\n\nSIREN : 929 478 485\n\n8 rue d’Hyères\n\n31240 L’Union, France\n\nCourriel : support@agricou.com',
+          'Agricou est exploité par :\n\nThe Pinnacle Of Data – EURL\nSIREN : 929 478 485\n8 rue d\'Hyères\n31240 L\'Union, France\n\nEmail : support@agricou.com',
     },
     'olrni0kz': {
       'en': 'Producer Terms & Conditions',
       'fr': 'Conditions générales du producteur',
     },
     'pq89lpm5': {
+      'en': 'Home',
+      'fr': 'Accueil',
+    },
+  },
+  // WeightBalance
+  {
+    'l9wrweck': {
+      'en': 'Final weights & balance',
+      'fr': 'Poids et équilibre finaux',
+    },
+    'arytxpxk': {
+      'en': 'Producer-confirmed weights',
+      'fr': 'Poids confirmés par le producteur',
+    },
+    '4ese6hbt': {
+      'en': 'Review the final weights and remaining amount for this order.',
+      'fr':
+          'Veuillez vérifier le poids final et le montant restant pour cette commande.',
+    },
+    'nzpxrk75': {
+      'en': 'Product total',
+      'fr': 'Total du produit',
+    },
+    'snmbsx06': {
+      'en': 'Platform fee',
+      'fr': 'Frais de plateforme',
+    },
+    'x9ac6ovy': {
+      'en': 'Deposit already paid',
+      'fr': 'Acompte déjà versé',
+    },
+    'ccjwyb9h': {
+      'en': 'Total order amount',
+      'fr': 'Montant total de la commande',
+    },
+    'pb6invig': {
+      'en': 'Balance due',
+      'fr': 'Solde dû',
+    },
+    'jjrlvxpd': {
+      'en': 'Final weight',
+      'fr': 'Poids final',
+    },
+    'txmmakfp': {
+      'en': 'Quantity',
+      'fr': 'Quantité',
+    },
+    'xnqoyz0v': {
+      'en': 'Deposit paid for this item',
+      'fr': 'Acompte versé pour cet article',
+    },
+    '7t1wcvtf': {
+      'en': 'Balance for this item',
+      'fr': 'Solde pour cet article',
+    },
+    'ay5kdcps': {
+      'en': 'Contact',
+      'fr': 'Contact',
+    },
+    'ykookd6h': {
+      'en': 'Pay balance',
+      'fr': 'Payer le solde',
+    },
+    'ln2faaii': {
+      'en': 'Payment submitted — awaiting confirmation.',
+      'fr': 'Paiement effectué — en attente de confirmation.',
+    },
+    'p9kzveto': {
+      'en': 'Balance payment completed',
+      'fr': 'Paiement effectué — en attente de confirmation.',
+    },
+    '7o6rm2wl': {
+      'en': 'No additional payment is required.',
+      'fr': 'Paiement effectué — en attente de confirmation.',
+    },
+    '9qeqag4h': {
+      'en': 'Your previous payment failed. You can try again.',
+      'fr': 'Paiement effectué — en attente de confirmation.',
+    },
+  },
+  // HomePageCopy
+  {
+    '472udoj5': {
+      'en': 'Search by name, product, or location',
+      'fr': 'Recherche par nom, produit ou lieu',
+    },
+    '9j1z63nl': {
+      'en': 'Top Products',
+      'fr': 'Meilleurs produits',
+    },
+    'l8d87w6t': {
+      'en': 'See all',
+      'fr': 'Voir tout',
+    },
+    'npsb8i0r': {
+      'en': 'Along your route',
+      'fr': 'Le long de votre itinéraire',
+    },
+    'nd82ut20': {
+      'en': 'See all',
+      'fr': 'Voir tout',
+    },
+    'rzi5t851': {
+      'en': 'Seasonal',
+      'fr': 'Saisonnier',
+    },
+    's59qmgd8': {
+      'en': 'See all',
+      'fr': 'Voir tout',
+    },
+    '8s15t6v3': {
+      'en': 'Top farms',
+      'fr': 'Les meilleures fermes',
+    },
+    'ecnwh1fm': {
+      'en': 'See all',
+      'fr': 'Voir tout',
+    },
+    'wd1izrny': {
+      'en': 'View Farm',
+      'fr': 'Voir la ferme',
+    },
+    'jplccctq': {
+      'en': 'Favourites',
+      'fr': 'Favoris',
+    },
+    'rk3i0al2': {
+      'en': 'See all',
+      'fr': 'Voir tout',
+    },
+    '88y5kkzf': {
       'en': 'Home',
       'fr': 'Accueil',
     },
@@ -5528,7 +5517,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cex5a76l': {
       'en': 'Search delivery address',
-      'fr': 'Étiquette',
+      'fr': 'Rechercher l\'adresse de livraison',
     },
     '89s7t6bt': {
       'en': 'Label',
@@ -5548,19 +5537,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '846fzk79': {
       'en': 'Apartment, floor, building, landmark',
-      'fr': 'Adresse de la rue',
+      'fr': 'Appartement, étage, immeuble, point de repère',
     },
     '97otv2qf': {
       'en': 'Enter apartment, floor, or landmark',
-      'fr': 'Saisissez l\'adresse de la rue',
+      'fr':
+          'Saisissez le numéro d\'appartement, d\'étage ou de point de repère.',
     },
     '3e1zbe3n': {
       'en': 'postal Code',
-      'fr': 'Adresse de la rue',
+      'fr': 'Code Postal',
     },
     'h6ick0d1': {
       'en': 'Enter postal code',
-      'fr': 'Saisissez l\'adresse de la rue',
+      'fr': 'Saisissez le code postal',
     },
     '47gd432c': {
       'en': 'Phone Number',
@@ -5587,8 +5577,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Ajouter',
     },
     'yppvii4h': {
-      'en': 'Enter Label is required',
-      'fr': '',
+      'en': 'Enter an address label',
+      'fr': 'Saisir l\'étiquette est requis',
     },
     'yb4mq2y7': {
       'en': 'Please choose an option from the dropdown',
@@ -5612,11 +5602,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vdy3kokl': {
       'en': 'Enter postal code is required',
-      'fr': '',
+      'fr': 'Saisir le code postal est obligatoire',
     },
     '': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     'q75m6fhd': {
       'en': 'Enter Instructions (optional) is required',
@@ -5777,52 +5767,53 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hi0rcwz4': {
       'en': 'Variable Weight Product',
-      'fr': '',
+      'fr': 'Produit à poids variable',
     },
     'px40bd2t': {
       'en':
           'Sold by weight bracket. Customer pays 30% deposit; balance collected upon delivery.',
-      'fr': '',
+      'fr':
+          'Vendu par tranche de poids. Le client verse un acompte de 30 % ; le solde est perçu à la livraison.',
     },
     'zjub8rso': {
       'en': 'Min Weight (kg)',
-      'fr': 'Quantité en stock',
+      'fr': 'Poids minimum (kg)',
     },
     'psxxhgcl': {
       'en': 'eg. 2.0',
-      'fr': 'Saisir la quantité en stock',
+      'fr': 'par exemple 2.0',
     },
     'p9hihk4m': {
       'en': 'Max Weight (kg)',
-      'fr': 'Quantité en stock',
+      'fr': 'Poids maximal (kg)',
     },
     '5vsdomqp': {
       'en': 'eg.3.0',
-      'fr': 'Saisir la quantité en stock',
+      'fr': 'ex. 3.0',
     },
     'xhht7u4h': {
       'en': 'Max weight must be greater than Min weight',
-      'fr': '',
+      'fr': 'Le poids maximal doit être supérieur au poids minimal.',
     },
     'k1xjnrbl': {
       'en': 'Price  per kg',
-      'fr': 'Prix',
+      'fr': 'Prix ​​au kg',
     },
     'ge5t7npx': {
       'en': 'Live Pricing Breakdown',
-      'fr': '',
+      'fr': 'Détail des prix en direct',
     },
     'e0ydd297': {
       'en': 'Est. Weight Range:',
-      'fr': '',
+      'fr': 'Plage de poids estimée :',
     },
     '0e6xbxpj': {
       'en': 'Estimated Average Price:',
-      'fr': '',
+      'fr': 'Prix ​​moyen estimé :',
     },
     'fpp2fuoz': {
       'en': 'Add weight bracket',
-      'fr': 'Annuler',
+      'fr': 'Ajouter un support de poids',
     },
     'ryicj1ga': {
       'en': 'Storage',
@@ -5866,7 +5857,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nrd7dalc': {
       'en': 'Click to upload\nJPG, PNG (max 10MB)',
-      'fr': 'Cliquez pour téléverser\nJPG, PNG (10 Mo max.)',
+      'fr': 'Cliquez pour télécharger \nJPG, PNG (max 10 Mo)',
     },
     '30wvyjfg': {
       'en': 'Cancel',
@@ -5877,7 +5868,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Ajouter',
     },
     'cehjqqq5': {
-      'en': 'Enter Label is required',
+      'en': 'Enter a product name',
       'fr': 'Saisir l\'étiquette est requis',
     },
     'po6h7ab3': {
@@ -5885,7 +5876,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     '661q93op': {
-      'en': 'Enter Full Name is required',
+      'en': 'Enter a product description',
       'fr': 'Le nom complet est obligatoire.',
     },
     'shubtn4w': {
@@ -5893,7 +5884,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     '58l206o6': {
-      'en': 'Enter Street Address is required',
+      'en': 'Enter stock quantity',
       'fr': 'L\'adresse postale est obligatoire.',
     },
     'bg7qlbhq': {
@@ -5908,29 +5899,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
-    'qbo7uskq': {
-      'en': 'eg. 2.0 is required',
-      'fr': '',
+    '7i1nxbab': {
+      'en': ' is required',
+      'fr': 'est requis',
     },
     '1vsdwhdo': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
+    },
+    'qbo7uskq': {
+      'en': 'eg. 2.0 is required',
+      'fr': 'par exemple, la version 2.0 est requise',
+    },
+    '1yas2mud': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     'rhu2si2u': {
       'en': 'eg.3.0 is required',
-      'fr': '',
+      'fr': 'par exemple, la version 3.0 est requise',
     },
     '7vfcclz6': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     'ol6ah28c': {
       'en': 'price  is required',
-      'fr': '',
+      'fr': 'Le prix est requis',
     },
     '5ia5vm4e': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
   },
   // EditProduct
@@ -6007,6 +6006,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Grains',
       'fr': 'Grains',
     },
+    'ws6hgozy': {
+      'en': 'Variable Weight Product',
+      'fr': 'Produit à poids variable',
+    },
+    'td0bjodc': {
+      'en':
+          'Sold by weight bracket. Customer pays a deposit; balance collected upon delivery.',
+      'fr':
+          'Vendu par tranche de poids. Le client verse un acompte ; le solde est perçu à la livraison.',
+    },
+    'ail132cz': {
+      'en': 'Weight brackets',
+      'fr': 'supports de poids',
+    },
     '0x6f6onf': {
       'en': 'Price',
       'fr': 'Prix',
@@ -6061,7 +6074,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'aw80za3d': {
       'en': 'Season',
-      'fr': 'session',
+      'fr': 'Saison',
     },
     '6ivhurv2': {
       'en': 'Active Product ',
@@ -6105,11 +6118,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ry16hug4': {
       'en': 'batch_information is required',
-      'fr': '',
+      'fr': 'Les informations de lot sont requises',
     },
     'c6894ru3': {
       'en': 'Please choose an option from the dropdown',
-      'fr': '',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
     },
     '70liijvr': {
       'en': 'Enter Postal Code is required',
@@ -6203,7 +6216,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rvmyafq9': {
       'en': 'Deposit paid',
-      'fr': 'Total',
+      'fr': 'Acompte versé',
     },
     'bf2rlx74': {
       'en': '\$',
@@ -6215,7 +6228,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1r1xugwj': {
       'en': 'Total for order',
-      'fr': '',
+      'fr': 'Total pour la commande',
     },
     'y1hs73k7': {
       'en': '\$',
@@ -6228,6 +6241,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ibnt910m': {
       'en': 'Track Delivery',
       'fr': 'Suivi de livraison',
+    },
+    'z3wu6aaz': {
+      'en': 'Send Payment Request',
+      'fr': 'Marquer comme confirmé',
     },
     'ahn95aps': {
       'en': 'Reject Order',
@@ -6374,7 +6391,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gy58pbep': {
       'en': 'Click to upload\nJPG, PNG (max 10MB)',
-      'fr': 'Cliquez pour téléverser\nJPG, PNG (10 Mo max.)',
+      'fr': 'Cliquez pour télécharger \nJPG, PNG (max 10 Mo)',
     },
     'tk60856f': {
       'en': 'Cancel',
@@ -6642,7 +6659,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Your account is currently suspended and access has been restricted.\nIf you believe this is a mistake, please reach out to our support team.',
       'fr':
-          'Votre compte est actuellement suspendu et l\'accès est restreint.\n\nSi vous pensez qu\'il s\'agit d\'une erreur, veuillez contacter notre équipe d\'assistance.',
+          'Votre compte est actuellement suspendu et l\'accès a été restreint. Si vous pensez qu\'il s\'agit d\'une erreur, veuillez contacter notre équipe d\'assistance.',
     },
     'c22cjwim': {
       'en': 'Talk to Support',
@@ -6908,7 +6925,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Plan d\'achat',
     },
   },
-  // Rejectorder
+  // RejectorderDialogue
   {
     '2e1ixppi': {
       'en': 'Reject Order',
@@ -7003,22 +7020,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'lasqzwp3': {
       'en': 'Product weight',
-      'fr': 'Zone de livraison',
+      'fr': 'Poids du produit',
     },
     '38vhln6u': {
       'en': 'Enter Product Weight',
-      'fr': 'Zone de livraison d\'Entrée',
+      'fr': 'Saisissez le poids du produit',
     },
     'vif6oghs': {
       'en': 'Add',
-      'fr': 'Ajouter une zone',
+      'fr': 'Ajouter',
     },
     'w8w9m18u': {
       'en': 'Product Weight is required',
-      'fr': '',
+      'fr': 'Le poids du produit est requis.',
     },
     'ubh5f05j': {
       'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
+    },
+  },
+  // RefundCard
+  {
+    '0u2rvnde': {
+      'en': 'Product weight',
+      'fr': 'Poids du produit',
+    },
+    'mk1o7azv': {
+      'en': 'Enter Product Weight',
+      'fr': 'Saisissez le poids du produit',
+    },
+    'gosulm54': {
+      'en': 'Product Weight is required',
+      'fr': 'Le poids du produit est requis.',
+    },
+    'olkavjnc': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': 'Veuillez choisir une option dans le menu déroulant.',
+    },
+  },
+  // OrderRejectionStatusCard
+  {
+    'a4l8c20w': {
+      'en': 'Payment collected',
       'fr': '',
     },
   },

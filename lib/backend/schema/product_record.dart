@@ -141,25 +141,15 @@ class ProductRecord extends FirestoreRecord {
   bool get isVariableWeight => _isVariableWeight ?? false;
   bool hasIsVariableWeight() => _isVariableWeight != null;
 
-  // "min_weight" field.
-  double? _minWeight;
-  double get minWeight => _minWeight ?? 0.0;
-  bool hasMinWeight() => _minWeight != null;
+  // "product_weight" field.
+  List<ProductWeightStruct>? _productWeight;
+  List<ProductWeightStruct> get productWeight => _productWeight ?? const [];
+  bool hasProductWeight() => _productWeight != null;
 
-  // "max_weight" field.
-  double? _maxWeight;
-  double get maxWeight => _maxWeight ?? 0.0;
-  bool hasMaxWeight() => _maxWeight != null;
-
-  // "price_per_kg" field.
-  double? _pricePerKg;
-  double get pricePerKg => _pricePerKg ?? 0.0;
-  bool hasPricePerKg() => _pricePerKg != null;
-
-  // "product_wieight" field.
-  List<ProductWeightStruct>? _productWieight;
-  List<ProductWeightStruct> get productWieight => _productWieight ?? const [];
-  bool hasProductWieight() => _productWieight != null;
+  // "is_deleted" field.
+  bool? _isDeleted;
+  bool get isDeleted => _isDeleted ?? false;
+  bool hasIsDeleted() => _isDeleted != null;
 
   void _initializeFields() {
     _productName = snapshotData['product_name'] as String?;
@@ -187,13 +177,11 @@ class ProductRecord extends FirestoreRecord {
     _discount = castToType<int>(snapshotData['discount']);
     _sold = castToType<int>(snapshotData['sold']);
     _isVariableWeight = snapshotData['is_variable_weight'] as bool?;
-    _minWeight = castToType<double>(snapshotData['min_weight']);
-    _maxWeight = castToType<double>(snapshotData['max_weight']);
-    _pricePerKg = castToType<double>(snapshotData['price_per_kg']);
-    _productWieight = getStructList(
-      snapshotData['product_wieight'],
+    _productWeight = getStructList(
+      snapshotData['product_weight'],
       ProductWeightStruct.fromMap,
     );
+    _isDeleted = snapshotData['is_deleted'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -253,9 +241,7 @@ Map<String, dynamic> createProductRecordData({
   int? discount,
   int? sold,
   bool? isVariableWeight,
-  double? minWeight,
-  double? maxWeight,
-  double? pricePerKg,
+  bool? isDeleted,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -282,9 +268,7 @@ Map<String, dynamic> createProductRecordData({
       'discount': discount,
       'sold': sold,
       'is_variable_weight': isVariableWeight,
-      'min_weight': minWeight,
-      'max_weight': maxWeight,
-      'price_per_kg': pricePerKg,
+      'is_deleted': isDeleted,
     }.withoutNulls,
   );
 
@@ -322,10 +306,8 @@ class ProductRecordDocumentEquality implements Equality<ProductRecord> {
         e1?.discount == e2?.discount &&
         e1?.sold == e2?.sold &&
         e1?.isVariableWeight == e2?.isVariableWeight &&
-        e1?.minWeight == e2?.minWeight &&
-        e1?.maxWeight == e2?.maxWeight &&
-        e1?.pricePerKg == e2?.pricePerKg &&
-        listEquality.equals(e1?.productWieight, e2?.productWieight);
+        listEquality.equals(e1?.productWeight, e2?.productWeight) &&
+        e1?.isDeleted == e2?.isDeleted;
   }
 
   @override
@@ -355,10 +337,8 @@ class ProductRecordDocumentEquality implements Equality<ProductRecord> {
         e?.discount,
         e?.sold,
         e?.isVariableWeight,
-        e?.minWeight,
-        e?.maxWeight,
-        e?.pricePerKg,
-        const ListEquality().hash(e?.productWieight)
+        const ListEquality().hash(e?.productWeight),
+        e?.isDeleted
       ]);
 
   @override

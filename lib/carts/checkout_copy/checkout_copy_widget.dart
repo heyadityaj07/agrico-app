@@ -119,10 +119,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
               'm0ql2ox2' /* Checkout */,
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Satoshi',
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                   fontSize: 16.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w500,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                 ),
           ),
           actions: [],
@@ -421,8 +423,9 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                   'pvk7zkq8' /* Delivery Method */,
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -503,11 +506,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                       'viziwc7w' /* Farm Pickup */,
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Satoshi',
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                           color: FlutterFlowTheme.of(context).textprimary,
                                                                                                           fontSize: 16.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.w500,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Text(
@@ -515,11 +519,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                       '4frfnms5' /* Pick up directly */,
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Satoshi',
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                           color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                           fontSize: 14.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.normal,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ].divide(SizedBox(height: 5.0)),
@@ -532,9 +537,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             'hrjsuo8m' /* Free */,
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).primarytheme,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -643,11 +649,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                       '6r0240qz' /* Farm Delivery */,
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Satoshi',
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                           color: FlutterFlowTheme.of(context).textprimary,
                                                                                                           fontSize: 16.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.w500,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                   Text(
@@ -655,11 +662,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                       '5e6ttsal' /* Delivered by the Farm directly */,
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          fontFamily: 'Satoshi',
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                           color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                           fontSize: 14.0,
                                                                                                           letterSpacing: 0.0,
                                                                                                           fontWeight: FontWeight.normal,
+                                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                         ),
                                                                                                   ),
                                                                                                 ].divide(SizedBox(height: 5.0)),
@@ -674,9 +682,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                               'rere5ey2' /* Charges */,
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -792,11 +801,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                         '9rbrx4z0' /* Agricoo delivery */,
                                                                                                       ),
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                            fontFamily: 'Satoshi',
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                             color: FlutterFlowTheme.of(context).textprimary,
                                                                                                             fontSize: 16.0,
                                                                                                             letterSpacing: 0.0,
                                                                                                             fontWeight: FontWeight.w500,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                     Text(
@@ -804,11 +814,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                         'q8w6k508' /* Delivered by the Uber directly */,
                                                                                                       ),
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                            fontFamily: 'Satoshi',
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                             color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                             fontSize: 14.0,
                                                                                                             letterSpacing: 0.0,
                                                                                                             fontWeight: FontWeight.normal,
+                                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ].divide(SizedBox(height: 5.0)),
@@ -823,9 +834,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                 '29uwzn1j' /* Charges */,
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Satoshi',
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     color: FlutterFlowTheme.of(context).primarytheme,
                                                                                                     letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           ),
@@ -910,10 +922,11 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                     'ewnbjzz3' /* Delivery Address */,
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Satoshi',
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         color: FlutterFlowTheme.of(context).textsecondary,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.w500,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                                 Padding(
@@ -928,9 +941,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             'zib5jqxy' /* Full Name */,
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).textprimary,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -948,16 +962,18 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           decoration: InputDecoration(
                                                                                             isDense: true,
                                                                                             labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                 ),
                                                                                             hintText: FFLocalizations.of(context).getText(
                                                                                               '409xrzih' /* Enter your Name */,
                                                                                             ),
                                                                                             hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                 ),
                                                                                             enabledBorder: OutlineInputBorder(
                                                                                               borderSide: BorderSide(
@@ -991,9 +1007,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             fillColor: Color(0x03000003),
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).textprimary,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                           cursorColor: FlutterFlowTheme.of(context).primaryText,
                                                                                           enableInteractiveSelection: true,
@@ -1015,9 +1032,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             'kteipcz5' /* Street Address */,
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).textprimary,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1035,16 +1053,18 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           decoration: InputDecoration(
                                                                                             isDense: true,
                                                                                             labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                 ),
                                                                                             hintText: FFLocalizations.of(context).getText(
                                                                                               'nmthxfiw' /* Enter Street Address */,
                                                                                             ),
                                                                                             hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                 ),
                                                                                             enabledBorder: OutlineInputBorder(
                                                                                               borderSide: BorderSide(
@@ -1078,9 +1098,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             fillColor: Color(0x03000003),
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).textprimary,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                           cursorColor: FlutterFlowTheme.of(context).primaryText,
                                                                                           enableInteractiveSelection: true,
@@ -1102,9 +1123,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             '0b29xww9' /* Phone Number */,
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).textprimary,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                       ),
@@ -1122,16 +1144,18 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           decoration: InputDecoration(
                                                                                             isDense: true,
                                                                                             labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                 ),
                                                                                             hintText: FFLocalizations.of(context).getText(
                                                                                               't1md1wqu' /* Enter Phone Number */,
                                                                                             ),
                                                                                             hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                   letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                                                 ),
                                                                                             enabledBorder: OutlineInputBorder(
                                                                                               borderSide: BorderSide(
@@ -1165,9 +1189,10 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             fillColor: Color(0x03000003),
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).textprimary,
                                                                                                 letterSpacing: 0.0,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                           keyboardType: TextInputType.number,
                                                                                           cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -1195,10 +1220,11 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           's470a0bq' /* change address */,
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Satoshi',
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               color: FlutterFlowTheme.of(context).primarytheme,
                                                                                               letterSpacing: 0.0,
                                                                                               decoration: TextDecoration.underline,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                     ),
@@ -1227,11 +1253,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                     'ckonw3sq' /* Add address */,
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Satoshi',
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         color: FlutterFlowTheme.of(context).primarytheme,
                                                                                         fontSize: 18.0,
                                                                                         letterSpacing: 0.0,
                                                                                         decoration: TextDecoration.underline,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1844,13 +1871,15 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                           .titleSmall
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).alternate,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                           ),
                                                                       elevation:
                                                                           0.0,
@@ -1950,10 +1979,11 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                         '19cxvvwp' /* Bill Details */,
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Satoshi',
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                             color: FlutterFlowTheme.of(context).textsecondary,
                                                                                             letterSpacing: 0.0,
                                                                                             fontWeight: FontWeight.w500,
+                                                                                            useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -1966,11 +1996,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           'h3zwc6yl' /* To Pay */,
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Satoshi',
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.w500,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Row(
@@ -1979,11 +2010,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           Text(
                                                                                             functions.totalsales(containerCartRecordList.toList()).toStringAsFixed(2),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textprimary,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.w500,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ].divide(SizedBox(width: 12.0)),
@@ -2001,11 +2033,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             'yoo4kn2k' /* To Platform Fees */,
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w500,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                         Row(
@@ -2017,29 +2050,37 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                   'ds6axn9v' /* $ */,
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Satoshi',
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       color: FlutterFlowTheme.of(context).textprimary,
                                                                                                       fontSize: 16.0,
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.w500,
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             Text(
                                                                                               valueOrDefault<String>(
-                                                                                                functions.platformfees(
-                                                                                                    functions.totalsales(containerCartRecordList.toList()),
-                                                                                                    valueOrDefault<double>(
-                                                                                                      columnConfigRecord?.platformFee,
-                                                                                                      0.0,
-                                                                                                    )),
+                                                                                                functions
+                                                                                                    .platformfees(
+                                                                                                        functions.totalsales(containerCartRecordList.toList()),
+                                                                                                        valueOrDefault<double>(
+                                                                                                          columnConfigRecord?.platformFee,
+                                                                                                          0.0,
+                                                                                                        ),
+                                                                                                        valueOrDefault<double>(
+                                                                                                          columnConfigRecord?.platformFeeCap,
+                                                                                                          0.0,
+                                                                                                        ))
+                                                                                                    ?.toString(),
                                                                                                 '0',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Satoshi',
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     color: FlutterFlowTheme.of(context).textprimary,
                                                                                                     fontSize: 16.0,
                                                                                                     letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.w500,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             if (FFLocalizations.of(context).languageCode == 'fr')
@@ -2048,11 +2089,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                   'i75nxd2l' /* € */,
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Satoshi',
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       color: FlutterFlowTheme.of(context).textprimary,
                                                                                                       fontSize: 16.0,
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.w500,
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                           ],
@@ -2071,11 +2113,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                             'jk7boj0x' /* Delivery Fees */,
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                fontFamily: 'Satoshi',
+                                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontSize: 16.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w500,
+                                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                               ),
                                                                                         ),
                                                                                         Row(
@@ -2087,11 +2130,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                   'pzbo7knj' /* $ */,
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Satoshi',
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       color: FlutterFlowTheme.of(context).textprimary,
                                                                                                       fontSize: 16.0,
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.w500,
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                             Text(
@@ -2102,11 +2146,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                     )
                                                                                                   : '0',
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Satoshi',
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     color: FlutterFlowTheme.of(context).textprimary,
                                                                                                     fontSize: 16.0,
                                                                                                     letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.w500,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                             if (FFLocalizations.of(context).languageCode == 'fr')
@@ -2115,11 +2160,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                   'l589o7ji' /* € */,
                                                                                                 ),
                                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                      fontFamily: 'Satoshi',
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                       color: FlutterFlowTheme.of(context).textprimary,
                                                                                                       fontSize: 16.0,
                                                                                                       letterSpacing: 0.0,
                                                                                                       fontWeight: FontWeight.w500,
+                                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                     ),
                                                                                               ),
                                                                                           ],
@@ -2153,11 +2199,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                               'ppi6ezyn' /* Delivery Partner Fee */,
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.normal,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                           Text(
@@ -2165,11 +2212,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                               '5xh2jrku' /* $2.00 */,
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textprimary,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.w500,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -2187,11 +2235,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                               'jm69g61c' /* GST and Charges */,
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textsecondary,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.normal,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                           Text(
@@ -2199,11 +2248,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                               'kfe50txd' /* $1.10 */,
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textprimary,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.w500,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -2225,11 +2275,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                           's9k9ai3t' /* Total Pay */,
                                                                                         ),
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Satoshi',
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16.0,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.w500,
+                                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                             ),
                                                                                       ),
                                                                                       Row(
@@ -2241,11 +2292,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                 'kc2l9xmg' /* $ */,
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Satoshi',
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     color: FlutterFlowTheme.of(context).textprimary,
                                                                                                     fontSize: 16.0,
                                                                                                     letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.w500,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                           Text(
@@ -2266,11 +2318,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                               '0',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Satoshi',
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                   color: FlutterFlowTheme.of(context).textprimary,
                                                                                                   fontSize: 16.0,
                                                                                                   letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.w500,
+                                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                 ),
                                                                                           ),
                                                                                           if (FFLocalizations.of(context).languageCode == 'fr')
@@ -2279,11 +2332,12 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                                                 'l51fwpx1' /* € */,
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                    fontFamily: 'Satoshi',
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                                     color: FlutterFlowTheme.of(context).textprimary,
                                                                                                     fontSize: 16.0,
                                                                                                     letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.w500,
+                                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                                   ),
                                                                                             ),
                                                                                         ],
@@ -2390,11 +2444,13 @@ class _CheckoutCopyWidgetState extends State<CheckoutCopyWidget> {
                                                                         .titleSmall
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
                                                                           color:
                                                                               Colors.white,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                         ),
                                                                     elevation:
                                                                         0.0,

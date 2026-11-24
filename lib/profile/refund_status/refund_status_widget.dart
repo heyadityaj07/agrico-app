@@ -1,10 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/empty_widget.dart';
+import '/components/order_rejection_status_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'refund_status_model.dart';
@@ -100,14 +104,17 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 40.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  'mq8133kf' /* Refund Status */,
+                  'mq8133kf' /* Refunds */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
             ),
@@ -118,617 +125,509 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 16.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'yxlkiovv' /* Completed Refunds */,
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: StreamBuilder<List<OrderRecord>>(
+                stream: queryOrderRecord(
+                  queryBuilder: (orderRecord) => orderRecord.where(
+                    'user_ref',
+                    isEqualTo: currentUserReference,
+                  ),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primarytheme,
+                          ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
-                              color: FlutterFlowTheme.of(context).textprimary,
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w500,
-                            ),
                       ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 12.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          '03gdusq7' /* Green Valley Farm */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Satoshi',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .textprimary,
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                    );
+                  }
+                  List<OrderRecord> listViewOrderRecordList = snapshot.data!;
+                  if (listViewOrderRecordList.isEmpty) {
+                    return EmptyWidget();
+                  }
+
+                  return Builder(
+                    builder: (context) {
+                      final refundOrder = listViewOrderRecordList.toList();
+                      if (refundOrder.isEmpty) {
+                        return EmptyWidget();
+                      }
+
+                      return ListView.separated(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        scrollDirection: Axis.vertical,
+                        itemCount: refundOrder.length,
+                        separatorBuilder: (_, __) => SizedBox(height: 12.0),
+                        itemBuilder: (context, refundOrderIndex) {
+                          final refundOrderItem = refundOrder[refundOrderIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 12.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.start).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text(
+                                  '${FFLocalizations.of(context).getVariableText(
+                                    enText: 'Order #',
+                                    frText: 'Commande #',
+                                  )}${refundOrderItem.reference.id}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodySmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .textsecondary,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodySmallIsCustom,
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'cv1d83f6' /* To: UPI */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Satoshi',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .textsecondary,
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
+                                ),
+                                if ((refundOrderItem.orderStatus ==
+                                        'Rejected') &&
+                                    (refundOrderItem.refundStatus != '') &&
+                                    (refundOrderItem.refundStatus !=
+                                        'not_required'))
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 6.0, 0.0, 0.0),
+                                    child: wrapWithModel(
+                                      model: _model
+                                          .orderRejectionStatusCardModels
+                                          .getModel(
+                                        refundOrderIndex.toString(),
+                                        refundOrderIndex,
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'jv2c1k7i' /* Completed On: 18 Apr 2025 */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Satoshi',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .textsecondary,
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: OrderRejectionStatusCardWidget(
+                                        key: Key(
+                                          'Key3e6_${refundOrderIndex.toString()}',
                                         ),
+                                        order: refundOrderItem,
+                                        showProducerDetails: false,
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        height: 25.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .seconadrybutton,
-                                          borderRadius:
-                                              BorderRadius.circular(99.0),
-                                        ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
+                                if ((refundOrderItem.orderStatus !=
+                                        'Rejected') &&
+                                    (refundOrderItem.refundAmount > 0.0))
+                                  Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            (FFMainAxisAlignment.start)
+                                                .flutterValue,
+                                        crossAxisAlignment:
+                                            (FFCrossAxisAlignment.start)
+                                                .flutterValue,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                (FFMainAxisAlignment
+                                                        .spaceBetween)
+                                                    .flutterValue,
+                                            crossAxisAlignment:
+                                                (FFCrossAxisAlignment.start)
+                                                    .flutterValue,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.start)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Text(
+                                                    refundOrderItem.username,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .textprimary,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMediumIsCustom,
+                                                        ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      '${FFLocalizations.of(context).getVariableText(
+                                                        enText:
+                                                            'Refund status: ',
+                                                        frText:
+                                                            'Statut du remboursement : ',
+                                                      )}${refundOrderItem.refundStatus}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textsecondary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      '${FFLocalizations.of(context).getVariableText(
+                                                        enText: 'Order date: ',
+                                                        frText:
+                                                            'Date de commande : ',
+                                                      )}${dateTimeFormat(
+                                                        "yMMMd",
+                                                        refundOrderItem
+                                                            .createdAt,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      )}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textsecondary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment
+                                                            .spaceBetween)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.end)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Container(
+                                                    height: 28.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .seconadrybutton,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              99.0),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    12.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          refundOrderItem
+                                                              .refundStatus,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primarytheme,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 12.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      '${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${refundOrderItem.refundAmount.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textprimary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallIsCustom,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          StyledDivider(
+                                            height: 0.0,
+                                            thickness: 2.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .boderdivder,
+                                            lineStyle: DividerLineStyle.dashed,
+                                          ),
+                                          Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 12.0, 0.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'v45lt3iu' /* Deliverd */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
+                                                    0.0, 8.0, 0.0, 8.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  (FFMainAxisAlignment.start)
+                                                      .flutterValue,
+                                              crossAxisAlignment:
+                                                  (FFCrossAxisAlignment.start)
+                                                      .flutterValue,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
+                                              children: [
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      (FFMainAxisAlignment
+                                                              .start)
+                                                          .flutterValue,
+                                                  crossAxisAlignment:
+                                                      (FFCrossAxisAlignment
+                                                              .center)
+                                                          .flutterValue,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    Container(
+                                                      width: 14.0,
+                                                      height: 14.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primarytheme,
+                                                          width: 3.0,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 2.0,
+                                                      height: 52.0,
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primarytheme,
-                                                        letterSpacing: 0.0,
                                                       ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 12.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'gwfqeua9' /* €120 */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Satoshi',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .textprimary,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            StyledDivider(
-                              height: 0.0,
-                              thickness: 2.0,
-                              color: FlutterFlowTheme.of(context).boderdivder,
-                              lineStyle: DividerLineStyle.dashed,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'kf039wky' /* Order ID: #123741852963 */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Satoshi',
-                                            color: FlutterFlowTheme.of(context)
-                                                .textsecondary,
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
-                                  ),
-                                  FaIcon(
-                                    FaIconData(const IconData(
-                                        /* angleRight */ 0xf105,
-                                        fontFamily: 'FontAwesomeSolid',
-                                        fontPackage: 'font_awesome_flutter')),
-                                    color: FlutterFlowTheme.of(context)
-                                        .textsecondary,
-                                    size: 20.0,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            StyledDivider(
-                              height: 0.0,
-                              thickness: 2.0,
-                              color: FlutterFlowTheme.of(context).boderdivder,
-                              lineStyle: DividerLineStyle.dashed,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        width: 14.0,
-                                        height: 14.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primarytheme,
-                                            width: 3.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 2.0,
-                                        height: 52.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primarytheme,
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 14.0,
-                                        height: 14.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primarytheme,
-                                            width: 3.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 2.0,
-                                        height: 52.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primarytheme,
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 14.0,
-                                        height: 14.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primarytheme,
-                                            width: 3.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    height: 155.0,
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .card,
-                                              width: 3.0,
-                                            ),
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '5tu0kkyn' /* Agricoo has initiated your ref... */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
+                                                    ),
+                                                    Container(
+                                                      width: 14.0,
+                                                      height: 14.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
+                                                              .primarytheme,
+                                                          width: 3.0,
                                                         ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '6tbp5fna' /* Completed On: 18 Apr 2025 */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
                                                       ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .card,
-                                              width: 3.0,
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(12.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          (FFMainAxisAlignment
+                                                                  .start)
+                                                              .flutterValue,
+                                                      crossAxisAlignment:
+                                                          (FFCrossAxisAlignment
+                                                                  .start)
+                                                              .flutterValue,
+                                                      textBaseline: TextBaseline
+                                                          .alphabetic,
+                                                      children: [
+                                                        Text(
+                                                          '${FFLocalizations.of(context).getVariableText(
+                                                            enText:
+                                                                'Refund recorded for order ',
+                                                            frText:
+                                                                'Remboursement enregistré pour la commande ',
+                                                          )}${refundOrderItem.reference.id}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textprimary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
+                                                              ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            refundOrderItem
+                                                                .refundStatus,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .textsecondary,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodySmallIsCustom,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '95oqzre3' /* Your bank has processed your r... */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '0ql5asdc' /* Completed On: 18 Apr 2025 */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.rectangle,
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .card,
-                                              width: 3.0,
-                                            ),
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'k9tz997a' /* Refund credited to your accoun... */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'ekncel5p' /* Completed On: 18 Apr 2025 */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                        ].divide(SizedBox(height: 12.0)),
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
+                              ],
                             ),
-                            StyledDivider(
-                              height: 0.0,
-                              thickness: 2.0,
-                              color: FlutterFlowTheme.of(context).boderdivder,
-                              lineStyle: DividerLineStyle.dashed,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'oqcxzbb3' /* Did this Issue resolved */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Satoshi',
-                                          color: FlutterFlowTheme.of(context)
-                                              .textsecondary,
-                                          fontSize: 14.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          '1uuv3dvc' /* YES */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Satoshi',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primarytheme,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                            ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'pmmr9mea' /* NO */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Satoshi',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primarytheme,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                          );
                         },
-                        text: FFLocalizations.of(context).getText(
-                          'dajev5e7' /* Show Older Refunds */,
-                        ),
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primarytheme,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: 'Satoshi',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                      );
+                    },
+                  );
+                },
               ),
-            ],
+            ),
           ),
         ),
       ),

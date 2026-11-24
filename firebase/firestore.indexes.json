@@ -1,6 +1,58 @@
 {
   "indexes": [
     {
+      "collectionGroup": "product",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "approval_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "product_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_suspend",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_deleted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sold",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "product",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "approval_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "product_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_suspend",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_deleted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sesson",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
       "collectionGroup": "order",
       "queryScope": "COLLECTION",
       "fields": [
@@ -29,6 +81,10 @@
         {
           "fieldPath": "users",
           "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "last_meesage_time",
+          "order": "DESCENDING"
         }
       ]
     }

@@ -92,11 +92,14 @@ class _RestrictedWidgetState extends State<RestrictedWidget> {
                           '489kxv0f' /* Account Restricted */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).textprimary,
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ),
@@ -109,9 +112,12 @@ class _RestrictedWidgetState extends State<RestrictedWidget> {
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).textsecondary,
                               letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                     ),
@@ -136,10 +142,13 @@ class _RestrictedWidgetState extends State<RestrictedWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
-                                fontFamily: 'Satoshi',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
                                 color: FlutterFlowTheme.of(context).alternate,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .titleSmallIsCustom,
                               ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(12.0),

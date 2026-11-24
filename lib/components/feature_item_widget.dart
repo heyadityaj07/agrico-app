@@ -63,9 +63,11 @@ class _FeatureItemWidgetState extends State<FeatureItemWidget> {
             ),
             maxLines: 1,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Satoshi',
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                   color: FlutterFlowTheme.of(context).primaryText,
                   letterSpacing: 0.0,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                 ),
             overflow: TextOverflow.ellipsis,
           ),

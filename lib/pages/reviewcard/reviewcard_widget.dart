@@ -124,11 +124,15 @@ class _ReviewcardWidgetState extends State<ReviewcardWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 13.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -143,10 +147,13 @@ class _ReviewcardWidgetState extends State<ReviewcardWidget> {
                         locale: FFLocalizations.of(context).languageCode,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 10.0,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -179,10 +186,13 @@ class _ReviewcardWidgetState extends State<ReviewcardWidget> {
                     child: Text(
                       containerOrderRecord.review.comment,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: FlutterFlowTheme.of(context).textprimary,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),

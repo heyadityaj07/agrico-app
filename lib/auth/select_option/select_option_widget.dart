@@ -69,11 +69,14 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).textprimary,
                               fontSize: 30.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                       Padding(
@@ -115,7 +118,7 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.asset(
-                                      'assets/images/PictoProducteur.png',
+                                      'assets/images/PictoProducteur_500Ko.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -139,19 +142,27 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                                     .getText(
                                                   '8obceyd2' /* I’m a Producer */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 20.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                      fontSize: 20.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Align(
@@ -170,7 +181,10 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -179,6 +193,10 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -259,7 +277,7 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.asset(
-                                      'assets/images/PictoConso.png',
+                                      'assets/images/PictoConso_500Ko.png',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -283,19 +301,27 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                                     .getText(
                                                   'rg18qlw1' /* I’m a Consumer */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 20.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                      fontSize: 20.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Align(
@@ -314,7 +340,10 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -323,6 +352,10 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -456,10 +489,13 @@ class _SelectOptionWidgetState extends State<SelectOptionWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: FlutterFlowTheme.of(context).alternate,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(12.0),

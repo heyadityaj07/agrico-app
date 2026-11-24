@@ -101,11 +101,14 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                   'ujuvnhjq' /* Privacy Policy */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
             ),
@@ -140,11 +143,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -155,11 +162,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Divider(
@@ -177,11 +188,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -198,11 +213,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Column(
@@ -217,11 +236,16 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textsecondary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -245,11 +269,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -262,11 +290,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -288,11 +320,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Divider(
@@ -310,11 +346,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -331,11 +371,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Column(
@@ -352,11 +396,16 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textsecondary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -380,11 +429,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -397,11 +450,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -423,11 +480,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -440,11 +501,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -468,11 +533,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               Column(
@@ -489,11 +558,16 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -513,11 +587,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -530,11 +608,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -556,11 +638,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -573,11 +659,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -599,11 +689,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -616,11 +710,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -642,11 +740,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -659,11 +761,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -685,11 +791,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -702,11 +812,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -728,11 +842,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -745,11 +863,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -771,11 +893,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -788,11 +914,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -812,11 +942,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Padding(
@@ -829,11 +963,16 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textsecondary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -857,11 +996,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Padding(
@@ -874,11 +1017,15 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),

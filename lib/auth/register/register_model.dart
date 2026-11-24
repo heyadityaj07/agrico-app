@@ -1,11 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'register_widget.dart' show RegisterWidget;
@@ -80,10 +80,14 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   FarmsRecord? farms;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   FarmsRecord? farmcopy;
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel1;
   // Stores action output result for [Backend Call - Create Document] action in Container widget.
   FarmsRecord? farmsCopy;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   FarmsRecord? farmcopyCopy;
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel2;
 
   @override
   void initState(BuildContext context) {
@@ -92,6 +96,8 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     textFieldPasswordVisibilityFocusNode3 = FocusNode();
     passwordVisibility = false;
     passwordTextControllerValidator = _passwordTextControllerValidator;
+    dataLoadModel1 = createModel(context, () => DataLoadModel());
+    dataLoadModel2 = createModel(context, () => DataLoadModel());
   }
 
   @override
@@ -105,5 +111,7 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     textFieldFocusNode3?.dispose();
     passwordTextController?.dispose();
     textFieldPasswordVisibilityFocusNode3.dispose();
+    dataLoadModel1.dispose();
+    dataLoadModel2.dispose();
   }
 }

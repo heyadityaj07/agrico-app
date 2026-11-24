@@ -4,7 +4,10 @@ import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_weight_order_widget.dart';
-import '/components/rejectorder_widget.dart';
+import '/components/data_load_widget.dart';
+import '/components/order_rejection_status_card_widget.dart';
+import '/components/product_detail_shimmer_widget.dart';
+import '/components/rejectorder_dialogue_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -67,16 +70,10 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primarytheme,
-                  ),
-                ),
-              ),
+            return ProductDetailShimmerWidget(
+              height: MediaQuery.sizeOf(context).height,
+              width: MediaQuery.sizeOf(context).width,
+              shimmerType: 'detail',
             );
           }
 
@@ -116,12 +113,16 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               FlutterFlowIconButton(
@@ -152,10 +153,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Row(
@@ -169,10 +174,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Text(
@@ -183,10 +192,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -202,10 +215,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Text(
@@ -223,10 +240,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -242,10 +263,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Container(
@@ -279,7 +304,9 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color: () {
                                                 if (containerOrderRecord
                                                         .orderStatus ==
@@ -304,6 +331,9 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                 }
                                               }(),
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -323,16 +353,11 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primarytheme,
-                                    ),
-                                  ),
-                                ),
+                              return DataLoadWidget(
+                                height: 80.0,
+                                width: MediaQuery.sizeOf(context).width,
+                                cmncolor:
+                                    FlutterFlowTheme.of(context).boderdivder,
                               );
                             }
 
@@ -349,10 +374,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textsecondary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Row(
@@ -367,10 +396,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     Text(
@@ -378,10 +412,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ],
@@ -398,10 +437,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     Text(
@@ -409,10 +453,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ],
@@ -429,10 +478,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     Text(
@@ -440,10 +494,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ],
@@ -468,10 +527,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Row(
@@ -485,10 +548,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Text(
@@ -496,10 +563,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -515,10 +586,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Text(
@@ -526,10 +601,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ],
@@ -551,10 +630,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Builder(
@@ -573,19 +656,13 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primarytheme,
-                                                ),
-                                              ),
-                                            ),
+                                          return DataLoadWidget(
+                                            height: 80.0,
+                                            width: MediaQuery.sizeOf(context)
+                                                .width,
+                                            cmncolor:
+                                                FlutterFlowTheme.of(context)
+                                                    .boderdivder,
                                           );
                                         }
 
@@ -596,171 +673,231 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    Duration(milliseconds: 500),
+                                                fadeOutDuration:
+                                                    Duration(milliseconds: 500),
+                                                imageUrl: rowProductRecord
+                                                    .productImage,
+                                                width: 52.0,
+                                                height: 52.0,
+                                                fit: BoxFit.cover,
+                                                errorWidget: (context, error,
+                                                        stackTrace) =>
+                                                    Image.asset(
+                                                  'assets/images/error_image.png',
+                                                  width: 52.0,
+                                                  height: 52.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
                                             Expanded(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
-                                                          milliseconds: 500),
-                                                      fadeOutDuration: Duration(
-                                                          milliseconds: 500),
-                                                      imageUrl: rowProductRecord
-                                                          .productImage,
-                                                      width: 52.0,
-                                                      height: 52.0,
-                                                      fit: BoxFit.cover,
-                                                      errorWidget: (context,
-                                                              error,
-                                                              stackTrace) =>
-                                                          Image.asset(
-                                                        'assets/images/error_image.png',
-                                                        width: 52.0,
-                                                        height: 52.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          '${rowProductRecord.productName}${ordersItem.isVariableWeight ? (ordersItem.actualWeight > 0.0 ? ' (${ordersItem.actualWeight.toString()} kg)' : ' (${ordersItem.minWeight.toString()} - ${ordersItem.maxWeight.toString()} kg)') : ''}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .textprimary,
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                        Text(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        14.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      '${rowProductRecord.productName}${ordersItem.isVariableWeight ? (ordersItem.actualWeight > 0.0 ? ' (${formatNumber(
                                                           ordersItem
-                                                                  .isVariableWeight
-                                                              ? 'Quantity: ${ordersItem.totalItems.toString()}'
-                                                              : '1${rowProductRecord.unit} x ${ordersItem.totalItems.toString()}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
-                                                                color: FlutterFlowTheme.of(
+                                                              .actualWeight,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          format: '#.##',
+                                                          locale: '',
+                                                        )} kg)' : ' (${formatNumber(
+                                                          ordersItem.minWeight,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          format: '#.##',
+                                                          locale: '',
+                                                        )} - ${formatNumber(
+                                                          ordersItem.maxWeight,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          format: '#.##',
+                                                          locale: '',
+                                                        )} kg)') : ''}',
+                                                      maxLines: 1,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primarytheme,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                        if (ordersItem
-                                                                .isVariableWeight &&
-                                                            (containerOrderRecord
-                                                                    .orderStatus ==
-                                                                'Preparing'))
-                                                          Builder(
-                                                            builder: (context) =>
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          AddWeightOrderWidget(
-                                                                        orderRef:
-                                                                            widget!.orderRef,
-                                                                        productRef:
-                                                                            ordersItem.productRef,
-                                                                      ),
-                                                                    );
-                                                                  },
+                                                                    .bodyMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .textprimary,
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                    Text(
+                                                      ordersItem
+                                                              .isVariableWeight
+                                                          ? '${FFLocalizations.of(context).getVariableText(
+                                                              enText:
+                                                                  'Quantity: ',
+                                                              frText:
+                                                                  'Quantité : ',
+                                                            )}${formatNumber(
+                                                              ordersItem
+                                                                  .totalItems,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#.##',
+                                                              locale: '',
+                                                            )}'
+                                                          : '1${rowProductRecord.unit} x ${formatNumber(
+                                                              ordersItem
+                                                                  .totalItems,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#.##',
+                                                              locale: '',
+                                                            )}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primarytheme,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                    ),
+                                                    if (ordersItem
+                                                            .isVariableWeight &&
+                                                        (ordersItem
+                                                                .actualWeight <=
+                                                            0.0) &&
+                                                        (containerOrderRecord
+                                                                .orderStatus ==
+                                                            'Preparing') &&
+                                                        (containerOrderRecord
+                                                                .balancePaymentStatus !=
+                                                            'payment_requested'))
+                                                      Builder(
+                                                        builder: (context) =>
+                                                            FFButtonWidget(
+                                                          onPressed: () async {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      AddWeightOrderWidget(
+                                                                    orderRef:
+                                                                        widget!
+                                                                            .orderRef,
+                                                                    productRef:
+                                                                        ordersItem
+                                                                            .productRef,
+                                                                    minWeight:
+                                                                        ordersItem
+                                                                            .minWeight,
+                                                                    maxWeight:
+                                                                        ordersItem
+                                                                            .maxWeight,
+                                                                    itemIndex:
+                                                                        ordersIndex,
+                                                                  ),
                                                                 );
                                                               },
-                                                              text: ordersItem
-                                                                          .actualWeight >
-                                                                      0.0
-                                                                  ? 'Update actual weight'
-                                                                  : 'Add actual weight',
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                height: 40.0,
-                                                                padding: EdgeInsetsDirectional
+                                                            );
+                                                          },
+                                                          text: FFLocalizations
+                                                                  .of(context)
+                                                              .getVariableText(
+                                                            enText:
+                                                                'Add/Update actual weight',
+                                                            frText:
+                                                                'Ajouter/Mettre à jour le poids réel',
+                                                          ),
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
                                                                         16.0,
                                                                         0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primarytheme,
-                                                                textStyle:
-                                                                    TextStyle(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primarytheme,
+                                                            textStyle:
+                                                                TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
                                                             ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                             Padding(
@@ -797,7 +934,8 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textprimary,
@@ -808,21 +946,29 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           Text(
-                                                            ordersItem
-                                                                    .isVariableWeight
-                                                                ? '${ordersItem.pricePerKg.toString()}/kg'
-                                                                : rowProductRecord
-                                                                    .price
-                                                                    .toString(),
+                                                            valueOrDefault<
+                                                                String>(
+                                                              ordersItem
+                                                                      .isVariableWeight
+                                                                  ? '${ordersItem.pricePerKg.toString()}/kg'
+                                                                  : rowProductRecord
+                                                                      .price
+                                                                      .toString(),
+                                                              '0',
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -833,6 +979,10 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                           if (FFLocalizations.of(
@@ -850,7 +1000,8 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textprimary,
@@ -861,6 +1012,9 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                         ],
@@ -894,10 +1048,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Row(
@@ -913,13 +1071,18 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     Text(
@@ -931,12 +1094,17 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     if (FFLocalizations.of(context)
@@ -949,13 +1117,18 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                   ],
@@ -978,10 +1151,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 Row(
@@ -997,13 +1174,18 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     Text(
@@ -1015,12 +1197,17 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     if (FFLocalizations.of(context)
@@ -1033,13 +1220,18 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                   ],
@@ -1055,9 +1247,7 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).card,
-                      ),
+                      decoration: BoxDecoration(),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
@@ -1094,15 +1284,163 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .orange,
                                             letterSpacing: 0.0,
                                             decoration:
                                                 TextDecoration.underline,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
+                                ),
+                              ),
+                            if ((containerOrderRecord.orderStatus ==
+                                    'Preparing') &&
+                                (containerOrderRecord.orderItems
+                                        .where((e) =>
+                                            e.isVariableWeight &&
+                                            (e.actualWeight <= 0.0))
+                                        .toList()
+                                        .length >
+                                    0))
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 8.0, 0.0, 8.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getVariableText(
+                                    enText:
+                                        'Add the actual weight for every weight-based product. The customer must complete the remaining payment before you can update the order status.',
+                                    frText:
+                                        'Ajoutez le poids réel de chaque produit vendu au poids. Le client doit régler le solde restant avant que vous puissiez mettre à jour le statut de la commande.',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .textsecondary,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
+                                      ),
+                                ),
+                              ),
+                            wrapWithModel(
+                              model: _model.orderRejectionStatusCardModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: OrderRejectionStatusCardWidget(
+                                order: containerOrderRecord,
+                                showProducerDetails: true,
+                              ),
+                            ),
+                            if ((containerOrderRecord.orderStatus ==
+                                    'Preparing') &&
+                                containerOrderRecord.isVariableWeightOrder &&
+                                (containerOrderRecord.isSuspend == false) &&
+                                (containerOrderRecord.orderItems
+                                        .where((e) =>
+                                            e.isVariableWeight &&
+                                            (e.actualWeight <= 0.0))
+                                        .toList()
+                                        .length ==
+                                    0) &&
+                                (containerOrderRecord.balancePaymentStatus !=
+                                    'payment_requested') &&
+                                (containerOrderRecord.balancePaymentStatus !=
+                                    'paid') &&
+                                (containerOrderRecord.balancePaymentStatus !=
+                                    'failed'))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await actions.sendWeightPaymentRequest(
+                                    context,
+                                    widget!.orderRef!.id,
+                                  );
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'z3wu6aaz' /* Send Payment Request */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 45.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).primarytheme,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                            if (containerOrderRecord.isVariableWeightOrder &&
+                                (containerOrderRecord.refundDueAmount > 0.0) &&
+                                (containerOrderRecord.orderStatus ==
+                                    'Preparing') &&
+                                (containerOrderRecord.orderItems
+                                        .where((e) =>
+                                            e.isVariableWeight &&
+                                            (e.actualWeight <= 0.0))
+                                        .toList()
+                                        .length ==
+                                    0) &&
+                                ((containerOrderRecord.refundStatus == '') ||
+                                    (containerOrderRecord.refundStatus ==
+                                        'failed')))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await actions.createWeightRefund(
+                                    context,
+                                    containerOrderRecord.reference.id,
+                                  );
+                                },
+                                text:
+                                    'Refund customer ${FFLocalizations.of(context).languageCode == 'fr' ? '€' : '\$'}${containerOrderRecord.refundDueAmount.toString()}',
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 45.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).primarytheme,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
                             if (((containerOrderRecord.orderStatus !=
@@ -1115,6 +1453,30 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                     'farmpickup'))
                               FFButtonWidget(
                                 onPressed: () async {
+                                  var _shouldSetState = false;
+                                  if ((containerOrderRecord.orderStatus ==
+                                          'Preparing') &&
+                                      (containerOrderRecord.orderItems
+                                              .where((e) =>
+                                                  e.isVariableWeight &&
+                                                  (e.actualWeight <= 0.0))
+                                              .toList()
+                                              .length >
+                                          0)) {
+                                    await actions.toast(
+                                      context,
+                                      FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            'Add the actual weight for every weight-based product. The customer must complete the remaining payment before you can update the order status.',
+                                        frText:
+                                            'Ajoutez le poids réel de chaque produit vendu au poids. Le client doit régler le solde restant avant que vous puissiez mettre à jour le statut de la commande.',
+                                      ),
+                                      Colors.red,
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
                                   if (containerOrderRecord.orderStatus ==
                                       'Pending') {
                                     await containerOrderRecord.reference
@@ -1178,11 +1540,18 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                     } else {
                                       if (containerOrderRecord.orderStatus ==
                                           'Preparing') {
-                                        await containerOrderRecord.reference
-                                            .update(createOrderRecordData(
-                                          orderStatus: 'Picked Up',
-                                          pickedUpTime: getCurrentTimestamp,
-                                        ));
+                                        _model.statusUpdated = await actions
+                                            .updateOrderFulfilmentStatus(
+                                          context,
+                                          widget!.orderRef!.id,
+                                          'Picked Up',
+                                        );
+                                        _shouldSetState = true;
+                                        if (_model.statusUpdated != 'changed') {
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
                                         triggerPushNotification(
                                           notificationTitle: 'Order Picked Up',
                                           notificationText:
@@ -1209,11 +1578,19 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       } else {
                                         if (containerOrderRecord.orderStatus ==
                                             'Picked Up') {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'Delivered',
-                                            deliveredTime: getCurrentTimestamp,
-                                          ));
+                                          _model.statusUpdate = await actions
+                                              .updateOrderFulfilmentStatus(
+                                            context,
+                                            widget!.orderRef!.id,
+                                            'Delivered',
+                                          );
+                                          _shouldSetState = true;
+                                          if (_model.statusUpdate !=
+                                              'changed') {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
                                           triggerPushNotification(
                                             notificationTitle:
                                                 'Order Delivered',
@@ -1242,6 +1619,8 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                       }
                                     }
                                   }
+
+                                  if (_shouldSetState) safeSetState(() {});
                                 },
                                 text:
                                     '${FFLocalizations.of(context).getVariableText(
@@ -1292,11 +1671,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .alternate,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(8.0),
@@ -1321,6 +1704,29 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                               FFButtonWidget(
                                 onPressed: () async {
                                   var _shouldSetState = false;
+                                  if ((containerOrderRecord.orderStatus ==
+                                          'Preparing') &&
+                                      (containerOrderRecord.orderItems
+                                              .where((e) =>
+                                                  e.isVariableWeight &&
+                                                  (e.actualWeight <= 0.0))
+                                              .toList()
+                                              .length >
+                                          0)) {
+                                    await actions.toast(
+                                      context,
+                                      FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            'Add the actual weight for every weight-based product. The customer must complete the remaining payment before you can update the order status.',
+                                        frText:
+                                            'Ajoutez le poids réel de chaque produit vendu au poids. Le client doit régler le solde restant avant que vous puissiez mettre à jour le statut de la commande.',
+                                      ),
+                                      Colors.red,
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
                                   if (containerOrderRecord.orderStatus ==
                                       'Pending') {
                                     await containerOrderRecord.reference
@@ -1415,11 +1821,19 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                             safeSetState(() {});
                                           }
                                         } else {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'Picked Up',
-                                            pickedUpTime: getCurrentTimestamp,
-                                          ));
+                                          _model.statusUpdated1 = await actions
+                                              .updateOrderFulfilmentStatus(
+                                            context,
+                                            widget!.orderRef!.id,
+                                            'Picked Up',
+                                          );
+                                          _shouldSetState = true;
+                                          if (_model.statusUpdated1 !=
+                                              'changed') {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
                                           triggerPushNotification(
                                             notificationTitle:
                                                 'Order Picked Up',
@@ -1450,23 +1864,73 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                           return;
                                         }
 
-                                        _model.farm1 =
-                                            await FarmsRecord.getDocumentOnce(
-                                                containerOrderRecord.farmRef!);
-                                        _shouldSetState = true;
-                                        _model.farmaddress =
-                                            await actions.getAddressFromLatLng(
-                                          _model.farm1!.farmLocation!,
+                                        _model.dispatchContext = await actions
+                                            .resolveUberDispatchContext(
+                                          widget!.orderRef!.id,
                                         );
                                         _shouldSetState = true;
+                                        if ((getJsonField(
+                                                  _model.dispatchContext,
+                                                  r'''$.pickup_address''',
+                                                ) !=
+                                                null) ||
+                                            (getJsonField(
+                                                  _model.dispatchContext,
+                                                  r'''$.dropoff_address''',
+                                                ) !=
+                                                null)) {
+                                          _model.quoteResponse =
+                                              await GetDeliveryQuoteCall.call(
+                                            pickupAddress: getJsonField(
+                                              _model.dispatchContext,
+                                              r'''$.pickup_address''',
+                                            ).toString(),
+                                            dropoffAddress: getJsonField(
+                                              _model.dispatchContext,
+                                              r'''$.dropoff_address''',
+                                            ).toString(),
+                                            orderId: widget!.orderRef?.id,
+                                          );
+
+                                          _shouldSetState = true;
+                                          if (!(_model
+                                                  .quoteResponse?.succeeded ??
+                                              true)) {
+                                            await actions.toast(
+                                              context,
+                                              GetDeliveryQuoteCall.error(
+                                                (_model.quoteResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )!,
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                            );
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+                                        } else {
+                                          await actions.toast(
+                                            context,
+                                            'The delivery address could not be resolved from this order. Update the order address before dispatching.',
+                                            FlutterFlowTheme.of(context).error,
+                                          );
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
                                         _model.apiResult7q6 =
                                             await CreateDeliveryCopyCall.call(
-                                          pickupAddress: _model.farmaddress,
-                                          dropoffAddress:
-                                              '${containerOrderRecord.delievryAddress.streetAdress}',
-                                          pickupName: _model.farm1?.farmName,
-                                          pickupPhoneNumber:
-                                              _model.farm1?.contactPhoneNo,
+                                          pickupAddress: getJsonField(
+                                            _model.dispatchContext,
+                                            r'''$.pickup_address''',
+                                          ).toString(),
+                                          dropoffAddress: getJsonField(
+                                            _model.dispatchContext,
+                                            r'''$.dropoff_address''',
+                                          ).toString(),
                                           dropoffName: containerOrderRecord
                                               .delievryAddress.fullName,
                                           dropoffPhoneNumber:
@@ -1475,51 +1939,48 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                           manifestItemsJson: _model.manifestitem
                                               .map((e) => e.toMap())
                                               .toList(),
-                                          orderId:
-                                              containerOrderRecord.reference.id,
+                                          orderId: widget!.orderRef?.id,
+                                          token: currentJwtToken,
+                                          quoteId: GetDeliveryQuoteCall.id(
+                                            (_model.quoteResponse?.jsonBody ??
+                                                ''),
+                                          ),
                                         );
 
                                         _shouldSetState = true;
                                         if ((_model.apiResult7q6?.succeeded ??
                                             true)) {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            uberDeliveryId:
-                                                valueOrDefault<String>(
+                                          if (CreateDeliveryCopyCall
+                                                      .uberDeliveryId(
+                                                    (_model.apiResult7q6
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ) ==
+                                                  null ||
                                               CreateDeliveryCopyCall
-                                                  .uberDeliveryId(
-                                                (_model.apiResult7q6
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ),
-                                              '-',
-                                            ),
-                                            deliveryStatus:
-                                                valueOrDefault<String>(
-                                              CreateDeliveryCopyCall
-                                                  .deliveryStatus(
-                                                (_model.apiResult7q6
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ),
-                                              '-',
-                                            ),
-                                            trackingUrl: valueOrDefault<String>(
-                                              CreateDeliveryCopyCall
-                                                  .trackingUrl(
-                                                (_model.apiResult7q6
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              ),
-                                              '-',
-                                            ),
-                                          ));
-
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'Picked Up',
-                                            pickedUpTime: getCurrentTimestamp,
-                                          ));
+                                                      .uberDeliveryId(
+                                                    (_model.apiResult7q6
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ) ==
+                                                  '') {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+                                          _model.statusUpdated2 = await actions
+                                              .updateOrderFulfilmentStatus(
+                                            context,
+                                            widget!.orderRef!.id,
+                                            'Picked Up',
+                                          );
+                                          _shouldSetState = true;
+                                          if (_model.statusUpdated2 !=
+                                              'changed') {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
 
                                           await containerOrderRecord.userRef!
                                               .update({
@@ -1581,19 +2042,26 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                               duration:
                                                   Duration(milliseconds: 4000),
                                               backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primarytheme,
+                                                  Color(0xFF4B39EF),
                                             ),
                                           );
                                         }
                                       } else {
                                         if (containerOrderRecord.orderStatus ==
                                             'Picked Up') {
-                                          await containerOrderRecord.reference
-                                              .update(createOrderRecordData(
-                                            orderStatus: 'In Transit',
-                                            inTransitTime: getCurrentTimestamp,
-                                          ));
+                                          _model.statusUpdated4 = await actions
+                                              .updateOrderFulfilmentStatus(
+                                            context,
+                                            widget!.orderRef!.id,
+                                            'In Transit',
+                                          );
+                                          _shouldSetState = true;
+                                          if (_model.statusUpdated4 !=
+                                              'changed') {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
                                           triggerPushNotification(
                                             notificationTitle:
                                                 'Order on the Way',
@@ -1622,12 +2090,19 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                           if (containerOrderRecord
                                                   .orderStatus ==
                                               'In Transit') {
-                                            await containerOrderRecord.reference
-                                                .update(createOrderRecordData(
-                                              orderStatus: 'Delivered',
-                                              deliveredTime:
-                                                  getCurrentTimestamp,
-                                            ));
+                                            _model.statusUpdated5 = await actions
+                                                .updateOrderFulfilmentStatus(
+                                              context,
+                                              widget!.orderRef!.id,
+                                              'Delivered',
+                                            );
+                                            _shouldSetState = true;
+                                            if (_model.statusUpdated5 !=
+                                                'changed') {
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
                                             triggerPushNotification(
                                               notificationTitle:
                                                   'Order Delivered',
@@ -1717,11 +2192,15 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .alternate,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderSide: BorderSide(
@@ -1756,69 +2235,32 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                                   0.0, 0.0)
                                               .resolve(
                                                   Directionality.of(context)),
-                                          child: RejectorderWidget(
+                                          child: RejectorderDialogueWidget(
                                             rejectAction: () async {
-                                              await containerOrderRecord
-                                                  .reference
-                                                  .update(createOrderRecordData(
-                                                orderStatus: 'Rejected',
-                                              ));
-                                              for (int loop1Index = 1;
-                                                  loop1Index <=
-                                                      containerOrderRecord
-                                                              .orderItems
-                                                              .length -
-                                                          1;
-                                                  loop1Index++) {
-                                                final currentLoop1Item =
-                                                    containerOrderRecord
-                                                        .orderItems[loop1Index];
-
-                                                await currentLoop1Item
-                                                    .productRef!
-                                                    .update({
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'stock_quantity':
-                                                          FieldValue.increment(
-                                                              currentLoop1Item
-                                                                  .totalItems),
-                                                    },
-                                                  ),
-                                                });
-                                              }
-                                              triggerPushNotification(
-                                                notificationTitle:
-                                                    'Order Cancelled',
-                                                notificationText:
-                                                    'Sorry, your order ORD-${containerOrderRecord.reference.id} has been rejected by the producer.',
-                                                userRefs: [
-                                                  containerOrderRecord.userRef!
-                                                ],
-                                                initialPageName: 'OrderDetails',
-                                                parameterData: {
-                                                  'orderRef':
-                                                      containerOrderRecord
-                                                          .reference,
-                                                },
+                                              _model.rejectionOutcome =
+                                                  await actions.rejectOrder(
+                                                context,
+                                                widget!.orderRef!.id,
                                               );
-
-                                              await containerOrderRecord
-                                                  .userRef!
-                                                  .update({
-                                                ...mapToFirestore(
-                                                  {
-                                                    'notification_count':
-                                                        FieldValue.increment(1),
-                                                  },
-                                                ),
-                                              });
+                                              if ((_model.rejectionOutcome ==
+                                                      'rejected') ||
+                                                  (_model.rejectionOutcome ==
+                                                      'alreadyRejected')) {
+                                                await actions.toast(
+                                                  context,
+                                                  'The order was rejected.',
+                                                  FlutterFlowTheme.of(context)
+                                                      .primarytheme,
+                                                );
+                                              }
                                               Navigator.pop(context);
                                             },
                                           ),
                                         );
                                       },
                                     );
+
+                                    safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'ahn95aps' /* Reject Order */,
@@ -1835,11 +2277,16 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color:
                                               FlutterFlowTheme.of(context).card,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 0.0,
                                     borderSide: BorderSide(
@@ -1965,10 +2412,14 @@ class _OrderdatailsWidgetState extends State<OrderdatailsWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderSide: BorderSide(

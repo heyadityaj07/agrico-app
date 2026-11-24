@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/carts/view_cart/view_cart_widget.dart';
 import '/components/caculation_card_widget.dart';
 import '/components/data_load_widget.dart';
+import '/components/product_detail_shimmer_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

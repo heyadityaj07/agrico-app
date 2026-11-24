@@ -64,11 +64,14 @@ class _SelectOptionCopyWidgetState extends State<SelectOptionCopyWidget> {
                           '64nikvk1' /* Welcome to Agricoo */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).textprimary,
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                       Padding(
@@ -134,19 +137,27 @@ class _SelectOptionCopyWidgetState extends State<SelectOptionCopyWidget> {
                                                     .getText(
                                                   'qiza5nhp' /* I’m a Producer */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Align(
@@ -167,7 +178,10 @@ my... */
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -176,6 +190,10 @@ my... */
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -280,19 +298,27 @@ my... */
                                                     .getText(
                                                   '4u7ogjiv' /* I’m a Consumer */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Align(
@@ -311,7 +337,10 @@ my... */
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -320,6 +349,10 @@ my... */
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -405,10 +438,13 @@ my... */
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: FlutterFlowTheme.of(context).alternate,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(12.0),

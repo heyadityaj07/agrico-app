@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/caculation_card_widget.dart';
+import '/components/data_load_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -86,7 +87,7 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'cehjqqq5' /* Enter Label is required */,
+        'cehjqqq5' /* Enter a product name */,
       );
     }
 
@@ -100,7 +101,7 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '661q93op' /* Enter Full Name is required */,
+        '661q93op' /* Enter a product description */,
       );
     }
 
@@ -114,7 +115,7 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
   String? _textController3Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '58l206o6' /* Enter Street Address is requir... */,
+        '58l206o6' /* Enter stock quantity */,
       );
     }
 
@@ -159,16 +160,6 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
   FocusNode? priceFocusNode2;
   TextEditingController? priceTextController2;
   String? Function(BuildContext, String?)? priceTextController2Validator;
-  String? _priceTextController2Validator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'ol6ah28c' /* price  is required */,
-      );
-    }
-
-    return null;
-  }
-
   // Model for caculationCard component.
   late CaculationCardModel caculationCardModel1;
   // Model for caculationCard component.
@@ -185,6 +176,8 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataHarvest = '';
 
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   FarmsRecord? farm;
 
@@ -194,11 +187,11 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
     textController2Validator = _textController2Validator;
     textController3Validator = _textController3Validator;
     textController4Validator = _textController4Validator;
-    priceTextController2Validator = _priceTextController2Validator;
     caculationCardModel1 = createModel(context, () => CaculationCardModel());
     caculationCardModel2 = createModel(context, () => CaculationCardModel());
     caculationCardModel3 = createModel(context, () => CaculationCardModel());
     caculationCardModel4 = createModel(context, () => CaculationCardModel());
+    dataLoadModel = createModel(context, () => DataLoadModel());
   }
 
   @override
@@ -231,5 +224,6 @@ class AddProductModel extends FlutterFlowModel<AddProductWidget> {
     caculationCardModel2.dispose();
     caculationCardModel3.dispose();
     caculationCardModel4.dispose();
+    dataLoadModel.dispose();
   }
 }

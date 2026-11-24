@@ -68,8 +68,11 @@ class _AddDeliveryWidgetState extends State<AddDeliveryWidget> {
                         'jpdzy7xr' /* Delivery Area */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                     InkWell(
@@ -102,16 +105,22 @@ class _AddDeliveryWidgetState extends State<AddDeliveryWidget> {
                         isDense: true,
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelMediumIsCustom,
                                 ),
                         hintText: FFLocalizations.of(context).getText(
                           '29uuchdc' /* Enetr Deliver Area */,
                         ),
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .labelMediumIsCustom,
                                 ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -146,8 +155,11 @@ class _AddDeliveryWidgetState extends State<AddDeliveryWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                       maxLines: null,
                       cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -183,13 +195,17 @@ class _AddDeliveryWidgetState extends State<AddDeliveryWidget> {
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primarytheme,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Satoshi',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).titleSmallFamily,
+                              color: FlutterFlowTheme.of(context).alternate,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .titleSmallIsCustom,
+                            ),
                         elevation: 0.0,
                         borderRadius: BorderRadius.circular(8.0),
                       ),

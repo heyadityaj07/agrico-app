@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
@@ -20,6 +21,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -92,10 +94,10 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for searchInput widget.
+  FocusNode? searchInputFocusNode;
+  TextEditingController? searchInputTextController;
+  String? Function(BuildContext, String?)? searchInputTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   List<CartRecord>? carts;
   // Stores action output result for [Backend Call - Read Document] action in Container widget.
@@ -121,8 +123,8 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
 
   @override
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    searchInputFocusNode?.dispose();
+    searchInputTextController?.dispose();
 
     suspendModel.dispose();
     expandableExpandableController1.dispose();

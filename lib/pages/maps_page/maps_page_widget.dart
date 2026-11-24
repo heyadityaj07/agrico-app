@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/consumer_navbar_widget.dart';
+import '/components/data_load_widget.dart';
 import '/components/filter_widget.dart';
 import '/components/rout_widget.dart';
 import '/components/suspend_widget.dart';
@@ -120,12 +121,16 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -179,12 +184,19 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Builder(
@@ -234,10 +246,14 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: Colors.transparent,
                                       fontSize: 2.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -351,11 +367,18 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 4.0)),
@@ -417,12 +440,19 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Builder(
@@ -472,10 +502,14 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: Colors.transparent,
                                       fontSize: 2.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -591,8 +625,15 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 4.0)),
@@ -642,10 +683,13 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(12.0),
@@ -661,587 +705,568 @@ class _MapsPageWidgetState extends State<MapsPageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: StreamBuilder<UsersRecord>(
-            stream: UsersRecord.getDocument(currentUserReference!),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primarytheme,
-                      ),
-                    ),
-                  ),
-                );
-              }
-
-              final stackUsersRecord = snapshot.data!;
-
-              return Stack(
+          child: Stack(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Stack(
                               children: [
-                                Stack(
-                                  children: [
-                                    StreamBuilder<List<FarmsRecord>>(
-                                      stream: queryFarmsRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primarytheme,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<FarmsRecord>
-                                            containerFarmsRecordList =
-                                            snapshot.data!;
-
-                                        return Container(
-                                          width: double.infinity,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.4,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: FlutterFlowGoogleMap(
-                                            controller:
-                                                _model.googleMapsController,
-                                            onCameraIdle: (latLng) =>
-                                                safeSetState(() => _model
-                                                    .googleMapsCenter = latLng),
-                                            initialLocation:
-                                                _model.googleMapsCenter ??=
-                                                    currentUserLocationValue!,
-                                            markerColor:
-                                                GoogleMarkerColor.violet,
-                                            mapType: MapType.normal,
-                                            style: GoogleMapStyle.standard,
-                                            initialZoom: 14.0,
-                                            allowInteraction: true,
-                                            allowZoom: true,
-                                            showZoomControls: true,
-                                            showLocation: true,
-                                            showCompass: true,
-                                            showMapToolbar: false,
-                                            showTraffic: false,
-                                            centerMapOnMarkerTap: true,
-                                            mapTakesGesturePreference: false,
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    PointerInterceptor(
-                                      intercepting: isWeb,
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 24.0, 16.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            wrapWithModel(
-                                              model: _model.filterModel,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: FilterWidget(),
-                                            ),
-                                            wrapWithModel(
-                                              model: _model.routModel,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: RoutWidget(),
-                                            ),
-                                          ].divide(SizedBox(width: 10.0)),
+                                StreamBuilder<List<FarmsRecord>>(
+                                  stream: queryFarmsRecord(
+                                    queryBuilder: (farmsRecord) => farmsRecord
+                                        .where(
+                                          'approval_status',
+                                          isEqualTo: true,
+                                        )
+                                        .where(
+                                          'is_suspend',
+                                          isEqualTo: false,
                                         ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return DataLoadWidget(
+                                        height: 300.0,
+                                        width: MediaQuery.sizeOf(context).width,
+                                      );
+                                    }
+                                    List<FarmsRecord> containerFarmsRecordList =
+                                        snapshot.data!;
+
+                                    return Container(
+                                      width: double.infinity,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.4,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
-                                    ),
-                                  ],
+                                      child: FlutterFlowGoogleMap(
+                                        controller: _model.googleMapsController,
+                                        onCameraIdle: (latLng) => safeSetState(
+                                            () => _model.googleMapsCenter =
+                                                latLng),
+                                        initialLocation:
+                                            _model.googleMapsCenter ??=
+                                                currentUserLocationValue!,
+                                        markerColor: GoogleMarkerColor.violet,
+                                        mapType: MapType.normal,
+                                        style: GoogleMapStyle.standard,
+                                        initialZoom: 14.0,
+                                        allowInteraction: true,
+                                        allowZoom: true,
+                                        showZoomControls: true,
+                                        showLocation: true,
+                                        showCompass: true,
+                                        showMapToolbar: false,
+                                        showTraffic: false,
+                                        centerMapOnMarkerTap: true,
+                                        mapTakesGesturePreference: false,
+                                      ),
+                                    );
+                                  },
                                 ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: StreamBuilder<List<FarmsRecord>>(
-                                    stream: queryFarmsRecord(
-                                      queryBuilder: (farmsRecord) => farmsRecord
-                                          .where(
-                                            'approval_status',
-                                            isEqualTo: true,
-                                          )
-                                          .where(
-                                            'is_suspend',
-                                            isEqualTo: false,
-                                          ),
+                                PointerInterceptor(
+                                  intercepting: isWeb,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 24.0, 16.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        wrapWithModel(
+                                          model: _model.filterModel,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: FilterWidget(),
+                                        ),
+                                        wrapWithModel(
+                                          model: _model.routModel,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: RoutWidget(),
+                                        ),
+                                      ].divide(SizedBox(width: 10.0)),
                                     ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primarytheme,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<FarmsRecord>
-                                          containerFarmsRecordList =
-                                          snapshot.data!;
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              child: StreamBuilder<List<FarmsRecord>>(
+                                stream: queryFarmsRecord(
+                                  queryBuilder: (farmsRecord) => farmsRecord
+                                      .where(
+                                        'approval_status',
+                                        isEqualTo: true,
+                                      )
+                                      .where(
+                                        'is_suspend',
+                                        isEqualTo: false,
+                                      ),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return DataLoadWidget(
+                                      height: 180.0,
+                                      width: 220.0,
+                                    );
+                                  }
+                                  List<FarmsRecord> containerFarmsRecordList =
+                                      snapshot.data!;
 
-                                      return Container(
-                                        decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 20.0, 0.0, 0.0),
-                                          child: Builder(
-                                            builder: (context) {
-                                              final containerVar =
-                                                  containerFarmsRecordList
-                                                      .where((e) =>
-                                                          (_model.selectedavailbility !=
-                                                                      null &&
-                                                                  _model.selectedavailbility !=
-                                                                      ''
-                                                              ? (e.farmType ==
-                                                                  _model
-                                                                      .selectedavailbility)
-                                                              : true) &&
-                                                          (FFAppState()
+                                  return Container(
+                                    decoration: BoxDecoration(),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 20.0, 0.0, 0.0),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final containerVar =
+                                              containerFarmsRecordList
+                                                  .where((e) =>
+                                                      (_model.selectedavailbility !=
+                                                                  null &&
+                                                              _model.selectedavailbility !=
+                                                                  ''
+                                                          ? (e.farmType ==
+                                                              _model
+                                                                  .selectedavailbility)
+                                                          : true) &&
+                                                      (FFAppState()
+                                                              .selectedFarmingMethod
+                                                              .isNotEmpty
+                                                          ? ((List<String> all,
+                                                                  List<String>
+                                                                      selected) {
+                                                              return ((selected ??
+                                                                          [])
+                                                                      .map((e) => e
+                                                                          .trim()
+                                                                          .toLowerCase())
+                                                                      .toSet())
+                                                                  .intersection((all ??
+                                                                          [])
+                                                                      .map((e) => e
+                                                                          .trim()
+                                                                          .toLowerCase())
+                                                                      .toSet())
+                                                                  .isNotEmpty;
+                                                            }(
+                                                              e.farmingMethod
+                                                                  .toList(),
+                                                              FFAppState()
                                                                   .selectedFarmingMethod
-                                                                  .isNotEmpty
-                                                              ? ((List<String>
-                                                                          all,
-                                                                      List<String>
-                                                                          selected) {
-                                                                  return ((selected ??
-                                                                              [])
-                                                                          .map((e) => e
-                                                                              .trim()
-                                                                              .toLowerCase())
-                                                                          .toSet())
-                                                                      .intersection((all ??
-                                                                              [])
-                                                                          .map((e) => e
-                                                                              .trim()
-                                                                              .toLowerCase())
-                                                                          .toSet())
-                                                                      .isNotEmpty;
-                                                                }(
-                                                                  e.farmingMethod
-                                                                      .toList(),
-                                                                  FFAppState()
-                                                                      .selectedFarmingMethod
-                                                                      .toList()))
-                                                              : true))
-                                                      .toList();
+                                                                  .toList()))
+                                                          : true))
+                                                  .toList();
 
-                                              return SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: List.generate(
-                                                          containerVar.length,
-                                                          (containerVarIndex) {
-                                                    final containerVarItem =
-                                                        containerVar[
-                                                            containerVarIndex];
-                                                    return InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          FarmProfileWidget
-                                                              .routeName,
-                                                          queryParameters: {
-                                                            'farm':
-                                                                serializeParam(
-                                                              containerVarItem
-                                                                  .reference,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        width: 220.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .card,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                      containerVar.length,
+                                                      (containerVarIndex) {
+                                                final containerVarItem =
+                                                    containerVar[
+                                                        containerVarIndex];
+                                                return InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                      FarmProfileWidget
+                                                          .routeName,
+                                                      queryParameters: {
+                                                        'farm': serializeParam(
+                                                          containerVarItem
+                                                              .reference,
+                                                          ParamType
+                                                              .DocumentReference,
                                                         ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width: 220.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .card,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Stack(
                                                           children: [
-                                                            Stack(
-                                                              children: [
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            12.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            12.0),
-                                                                  ),
-                                                                  child: Image
-                                                                      .network(
-                                                                    containerVarItem
-                                                                        .farmProfilePhoto,
-                                                                    width:
-                                                                        220.0,
-                                                                    height:
-                                                                        105.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          1.0,
-                                                                          -1.0),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            5.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        InkWell(
-                                                                      splashColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      focusColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      hoverColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      highlightColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      onTap:
-                                                                          () async {
-                                                                        if (stackUsersRecord
-                                                                            .myFavouriteFarm
-                                                                            .contains(containerVarItem.reference)) {
-                                                                          await stackUsersRecord
-                                                                              .reference
-                                                                              .update({
-                                                                            ...mapToFirestore(
-                                                                              {
-                                                                                'my_favourite_farm': FieldValue.arrayRemove([
-                                                                                  containerVarItem.reference
-                                                                                ]),
-                                                                              },
-                                                                            ),
-                                                                          });
-                                                                        } else {
-                                                                          await stackUsersRecord
-                                                                              .reference
-                                                                              .update({
-                                                                            ...mapToFirestore(
-                                                                              {
-                                                                                'my_favourite_farm': FieldValue.arrayUnion([
-                                                                                  containerVarItem.reference
-                                                                                ]),
-                                                                              },
-                                                                            ),
-                                                                          });
-                                                                        }
-                                                                      },
-                                                                      child:
-                                                                          Builder(
-                                                                        builder:
-                                                                            (context) {
-                                                                          if (stackUsersRecord
-                                                                              .myFavouriteFarm
-                                                                              .contains(containerVarItem.reference)) {
-                                                                            return Icon(
-                                                                              Icons.favorite_sharp,
-                                                                              color: FlutterFlowTheme.of(context).tometoRed,
-                                                                              size: 24.0,
-                                                                            );
-                                                                          } else {
-                                                                            return Icon(
-                                                                              Icons.favorite_border,
-                                                                              color: FlutterFlowTheme.of(context).tometoRed,
-                                                                              size: 24.0,
-                                                                            );
-                                                                          }
-                                                                        },
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          8.0,
-                                                                          8.0,
-                                                                          8.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    containerVarItem
-                                                                        .farmName,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    maxLines: 1,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Satoshi',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          fontSize:
-                                                                              16.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                          lineHeight:
-                                                                              1.5,
-                                                                        ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child: Text(
-                                                                      containerVarItem
-                                                                          .aboutFarm,
-                                                                      maxLines:
-                                                                          1,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Satoshi',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).textsecondary,
-                                                                            fontSize:
-                                                                                12.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .clip,
-                                                                    ),
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Icon(
-                                                                        Icons
-                                                                            .star,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .harvestYellow,
-                                                                        size:
-                                                                            24.0,
-                                                                      ),
-                                                                      Text(
-                                                                        FFLocalizations.of(context)
-                                                                            .getText(
-                                                                          'rr00dlwj' /* 4.9 (420 reviews) */,
-                                                                        ),
-                                                                        maxLines:
-                                                                            11,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Satoshi',
-                                                                              color: FlutterFlowTheme.of(context).textsecondary,
-                                                                              fontSize: 12.0,
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ].divide(SizedBox(
-                                                                    height:
-                                                                        4.0)),
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        12.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        12.0),
+                                                              ),
+                                                              child:
+                                                                  Image.network(
+                                                                containerVarItem
+                                                                    .farmProfilePhoto,
+                                                                width: 220.0,
+                                                                height: 105.0,
+                                                                fit: BoxFit
+                                                                    .cover,
                                                               ),
                                                             ),
                                                             Align(
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      0.0,
+                                                                      1.0,
                                                                       -1.0),
                                                               child: Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0),
-                                                                child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'zrhss0np' /* View Farm */,
+                                                                            5.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                child: InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    if ((currentUserDocument?.myFavouriteFarm?.toList() ??
+                                                                            [])
+                                                                        .contains(
+                                                                            containerVarItem.reference)) {
+                                                                      await currentUserReference!
+                                                                          .update({
+                                                                        ...mapToFirestore(
+                                                                          {
+                                                                            'my_favourite_farm':
+                                                                                FieldValue.arrayRemove([
+                                                                              containerVarItem.reference
+                                                                            ]),
+                                                                          },
+                                                                        ),
+                                                                      });
+                                                                    } else {
+                                                                      await currentUserReference!
+                                                                          .update({
+                                                                        ...mapToFirestore(
+                                                                          {
+                                                                            'my_favourite_farm':
+                                                                                FieldValue.arrayUnion([
+                                                                              containerVarItem.reference
+                                                                            ]),
+                                                                          },
+                                                                        ),
+                                                                      });
+                                                                    }
+                                                                  },
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      if ((currentUserDocument?.myFavouriteFarm?.toList() ??
+                                                                              [])
+                                                                          .contains(
+                                                                              containerVarItem.reference)) {
+                                                                        return Icon(
+                                                                          Icons
+                                                                              .favorite_sharp,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tometoRed,
+                                                                          size:
+                                                                              24.0,
+                                                                        );
+                                                                      } else {
+                                                                        return Icon(
+                                                                          Icons
+                                                                              .favorite_border,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tometoRed,
+                                                                          size:
+                                                                              24.0,
+                                                                        );
+                                                                      }
+                                                                    },
                                                                   ),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .start,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      8.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                containerVarItem
+                                                                    .farmName,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                maxLines: 1,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      lineHeight:
+                                                                          1.5,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
+                                                                    ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  containerVarItem
+                                                                      .aboutFarm,
                                                                   maxLines: 1,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primarytheme,
+                                                                            .textsecondary,
                                                                         fontSize:
-                                                                            14.0,
+                                                                            12.0,
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                        lineHeight:
-                                                                            1.5,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .clip,
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons.star,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .harvestYellow,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                  Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'rr00dlwj' /* 4.9 (420 reviews) */,
+                                                                    ),
+                                                                    maxLines:
+                                                                        11,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).textsecondary,
+                                                                          fontSize:
+                                                                              12.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ].divide(SizedBox(
+                                                                height: 4.0)),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  })
-                                                      .divide(
-                                                          SizedBox(width: 16.0))
-                                                      .addToStart(
-                                                          SizedBox(width: 16.0))
-                                                      .addToEnd(SizedBox(
-                                                          width: 16.0)),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.consumerNavbarModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: ConsumerNavbarWidget(
-                          index: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (stackUsersRecord.isSuspend)
-                    PointerInterceptor(
-                      intercepting: isWeb,
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        decoration: BoxDecoration(),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(
-                              sigmaX: 4.0,
-                              sigmaY: 4.0,
-                            ),
-                            child: wrapWithModel(
-                              model: _model.suspendModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: SuspendWidget(
-                                action: () async {
-                                  context.pushNamed(
-                                      HelpandsupportWidget.routeName);
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, -1.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0,
+                                                                        8.0),
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'zrhss0np' /* View Farm */,
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              maxLines: 1,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primarytheme,
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    lineHeight:
+                                                                        1.5,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              })
+                                                  .divide(SizedBox(width: 16.0))
+                                                  .addToStart(
+                                                      SizedBox(width: 16.0))
+                                                  .addToEnd(
+                                                      SizedBox(width: 16.0)),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  );
                                 },
                               ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  wrapWithModel(
+                    model: _model.consumerNavbarModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: ConsumerNavbarWidget(
+                      index: 1,
+                    ),
+                  ),
+                ],
+              ),
+              if (valueOrDefault<bool>(currentUserDocument?.isSuspend, false))
+                PointerInterceptor(
+                  intercepting: isWeb,
+                  child: AuthUserStreamWidget(
+                    builder: (context) => Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 1.0,
+                      decoration: BoxDecoration(),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(0.0),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                            sigmaX: 4.0,
+                            sigmaY: 4.0,
+                          ),
+                          child: wrapWithModel(
+                            model: _model.suspendModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SuspendWidget(
+                              action: () async {
+                                context
+                                    .pushNamed(HelpandsupportWidget.routeName);
+                              },
                             ),
                           ),
                         ),
                       ),
                     ),
-                ],
-              );
-            },
+                  ),
+                ),
+            ],
           ),
         ),
       ),

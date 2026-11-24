@@ -142,11 +142,14 @@ class _ProducerpersonalInformationWidgetState
                       'fxay6jje' /* Personal Information */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineMediumFamily,
                           color: FlutterFlowTheme.of(context).textprimary,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .headlineMediumIsCustom,
                         ),
                   ),
                 ),
@@ -211,13 +214,18 @@ class _ProducerpersonalInformationWidgetState
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                       Text(
@@ -226,11 +234,16 @@ class _ProducerpersonalInformationWidgetState
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ],
@@ -326,10 +339,14 @@ class _ProducerpersonalInformationWidgetState
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primarytheme,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -355,12 +372,17 @@ class _ProducerpersonalInformationWidgetState
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                   Padding(
@@ -379,11 +401,18 @@ class _ProducerpersonalInformationWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ),
@@ -408,25 +437,38 @@ class _ProducerpersonalInformationWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMediumIsCustom,
                                                       ),
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
                                                 'ultzz0ik' /* Enter Full Name */,
                                               ),
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              hintStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumIsCustom,
+                                                  ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
@@ -474,11 +516,18 @@ class _ProducerpersonalInformationWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
@@ -508,11 +557,18 @@ class _ProducerpersonalInformationWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ),
@@ -538,25 +594,38 @@ class _ProducerpersonalInformationWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMediumIsCustom,
                                                       ),
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
                                                 'enkvzdo8' /* Enter Email */,
                                               ),
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              hintStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumIsCustom,
+                                                  ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
@@ -604,11 +673,18 @@ class _ProducerpersonalInformationWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
@@ -649,12 +725,17 @@ class _ProducerpersonalInformationWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     Padding(
@@ -671,17 +752,23 @@ class _ProducerpersonalInformationWidgetState
                                                   .getText(
                                                 'lq3uho0b' /* Language */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textprimary,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textprimary,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ),
                                           if (false)
@@ -697,29 +784,44 @@ class _ProducerpersonalInformationWidgetState
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,
-                                                  labelStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
                                                     'dzvqk8k2' /* Enter Language */,
                                                   ),
-                                                  hintStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .textsecondary,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
@@ -775,16 +877,24 @@ class _ProducerpersonalInformationWidgetState
                                                   filled: true,
                                                   fillColor: Color(0xFFFCFCFC),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                                 cursorColor:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
@@ -810,8 +920,15 @@ class _ProducerpersonalInformationWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Satoshi',
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
                                                       letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
                                                     ),
                                             hideFlags: true,
                                             flagSize: 24.0,
@@ -894,11 +1011,15 @@ class _ProducerpersonalInformationWidgetState
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 elevation: 0.0,
                                 borderRadius: BorderRadius.circular(8.0),
@@ -949,11 +1070,15 @@ class _ProducerpersonalInformationWidgetState
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .alternate,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(8.0),

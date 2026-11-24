@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/data_load_widget.dart';
 import '/components/no_chat_producer_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,7 +9,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
@@ -181,11 +181,14 @@ class _HelpAndSuppeortConversationWidgetState
                       'vh4hho1t' /* Help & Support */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineMediumFamily,
                           color: FlutterFlowTheme.of(context).textprimary,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .headlineMediumIsCustom,
                         ),
                   ),
                 ),
@@ -203,16 +206,10 @@ class _HelpAndSuppeortConversationWidgetState
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primarytheme,
-                          ),
-                        ),
-                      ),
+                    return DataLoadWidget(
+                      height: MediaQuery.sizeOf(context).height,
+                      width: MediaQuery.sizeOf(context).width,
+                      cmncolor: FlutterFlowTheme.of(context).card,
                     );
                   }
                   List<ConversationRecord> containerConversationRecordList =
@@ -322,13 +319,15 @@ class _HelpAndSuppeortConversationWidgetState
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .card,
                                                                         fontSize:
                                                                             16.0,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                             ],
@@ -340,8 +339,9 @@ class _HelpAndSuppeortConversationWidgetState
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .card,
@@ -349,6 +349,10 @@ class _HelpAndSuppeortConversationWidgetState
                                                                       16.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           );
                                                         }
@@ -382,8 +386,9 @@ class _HelpAndSuppeortConversationWidgetState
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .card,
@@ -391,6 +396,10 @@ class _HelpAndSuppeortConversationWidgetState
                                                                       13.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                           Builder(
@@ -527,13 +536,15 @@ class _HelpAndSuppeortConversationWidgetState
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                 ],
@@ -547,7 +558,8 @@ class _HelpAndSuppeortConversationWidgetState
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textprimary,
@@ -555,6 +567,9 @@ class _HelpAndSuppeortConversationWidgetState
                                                                           16.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               );
                                                             }
@@ -590,7 +605,8 @@ class _HelpAndSuppeortConversationWidgetState
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
@@ -598,6 +614,9 @@ class _HelpAndSuppeortConversationWidgetState
                                                                           13.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ].divide(SizedBox(
@@ -648,11 +667,15 @@ class _HelpAndSuppeortConversationWidgetState
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 elevation: 0.0,
                                 borderRadius: BorderRadius.circular(12.0),
@@ -868,13 +891,18 @@ class _HelpAndSuppeortConversationWidgetState
                                                         ),
                                                       );
                                                     } else {
-                                                      return Container(
-                                                        width: 40.0,
-                                                        height: 40.0,
-                                                        child: custom_widgets
-                                                            .CircleProgessCustom(
-                                                          width: 40.0,
+                                                      return wrapWithModel(
+                                                        model: _model
+                                                            .dataLoadModel,
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        child: DataLoadWidget(
                                                           height: 40.0,
+                                                          width: 40.0,
+                                                          cmncolor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .boderdivder,
                                                         ),
                                                       );
                                                     }
@@ -897,10 +925,15 @@ class _HelpAndSuppeortConversationWidgetState
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -913,14 +946,19 @@ class _HelpAndSuppeortConversationWidgetState
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 fontSize: 13.0,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -976,11 +1014,18 @@ class _HelpAndSuppeortConversationWidgetState
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
@@ -1222,10 +1267,14 @@ class _HelpAndSuppeortConversationWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),

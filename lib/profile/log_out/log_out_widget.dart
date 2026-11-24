@@ -66,11 +66,13 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                   'vpel5aqp' /* Logout */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 20.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                     ),
               ),
               Padding(
@@ -81,9 +83,12 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                   ),
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         color: FlutterFlowTheme.of(context).textsecondary,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -121,10 +126,13 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).orange,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
                           color: FlutterFlowTheme.of(context).alternate,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(12.0),
@@ -149,10 +157,13 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primarytheme,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
                           color: FlutterFlowTheme.of(context).alternate,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(12.0),

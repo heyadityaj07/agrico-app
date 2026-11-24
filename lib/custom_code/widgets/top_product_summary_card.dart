@@ -4,7 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'index.dart'; // Imports other custom widgets
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
 import '/custom_code/actions/index.dart'; // Imports custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart' hide RepeatMode;
@@ -678,15 +678,16 @@ class _TopProductSummaryCardState extends State<TopProductSummaryCard> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             child: loading
-                ? const Center(
-                    child: SizedBox(
-                      height: 18,
-                      width: 18,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: Colors.white,
-                      ),
-                    ),
+                ? DynamicShimmerWidget(
+                    width: (widget.width ?? double.infinity) - 28,
+                    height: (widget.height ?? 120) - 24,
+                    isRow: false,
+                    itemCount: 1,
+                    itemHeight: (widget.height ?? 120) - 24,
+                    shimmerType: 'box',
+                    baseColor: const Color(0x553F7B59),
+                    highlightColor: const Color(0x99A5D6B8),
+                    scrollable: false,
                   )
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

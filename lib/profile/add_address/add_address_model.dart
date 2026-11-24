@@ -30,6 +30,16 @@ class AddAddressModel extends FlutterFlowModel<AddAddressWidget> {
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
+  String? _textController1Validator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'yppvii4h' /* Enter an address label */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
@@ -70,6 +80,7 @@ class AddAddressModel extends FlutterFlowModel<AddAddressWidget> {
 
   @override
   void initState(BuildContext context) {
+    textController1Validator = _textController1Validator;
     textController2Validator = _textController2Validator;
     apartmentTextControllerValidator = _apartmentTextControllerValidator;
   }

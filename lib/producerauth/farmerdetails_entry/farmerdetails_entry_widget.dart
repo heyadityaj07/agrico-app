@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/data_load_widget.dart';
 import '/components/selectlocationcomponent_widget.dart';
 import '/components/selectlocationcomponentedit_widget.dart';
 import '/components/upload_widget.dart';
@@ -177,10 +178,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                         'elymiq38' /* Profile Details */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                     Text(
@@ -188,11 +192,14 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                         'pu83498j' /* We need basic details */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: FlutterFlowTheme.of(context).textsecondary,
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -206,10 +213,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                         'ei3t0q47' /* KYC information */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                     Text(
@@ -218,11 +228,14 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: FlutterFlowTheme.of(context).textsecondary,
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -236,10 +249,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                         'mgq4fco3' /* Farmer Onboarding */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -291,16 +307,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primarytheme,
-                      ),
-                    ),
-                  ),
+                return DataLoadWidget(
+                  height: MediaQuery.sizeOf(context).height,
+                  width: MediaQuery.sizeOf(context).width,
+                  cmncolor: FlutterFlowTheme.of(context).card,
                 );
               }
               List<FarmsRecord> containerFarmsRecordList = snapshot.data!;
@@ -368,13 +378,20 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -597,7 +614,8 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .titleSmall
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
@@ -608,6 +626,9 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleSmallIsCustom,
                                                                     ),
                                                             elevation: 0.0,
                                                             borderSide:
@@ -640,8 +661,9 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -649,6 +671,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       12.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -695,13 +721,19 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Satoshi',
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .textprimary,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                     ),
                                                     Row(
@@ -957,7 +989,8 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .titleSmall
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .alternate,
@@ -966,6 +999,9 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .titleSmallIsCustom,
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderRadius:
@@ -981,8 +1017,9 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
@@ -991,6 +1028,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -1010,13 +1051,20 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textsecondary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1418,7 +1466,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1427,6 +1478,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Padding(
@@ -1451,13 +1506,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1487,9 +1547,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             hintText:
                                                                 FFLocalizations.of(
@@ -1503,12 +1567,16 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -1574,13 +1642,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           cursorColor:
                                                               FlutterFlowTheme.of(
@@ -1620,13 +1693,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1656,9 +1734,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             hintText:
                                                                 FFLocalizations.of(
@@ -1672,12 +1754,16 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -1743,13 +1829,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           cursorColor:
                                                               FlutterFlowTheme.of(
@@ -1808,11 +1899,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1846,9 +1939,11 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                         .labelMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).labelMediumFamily,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                         ),
                                                                     hintText: FFLocalizations.of(
                                                                             context)
@@ -1860,11 +1955,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                         .labelMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).labelMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                         ),
                                                                     enabledBorder:
                                                                         OutlineInputBorder(
@@ -1929,11 +2026,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                   keyboardType:
                                                                       TextInputType
@@ -1993,11 +2092,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ),
@@ -2031,9 +2132,11 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                         .labelMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).labelMediumFamily,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                         ),
                                                                     hintText: FFLocalizations.of(
                                                                             context)
@@ -2045,11 +2148,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                         .labelMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).labelMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).labelMediumIsCustom,
                                                                         ),
                                                                     enabledBorder:
                                                                         OutlineInputBorder(
@@ -2114,11 +2219,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                   keyboardType: const TextInputType
                                                                       .numberWithOptions(
@@ -2178,7 +2285,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2187,6 +2297,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Padding(
@@ -2211,13 +2325,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2247,9 +2366,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             hintText:
                                                                 FFLocalizations.of(
@@ -2263,12 +2386,16 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -2334,13 +2461,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           maxLines: null,
                                                           minLines: 5,
@@ -2370,14 +2502,19 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2407,13 +2544,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2449,9 +2591,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             hintText:
                                                                 FFLocalizations.of(
@@ -2465,12 +2611,16 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -2536,13 +2686,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           cursorColor:
                                                               FlutterFlowTheme.of(
@@ -2582,13 +2737,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2624,9 +2784,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             hintText:
                                                                 FFLocalizations.of(
@@ -2640,12 +2804,16 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -2711,13 +2879,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           cursorColor:
                                                               FlutterFlowTheme.of(
@@ -2763,7 +2936,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2772,6 +2948,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Container(
@@ -2867,9 +3047,11 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -2928,10 +3110,11 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               fontSize: 16.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       InkWell(
@@ -2984,12 +3167,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).primarytheme,
                                                                                 fontSize: 16.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w500,
                                                                                 decoration: TextDecoration.underline,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -3051,7 +3235,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -3060,6 +3247,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Padding(
@@ -3084,13 +3275,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -3146,13 +3342,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -3175,9 +3376,13 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             hintText:
                                                                 FFLocalizations.of(
@@ -3191,12 +3396,16 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .labelMediumIsCustom,
                                                                     ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
@@ -3262,13 +3471,18 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                           cursorColor:
                                                               FlutterFlowTheme.of(
@@ -3435,12 +3649,19 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                     context)
                                                 .titleSmall
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallIsCustom,
                                                 ),
                                             elevation: 0.0,
                                             borderRadius:
@@ -3488,7 +3709,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -3496,6 +3720,10 @@ class _FarmerdetailsEntryWidgetState extends State<FarmerdetailsEntryWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Builder(
@@ -3613,12 +3841,16 @@ PDF, JPG, PNG... */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -3703,13 +3935,20 @@ PDF, JPG, PNG... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -3828,12 +4067,16 @@ PDF, JPG, PNG ... */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -4041,13 +4284,20 @@ PDF, JPG, PNG ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -4166,12 +4416,16 @@ PDF, JPG, PNG ... */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -4267,7 +4521,10 @@ PDF, JPG, PNG ... */
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -4275,6 +4532,10 @@ PDF, JPG, PNG ... */
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -4324,8 +4585,9 @@ PDF, JPG, PNG ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .skyblue,
@@ -4333,6 +4595,10 @@ PDF, JPG, PNG ... */
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -4364,8 +4630,9 @@ PDF, JPG, PNG ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .skyblue,
@@ -4373,6 +4640,10 @@ PDF, JPG, PNG ... */
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -4404,8 +4675,9 @@ PDF, JPG, PNG ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .skyblue,
@@ -4413,6 +4685,10 @@ PDF, JPG, PNG ... */
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -4444,8 +4720,9 @@ PDF, JPG, PNG ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .skyblue,
@@ -4453,6 +4730,10 @@ PDF, JPG, PNG ... */
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -4569,9 +4850,16 @@ PDF, JPG, PNG ... */
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmallFamily,
                                                         color: Colors.white,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleSmallIsCustom,
                                                       ),
                                               elevation: 0.0,
                                               borderRadius:
@@ -4684,13 +4972,18 @@ PDF, JPG, PNG ... */
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 24.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -4703,10 +4996,15 @@ PDF, JPG, PNG ... */
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     Builder(
@@ -4734,13 +5032,20 @@ PDF, JPG, PNG ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -4792,7 +5097,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -4800,6 +5106,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -4832,7 +5141,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -4840,6 +5150,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -4872,7 +5185,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -4880,6 +5194,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -4912,7 +5229,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -4920,6 +5238,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -4954,13 +5275,20 @@ PDF, JPG, PNG ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -5012,7 +5340,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -5020,6 +5349,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -5052,7 +5384,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -5060,6 +5393,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -5092,7 +5428,8 @@ PDF, JPG, PNG ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -5100,6 +5437,9 @@ PDF, JPG, PNG ... */
                                                                         14.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -5180,9 +5520,16 @@ PDF, JPG, PNG ... */
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
                                                         ),
                                                 elevation: 0.0,
                                                 borderRadius:
@@ -5221,9 +5568,16 @@ PDF, JPG, PNG ... */
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily: 'Satoshi',
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmallFamily,
                                                       color: Colors.white,
                                                       letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmallIsCustom,
                                                     ),
                                             elevation: 0.0,
                                             borderRadius:

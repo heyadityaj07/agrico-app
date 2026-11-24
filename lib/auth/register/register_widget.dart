@@ -1,11 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:collection/collection.dart';
@@ -91,12 +91,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color:
                                       FlutterFlowTheme.of(context).textprimary,
                                   fontSize: 30.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                           ),
                         ),
@@ -114,12 +117,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: FlutterFlowTheme.of(context)
                                       .textsecondary,
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                           ),
                         ),
@@ -142,12 +148,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -167,8 +177,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -177,8 +192,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -222,12 +242,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.name,
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     enableInteractiveSelection: true,
@@ -258,12 +283,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -283,8 +312,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -293,8 +327,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -338,10 +377,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     keyboardType: TextInputType.emailAddress,
                                     cursorColor: FlutterFlowTheme.of(context)
@@ -375,12 +419,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textprimary,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -400,8 +448,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -410,10 +463,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -475,12 +533,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.visiblePassword,
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     enableInteractiveSelection: true,
@@ -544,18 +607,24 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                   .getText(
                                                 'at4ghctt' /* I agree to the  */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 13.0,
-                                                        letterSpacing: 0.2,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    fontSize: 13.0,
+                                                    letterSpacing: 0.2,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                             TextSpan(
                                               text: FFLocalizations.of(context)
@@ -566,13 +635,20 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primarytheme,
                                                     fontSize: 13.0,
                                                     letterSpacing: 0.2,
                                                     fontWeight: FontWeight.bold,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
                                                   ),
                                               mouseCursor:
                                                   SystemMouseCursors.click,
@@ -604,13 +680,20 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primarytheme,
                                                     fontSize: 13.0,
                                                     letterSpacing: 0.2,
                                                     fontWeight: FontWeight.bold,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
                                                   ),
                                               mouseCursor:
                                                   SystemMouseCursors.click,
@@ -625,10 +708,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 fontSize: 20.0,
                                                 letterSpacing: 0.0,
                                                 lineHeight: 1.5,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                         ),
                                         textAlign: TextAlign.center,
@@ -705,13 +794,20 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .textsecondary,
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.2,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 TextSpan(
@@ -724,7 +820,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -733,6 +832,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                         letterSpacing: 0.2,
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                   mouseCursor:
                                                       SystemMouseCursors.click,
@@ -749,10 +852,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         lineHeight: 1.5,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                             ),
                                             textAlign: TextAlign.center,
@@ -933,10 +1043,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: FlutterFlowTheme.of(context).alternate,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(12.0),
@@ -965,11 +1078,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 13.0,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                             Container(
@@ -996,12 +1113,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               var _shouldSetState = false;
                               _model.isloading = true;
                               safeSetState(() {});
-                              GoRouter.of(context).prepareAuthEvent();
-                              final user =
-                                  await authManager.signInWithGoogle(context);
-                              if (user == null) {
-                                return;
-                              }
                               if (!_model.checkboxValue1!) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -1066,6 +1177,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 return;
                               }
 
+                              GoRouter.of(context).prepareAuthEvent();
+                              final user =
+                                  await authManager.signInWithGoogle(context);
+                              if (user == null) {
+                                return;
+                              }
                               _model.isloading = false;
                               safeSetState(() {});
                               if (valueOrDefault(
@@ -1200,28 +1317,32 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primarytheme,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                         ),
                                       ].divide(SizedBox(width: 12.0)),
                                     );
                                   } else {
-                                    return Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Container(
-                                        width: 40.0,
+                                    return wrapWithModel(
+                                      model: _model.dataLoadModel1,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: DataLoadWidget(
                                         height: 40.0,
-                                        child:
-                                            custom_widgets.CircleProgessCustom(
-                                          width: 40.0,
-                                          height: 40.0,
-                                        ),
+                                        width: 40.0,
+                                        cmncolor: FlutterFlowTheme.of(context)
+                                            .boderdivder,
                                       ),
                                     );
                                   }
@@ -1447,28 +1568,32 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primarytheme,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                         ),
                                       ].divide(SizedBox(width: 12.0)),
                                     );
                                   } else {
-                                    return Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Container(
-                                        width: 40.0,
+                                    return wrapWithModel(
+                                      model: _model.dataLoadModel2,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: DataLoadWidget(
                                         height: 40.0,
-                                        child:
-                                            custom_widgets.CircleProgessCustom(
-                                          width: 40.0,
-                                          height: 40.0,
-                                        ),
+                                        width: 40.0,
+                                        cmncolor: FlutterFlowTheme.of(context)
+                                            .boderdivder,
                                       ),
                                     );
                                   }
@@ -1491,11 +1616,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textsecondary,
                                       fontSize: 13.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               TextSpan(
@@ -1505,12 +1634,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .primarytheme,
                                       fontSize: 13.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
@@ -1523,8 +1656,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                           ),
                         ),

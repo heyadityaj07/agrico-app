@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/components/selectlocationcomponentedit_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -108,11 +109,14 @@ class _FarmLocationWidgetState extends State<FarmLocationWidget> {
                   '5a2fiok6' /* Farm Location */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
             ),
@@ -150,16 +154,10 @@ class _FarmLocationWidgetState extends State<FarmLocationWidget> {
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primarytheme,
-                      ),
-                    ),
-                  ),
+                return DataLoadWidget(
+                  height: MediaQuery.sizeOf(context).height,
+                  width: MediaQuery.sizeOf(context).width,
+                  cmncolor: FlutterFlowTheme.of(context).card,
                 );
               }
               List<FarmsRecord> containerFarmsRecordList = snapshot.data!;
@@ -199,10 +197,15 @@ class _FarmLocationWidgetState extends State<FarmLocationWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                   InkWell(
@@ -245,7 +248,9 @@ class _FarmLocationWidgetState extends State<FarmLocationWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .primarytheme,
                                             fontSize: 16.0,
@@ -253,6 +258,9 @@ class _FarmLocationWidgetState extends State<FarmLocationWidget> {
                                             fontWeight: FontWeight.w500,
                                             decoration:
                                                 TextDecoration.underline,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),

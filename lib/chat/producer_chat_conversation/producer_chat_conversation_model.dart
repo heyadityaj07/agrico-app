@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
+import '/components/data_load_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,7 +11,6 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'producer_chat_conversation_widget.dart'
@@ -39,6 +39,8 @@ class ProducerChatConversationModel
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataA8u = '';
 
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -54,11 +56,13 @@ class ProducerChatConversationModel
 
   @override
   void initState(BuildContext context) {
+    dataLoadModel = createModel(context, () => DataLoadModel());
     suspendModel = createModel(context, () => SuspendModel());
   }
 
   @override
   void dispose() {
+    dataLoadModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
 

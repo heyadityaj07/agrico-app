@@ -99,12 +99,15 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color:
                                       FlutterFlowTheme.of(context).textprimary,
                                   fontSize: 18.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                           ),
                           FlutterFlowIconButton(
@@ -137,10 +140,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -157,8 +164,12 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
                                     'w99j24sf' /* eg., Mangos */,
@@ -166,10 +177,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textsecondary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -207,10 +222,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
@@ -237,10 +256,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -264,15 +287,20 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                               .primarytheme,
                                       headerForegroundColor:
                                           FlutterFlowTheme.of(context).info,
-                                      headerTextStyle:
-                                          FlutterFlowTheme.of(context)
-                                              .headlineLarge
-                                              .override(
-                                                fontFamily: 'Satoshi',
-                                                fontSize: 32.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
+                                      headerTextStyle: FlutterFlowTheme.of(
+                                              context)
+                                          .headlineLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineLargeFamily,
+                                            fontSize: 32.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .headlineLargeIsCustom,
+                                          ),
                                       pickerBackgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -314,7 +342,8 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                   } else {
                                     await actions.toast(
                                       context,
-                                      'Planted Date should be Befor Expected Date',
+                                      'Planted Date should be Before Expected Date',
+                                      Colors.red,
                                     );
                                   }
                                 } else {
@@ -354,11 +383,16 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                       Icon(
@@ -390,10 +424,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -418,15 +456,20 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                                 .primarytheme,
                                         headerForegroundColor:
                                             FlutterFlowTheme.of(context).info,
-                                        headerTextStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .headlineLarge
-                                                .override(
-                                                  fontFamily: 'Satoshi',
-                                                  fontSize: 32.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
+                                        headerTextStyle: FlutterFlowTheme.of(
+                                                context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLargeFamily,
+                                              fontSize: 32.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .headlineLargeIsCustom,
+                                            ),
                                         pickerBackgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -467,12 +510,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                     await actions.toast(
                                       context,
                                       'Expected Date should be After Planned Date',
+                                      Colors.red,
                                     );
                                   }
                                 } else {
                                   await actions.toast(
                                     context,
                                     'Select Planted Date',
+                                    Colors.red,
                                   );
                                 }
                               },
@@ -508,11 +553,16 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                       Icon(
@@ -544,10 +594,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -564,8 +618,12 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
                                     'y9v2vc9o' /* eg., Plot 1A */,
@@ -573,10 +631,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .textsecondary,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .labelMediumIsCustom,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -614,10 +676,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
@@ -645,10 +711,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -685,8 +755,12 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                               hintText: FFLocalizations.of(context).getText(
                                 '9waoddp1' /* product category */,
@@ -730,10 +804,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -759,8 +837,12 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                               hintText: FFLocalizations.of(context).getText(
                                 'eusalk0q' /* product status */,
@@ -809,10 +891,15 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -829,8 +916,13 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelMediumIsCustom,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -839,11 +931,16 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelMediumIsCustom,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -887,10 +984,15 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                       keyboardType: TextInputType.number,
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -922,10 +1024,15 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -952,8 +1059,13 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     hintText:
                                         FFLocalizations.of(context).getText(
@@ -1000,10 +1112,14 @@ class _NewPlaningscaduleWidgetState extends State<NewPlaningscaduleWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -1123,17 +1239,23 @@ JPG, PNG (max ... */
                                                 ,
                                               ),
                                               textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -1191,11 +1313,15 @@ JPG, PNG (max ... */
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .titleSmallIsCustom,
                                     ),
                                 elevation: 0.0,
                                 borderRadius: BorderRadius.circular(12.0),
@@ -1213,6 +1339,7 @@ JPG, PNG (max ... */
                                     await actions.toast(
                                       context,
                                       'Please Select planted date',
+                                      Colors.red,
                                     );
                                     return;
                                   }
@@ -1220,6 +1347,7 @@ JPG, PNG (max ... */
                                     await actions.toast(
                                       context,
                                       'Please Select Expected Harvest date',
+                                      Colors.red,
                                     );
                                     return;
                                   }
@@ -1228,6 +1356,7 @@ JPG, PNG (max ... */
                                     await actions.toast(
                                       context,
                                       'Please Select Product status',
+                                      Colors.red,
                                     );
                                     return;
                                   }
@@ -1238,6 +1367,7 @@ JPG, PNG (max ... */
                                     await actions.toast(
                                       context,
                                       'Please Add Image',
+                                      Colors.red,
                                     );
                                     return;
                                   }
@@ -1289,11 +1419,15 @@ JPG, PNG (max ... */
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
                                         color:
                                             FlutterFlowTheme.of(context).card,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .titleSmallIsCustom,
                                       ),
                                   elevation: 0.0,
                                   borderRadius: BorderRadius.circular(12.0),

@@ -62,16 +62,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
-              return Center(
-                child: SizedBox(
-                  width: 50.0,
-                  height: 50.0,
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      FlutterFlowTheme.of(context).primarytheme,
-                    ),
-                  ),
-                ),
+              return DataLoadWidget(
+                height: 300.0,
+                width: MediaQuery.sizeOf(context).width,
+                cmncolor: FlutterFlowTheme.of(context).card,
               );
             }
             List<CartRecord> containerCartRecordList = snapshot.data!;
@@ -110,15 +104,19 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                             'gntchmn4' /* Review Items */,
                           ),
                           textAlign: TextAlign.start,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Satoshi',
-                                    color: Colors.black,
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    lineHeight: 1.5,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                color: Colors.black,
+                                fontSize: 16.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                                lineHeight: 1.5,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
+                              ),
                         ),
                         InkWell(
                           splashColor: Colors.transparent,
@@ -233,7 +231,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -242,6 +243,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Text(
@@ -250,7 +255,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -259,6 +267,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ],
@@ -365,8 +377,9 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primarytheme,
@@ -374,6 +387,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                       14.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -416,6 +433,9 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                   frText:
                                                                       'Pas assez de stock disponible',
                                                                 ),
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primarytheme,
                                                               );
                                                             }
                                                           },
@@ -453,8 +473,9 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -464,6 +485,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       Text(
@@ -478,8 +503,9 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -490,6 +516,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       if (FFLocalizations.of(
@@ -506,8 +536,9 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -517,6 +548,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                     ],
@@ -815,7 +850,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -824,6 +862,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 Padding(
@@ -868,12 +910,19 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primarytheme,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 if (FFLocalizations.of(context)
@@ -888,7 +937,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primarytheme,
@@ -896,6 +948,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 Text(
@@ -911,7 +967,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -920,6 +979,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 if (FFLocalizations.of(context)
@@ -934,7 +997,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primarytheme,
@@ -942,6 +1008,10 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                               ],
@@ -972,12 +1042,17 @@ class _ViewCartWidgetState extends State<ViewCartWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleSmallIsCustom,
                                             ),
                                         elevation: 0.0,
                                         borderRadius:

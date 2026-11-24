@@ -94,3 +94,6 @@ export '/auth/select_option_copy/select_option_copy_widget.dart'
 export '/carts/checkout_copy/checkout_copy_widget.dart' show CheckoutCopyWidget;
 export '/profile/producer_term/producer_term_widget.dart'
     show ProducerTermWidget;
+export '/weight_balance/weight_balance_widget.dart' show WeightBalanceWidget;
+export '/pages/home_page_copy/home_page_copy_widget.dart'
+    show HomePageCopyWidget;

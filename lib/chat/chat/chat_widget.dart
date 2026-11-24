@@ -62,11 +62,13 @@ class _ChatWidgetState extends State<ChatWidget> {
               '9urz99lx' /* Messages */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Satoshi',
+                  fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                   color: FlutterFlowTheme.of(context).textprimary,
                   fontSize: 16.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w500,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                 ),
           ),
           actions: [],
@@ -81,287 +83,271 @@ class _ChatWidgetState extends State<ChatWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(
-                    child: StreamBuilder<List<ChatRecord>>(
-                      stream: queryChatRecord(
-                        queryBuilder: (chatRecord) => chatRecord
-                            .where(
-                              'users',
-                              arrayContains: currentUserReference,
-                            )
-                            .where(
-                              'is_suspend',
-                              isEqualTo: false,
-                            ),
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primarytheme,
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
+                      child: StreamBuilder<List<ChatRecord>>(
+                        stream: queryChatRecord(
+                          queryBuilder: (chatRecord) => chatRecord
+                              .where(
+                                'users',
+                                arrayContains: currentUserReference,
+                              )
+                              .where(
+                                'is_suspend',
+                                isEqualTo: false,
+                              )
+                              .orderBy('last_meesage_time', descending: true),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return DataLoadWidget(
+                              height: 72.0,
+                              width: MediaQuery.sizeOf(context).width,
+                              cmncolor:
+                                  FlutterFlowTheme.of(context).boderdivder,
+                              length: 5,
+                            );
+                          }
+                          List<ChatRecord> columnChatRecordList =
+                              snapshot.data!;
+                          if (columnChatRecordList.isEmpty) {
+                            return Center(
+                              child: NochatconsumerWidget(
+                                message: FFLocalizations.of(context).getText(
+                                  'wk4s4dka' /* No conversations yet with any ... */,
                                 ),
+                                submsg: FFLocalizations.of(context).getText(
+                                  'wes2l6jv' /* Once you message a farm or pla... */,
+                                ),
+                                index: 1,
                               ),
-                            ),
-                          );
-                        }
-                        List<ChatRecord> containerChatRecordList =
-                            snapshot.data!;
+                            );
+                          }
 
-                        return Container(
-                          decoration: BoxDecoration(),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 16.0),
-                            child: Builder(
-                              builder: (context) {
-                                final chatlist = containerChatRecordList
-                                    .sortedList(
-                                        keyOf: (e) => e.lastMeesageTime != null
-                                            ? e.lastMeesageTime!
-                                            : e.createdAt!,
-                                        desc: true)
-                                    .toList();
-                                if (chatlist.isEmpty) {
-                                  return Center(
-                                    child: NochatconsumerWidget(
-                                      message:
-                                          FFLocalizations.of(context).getText(
-                                        'wk4s4dka' /* No conversations yet with any ... */,
-                                      ),
-                                      submsg:
-                                          FFLocalizations.of(context).getText(
-                                        'wes2l6jv' /* Once you message a farm or pla... */,
-                                      ),
-                                      index: 1,
-                                    ),
-                                  );
-                                }
+                          return SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: List.generate(
+                                  columnChatRecordList.length, (columnIndex) {
+                                final columnChatRecord =
+                                    columnChatRecordList[columnIndex];
+                                return StreamBuilder<FarmsRecord>(
+                                  stream: FarmsRecord.getDocument(
+                                      columnChatRecord.farmRef!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return DataLoadWidget(
+                                        height: 72.0,
+                                        width: MediaQuery.sizeOf(context).width,
+                                        cmncolor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      );
+                                    }
 
-                                return SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: List.generate(chatlist.length,
-                                        (chatlistIndex) {
-                                      final chatlistItem =
-                                          chatlist[chatlistIndex];
-                                      return StreamBuilder<FarmsRecord>(
-                                        stream: FarmsRecord.getDocument(
-                                            chatlistItem.farmRef!),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return DataLoadWidget(
-                                              height: 72.0,
-                                              width: MediaQuery.sizeOf(context)
-                                                  .width,
-                                              cmncolor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            );
-                                          }
+                                    final containerFarmsRecord = snapshot.data!;
 
-                                          final containerFarmsRecord =
-                                              snapshot.data!;
-
-                                          return Container(
-                                            decoration: BoxDecoration(),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  ChatConversationWidget
-                                                      .routeName,
-                                                  queryParameters: {
-                                                    'chatRef': serializeParam(
-                                                      chatlistItem,
-                                                      ParamType.Document,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'chatRef': chatlistItem,
-                                                  },
-                                                );
-                                              },
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 72.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .card,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          16.0),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(12.0),
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            ChatConversationWidget.routeName,
+                                            queryParameters: {
+                                              'chatRef': serializeParam(
+                                                columnChatRecord,
+                                                ParamType.Document,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'chatRef': columnChatRecord,
+                                            },
+                                          );
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 72.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .card,
+                                            borderRadius:
+                                                BorderRadius.circular(16.0),
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(12.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Flexible(
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
                                                     children: [
-                                                      Flexible(
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Container(
-                                                              width: 48.0,
-                                                              height: 48.0,
-                                                              clipBehavior: Clip
-                                                                  .antiAlias,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                              ),
-                                                              child:
-                                                                  CachedNetworkImage(
-                                                                fadeInDuration:
-                                                                    Duration(
-                                                                        milliseconds:
-                                                                            500),
-                                                                fadeOutDuration:
-                                                                    Duration(
-                                                                        milliseconds:
-                                                                            500),
-                                                                imageUrl:
-                                                                    containerFarmsRecord
-                                                                        .farmProfilePhoto,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                            Flexible(
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      containerFarmsRecord
-                                                                          .farmName,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Satoshi',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).textprimary,
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                          ),
-                                                                    ),
-                                                                    Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        chatlistItem
-                                                                            .lastMessage,
-                                                                        ' wryutiunrkqwjnrew;nfgrergrtewrtetrewtwrt',
-                                                                      ),
-                                                                      maxLines:
-                                                                          1,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Satoshi',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).textsecondary,
-                                                                            fontSize:
-                                                                                12.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
+                                                      Container(
+                                                        width: 48.0,
+                                                        height: 48.0,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                        ),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          fadeInDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          fadeOutDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          imageUrl:
+                                                              containerFarmsRecord
+                                                                  .farmProfilePhoto,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
-                                                      Text(
-                                                        chatlistItem.lastMeesageTime !=
-                                                                null
-                                                            ? dateTimeFormat(
-                                                                "relative",
-                                                                chatlistItem
-                                                                    .lastMeesageTime!,
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              )
-                                                            : dateTimeFormat(
-                                                                "relative",
-                                                                chatlistItem
-                                                                    .createdAt!,
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primarytheme,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  letterSpacing:
+                                                      Flexible(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
                                                                       0.0,
-                                                                ),
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                containerFarmsRecord
+                                                                    .farmName,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .textprimary,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                columnChatRecord
+                                                                    .lastMessage,
+                                                                maxLines: 1,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .textsecondary,
+                                                                      fontSize:
+                                                                          12.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
+                                                                    ),
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ),
+                                                Text(
+                                                  columnChatRecord
+                                                              .lastMeesageTime !=
+                                                          null
+                                                      ? dateTimeFormat(
+                                                          "relative",
+                                                          columnChatRecord
+                                                              .lastMeesageTime!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        )
+                                                      : dateTimeFormat(
+                                                          "relative",
+                                                          columnChatRecord
+                                                              .createdAt!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primarytheme,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                        },
-                                      );
-                                    }).divide(SizedBox(height: 12.0)),
-                                  ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 );
-                              },
+                              }).divide(SizedBox(height: 12.0)),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ),
                   wrapWithModel(

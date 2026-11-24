@@ -4,7 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'index.dart'; // Imports other custom widgets
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
 import '/custom_code/actions/index.dart'; // Imports custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart' hide RepeatMode;
@@ -1652,23 +1652,36 @@ class _MapPageState extends State<MapPage> {
               Positioned.fill(
                 child: Container(
                   color: Colors.black12,
-                  child: const Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xFF00A884)),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          "Loading road route...",
-                          style: TextStyle(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w600,
+                  child: Center(
+                    child: Container(
+                      width: 210,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          DynamicShimmerWidget(
+                            width: 178,
+                            height: 18,
+                            isRow: false,
+                            itemCount: 1,
+                            itemHeight: 18,
+                            shimmerType: 'box',
+                            scrollable: false,
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 10),
+                          const Text(
+                            "Loading road route...",
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -2,13 +2,13 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/certificate_widget.dart';
+import '/components/data_load_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
@@ -71,11 +71,11 @@ class _CertificationWidgetState extends State<CertificationWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
-                width: 50.0,
-                height: 50.0,
+                width: 50,
+                height: 50,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primarytheme,
+                    Colors.transparent,
                   ),
                 ),
               ),
@@ -150,11 +150,14 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                       '43fz3s85' /* Certifications */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineMediumFamily,
                           color: FlutterFlowTheme.of(context).textprimary,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .headlineMediumIsCustom,
                         ),
                   ),
                 ),
@@ -178,16 +181,10 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primarytheme,
-                              ),
-                            ),
-                          ),
+                        return DataLoadWidget(
+                          height: MediaQuery.sizeOf(context).height,
+                          width: MediaQuery.sizeOf(context).width,
+                          cmncolor: FlutterFlowTheme.of(context).card,
                         );
                       }
                       List<CertificateRecord> containerCertificateRecordList =
@@ -226,13 +223,20 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Padding(
@@ -255,11 +259,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -280,10 +291,15 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -296,13 +312,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -360,11 +381,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
@@ -400,11 +428,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -425,10 +460,15 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       hintText:
                                                           FFLocalizations.of(
@@ -441,13 +481,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                   context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
@@ -505,11 +550,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
@@ -559,13 +611,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -608,13 +665,15 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -763,9 +822,11 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ),
@@ -804,13 +865,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ),
@@ -855,13 +921,15 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                     pickerBackgroundColor:
                                                                         FlutterFlowTheme.of(context)
@@ -1028,9 +1096,11 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1065,11 +1135,18 @@ class _CertificationWidgetState extends State<CertificationWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1227,11 +1304,13 @@ JPG, PNG (max ... */
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textsecondary,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -1260,13 +1339,18 @@ JPG, PNG (max ... */
                                                         ),
                                                       );
                                                     } else {
-                                                      return Container(
-                                                        width: 40.0,
-                                                        height: 40.0,
-                                                        child: custom_widgets
-                                                            .CircleProgessCustom(
-                                                          width: 40.0,
+                                                      return wrapWithModel(
+                                                        model: _model
+                                                            .dataLoadModel,
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        child: DataLoadWidget(
                                                           height: 40.0,
+                                                          width: 40.0,
+                                                          cmncolor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .boderdivder,
                                                         ),
                                                       );
                                                     }
@@ -1392,12 +1476,19 @@ JPG, PNG (max ... */
                                                       context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .alternate,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallIsCustom,
                                                   ),
                                               elevation: 0.0,
                                               borderRadius:
@@ -1420,11 +1511,16 @@ JPG, PNG (max ... */
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .primarytheme,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                     Column(
@@ -1468,12 +1564,19 @@ JPG, PNG (max ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primarytheme,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1519,12 +1622,19 @@ JPG, PNG (max ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primarytheme,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1570,12 +1680,19 @@ JPG, PNG (max ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primarytheme,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1621,12 +1738,19 @@ JPG, PNG (max ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primarytheme,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1654,12 +1778,17 @@ JPG, PNG (max ... */
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -1795,13 +1924,15 @@ JPG, PNG (max ... */
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textprimary,
                                                                           fontSize:
                                                                               16.0,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                   Text(
@@ -1811,13 +1942,15 @@ JPG, PNG (max ... */
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ].divide(SizedBox(
@@ -1857,12 +1990,16 @@ JPG, PNG (max ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -1894,8 +2031,9 @@ JPG, PNG (max ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1903,6 +2041,10 @@ JPG, PNG (max ... */
                                                                       12.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                           Text(
@@ -1918,8 +2060,9 @@ JPG, PNG (max ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -1927,6 +2070,10 @@ JPG, PNG (max ... */
                                                                       16.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ].divide(SizedBox(
@@ -1958,7 +2105,8 @@ JPG, PNG (max ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textsecondary,
@@ -1966,6 +2114,9 @@ JPG, PNG (max ... */
                                                                         12.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                             Text(
@@ -1982,7 +2133,8 @@ JPG, PNG (max ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textprimary,
@@ -1990,6 +2142,9 @@ JPG, PNG (max ... */
                                                                         16.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ].divide(SizedBox(
@@ -2090,11 +2245,13 @@ JPG, PNG (max ... */
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).titleSmallFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primarytheme,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                               elevation: 0.0,
                                                               borderSide:
@@ -2137,12 +2294,17 @@ JPG, PNG (max ... */
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 Builder(
@@ -2274,13 +2436,15 @@ JPG, PNG (max ... */
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textprimary,
                                                                           fontSize:
                                                                               16.0,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                   Text(
@@ -2290,13 +2454,15 @@ JPG, PNG (max ... */
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ].divide(SizedBox(
@@ -2336,12 +2502,16 @@ JPG, PNG (max ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -2373,8 +2543,9 @@ JPG, PNG (max ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -2382,6 +2553,10 @@ JPG, PNG (max ... */
                                                                       12.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                           Text(
@@ -2397,8 +2572,9 @@ JPG, PNG (max ... */
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -2406,6 +2582,10 @@ JPG, PNG (max ... */
                                                                       16.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ].divide(SizedBox(
@@ -2437,7 +2617,8 @@ JPG, PNG (max ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textsecondary,
@@ -2445,6 +2626,9 @@ JPG, PNG (max ... */
                                                                         12.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                             Text(
@@ -2458,7 +2642,8 @@ JPG, PNG (max ... */
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textprimary,
@@ -2466,6 +2651,9 @@ JPG, PNG (max ... */
                                                                         16.0,
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ].divide(SizedBox(
@@ -2491,12 +2679,19 @@ JPG, PNG (max ... */
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textsecondary,
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(

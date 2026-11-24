@@ -51,8 +51,9 @@ class _Demo11WidgetState extends State<Demo11Widget> {
           'x5h6gyfi' /* Hello World hnkjgnkfjgnjkhnfjl... */,
         ),
         style: FlutterFlowTheme.of(context).bodyMedium.override(
-              fontFamily: 'Satoshi',
+              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
               letterSpacing: 0.0,
+              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
             ),
       ),
     );

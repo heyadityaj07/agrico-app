@@ -137,11 +137,14 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                   '4wzps40k' /* Help & Support */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
             ),
@@ -173,12 +176,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily,
                                   color:
                                       FlutterFlowTheme.of(context).textprimary,
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineMediumIsCustom,
                                 ),
                           ),
                         ),
@@ -290,7 +296,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -298,6 +307,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ),
@@ -306,17 +319,25 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     .getText(
                                                   '10jg4o6l' /* Have an issue with your store,... */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                      fontSize: 12.0,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
@@ -340,16 +361,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primarytheme,
-                                    ),
-                                  ),
-                                ),
+                              return DataLoadWidget(
+                                height: 120.0,
+                                width: MediaQuery.sizeOf(context).width,
+                                cmncolor: FlutterFlowTheme.of(context).card,
                               );
                             }
                             List<HelpChatRecord> containerHelpChatRecordList =
@@ -378,13 +393,19 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textprimary,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMediumIsCustom,
                                               ),
                                         ),
                                       ),
@@ -514,11 +535,12 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 16.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Icon(
@@ -573,13 +595,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
                                                                             14.0,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Row(
@@ -622,11 +646,12 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).primarytheme,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
                                                                               decoration: TextDecoration.underline,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -666,13 +691,19 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textprimary,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMediumIsCustom,
                                               ),
                                         ),
                                       ),
@@ -796,11 +827,12 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 16.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Icon(
@@ -848,12 +880,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .headlineMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -894,38 +930,50 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                   .getText(
                                                 'sdgmj0i2' /* How do I place an order? */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textprimary,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textprimary,
+                                                    fontSize: 14.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
                                                 'xomscn2t' /* Browse products from local far... */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    fontSize: 10.0,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ].divide(SizedBox(height: 4.0)),
                                         ),
@@ -936,9 +984,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 fontSize: 0.0,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                         ),
                                         expanded: Padding(
@@ -1018,12 +1072,19 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                       context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .card,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallIsCustom,
                                                   ),
                                               elevation: 0.0,
                                               borderRadius:
@@ -1067,19 +1128,27 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     .getText(
                                                   '8v9x1lkc' /* How can I track my order? */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
@@ -1090,9 +1159,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 0.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           expanded: Column(
@@ -1107,8 +1183,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -1151,19 +1234,27 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     .getText(
                                                   'p8leytn3' /* What should I do if my order i... */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
@@ -1174,9 +1265,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 0.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           expanded: Column(
@@ -1191,8 +1289,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -1235,19 +1340,27 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     .getText(
                                                   'uhd1m8qq' /* What if an item is missing, da... */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
@@ -1258,9 +1371,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 0.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           expanded: Column(
@@ -1275,8 +1395,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -1319,19 +1446,27 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     .getText(
                                                   'xrexzqh3' /* How do I contact a farmer? */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
@@ -1342,9 +1477,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 0.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           expanded: Column(
@@ -1359,8 +1501,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -1403,19 +1552,27 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     .getText(
                                                   'fjdfjwzo' /* How do I change my profile inf... */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textprimary,
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontSize: 14.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
@@ -1426,9 +1583,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   fontSize: 0.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           expanded: Column(
@@ -1443,8 +1607,15 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                             ],
@@ -1499,7 +1670,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1508,6 +1682,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
@@ -1521,9 +1699,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 0.0,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                             ),
                                             expanded: Column(
@@ -1534,13 +1719,21 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                       .getText(
                                                     'fmj60ecm' /* Hello World */,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                 ),
                                               ],
                                             ),
@@ -1594,7 +1787,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1603,6 +1799,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
@@ -1616,9 +1816,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 0.0,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                             ),
                                             expanded: Column(
@@ -1629,13 +1836,21 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                       .getText(
                                                     '7a6y33kt' /* Hello World */,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                 ),
                                               ],
                                             ),
@@ -1689,7 +1904,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1698,6 +1916,10 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
@@ -1711,9 +1933,16 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         fontSize: 0.0,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                             ),
                                             expanded: Column(
@@ -1724,13 +1953,21 @@ class _HelpandsupportWidgetState extends State<HelpandsupportWidget> {
                                                       .getText(
                                                     'ojw392fg' /* Hello World */,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                 ),
                                               ],
                                             ),

@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/consumer_navbar_widget.dart';
+import '/components/data_load_widget.dart';
 import '/components/filter_widget.dart';
 import '/components/rout_widget.dart';
 import '/components/suspend_widget.dart';
@@ -98,12 +99,16 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -157,12 +162,19 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Builder(
@@ -212,10 +224,14 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: Colors.transparent,
                                       fontSize: 2.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -230,22 +246,14 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                         'approval_status',
                                         isEqualTo: true,
                                       ),
+                                  limit: 50,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primarytheme,
-                                          ),
-                                        ),
-                                      ),
+                                    return DataLoadWidget(
+                                      height: 88.0,
+                                      width: 320.0,
                                     );
                                   }
                                   List<FarmsRecord> containerFarmsRecordList =
@@ -329,11 +337,18 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 4.0)),
@@ -395,12 +410,19 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Builder(
@@ -450,10 +472,14 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: Colors.transparent,
                                       fontSize: 2.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -468,22 +494,14 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                         'approval_status',
                                         isEqualTo: true,
                                       ),
+                                  limit: 50,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primarytheme,
-                                          ),
-                                        ),
-                                      ),
+                                    return DataLoadWidget(
+                                      height: 88.0,
+                                      width: 320.0,
                                     );
                                   }
                                   List<FarmsRecord> containerFarmsRecordList =
@@ -569,8 +587,15 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 4.0)),
@@ -620,10 +645,13 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(12.0),
@@ -646,20 +674,24 @@ class _MapsPageCopyWidgetState extends State<MapsPageCopyWidget> {
                 children: [
                   Expanded(
                     child: StreamBuilder<List<FarmsRecord>>(
-                      stream: queryFarmsRecord(),
+                      stream: queryFarmsRecord(
+                        queryBuilder: (farmsRecord) => farmsRecord
+                            .where(
+                              'approval_status',
+                              isEqualTo: true,
+                            )
+                            .where(
+                              'is_suspend',
+                              isEqualTo: false,
+                            ),
+                        limit: 50,
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primarytheme,
-                                ),
-                              ),
-                            ),
+                          return DataLoadWidget(
+                            height: 600.0,
+                            width: MediaQuery.sizeOf(context).width,
                           );
                         }
                         List<FarmsRecord> containerFarmsRecordList =

@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:collection/collection.dart';
@@ -88,12 +88,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -110,12 +114,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -138,12 +146,17 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -163,8 +176,13 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelMediumIsCustom,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -173,11 +191,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelMediumIsCustom,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -221,10 +244,15 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -257,12 +285,17 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -282,11 +315,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelMediumIsCustom,
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -295,11 +333,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textsecondary,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .labelMediumIsCustom,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -361,10 +404,15 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       cursorColor: FlutterFlowTheme.of(context)
@@ -400,12 +448,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color:
                                           FlutterFlowTheme.of(context).orange,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -455,6 +507,10 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             .primarytheme,
                                   ),
                                 );
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
                                 if (_shouldSetState) safeSetState(() {});
                                 return;
                               }
@@ -517,11 +573,15 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 0.0,
                               borderRadius: BorderRadius.circular(12.0),
@@ -550,11 +610,15 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       fontSize: 13.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               Container(
@@ -677,29 +741,34 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primarytheme,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 12.0)),
                                       );
                                     } else {
-                                      return Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Container(
-                                          width: 40.0,
+                                      return wrapWithModel(
+                                        model: _model.dataLoadModel1,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: DataLoadWidget(
                                           height: 40.0,
-                                          child: custom_widgets
-                                              .CircleProgessCustom(
-                                            width: 40.0,
-                                            height: 40.0,
-                                          ),
+                                          width: 40.0,
+                                          cmncolor: FlutterFlowTheme.of(context)
+                                              .boderdivder,
                                         ),
                                       );
                                     }
@@ -817,29 +886,34 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primarytheme,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 12.0)),
                                       );
                                     } else {
-                                      return Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Container(
-                                          width: 40.0,
+                                      return wrapWithModel(
+                                        model: _model.dataLoadModel2,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: DataLoadWidget(
                                           height: 40.0,
-                                          child: custom_widgets
-                                              .CircleProgessCustom(
-                                            width: 40.0,
-                                            height: 40.0,
-                                          ),
+                                          width: 40.0,
+                                          cmncolor: FlutterFlowTheme.of(context)
+                                              .boderdivder,
                                         ),
                                       );
                                     }
@@ -862,11 +936,15 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 TextSpan(
@@ -876,12 +954,16 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color: FlutterFlowTheme.of(context)
                                             .primarytheme,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                   mouseCursor: SystemMouseCursors.click,
                                   recognizer: TapGestureRecognizer()
@@ -894,10 +976,14 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     letterSpacing: 0.0,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),

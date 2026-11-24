@@ -58,9 +58,11 @@ class _CaculationCardWidgetState extends State<CaculationCardWidget> {
               'Est. Weight Range:',
             ),
             style: FlutterFlowTheme.of(context).bodySmall.override(
-                  fontFamily: 'Satoshi',
+                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                   color: widget!.color,
                   letterSpacing: 0.0,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodySmallIsCustom,
                 ),
           ),
         ),
@@ -70,10 +72,11 @@ class _CaculationCardWidgetState extends State<CaculationCardWidget> {
             '0',
           ),
           style: FlutterFlowTheme.of(context).bodySmall.override(
-                fontFamily: 'Satoshi',
+                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                 color: widget!.color,
                 letterSpacing: 0.0,
                 fontWeight: FontWeight.w600,
+                useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
               ),
         ),
       ].divide(SizedBox(width: 6.0)),

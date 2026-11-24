@@ -157,11 +157,14 @@ class _Splashpage1WidgetState extends State<Splashpage1Widget> {
                       'cxe9pb96' /* Agricoo */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: FlutterFlowTheme.of(context).textprimary,
                           fontSize: 40.0,
                           letterSpacing: 2.0,
                           fontWeight: FontWeight.bold,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                   ),
                   Align(

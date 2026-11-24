@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/consumer_navbar_widget.dart';
-import '/components/data_load_widget.dart';
-import '/components/empty_widget.dart';
+import '/components/home_farm_row_shimmer_widget.dart';
+import '/components/home_product_row_shimmer_widget.dart';
+import '/components/home_product_shimmer_widget.dart';
 import '/components/suspend_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,7 +16,6 @@ import '/index.dart';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -22,10 +23,6 @@ import 'package:provider/provider.dart';
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for ConsumerNavbar component.
   late ConsumerNavbarModel consumerNavbarModel;
   // Model for suspend component.
@@ -39,9 +36,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   @override
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
-
     consumerNavbarModel.dispose();
     suspendModel.dispose();
   }

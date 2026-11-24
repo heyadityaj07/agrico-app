@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/components/feature_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -55,16 +56,9 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primarytheme,
-                  ),
-                ),
-              ),
+            body: DataLoadWidget(
+              height: 24.0,
+              width: 160.0,
             ),
           );
         }
@@ -134,11 +128,14 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                       '1jabf78f' /* Delivery Settings */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineMediumFamily,
                           color: FlutterFlowTheme.of(context).textprimary,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          useGoogleFonts: !FlutterFlowTheme.of(context)
+                              .headlineMediumIsCustom,
                         ),
                   ),
                 ),
@@ -157,16 +154,10 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primarytheme,
-                            ),
-                          ),
-                        ),
+                      return DataLoadWidget(
+                        height: 80.0,
+                        width: MediaQuery.sizeOf(context).width,
+                        cmncolor: FlutterFlowTheme.of(context).card,
                       );
                     }
 
@@ -265,13 +256,20 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                                                             context)
                                                         .titleLarge
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleLargeFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleLargeIsCustom,
                                                         ),
                                                   ),
                                                   Text(
@@ -284,11 +282,18 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                                                             context)
                                                         .bodySmall
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmallFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
                                                           letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmallIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(
@@ -308,12 +313,19 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                                                       context)
                                                   .titleLarge
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLargeFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primarytheme,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLargeIsCustom,
                                                   ),
                                             ),
                                           ],
@@ -401,12 +413,17 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleMediumIsCustom,
                                             ),
                                       ),
                                       Text(
@@ -417,11 +434,16 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ].divide(SizedBox(
@@ -454,10 +476,13 @@ class _RootdeliverysettingWidgetState extends State<RootdeliverysettingWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
                                   color: FlutterFlowTheme.of(context).alternate,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .titleSmallIsCustom,
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(8.0),

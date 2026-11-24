@@ -2,13 +2,13 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/certificate_widget.dart';
+import '/components/data_load_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'certification_widget.dart' show CertificationWidget;
@@ -64,6 +64,8 @@ class CertificationModel extends FlutterFlowModel<CertificationWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadDataA7d = '';
 
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel;
   // Model for suspend component.
   late SuspendModel suspendModel;
 
@@ -71,6 +73,7 @@ class CertificationModel extends FlutterFlowModel<CertificationWidget> {
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;
     textController2Validator = _textController2Validator;
+    dataLoadModel = createModel(context, () => DataLoadModel());
     suspendModel = createModel(context, () => SuspendModel());
   }
 
@@ -82,6 +85,7 @@ class CertificationModel extends FlutterFlowModel<CertificationWidget> {
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
 
+    dataLoadModel.dispose();
     suspendModel.dispose();
   }
 }

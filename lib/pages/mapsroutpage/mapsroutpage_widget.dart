@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -117,16 +118,10 @@ class _MapsroutpageWidgetState extends State<MapsroutpageWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primarytheme,
-                            ),
-                          ),
-                        ),
+                      return DataLoadWidget(
+                        height: MediaQuery.sizeOf(context).height,
+                        width: MediaQuery.sizeOf(context).width,
+                        cmncolor: FlutterFlowTheme.of(context).card,
                       );
                     }
                     List<FarmsRecord> containerFarmsRecordList = snapshot.data!;

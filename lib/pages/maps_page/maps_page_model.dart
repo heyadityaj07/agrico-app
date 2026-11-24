@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/consumer_navbar_widget.dart';
+import '/components/data_load_widget.dart';
 import '/components/filter_widget.dart';
 import '/components/rout_widget.dart';
 import '/components/suspend_widget.dart';
@@ -22,16 +23,6 @@ import 'package:provider/provider.dart';
 
 class MapsPageModel extends FlutterFlowModel<MapsPageWidget> {
   ///  Local state fields for this page.
-
-  List<String> availabilitylist = ['In stock', 'Pre-order', 'Out of season'];
-  void addToAvailabilitylist(String item) => availabilitylist.add(item);
-  void removeFromAvailabilitylist(String item) => availabilitylist.remove(item);
-  void removeAtIndexFromAvailabilitylist(int index) =>
-      availabilitylist.removeAt(index);
-  void insertAtIndexInAvailabilitylist(int index, String item) =>
-      availabilitylist.insert(index, item);
-  void updateAvailabilitylistAtIndex(int index, Function(String) updateFn) =>
-      availabilitylist[index] = updateFn(availabilitylist[index]);
 
   String? selectedavailbility;
 

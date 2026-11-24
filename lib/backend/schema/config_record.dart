@@ -26,10 +26,16 @@ class ConfigRecord extends FirestoreRecord {
   double get weightProductDeposit => _weightProductDeposit ?? 0.0;
   bool hasWeightProductDeposit() => _weightProductDeposit != null;
 
+  // "platform_fee_cap" field.
+  double? _platformFeeCap;
+  double get platformFeeCap => _platformFeeCap ?? 0.0;
+  bool hasPlatformFeeCap() => _platformFeeCap != null;
+
   void _initializeFields() {
     _platformFee = castToType<double>(snapshotData['platform_fee']);
     _weightProductDeposit =
         castToType<double>(snapshotData['weight_product_deposit']);
+    _platformFeeCap = castToType<double>(snapshotData['platform_fee_cap']);
   }
 
   static CollectionReference get collection =>
@@ -67,11 +73,13 @@ class ConfigRecord extends FirestoreRecord {
 Map<String, dynamic> createConfigRecordData({
   double? platformFee,
   double? weightProductDeposit,
+  double? platformFeeCap,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'platform_fee': platformFee,
       'weight_product_deposit': weightProductDeposit,
+      'platform_fee_cap': platformFeeCap,
     }.withoutNulls,
   );
 
@@ -84,12 +92,13 @@ class ConfigRecordDocumentEquality implements Equality<ConfigRecord> {
   @override
   bool equals(ConfigRecord? e1, ConfigRecord? e2) {
     return e1?.platformFee == e2?.platformFee &&
-        e1?.weightProductDeposit == e2?.weightProductDeposit;
+        e1?.weightProductDeposit == e2?.weightProductDeposit &&
+        e1?.platformFeeCap == e2?.platformFeeCap;
   }
 
   @override
-  int hash(ConfigRecord? e) =>
-      const ListEquality().hash([e?.platformFee, e?.weightProductDeposit]);
+  int hash(ConfigRecord? e) => const ListEquality()
+      .hash([e?.platformFee, e?.weightProductDeposit, e?.platformFeeCap]);
 
   @override
   bool isValidKey(Object? o) => o is ConfigRecord;

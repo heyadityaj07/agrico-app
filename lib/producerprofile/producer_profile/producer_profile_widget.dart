@@ -81,11 +81,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
+                            width: 50,
+                            height: 50,
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primarytheme,
+                                Colors.transparent,
                               ),
                             ),
                           ),
@@ -107,17 +107,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context)
-                                            .primarytheme,
-                                      ),
-                                    ),
-                                  ),
+                                return DataLoadWidget(
+                                  height: MediaQuery.sizeOf(context).height,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  cmncolor: FlutterFlowTheme.of(context).card,
                                 );
                               }
                               List<FarmsRecord> columnFarmsRecordList =
@@ -143,13 +136,19 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .textprimary,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                         ),
                                       ),
@@ -189,14 +188,19 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                     ),
                                                   ),
@@ -255,14 +259,19 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   context)
                                                               .titleSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
                                                                 fontSize: 10.0,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallIsCustom,
                                                               ),
                                                       elevation: 0.0,
                                                       borderRadius:
@@ -331,8 +340,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -342,6 +352,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                         Text(
@@ -351,13 +365,18 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                         Text(
@@ -366,13 +385,18 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ],
@@ -515,8 +539,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                               '0',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   letterSpacing: 0.0,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -528,8 +553,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ].divide(SizedBox(
@@ -624,8 +650,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                               '0',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   letterSpacing: 0.0,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -642,9 +669,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ].divide(SizedBox(
@@ -744,8 +773,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -760,9 +790,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ].divide(SizedBox(
@@ -796,18 +828,26 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                     .getText(
                                                   'mj61b97y' /* Farm Settings */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textsecondary,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Container(
@@ -896,13 +936,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1013,13 +1055,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1114,13 +1158,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1278,10 +1324,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 16.0,
                                                                               letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1317,18 +1364,26 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                     .getText(
                                                   'cwtwwpfp' /* Account */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textsecondary,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Container(
@@ -1417,13 +1472,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1541,13 +1598,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1599,9 +1658,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                 'Free Trial',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).skyblue,
                                                                                     letterSpacing: 0.0,
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1682,11 +1742,13 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).titleSmallFamily,
                                                                         color: Colors
                                                                             .white,
                                                                         letterSpacing:
                                                                             0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                                   elevation:
                                                                       0.0,
@@ -1747,16 +1809,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   return Center(
                                                                     child:
                                                                         SizedBox(
-                                                                      width:
-                                                                          50.0,
+                                                                      width: 50,
                                                                       height:
-                                                                          50.0,
+                                                                          50,
                                                                       child:
                                                                           CircularProgressIndicator(
                                                                         valueColor:
                                                                             AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primarytheme,
+                                                                          Colors
+                                                                              .transparent,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1849,9 +1910,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primarytheme,
                                                                             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                   color: Colors.white,
                                                                                   letterSpacing: 0.0,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 0.0,
@@ -1912,9 +1974,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primarytheme,
                                                                             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                   color: Colors.white,
                                                                                   letterSpacing: 0.0,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 0.0,
@@ -1974,10 +2037,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primarytheme,
                                                                             textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                   color: FlutterFlowTheme.of(context).alternate,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                 ),
                                                                             elevation:
                                                                                 0.0,
@@ -2000,8 +2064,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                   'p4fubqs8' /* Account ID : */,
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                               Expanded(
@@ -2013,8 +2078,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                       '0',
                                                                                     ),
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Satoshi',
+                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           letterSpacing: 0.0,
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -2031,8 +2097,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                     'okfa9z6f' /* Business Type */,
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Satoshi',
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         letterSpacing: 0.0,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -2042,8 +2109,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                   '0',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -2083,9 +2151,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                   iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                   color: Color(0xFFF28C28),
                                                                                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                        fontFamily: 'Satoshi',
+                                                                                        fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                         color: Colors.white,
                                                                                         letterSpacing: 0.0,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                                       ),
                                                                                   elevation: 0.0,
                                                                                   borderRadius: BorderRadius.circular(12.0),
@@ -2204,8 +2273,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -2215,6 +2285,10 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2267,10 +2341,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).textsecondary,
                                                                                 fontSize: 14.0,
                                                                                 letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                         Text(
@@ -2288,10 +2363,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).textsecondary,
                                                                                 fontSize: 14.0,
                                                                                 letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -2318,10 +2394,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                 '7so1bk0u' /* Break */,
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).error,
                                                                                     fontSize: 14.0,
                                                                                     letterSpacing: 0.0,
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                             ),
                                                                             Text(
@@ -2335,10 +2412,11 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                                 locale: FFLocalizations.of(context).languageCode,
                                                                               )}',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).error,
                                                                                     fontSize: 14.0,
                                                                                     letterSpacing: 0.0,
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -2407,7 +2485,8 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                   .titleSmall
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleSmallFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primarytheme,
@@ -2416,6 +2495,9 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleSmallIsCustom,
                                                                   ),
                                                           elevation: 0.0,
                                                           borderSide:
@@ -2444,18 +2526,26 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                     .getText(
                                                   'a4hhbqud' /* Legal & Privacy */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textsecondary,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             Container(
@@ -2542,13 +2632,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -2643,13 +2735,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -2744,13 +2838,15 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -2840,13 +2936,20 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                                             .of(context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .alternate,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmallIsCustom,
                                                         ),
                                                     elevation: 0.0,
                                                     borderRadius:

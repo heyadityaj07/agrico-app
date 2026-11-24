@@ -73,11 +73,13 @@ class _NochatconsumerWidgetState extends State<NochatconsumerWidget> {
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Satoshi',
+                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                   color: FlutterFlowTheme.of(context).textprimary,
                   fontSize: 25.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w500,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                 ),
           ),
         ),
@@ -92,11 +94,13 @@ class _NochatconsumerWidgetState extends State<NochatconsumerWidget> {
               ),
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Satoshi',
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                     color: FlutterFlowTheme.of(context).textsecondary,
                     fontSize: 16.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.normal,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                   ),
             ),
           ),

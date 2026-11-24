@@ -4,7 +4,10 @@ import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/add_weight_order_widget.dart';
-import '/components/rejectorder_widget.dart';
+import '/components/data_load_widget.dart';
+import '/components/order_rejection_status_card_widget.dart';
+import '/components/product_detail_shimmer_widget.dart';
+import '/components/rejectorder_dialogue_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -48,22 +51,43 @@ class OrderdatailsModel extends FlutterFlowModel<OrderdatailsWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // Model for OrderRejectionStatusCard.
+  late OrderRejectionStatusCardModel orderRejectionStatusCardModel;
+  // Stores action output result for [Custom Action - updateOrderFulfilmentStatus] action in Button widget.
+  String? statusUpdated;
+  // Stores action output result for [Custom Action - updateOrderFulfilmentStatus] action in Button widget.
+  String? statusUpdate;
   // Stores action output result for [Backend Call - Read Document] action in Button widget.
   ProductRecord? productname;
-  // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  FarmsRecord? farm1;
-  // Stores action output result for [Custom Action - getAddressFromLatLng] action in Button widget.
-  String? farmaddress;
+  // Stores action output result for [Custom Action - updateOrderFulfilmentStatus] action in Button widget.
+  String? statusUpdated1;
+  // Stores action output result for [Custom Action - resolveUberDispatchContext] action in Button widget.
+  dynamic? dispatchContext;
+  // Stores action output result for [Backend Call - API (getDeliveryQuote)] action in Button widget.
+  ApiCallResponse? quoteResponse;
   // Stores action output result for [Backend Call - API (createDelivery Copy)] action in Button widget.
   ApiCallResponse? apiResult7q6;
+  // Stores action output result for [Custom Action - updateOrderFulfilmentStatus] action in Button widget.
+  String? statusUpdated2;
+  // Stores action output result for [Custom Action - updateOrderFulfilmentStatus] action in Button widget.
+  String? statusUpdated4;
+  // Stores action output result for [Custom Action - updateOrderFulfilmentStatus] action in Button widget.
+  String? statusUpdated5;
+  // Stores action output result for [Custom Action - rejectOrder] action in Button widget.
+  String? rejectionOutcome;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<ChatRecord>? chat;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ChatRecord? chatcreate;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    orderRejectionStatusCardModel =
+        createModel(context, () => OrderRejectionStatusCardModel());
+  }
 
   @override
-  void dispose() {}
+  void dispose() {
+    orderRejectionStatusCardModel.dispose();
+  }
 }

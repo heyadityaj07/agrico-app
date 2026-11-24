@@ -2,6 +2,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/consumer_navbar_widget.dart';
+import '/components/data_load_widget.dart';
+import '/components/order_rejection_status_card_widget.dart';
+import '/components/product_detail_shimmer_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,6 +12,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'order_details_widget.dart' show OrderDetailsWidget;
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
@@ -33,6 +37,8 @@ class OrderDetailsModel extends FlutterFlowModel<OrderDetailsWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for OrderRejectionStatusCard.
+  late OrderRejectionStatusCardModel orderRejectionStatusCardModel;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<ChatRecord>? chatfind;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
@@ -44,12 +50,15 @@ class OrderDetailsModel extends FlutterFlowModel<OrderDetailsWidget> {
 
   @override
   void initState(BuildContext context) {
+    orderRejectionStatusCardModel =
+        createModel(context, () => OrderRejectionStatusCardModel());
     consumerNavbarModel = createModel(context, () => ConsumerNavbarModel());
     suspendModel = createModel(context, () => SuspendModel());
   }
 
   @override
   void dispose() {
+    orderRejectionStatusCardModel.dispose();
     consumerNavbarModel.dispose();
     suspendModel.dispose();
   }

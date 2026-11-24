@@ -525,6 +525,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ProducerTermWidget.routeName,
           path: ProducerTermWidget.routePath,
           builder: (context, params) => ProducerTermWidget(),
+        ),
+        FFRoute(
+          name: WeightBalanceWidget.routeName,
+          path: WeightBalanceWidget.routePath,
+          builder: (context, params) => WeightBalanceWidget(
+            orderRef: params.getParam(
+              'orderRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['order'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HomePageCopyWidget.routeName,
+          path: HomePageCopyWidget.routePath,
+          builder: (context, params) => HomePageCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: ffNavigatorObservers,
@@ -713,9 +730,9 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFFF3EEDD),
+                  color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/271AB6CA-9646-4315-9BF1-9E5A6E351536.PNG',
+                    'assets/images/Agricou512.png',
                     fit: BoxFit.contain,
                   ),
                 )

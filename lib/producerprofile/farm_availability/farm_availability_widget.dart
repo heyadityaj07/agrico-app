@@ -126,11 +126,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                   'kutdzo6j' /* Farm Availability */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
             ),
@@ -153,10 +156,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                       'lnxhx8gt' /* Weekly operating hours */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                   ),
                   Padding(
@@ -167,8 +173,11 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                         'tbpgyigo' /* Set your weekly operating hour... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ),
@@ -197,10 +206,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -266,12 +279,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -309,7 +329,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -317,6 +338,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -479,10 +503,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -507,12 +536,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -555,7 +591,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -563,6 +600,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -741,10 +781,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -773,11 +818,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -846,13 +898,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -890,13 +947,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -1066,9 +1125,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1098,13 +1161,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -1147,13 +1215,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -1338,9 +1408,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -1365,10 +1439,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -1404,10 +1483,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -1473,12 +1556,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -1516,7 +1606,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -1524,6 +1615,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -1686,10 +1780,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1714,12 +1813,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -1762,7 +1868,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -1770,6 +1877,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -1948,10 +2058,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1980,11 +2095,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -2053,13 +2175,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -2097,13 +2224,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -2273,9 +2402,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -2305,13 +2438,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -2354,13 +2492,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -2545,9 +2685,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -2572,10 +2716,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -2611,10 +2760,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -2680,12 +2833,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -2723,7 +2883,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -2731,6 +2892,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -2893,10 +3057,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2921,12 +3090,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -2969,7 +3145,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -2977,6 +3154,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -3156,10 +3336,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -3188,11 +3373,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -3261,13 +3453,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -3305,13 +3502,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -3481,9 +3680,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3513,13 +3716,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -3562,13 +3770,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -3753,9 +3963,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -3780,10 +3994,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -3819,10 +4038,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -3888,12 +4111,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -3931,7 +4161,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -3939,6 +4170,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -4102,10 +4336,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -4130,12 +4369,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -4178,7 +4424,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -4186,6 +4433,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -4365,10 +4615,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -4397,11 +4652,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -4470,13 +4732,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -4514,13 +4781,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -4690,9 +4959,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -4722,13 +4995,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -4771,13 +5049,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -4962,9 +5242,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -4989,10 +5273,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -5028,10 +5317,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -5097,12 +5390,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -5140,7 +5440,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -5148,6 +5449,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -5311,10 +5615,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -5339,12 +5648,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -5387,7 +5703,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -5395,6 +5712,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -5574,10 +5894,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -5606,11 +5931,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -5679,13 +6011,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -5723,13 +6060,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -5899,9 +6238,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -5931,13 +6274,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -5980,13 +6328,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -6171,9 +6521,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -6198,10 +6552,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -6237,10 +6596,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -6306,12 +6669,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -6349,7 +6719,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -6357,6 +6728,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -6520,10 +6894,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -6548,12 +6927,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -6596,7 +6982,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -6604,6 +6991,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -6783,10 +7173,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -6815,11 +7210,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -6888,13 +7290,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -6932,13 +7339,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -7108,9 +7517,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -7140,13 +7553,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -7189,13 +7607,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -7380,9 +7800,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -7407,10 +7831,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -7446,10 +7875,14 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                                 wrapWithModel(
@@ -7515,12 +7948,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -7558,7 +7998,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .headlineLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily,
                                                                     fontSize:
                                                                         32.0,
                                                                     letterSpacing:
@@ -7566,6 +8007,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .headlineLargeIsCustom,
                                                                   ),
                                                           pickerBackgroundColor:
                                                               FlutterFlowTheme.of(
@@ -7729,10 +8173,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -7757,12 +8206,19 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -7805,7 +8261,8 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .headlineLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineLargeFamily,
                                                                       fontSize:
                                                                           32.0,
                                                                       letterSpacing:
@@ -7813,6 +8270,9 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .headlineLargeIsCustom,
                                                                     ),
                                                             pickerBackgroundColor:
                                                                 FlutterFlowTheme.of(
@@ -7992,10 +8452,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -8024,11 +8489,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                               ),
                                               wrapWithModel(
@@ -8097,13 +8569,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -8141,13 +8618,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                         .headlineLarge
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                           fontSize:
                                                                               32.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w600,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                         ),
                                                                 pickerBackgroundColor:
                                                                     FlutterFlowTheme.of(
@@ -8317,9 +8796,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -8349,13 +8832,18 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       InkWell(
@@ -8398,13 +8886,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                       .headlineLarge
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                         fontSize:
                                                                             32.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).headlineLargeIsCustom,
                                                                       ),
                                                                   pickerBackgroundColor:
                                                                       FlutterFlowTheme.of(
@@ -8589,9 +9079,13 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ),
@@ -8616,10 +9110,15 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   );
                                 }
@@ -8690,13 +9189,17 @@ class _FarmAvailabilityWidgetState extends State<FarmAvailabilityWidget> {
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primarytheme,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Satoshi',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
+                          ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
                     ),

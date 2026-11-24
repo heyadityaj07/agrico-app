@@ -4,7 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'index.dart'; // Imports other custom widgets
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
 import '/custom_code/actions/index.dart'; // Imports custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart' hide RepeatMode;
@@ -62,7 +62,15 @@ class _FarmmapState extends State<Farmmap> {
       stream: widget.farmref!.snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator());
+          return DynamicShimmerWidget(
+            width: widget.width,
+            height: widget.height,
+            isRow: false,
+            itemCount: 1,
+            itemHeight: widget.height ?? 160,
+            shimmerType: 'box',
+            scrollable: false,
+          );
         }
 
         // Extracting data from Firestore

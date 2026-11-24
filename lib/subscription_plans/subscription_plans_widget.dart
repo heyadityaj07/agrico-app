@@ -139,11 +139,14 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                 '9vuig573' /* Subscription Plans */,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Satoshi',
+                    fontFamily:
+                        FlutterFlowTheme.of(context).headlineMediumFamily,
                     color: FlutterFlowTheme.of(context).textprimary,
                     fontSize: 16.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                   ),
             ),
           ),
@@ -160,16 +163,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          FlutterFlowTheme.of(context).primarytheme,
-                        ),
-                      ),
-                    ),
+                  return DataLoadWidget(
+                    height: MediaQuery.sizeOf(context).height,
+                    width: MediaQuery.sizeOf(context).width,
+                    cmncolor: FlutterFlowTheme.of(context).card,
                   );
                 }
 
@@ -218,13 +215,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Text(
@@ -234,13 +238,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textsecondary,
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ].divide(SizedBox(height: 4.0)),
@@ -291,7 +302,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color: _model.tabindex == 0
                                               ? FlutterFlowTheme.of(context)
                                                   .primarytheme
@@ -299,6 +312,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                   .textsecondary,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: _model.tabindex == 0 ? 2.0 : 0.0,
                                     borderSide: BorderSide(
@@ -347,7 +363,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color: _model.tabindex == 1
                                               ? FlutterFlowTheme.of(context)
                                                   .primarytheme
@@ -355,6 +373,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                   .textsecondary,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: _model.tabindex == 1 ? 2.0 : 0.0,
                                     borderSide: BorderSide(
@@ -494,8 +515,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -506,6 +528,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                           Text(
@@ -518,8 +544,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primarytheme,
@@ -530,6 +557,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                           ),
                                                         ].divide(SizedBox(
@@ -549,19 +580,27 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                     .getText(
                                                   '5jppmme8' /* Discovery, visibility, and fir... */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textsecondary,
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontSize: 12.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             StyledDivider(
@@ -606,8 +645,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primarytheme,
@@ -617,6 +657,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -689,7 +733,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           fontSize:
@@ -698,6 +742,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -785,7 +831,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Satoshi',
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .textprimary,
@@ -796,6 +843,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .bodyMediumIsCustom,
                                                                   ),
                                                             ),
                                                           ),
@@ -852,7 +902,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textprimary,
@@ -863,6 +914,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                               Text(
@@ -876,7 +930,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
@@ -887,6 +942,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .normal,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ].divide(SizedBox(
@@ -950,7 +1008,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -959,6 +1017,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -972,7 +1032,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -981,6 +1041,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1045,7 +1107,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -1054,6 +1116,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -1067,7 +1131,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1076,6 +1140,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1140,7 +1206,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -1149,6 +1215,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -1162,7 +1230,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1171,6 +1239,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1235,7 +1305,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -1244,6 +1314,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -1257,7 +1329,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1266,6 +1338,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1330,7 +1404,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -1339,6 +1413,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -1352,7 +1428,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1361,6 +1437,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1425,7 +1503,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -1434,6 +1512,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                                 Text(
@@ -1447,7 +1527,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1456,6 +1536,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.normal,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1520,7 +1602,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textprimary,
                                                                         fontSize:
@@ -1529,6 +1611,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1587,7 +1671,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1596,6 +1680,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1654,7 +1740,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         fontSize:
@@ -1663,6 +1749,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ].divide(SizedBox(
@@ -1783,8 +1871,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     context)
                                                                 .titleSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .alternate,
@@ -1793,6 +1882,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmallIsCustom,
                                                                 ),
                                                         elevation: 0.0,
                                                         borderRadius:
@@ -1868,14 +1961,19 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .card,
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                     ),
                                                   ),
@@ -1967,7 +2065,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textprimary,
                                                                           fontSize:
@@ -1976,6 +2074,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                   Text(
@@ -1989,7 +2089,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primarytheme,
                                                                           fontSize:
@@ -1998,6 +2098,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ].divide(SizedBox(
@@ -2028,8 +2130,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -2040,6 +2143,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -2112,7 +2219,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primarytheme,
                                                                           fontSize:
@@ -2121,6 +2228,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 );
@@ -2204,7 +2313,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textprimary,
                                                                           fontSize:
@@ -2213,6 +2322,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -2269,7 +2380,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
@@ -2278,6 +2389,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ].divide(SizedBox(
@@ -2343,11 +2456,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2414,11 +2528,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -2429,11 +2544,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2500,11 +2616,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -2515,11 +2632,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2586,11 +2704,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -2601,11 +2720,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2672,11 +2792,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -2687,11 +2808,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2758,11 +2880,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -2773,11 +2896,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2838,11 +2962,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2903,11 +3028,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -2968,11 +3094,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -3134,13 +3261,15 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).titleSmallFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .info,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                               elevation: 0.0,
                                                               borderRadius:
@@ -3276,7 +3405,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textprimary,
                                                                           fontSize:
@@ -3285,6 +3414,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                   Text(
@@ -3298,7 +3429,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primarytheme,
                                                                           fontSize:
@@ -3307,6 +3438,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ].divide(SizedBox(
@@ -3337,8 +3470,9 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -3349,6 +3483,10 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -3421,7 +3559,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primarytheme,
                                                                           fontSize:
@@ -3430,6 +3568,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.normal,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 );
@@ -3513,7 +3653,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textprimary,
                                                                           fontSize:
@@ -3522,6 +3662,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -3578,7 +3720,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textprimary,
                                                                             fontSize:
@@ -3587,6 +3729,8 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ].divide(SizedBox(
@@ -3652,11 +3796,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -3667,11 +3812,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -3738,11 +3884,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -3753,11 +3900,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -3824,11 +3972,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -3839,11 +3988,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -3910,11 +4060,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -3925,11 +4076,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -3996,11 +4148,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -4011,11 +4164,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -4082,11 +4236,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -4097,11 +4252,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -4168,11 +4324,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -4183,11 +4340,12 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.normal,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -4352,13 +4510,15 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).titleSmallFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .offwhite,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                                                                       ),
                                                               elevation: 0.0,
                                                               borderRadius:
@@ -4466,13 +4626,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Text(
@@ -4482,13 +4649,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textsecondary,
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ].divide(SizedBox(height: 4.0)),
@@ -4547,13 +4721,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Text(
@@ -4563,13 +4744,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textsecondary,
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         ].divide(SizedBox(height: 4.0)),
@@ -4592,11 +4780,14 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
-                                fontFamily: 'Satoshi',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
                                 color: FlutterFlowTheme.of(context).textprimary,
                                 fontSize: 16.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -4656,13 +4847,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .textprimary,
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
                                                   ),
                                             ),
                                             Text(
@@ -4670,20 +4868,26 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                   .getText(
                                                 '3lpul80p' /* Ideal for small producers, new... */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ].divide(SizedBox(height: 4.0)),
                                         ),
@@ -4752,13 +4956,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .textprimary,
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
                                                   ),
                                             ),
                                             Text(
@@ -4766,20 +4977,26 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                   .getText(
                                                 'lruayaar' /* Ideal for producers who alread... */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ].divide(SizedBox(height: 4.0)),
                                         ),
@@ -4848,13 +5065,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .textprimary,
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
                                                   ),
                                             ),
                                             Text(
@@ -4862,20 +5086,26 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                   .getText(
                                                 '2un511cx' /* Ideal for farms, cooperatives,... */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textsecondary,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ].divide(SizedBox(height: 4.0)),
                                         ),
@@ -4934,13 +5164,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Text(
@@ -4950,13 +5187,20 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textsecondary,
                                                   fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                           Align(
@@ -4978,22 +5222,29 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                     .getText(
                                                   '47rc4ei1' /* Contact Support */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primarytheme,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .underline,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                           ),

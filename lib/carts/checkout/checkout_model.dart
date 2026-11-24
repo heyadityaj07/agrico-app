@@ -1,9 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
-import '/backend/schema/structs/index.dart';
+import '/components/data_load_widget.dart';
+import '/components/product_detail_shimmer_widget.dart';
 import '/components/suspend_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,8 +13,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'checkout_widget.dart' show CheckoutWidget;
-import 'dart:math' as math;
-import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:styled_divider/styled_divider.dart';
@@ -39,10 +38,11 @@ class CheckoutModel extends FlutterFlowModel<CheckoutWidget> {
 
   bool? isAgricodeliver = false;
 
+  bool isPaymentInProgress = false;
+
   ///  State fields for stateful widgets in this page.
 
   List<PaymentsRecord>? containerPreviousSnapshot;
-  UsersRecord? columnPreviousSnapshot;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 
@@ -71,22 +71,6 @@ class CheckoutModel extends FlutterFlowModel<CheckoutWidget> {
   String? farmaddress2;
   // Stores action output result for [Backend Call - API (getDeliveryQuote)] action in Button widget.
   ApiCallResponse? apiResultmei;
-  // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  UsersRecord? farmUser;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  List<CartRecord>? cart;
-  // Stores action output result for [Custom Action - farmOrderItems] action in Button widget.
-  List<OrderDataStruct>? cartdata;
-  // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  FarmsRecord? farmn;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  OrderRecord? order;
-  // Stores action output result for [Custom Action - manageproductlist] action in Button widget.
-  List<dynamic>? dynamicvendor;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  ConfigRecord? config;
-  // Stores action output result for [Custom Action - flutterStripeDirect] action in Button widget.
-  bool? stripedocument;
   // Model for suspend component.
   late SuspendModel suspendModel;
 

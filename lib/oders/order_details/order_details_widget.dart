@@ -2,6 +2,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/consumer_navbar_widget.dart';
+import '/components/data_load_widget.dart';
+import '/components/order_rejection_status_card_widget.dart';
+import '/components/product_detail_shimmer_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,6 +12,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:styled_divider/styled_divider.dart';
@@ -62,16 +66,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).offwhite,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primarytheme,
-                  ),
-                ),
-              ),
+            body: ProductDetailShimmerWidget(
+              height: MediaQuery.sizeOf(context).height,
+              width: MediaQuery.sizeOf(context).width,
+              shimmerType: 'detail',
             ),
           );
         }
@@ -130,11 +128,14 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                   Text(
                     'Order #${widget!.orderRef?.id}',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: FlutterFlowTheme.of(context).textsecondary,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                   ),
                   Text(
@@ -144,9 +145,12 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                       locale: FFLocalizations.of(context).languageCode,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: FlutterFlowTheme.of(context).textsecondary,
                           letterSpacing: 0.0,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                   ),
                 ].divide(SizedBox(height: 4.0)),
@@ -183,7 +187,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
-                                fontFamily: 'Satoshi',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
                                 color: () {
                                   if (orderDetailsOrderRecord.orderStatus ==
                                       'Approved') {
@@ -202,6 +207,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                   }
                                 }(),
                                 letterSpacing: 0.0,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .bodyMediumIsCustom,
                               ),
                         ),
                       ),
@@ -228,17 +235,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context)
-                                            .primarytheme,
-                                      ),
-                                    ),
-                                  ),
+                                return ProductDetailShimmerWidget(
+                                  height: MediaQuery.sizeOf(context).height,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  shimmerType: 'detail',
                                 );
                               }
 
@@ -248,6 +248,20 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 12.0),
+                                      child: wrapWithModel(
+                                        model: _model
+                                            .orderRejectionStatusCardModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: OrderRejectionStatusCardWidget(
+                                          order: orderDetailsOrderRecord,
+                                          showProducerDetails: false,
+                                        ),
+                                      ),
+                                    ),
                                     Builder(
                                       builder: (context) {
                                         if (orderDetailsOrderRecord
@@ -309,17 +323,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'dlr4llma' /* Confirmed */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -345,8 +365,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -354,6 +375,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -450,17 +475,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'n8qavman' /* Preparing */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -486,8 +517,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -495,6 +527,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -587,17 +623,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'hdg7fu2w' /* Picked Up */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -623,8 +665,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -632,6 +675,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -720,17 +767,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'bo1qevvv' /* In Transit */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -756,8 +809,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -765,6 +819,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -848,17 +906,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'ubgps83r' /* Delivered */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -884,8 +948,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -893,6 +958,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -958,17 +1027,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'fa2yv1t4' /* Confirmed */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -1000,8 +1075,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1009,6 +1085,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -1105,17 +1185,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           '1cxhh5t8' /* Preparing */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -1147,8 +1233,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1156,6 +1243,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -1248,17 +1339,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'f8rnp406' /* Picked Up */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -1290,8 +1387,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1299,6 +1397,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -1382,17 +1484,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             .getText(
                                                           'my73fao6' /* Delivered */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Satoshi',
-                                                              color:
-                                                                  Colors.black,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
                                                       ),
                                                       Text(
                                                         orderDetailsOrderRecord
@@ -1424,8 +1532,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1433,6 +1542,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                       10.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -1472,20 +1585,25 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                   .getText(
                                                 '7kzhwbai' /* Tracking Delivery */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .orange,
-                                                        letterSpacing: 0.0,
-                                                        decoration:
-                                                            TextDecoration
-                                                                .underline,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .orange,
+                                                    letterSpacing: 0.0,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                           ),
                                         ),
@@ -1519,18 +1637,26 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                     .getText(
                                                   'cq2lwmp3' /* Order Items */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textsecondary,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1548,7 +1674,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textprimary,
@@ -1556,6 +1685,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ].divide(SizedBox(width: 6.0)),
@@ -1586,21 +1719,16 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           // Customize what your widget looks like when it's loading.
                                                           if (!snapshot
                                                               .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50.0,
-                                                                height: 50.0,
-                                                                child:
-                                                                    CircularProgressIndicator(
-                                                                  valueColor:
-                                                                      AlwaysStoppedAnimation<
-                                                                          Color>(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primarytheme,
-                                                                  ),
-                                                                ),
-                                                              ),
+                                                            return DataLoadWidget(
+                                                              height: 100.0,
+                                                              width: MediaQuery
+                                                                      .sizeOf(
+                                                                          context)
+                                                                  .width,
+                                                              cmncolor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .card,
                                                             );
                                                           }
 
@@ -1680,21 +1808,23 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                                   child: Text(
                                                                                     rowProductRecord.productName,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Satoshi',
+                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           color: FlutterFlowTheme.of(context).textprimary,
                                                                                           fontSize: 12.0,
                                                                                           letterSpacing: 0.0,
                                                                                           fontWeight: FontWeight.w500,
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                         ),
                                                                                   ),
                                                                                 ),
-                                                                                if (ordersItem.isVariableWeight)
+                                                                                if (ordersItem.isVariableWeight && (ordersItem.actualWeight > 0.0))
                                                                                   Text(
-                                                                                    ordersItem.actualWeight > 0.0 ? '(${ordersItem.actualWeight.toString()} kg)' : '(${ordersItem.minWeight.toString()} - ${ordersItem.maxWeight.toString()} kg)',
+                                                                                    ordersItem.actualWeight > 0.0 ? '(${ordersItem.actualWeight.toString()} kg)' : '',
                                                                                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                          fontFamily: 'Satoshi',
+                                                                                          fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                                                                                           color: FlutterFlowTheme.of(context).textsecondary,
                                                                                           letterSpacing: 0.0,
+                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
                                                                                         ),
                                                                                   ),
                                                                               ].divide(SizedBox(width: 4.0)),
@@ -1702,12 +1832,33 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                             Text(
                                                                               ordersItem.isVariableWeight ? 'Quantity: ${ordersItem.totalItems.toString()}' : '1${rowProductRecord.unit} x ${ordersItem.totalItems.toString()}',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).primarytheme,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w500,
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                             ),
+                                                                            if (ordersItem.isVariableWeight)
+                                                                              Text(
+                                                                                'Selected bracket: ${ordersItem.minWeight.toString()} - ${ordersItem.maxWeight.toString()} kg',
+                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                      color: FlutterFlowTheme.of(context).textsecondary,
+                                                                                      letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                    ),
+                                                                              ),
+                                                                            if (ordersItem.isVariableWeight)
+                                                                              Text(
+                                                                                'Deposit paid: €${(ordersItem.depositAmount * ordersItem.totalItems.toDouble()).toString()}',
+                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                      color: FlutterFlowTheme.of(context).textsecondary,
+                                                                                      letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                                    ),
+                                                                              ),
                                                                           ],
                                                                         ),
                                                                       ),
@@ -1739,50 +1890,53 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            if (FFLocalizations.of(context).languageCode !=
-                                                                                'fr')
-                                                                              Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  'f6hqzzn8' /* $ */,
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
-                                                                                      color: FlutterFlowTheme.of(context).textprimary,
-                                                                                      fontSize: 16.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.w500,
-                                                                                    ),
-                                                                              ),
-                                                                            Text(
-                                                                              rowProductRecord.price.toString(),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
-                                                                                    color: FlutterFlowTheme.of(context).textprimary,
-                                                                                    fontSize: 16.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w500,
+                                                                        if (!rowProductRecord
+                                                                            .isVariableWeight)
+                                                                          Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              if (FFLocalizations.of(context).languageCode != 'fr')
+                                                                                Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'f6hqzzn8' /* $ */,
                                                                                   ),
-                                                                            ),
-                                                                            if (FFLocalizations.of(context).languageCode ==
-                                                                                'fr')
-                                                                              Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  'qig1mrls' /* € */,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                        color: FlutterFlowTheme.of(context).textprimary,
+                                                                                        fontSize: 16.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                      ),
                                                                                 ),
+                                                                              Text(
+                                                                                rowProductRecord.price.toString(),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       color: FlutterFlowTheme.of(context).textprimary,
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w500,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
-                                                                          ],
-                                                                        ),
+                                                                              if (FFLocalizations.of(context).languageCode == 'fr')
+                                                                                Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    'qig1mrls' /* € */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                        color: FlutterFlowTheme.of(context).textprimary,
+                                                                                        fontSize: 16.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                      ),
+                                                                                ),
+                                                                            ],
+                                                                          ),
                                                                       ],
                                                                     ),
                                                                   ],
@@ -1840,13 +1994,20 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .textsecondary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                 ),
@@ -1872,8 +2033,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1884,6 +2046,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Text(
@@ -1895,8 +2061,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -1907,6 +2074,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -1934,8 +2105,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1946,6 +2118,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Flexible(
@@ -1957,8 +2133,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -1968,6 +2145,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1996,8 +2177,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -2008,6 +2190,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Flexible(
@@ -2021,8 +2207,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -2032,6 +2219,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -2060,8 +2251,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -2072,6 +2264,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Text(
@@ -2082,8 +2278,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -2094,6 +2291,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ],
@@ -2120,20 +2321,26 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                   .getText(
                                                 '4sbhs3bg' /* Delivery Method */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
+                                                  ),
                                             ),
                                             Text(
                                               orderDetailsOrderRecord
@@ -2142,13 +2349,20 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Satoshi',
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .textprimary,
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumIsCustom,
                                                   ),
                                             ),
                                           ],
@@ -2182,18 +2396,26 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                     .getText(
                                                   'id4kjjz0' /* Bill Details */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Satoshi',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .textsecondary,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
                                             ),
                                             if (false)
@@ -2219,8 +2441,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
@@ -2230,6 +2453,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                     ),
                                                     Row(
@@ -2242,8 +2469,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -2253,6 +2481,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ].divide(SizedBox(
@@ -2284,8 +2516,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
@@ -2295,6 +2528,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                     ),
                                                     Text(
@@ -2308,7 +2545,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Satoshi',
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .textprimary,
@@ -2316,6 +2555,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                     ),
                                                   ],
@@ -2353,8 +2596,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
@@ -2364,6 +2608,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                     ),
                                                     Text(
@@ -2377,7 +2625,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Satoshi',
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .textprimary,
@@ -2385,6 +2635,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                     ),
                                                   ],
@@ -2413,8 +2667,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textsecondary,
@@ -2424,6 +2679,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                     ),
                                                     Text(
@@ -2437,7 +2696,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Satoshi',
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .textprimary,
@@ -2445,6 +2706,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                     ),
                                                   ],
@@ -2479,7 +2744,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Satoshi',
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -2487,6 +2755,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
                                                         ),
                                                   ),
                                                   Row(
@@ -2507,8 +2779,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -2518,6 +2791,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       Text(
@@ -2531,8 +2808,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -2543,6 +2821,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       if (FFLocalizations.of(
@@ -2559,8 +2841,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -2570,6 +2853,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                     ],
@@ -2591,12 +2878,415 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Satoshi',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
                                                         color:
                                                             Color(0xFF88009B),
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMediumIsCustom,
                                                       ),
                                                 ),
+                                              ),
+                                            if (orderDetailsOrderRecord
+                                                    .isVariableWeightOrder &&
+                                                ((orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
+                                                        'payment_requested') ||
+                                                    (orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
+                                                        'paid') ||
+                                                    (orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
+                                                        'failed')))
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment
+                                                            .spaceBetween)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment
+                                                            .center)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                        enText:
+                                                            'Remaining balance',
+                                                        frText: 'Solde restant',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textprimary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  if ((orderDetailsOrderRecord
+                                                              .balancePaymentStatus ==
+                                                          'payment_requested') ||
+                                                      (orderDetailsOrderRecord
+                                                              .balancePaymentStatus ==
+                                                          'paid'))
+                                                    Text(
+                                                      '€${orderDetailsOrderRecord.finalBalanceAmount.toString()}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primarytheme,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                    ),
+                                                ],
+                                              ),
+                                            if (orderDetailsOrderRecord
+                                                    .isVariableWeightOrder &&
+                                                ((orderDetailsOrderRecord.balancePaymentStatus ==
+                                                        'payment_requested') ||
+                                                    (orderDetailsOrderRecord
+                                                            .balancePaymentStatus ==
+                                                        'failed') ||
+                                                    (orderDetailsOrderRecord
+                                                            .refundAmount >
+                                                        0.0) ||
+                                                    (orderDetailsOrderRecord
+                                                                .refundStatus !=
+                                                            null &&
+                                                        orderDetailsOrderRecord
+                                                                .refundStatus !=
+                                                            '')))
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.start)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Text(
+                                                    orderDetailsOrderRecord
+                                                                .balancePaymentStatus ==
+                                                            'failed'
+                                                        ? FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                            enText:
+                                                                'Your previous balance payment failed. You can retry.',
+                                                            frText:
+                                                                'Votre précédent paiement du solde a échoué. Vous pouvez réessayer.',
+                                                          )
+                                                        : FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                            enText:
+                                                                'Your producer has confirmed the final product weights. Contact the producer to arrange this balance payment.',
+                                                            frText:
+                                                                'Votre producteur a confirmé les poids finaux. Contactez-le pour régler ce solde.',
+                                                          ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .textsecondary,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmallIsCustom,
+                                                        ),
+                                                  ),
+                                                  if (orderDetailsOrderRecord
+                                                          .finalBalanceAmount >
+                                                      0.0)
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          context.pushNamed(
+                                                            WeightBalanceWidget
+                                                                .routeName,
+                                                            queryParameters: {
+                                                              'orderRef':
+                                                                  serializeParam(
+                                                                widget!
+                                                                    .orderRef,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '9n4n9lh4' /* Review weights & pay */,
+                                                        ),
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 48.0,
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          iconAlignment:
+                                                              IconAlignment.end,
+                                                          iconPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primarytheme,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleSmallFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        !FlutterFlowTheme.of(context)
+                                                                            .titleSmallIsCustom,
+                                                                  ),
+                                                          elevation: 0.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if ((orderDetailsOrderRecord.finalBalanceAmount <= 0.0) &&
+                                                      (orderDetailsOrderRecord
+                                                              .refundDueAmount <=
+                                                          0.0) &&
+                                                      (orderDetailsOrderRecord
+                                                              .refundAmount <=
+                                                          0.0) &&
+                                                      (orderDetailsOrderRecord
+                                                                  .refundStatus ==
+                                                              null ||
+                                                          orderDetailsOrderRecord
+                                                                  .refundStatus ==
+                                                              ''))
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'rdlr5vhe' /* No additional payment is requi... */,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textsecondary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmallIsCustom,
+                                                              ),
+                                                    ),
+                                                  if ((orderDetailsOrderRecord
+                                                              .refundDueAmount >
+                                                          0.0) ||
+                                                      (orderDetailsOrderRecord
+                                                              .refundAmount >
+                                                          0.0) ||
+                                                      (orderDetailsOrderRecord
+                                                                  .refundStatus !=
+                                                              null &&
+                                                          orderDetailsOrderRecord
+                                                                  .refundStatus !=
+                                                              ''))
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: (orderDetailsOrderRecord
+                                                                          .refundStatus ==
+                                                                      'refunded') ||
+                                                                  (orderDetailsOrderRecord
+                                                                          .refundStatus ==
+                                                                      'alreadyRefunded')
+                                                              ? Color(
+                                                                  0x1F39D2C0)
+                                                              : Color(
+                                                                  0x1E4B39EF),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          border: Border.all(
+                                                            color: (orderDetailsOrderRecord
+                                                                            .refundStatus ==
+                                                                        'refunded') ||
+                                                                    (orderDetailsOrderRecord
+                                                                            .refundStatus ==
+                                                                        'alreadyRefunded')
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary
+                                                                : FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primarytheme,
+                                                            width: 1.0,
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  12.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              if ((orderDetailsOrderRecord
+                                                                          .refundStatus ==
+                                                                      'refunded') ||
+                                                                  (orderDetailsOrderRecord
+                                                                          .refundStatus ==
+                                                                      'alreadyRefunded'))
+                                                                Icon(
+                                                                  Icons
+                                                                      .check_circle_outline,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                                  size: 22.0,
+                                                                ),
+                                                              if (!((orderDetailsOrderRecord
+                                                                          .refundStatus ==
+                                                                      'refunded') ||
+                                                                  (orderDetailsOrderRecord
+                                                                          .refundStatus ==
+                                                                      'alreadyRefunded')))
+                                                                Icon(
+                                                                  Icons
+                                                                      .info_outline_rounded,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primarytheme,
+                                                                  size: 22.0,
+                                                                ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                  functions.getRefundStatusMessage(
+                                                                      orderDetailsOrderRecord
+                                                                          .refundStatus,
+                                                                      orderDetailsOrderRecord.refundDueAmount >
+                                                                              0.0
+                                                                          ? orderDetailsOrderRecord
+                                                                              .refundDueAmount
+                                                                          : orderDetailsOrderRecord
+                                                                              .refundAmount,
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .textsecondary,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodySmallIsCustom,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ].divide(SizedBox(
+                                                                width: 8.0)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ],
                                               ),
                                           ],
                                         ),
@@ -2741,12 +3431,18 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmallIsCustom,
                                               ),
                                           elevation: 0.0,
                                           borderRadius:

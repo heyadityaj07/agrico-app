@@ -73,10 +73,12 @@ class _CounterWidgetState extends State<CounterWidget> {
         countBuilder: (count) => Text(
           count.toString(),
           style: FlutterFlowTheme.of(context).titleLarge.override(
-                fontFamily: 'Satoshi',
+                fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
                 color: FlutterFlowTheme.of(context).primarytheme,
                 fontSize: 14.0,
                 letterSpacing: 0.0,
+                useGoogleFonts:
+                    !FlutterFlowTheme.of(context).titleLargeIsCustom,
               ),
         ),
         count: _model.countControllerValue ??= 1,

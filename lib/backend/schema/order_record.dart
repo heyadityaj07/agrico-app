@@ -172,11 +172,6 @@ class OrderRecord extends FirestoreRecord {
   double get initialDepositPaid => _initialDepositPaid ?? 0.0;
   bool hasInitialDepositPaid() => _initialDepositPaid != null;
 
-  // "final_balance_amount" field.
-  double? _finalBalanceAmount;
-  double get finalBalanceAmount => _finalBalanceAmount ?? 0.0;
-  bool hasFinalBalanceAmount() => _finalBalanceAmount != null;
-
   // "final_total_amount" field.
   double? _finalTotalAmount;
   double get finalTotalAmount => _finalTotalAmount ?? 0.0;
@@ -191,6 +186,36 @@ class OrderRecord extends FirestoreRecord {
   String? _balancePaymentStatus;
   String get balancePaymentStatus => _balancePaymentStatus ?? '';
   bool hasBalancePaymentStatus() => _balancePaymentStatus != null;
+
+  // "final_balance_amount" field.
+  double? _finalBalanceAmount;
+  double get finalBalanceAmount => _finalBalanceAmount ?? 0.0;
+  bool hasFinalBalanceAmount() => _finalBalanceAmount != null;
+
+  // "refund_due_amount" field.
+  double? _refundDueAmount;
+  double get refundDueAmount => _refundDueAmount ?? 0.0;
+  bool hasRefundDueAmount() => _refundDueAmount != null;
+
+  // "refund_status" field.
+  String? _refundStatus;
+  String get refundStatus => _refundStatus ?? '';
+  bool hasRefundStatus() => _refundStatus != null;
+
+  // "refund_amount" field.
+  double? _refundAmount;
+  double get refundAmount => _refundAmount ?? 0.0;
+  bool hasRefundAmount() => _refundAmount != null;
+
+  // "refund_id" field.
+  String? _refundId;
+  String get refundId => _refundId ?? '';
+  bool hasRefundId() => _refundId != null;
+
+  // "refund_attempt" field.
+  int? _refundAttempt;
+  int get refundAttempt => _refundAttempt ?? 0;
+  bool hasRefundAttempt() => _refundAttempt != null;
 
   void _initializeFields() {
     _totalAmmount = castToType<double>(snapshotData['total_ammount']);
@@ -233,11 +258,16 @@ class OrderRecord extends FirestoreRecord {
     _isAgricoDeliver = snapshotData['is_agrico_deliver'] as bool?;
     _initialDepositPaid =
         castToType<double>(snapshotData['initial_deposit_paid']);
-    _finalBalanceAmount =
-        castToType<double>(snapshotData['final_balance_amount']);
     _finalTotalAmount = castToType<double>(snapshotData['final_total_amount']);
     _isVariableWeightOrder = snapshotData['is_variable_weight_order'] as bool?;
     _balancePaymentStatus = snapshotData['balance_payment_status'] as String?;
+    _finalBalanceAmount =
+        castToType<double>(snapshotData['final_balance_amount']);
+    _refundDueAmount = castToType<double>(snapshotData['refund_due_amount']);
+    _refundStatus = snapshotData['refund_status'] as String?;
+    _refundAmount = castToType<double>(snapshotData['refund_amount']);
+    _refundId = snapshotData['refund_id'] as String?;
+    _refundAttempt = castToType<int>(snapshotData['refund_attempt']);
   }
 
   static CollectionReference get collection =>
@@ -303,10 +333,15 @@ Map<String, dynamic> createOrderRecordData({
   String? trackingUrl,
   bool? isAgricoDeliver,
   double? initialDepositPaid,
-  double? finalBalanceAmount,
   double? finalTotalAmount,
   bool? isVariableWeightOrder,
   String? balancePaymentStatus,
+  double? finalBalanceAmount,
+  double? refundDueAmount,
+  String? refundStatus,
+  double? refundAmount,
+  String? refundId,
+  int? refundAttempt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -340,10 +375,15 @@ Map<String, dynamic> createOrderRecordData({
       'trackingUrl': trackingUrl,
       'is_agrico_deliver': isAgricoDeliver,
       'initial_deposit_paid': initialDepositPaid,
-      'final_balance_amount': finalBalanceAmount,
       'final_total_amount': finalTotalAmount,
       'is_variable_weight_order': isVariableWeightOrder,
       'balance_payment_status': balancePaymentStatus,
+      'final_balance_amount': finalBalanceAmount,
+      'refund_due_amount': refundDueAmount,
+      'refund_status': refundStatus,
+      'refund_amount': refundAmount,
+      'refund_id': refundId,
+      'refund_attempt': refundAttempt,
     }.withoutNulls,
   );
 
@@ -394,10 +434,15 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e1?.trackingUrl == e2?.trackingUrl &&
         e1?.isAgricoDeliver == e2?.isAgricoDeliver &&
         e1?.initialDepositPaid == e2?.initialDepositPaid &&
-        e1?.finalBalanceAmount == e2?.finalBalanceAmount &&
         e1?.finalTotalAmount == e2?.finalTotalAmount &&
         e1?.isVariableWeightOrder == e2?.isVariableWeightOrder &&
-        e1?.balancePaymentStatus == e2?.balancePaymentStatus;
+        e1?.balancePaymentStatus == e2?.balancePaymentStatus &&
+        e1?.finalBalanceAmount == e2?.finalBalanceAmount &&
+        e1?.refundDueAmount == e2?.refundDueAmount &&
+        e1?.refundStatus == e2?.refundStatus &&
+        e1?.refundAmount == e2?.refundAmount &&
+        e1?.refundId == e2?.refundId &&
+        e1?.refundAttempt == e2?.refundAttempt;
   }
 
   @override
@@ -433,10 +478,15 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e?.trackingUrl,
         e?.isAgricoDeliver,
         e?.initialDepositPaid,
-        e?.finalBalanceAmount,
         e?.finalTotalAmount,
         e?.isVariableWeightOrder,
-        e?.balancePaymentStatus
+        e?.balancePaymentStatus,
+        e?.finalBalanceAmount,
+        e?.refundDueAmount,
+        e?.refundStatus,
+        e?.refundAmount,
+        e?.refundId,
+        e?.refundAttempt
       ]);
 
   @override

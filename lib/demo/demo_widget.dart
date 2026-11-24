@@ -61,10 +61,12 @@ class _DemoWidgetState extends State<DemoWidget> {
               'kz0y9kyv' /* Page Title */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Satoshi',
+                  fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
+                  useGoogleFonts:
+                      !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                 ),
           ),
           actions: [],
@@ -97,9 +99,12 @@ class _DemoWidgetState extends State<DemoWidget> {
                   height: 40.0,
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: FlutterFlowTheme.of(context).info,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(
@@ -163,9 +168,12 @@ class _DemoWidgetState extends State<DemoWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: Colors.white,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                       ),
                   elevation: 0.0,
                   borderRadius: BorderRadius.circular(8.0),

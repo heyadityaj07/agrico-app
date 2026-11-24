@@ -110,11 +110,14 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                 '46ijuzau' /* Delivery Addresses */,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Satoshi',
+                    fontFamily:
+                        FlutterFlowTheme.of(context).headlineMediumFamily,
                     color: FlutterFlowTheme.of(context).textprimary,
                     fontSize: 16.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                   ),
             ),
           ),
@@ -188,494 +191,469 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: StreamBuilder<UsersRecord>(
-            stream: UsersRecord.getDocument(currentUserReference!),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primarytheme,
-                      ),
-                    ),
-                  ),
-                );
-              }
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: AuthUserStreamWidget(
+                  builder: (context) => Builder(
+                    builder: (context) {
+                      final deliveryAdress =
+                          (currentUserDocument?.deliveryAddresses?.toList() ??
+                                  [])
+                              .toList();
+                      if (deliveryAdress.isEmpty) {
+                        return NoChatProducerWidget(
+                          message: FFLocalizations.of(context).getText(
+                            'ztuw3xma' /* No delivery address found */,
+                          ),
+                          submsg:
+                              'It looks like you haven’t added a delivery address yet. Please add one to continue with your order',
+                          index: 0,
+                        );
+                      }
 
-              final containerUsersRecord = snapshot.data!;
-
-              return Container(
-                decoration: BoxDecoration(),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Builder(
-                        builder: (context) {
-                          final deliveryAdress =
-                              containerUsersRecord.deliveryAddresses.toList();
-                          if (deliveryAdress.isEmpty) {
-                            return NoChatProducerWidget(
-                              message: FFLocalizations.of(context).getText(
-                                'ztuw3xma' /* No delivery address found */,
+                      return SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: List.generate(deliveryAdress.length,
+                              (deliveryAdressIndex) {
+                            final deliveryAdressItem =
+                                deliveryAdress[deliveryAdressIndex];
+                            return Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).card,
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
-                              submsg:
-                                  'It looks like you haven’t added a delivery address yet. Please add one to continue with your order',
-                              index: 0,
-                            );
-                          }
-
-                          return SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: List.generate(deliveryAdress.length,
-                                  (deliveryAdressIndex) {
-                                final deliveryAdressItem =
-                                    deliveryAdress[deliveryAdressIndex];
-                                return Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).card,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(12.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Flexible(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Icon(
-                                                    Icons.work_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primarytheme,
-                                                    size: 24.0,
-                                                  ),
-                                                  Flexible(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  6.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        deliveryAdressItem
-                                                            .label,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .textprimary,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            if (containerUsersRecord
-                                                    .defaultAdress ==
-                                                deliveryAdressIndex)
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Container(
-                                                  height: 25.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .seconadrybutton,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            99.0),
-                                                  ),
-                                                  child: Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  12.0,
-                                                                  0.0,
-                                                                  12.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '9t4i6deq' /* Default */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primarytheme,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          1.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      FFAppState().phonnumber =
-                                                          '';
-                                                      safeSetState(() {});
-                                                      FFAppState().phonnumber =
-                                                          deliveryAdressItem
-                                                              .phoneNo;
-                                                      safeSetState(() {});
-                                                      await showModalBottomSheet(
-                                                        isScrollControlled:
-                                                            true,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        enableDrag: false,
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  EditaddressWidget(
-                                                                editaddressdata:
-                                                                    deliveryAdressItem,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          safeSetState(() {}));
-                                                    },
-                                                    child: FaIcon(
-                                                      FaIconData(const IconData(
-                                                          /* edit */ 0xf044,
-                                                          fontFamily:
-                                                              'FontAwesomeRegular',
-                                                          fontPackage:
-                                                              'font_awesome_flutter')),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primarytheme,
-                                                      size: 20.0,
-                                                    ),
-                                                  ),
-                                                ),
-                                                if (containerUsersRecord
-                                                        .defaultAdress !=
-                                                    deliveryAdressIndex)
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            1.0, 0.0),
-                                                    child: Builder(
-                                                      builder: (context) =>
-                                                          Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        DeleteconfirmationdialogWidget(
-                                                                      address:
-                                                                          deliveryAdressItem,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            );
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .delete_outline,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .orange,
-                                                            size: 20.0,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 12.0, 0.0, 0.0),
-                                          child: Text(
-                                            deliveryAdressItem.fullName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Satoshi',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textprimary,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 4.0, 0.0, 0.0),
-                                          child: Text(
-                                            deliveryAdressItem.streetAdress,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Satoshi',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textprimary,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 4.0, 0.0, 0.0),
-                                          child: Text(
-                                            deliveryAdressItem.phoneNo,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Satoshi',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textprimary,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                        if (deliveryAdressItem.instruction !=
-                                                null &&
-                                            deliveryAdressItem.instruction !=
-                                                '')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Note: ${deliveryAdressItem.instruction}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .textprimary,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        if (containerUsersRecord
-                                                .defaultAdress !=
-                                            deliveryAdressIndex)
-                                          Column(
+                                        Flexible(
+                                          child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Divider(
-                                                thickness: 2.0,
+                                              Icon(
+                                                Icons.work_sharp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                                        .primarytheme,
+                                                size: 24.0,
                                               ),
-                                              FFButtonWidget(
-                                                onPressed: () async {
-                                                  await containerUsersRecord
-                                                      .reference
-                                                      .update(
-                                                          createUsersRecordData(
-                                                    defaultAdress:
-                                                        deliveryAdressIndex,
-                                                  ));
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '12maf66w' /* Set as Default */,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  width: double.infinity,
-                                                  height: 40.0,
+                                              Flexible(
+                                                child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          16.0, 0.0, 16.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: Color(0x004B39EF),
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primarytheme,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                  elevation: 0.0,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                          6.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    deliveryAdressItem.label,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .textprimary,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
+                                                        ),
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
+                                        ),
+                                        if (valueOrDefault(
+                                                currentUserDocument
+                                                    ?.defaultAdress,
+                                                0) ==
+                                            deliveryAdressIndex)
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Container(
+                                              height: 25.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .seconadrybutton,
+                                                borderRadius:
+                                                    BorderRadius.circular(99.0),
+                                              ),
+                                              child: Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '9t4i6deq' /* Default */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primarytheme,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts:
+                                                              !FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMediumIsCustom,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  FFAppState().phonnumber = '';
+                                                  safeSetState(() {});
+                                                  FFAppState().phonnumber =
+                                                      deliveryAdressItem
+                                                          .phoneNo;
+                                                  safeSetState(() {});
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () {
+                                                          FocusScope.of(context)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              EditaddressWidget(
+                                                            editaddressdata:
+                                                                deliveryAdressItem,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
+                                                },
+                                                child: FaIcon(
+                                                  FaIconData(const IconData(
+                                                      /* edit */ 0xf044,
+                                                      fontFamily:
+                                                          'FontAwesomeRegular',
+                                                      fontPackage:
+                                                          'font_awesome_flutter')),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primarytheme,
+                                                  size: 20.0,
+                                                ),
+                                              ),
+                                            ),
+                                            if (valueOrDefault(
+                                                    currentUserDocument
+                                                        ?.defaultAdress,
+                                                    0) !=
+                                                deliveryAdressIndex)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    1.0, 0.0),
+                                                child: Builder(
+                                                  builder: (context) => Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(20.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          dialogContext)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child:
+                                                                    DeleteconfirmationdialogWidget(
+                                                                  address:
+                                                                      deliveryAdressItem,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
+                                                      child: Icon(
+                                                        Icons.delete_outline,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .orange,
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
                                       ],
                                     ),
-                                  ),
-                                );
-                              }).divide(SizedBox(height: 16.0)),
-                            ),
-                          );
-                        },
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 12.0, 0.0, 0.0),
+                                      child: Text(
+                                        deliveryAdressItem.fullName,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .textprimary,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 4.0, 0.0, 0.0),
+                                      child: Text(
+                                        deliveryAdressItem.streetAdress,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .textprimary,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 4.0, 0.0, 0.0),
+                                      child: Text(
+                                        deliveryAdressItem.phoneNo,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .textprimary,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                    if (deliveryAdressItem.instruction !=
+                                            null &&
+                                        deliveryAdressItem.instruction != '')
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 4.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Note: ${deliveryAdressItem.instruction}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .textprimary,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                        ),
+                                      ),
+                                    if (valueOrDefault(
+                                            currentUserDocument?.defaultAdress,
+                                            0) !=
+                                        deliveryAdressIndex)
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Divider(
+                                            thickness: 2.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                          ),
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              await currentUserReference!
+                                                  .update(createUsersRecordData(
+                                                defaultAdress:
+                                                    deliveryAdressIndex,
+                                              ));
+                                            },
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              '12maf66w' /* Set as Default */,
+                                            ),
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              height: 40.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0x004B39EF),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primarytheme,
+                                                    fontSize: 14.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallIsCustom,
+                                                  ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).divide(SizedBox(height: 16.0)),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              if (valueOrDefault<bool>(currentUserDocument?.isSuspend, false))
+                AuthUserStreamWidget(
+                  builder: (context) => ClipRRect(
+                    borderRadius: BorderRadius.circular(0.0),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(
+                        sigmaX: 4.0,
+                        sigmaY: 4.0,
                       ),
-                    ),
-                    if (containerUsersRecord.isSuspend)
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(
-                            sigmaX: 4.0,
-                            sigmaY: 4.0,
-                          ),
-                          child: wrapWithModel(
-                            model: _model.suspendModel,
-                            updateCallback: () => safeSetState(() {}),
-                            child: SuspendWidget(
-                              action: () async {
-                                context
-                                    .pushNamed(HelpandsupportWidget.routeName);
-                              },
-                            ),
-                          ),
+                      child: wrapWithModel(
+                        model: _model.suspendModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: SuspendWidget(
+                          action: () async {
+                            context.pushNamed(HelpandsupportWidget.routeName);
+                          },
                         ),
                       ),
-                  ],
+                    ),
+                  ),
                 ),
-              );
-            },
+            ],
           ),
         ),
       ),

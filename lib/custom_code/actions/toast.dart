@@ -4,7 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'index.dart'; // Imports other custom actions
+import '/custom_code/actions/index.dart'; // Imports other custom actions
 import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart' hide RepeatMode;
 // Begin custom action code
@@ -15,6 +15,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 Future toast(
   BuildContext context,
   String msg,
+  Color? colorCode,
 ) async {
   // Add your function code here!
   Fluttertoast.showToast(
@@ -22,7 +23,7 @@ Future toast(
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.SNACKBAR,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.red,
+      backgroundColor: colorCode ?? Colors.red,
       textColor: Colors.white,
       fontSize: 16.0);
 }

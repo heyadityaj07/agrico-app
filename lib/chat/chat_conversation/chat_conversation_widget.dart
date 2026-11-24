@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
+import '/components/data_load_widget.dart';
 import '/components/suspend_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -11,7 +12,6 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -117,16 +117,11 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).offwhite,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primarytheme,
-                  ),
-                ),
-              ),
+            body: DataLoadWidget(
+              height: 100.0,
+              width: MediaQuery.sizeOf(context).width,
+              cmncolor: FlutterFlowTheme.of(context).boderdivder,
+              length: 6,
             ),
           );
         }
@@ -197,8 +192,8 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                     if (!snapshot.hasData) {
                       return Center(
                         child: SizedBox(
-                          width: 40.0,
-                          height: 40.0,
+                          width: 50,
+                          height: 50,
                           child: CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(
                               Colors.transparent,
@@ -220,11 +215,14 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
-                                fontFamily: 'Satoshi',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineMediumFamily,
                                 color: FlutterFlowTheme.of(context).textprimary,
                                 fontSize: 16.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
+                                useGoogleFonts: !FlutterFlowTheme.of(context)
+                                    .headlineMediumIsCustom,
                               ),
                         ),
                       ),
@@ -238,177 +236,504 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: StreamBuilder<UsersRecord>(
-                stream: UsersRecord.getDocument(currentUserReference!),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            FlutterFlowTheme.of(context).primarytheme,
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: StreamBuilder<List<ChatMessagesRecord>>(
+                          stream: queryChatMessagesRecord(
+                            parent: widget!.chatRef?.reference,
                           ),
-                        ),
-                      ),
-                    );
-                  }
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return DataLoadWidget(
+                                height: 100.0,
+                                width: MediaQuery.sizeOf(context).width,
+                                cmncolor:
+                                    FlutterFlowTheme.of(context).boderdivder,
+                                length: 6,
+                              );
+                            }
+                            List<ChatMessagesRecord>
+                                containerChatMessagesRecordList =
+                                snapshot.data!;
 
-                  final containerUsersRecord = snapshot.data!;
+                            return Container(
+                              decoration: BoxDecoration(),
+                              child: Builder(
+                                builder: (context) {
+                                  final containerVar =
+                                      containerChatMessagesRecordList
+                                          .sortedList(
+                                              keyOf: (e) => e.createdAt!,
+                                              desc: true)
+                                          .toList();
 
-                  return Container(
-                    decoration: BoxDecoration(),
-                    child: Stack(
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: StreamBuilder<List<ChatMessagesRecord>>(
-                                stream: queryChatMessagesRecord(
-                                  parent: widget!.chatRef?.reference,
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 40.0,
-                                        height: 40.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            Colors.transparent,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<ChatMessagesRecord>
-                                      containerChatMessagesRecordList =
-                                      snapshot.data!;
-
-                                  return Container(
-                                    decoration: BoxDecoration(),
-                                    child: Builder(
-                                      builder: (context) {
-                                        final containerVar =
-                                            containerChatMessagesRecordList
-                                                .sortedList(
-                                                    keyOf: (e) => e.createdAt!,
-                                                    desc: true)
-                                                .toList();
-
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          reverse: true,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: containerVar.length,
-                                          itemBuilder:
-                                              (context, containerVarIndex) {
-                                            final containerVarItem =
-                                                containerVar[containerVarIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 10.0, 16.0, 10.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  if (containerVarItem.sender ==
-                                                      currentUserReference)
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              1.0, -1.0),
-                                                      child: InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onLongPress: () async {
-                                                          var confirmDialogResponse =
-                                                              await showDialog<
-                                                                      bool>(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Delete Message?'),
-                                                                        content:
-                                                                            Text('Are you sure you want to delete this message? This action cannot be undone.'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, false),
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    reverse: true,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: containerVar.length,
+                                    itemBuilder: (context, containerVarIndex) {
+                                      final containerVarItem =
+                                          containerVar[containerVarIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 10.0, 16.0, 10.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            if (containerVarItem.sender ==
+                                                currentUserReference)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    1.0, -1.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onLongPress: () async {
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Delete Message?'),
+                                                                  content: Text(
+                                                                      'Are you sure you want to delete this message? This action cannot be undone.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: Text(
+                                                                          'Cancel'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: Text(
+                                                                          'Delete'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
+                                                            false;
+                                                    if (confirmDialogResponse) {
+                                                      await containerVarItem
+                                                          .reference
+                                                          .delete();
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                              enText: 'deleted',
+                                                              frText:
+                                                                  'supprimé',
+                                                            ),
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
+                                                          ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primarytheme,
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 260.0,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFF3BB273),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  8.0,
+                                                                  12.0,
+                                                                  8.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Builder(
+                                                            builder: (context) {
+                                                              if (containerVarItem
+                                                                          .image !=
+                                                                      null &&
+                                                                  containerVarItem
+                                                                          .image !=
+                                                                      '') {
+                                                                return Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        await Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          PageTransition(
+                                                                            type:
+                                                                                PageTransitionType.fade,
                                                                             child:
-                                                                                Text('Cancel'),
+                                                                                FlutterFlowExpandedImageView(
+                                                                              image: Image.network(
+                                                                                containerVarItem.image,
+                                                                                fit: BoxFit.contain,
+                                                                              ),
+                                                                              allowRotation: false,
+                                                                              tag: containerVarItem.image,
+                                                                              useHeroAnimation: true,
+                                                                            ),
                                                                           ),
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, true),
-                                                                            child:
-                                                                                Text('Delete'),
+                                                                        );
+                                                                      },
+                                                                      child:
+                                                                          Hero(
+                                                                        tag: containerVarItem
+                                                                            .image,
+                                                                        transitionOnUserGestures:
+                                                                            true,
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.network(
+                                                                            containerVarItem.image,
+                                                                            width:
+                                                                                200.0,
+                                                                            height:
+                                                                                200.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
                                                                           ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  ) ??
-                                                                  false;
-                                                          if (confirmDialogResponse) {
-                                                            await containerVarItem
-                                                                .reference
-                                                                .delete();
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  FFLocalizations.of(
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    if (containerVarItem.message !=
+                                                                            null &&
+                                                                        containerVarItem.message !=
+                                                                            '')
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                        child:
+                                                                            Text(
+                                                                          containerVarItem
+                                                                              .message,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                color: FlutterFlowTheme.of(context).card,
+                                                                                fontSize: 16.0,
+                                                                                letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                );
+                                                              } else if (containerVarItem
+                                                                          .video !=
+                                                                      null &&
+                                                                  containerVarItem
+                                                                          .video !=
+                                                                      '') {
+                                                                return Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    FlutterFlowVideoPlayer(
+                                                                      path: containerVarItem
+                                                                          .video,
+                                                                      videoType:
+                                                                          VideoType
+                                                                              .network,
+                                                                      autoPlay:
+                                                                          false,
+                                                                      looping:
+                                                                          true,
+                                                                      showControls:
+                                                                          true,
+                                                                      allowFullScreen:
+                                                                          true,
+                                                                      allowPlaybackSpeedMenu:
+                                                                          false,
+                                                                    ),
+                                                                    if (containerVarItem.message !=
+                                                                            null &&
+                                                                        containerVarItem.message !=
+                                                                            '')
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                        child:
+                                                                            Text(
+                                                                          containerVarItem
+                                                                              .message,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                color: FlutterFlowTheme.of(context).card,
+                                                                                fontSize: 16.0,
+                                                                                letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                );
+                                                              } else {
+                                                                return Text(
+                                                                  containerVarItem
+                                                                      .message,
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .getVariableText(
-                                                                    enText:
-                                                                        'deleted',
-                                                                    frText:
-                                                                        'supprimé',
-                                                                  ),
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: FlutterFlowTheme.of(
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .card,
+                                                                        fontSize:
+                                                                            16.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                      ),
+                                                                );
+                                                              }
+                                                            },
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Text(
+                                                                  dateTimeFormat(
+                                                                    "jm",
+                                                                    containerVarItem
+                                                                        .messageTime!,
+                                                                    locale: FFLocalizations.of(
                                                                             context)
-                                                                        .primaryText,
+                                                                        .languageCode,
                                                                   ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .card,
+                                                                        fontSize:
+                                                                            13.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                      ),
                                                                 ),
-                                                                duration: Duration(
+                                                                Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    if (chatConversationChatRecord.usera == chatConversationChatRecord.users.where((e) => e != currentUserReference).toList().firstOrNull
+                                                                        ? ((chatConversationChatRecord.timea! >= containerVarItem.messageTime!) ||
+                                                                            chatConversationChatRecord.onlineusers.contains(chatConversationChatRecord
+                                                                                .usera))
+                                                                        : ((chatConversationChatRecord.timeb! >=
+                                                                                containerVarItem.messageTime!) ||
+                                                                            chatConversationChatRecord.onlineusers.contains(chatConversationChatRecord.userb))) {
+                                                                      return Icon(
+                                                                        FFIcons
+                                                                            .kseen,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .card,
+                                                                        size:
+                                                                            16.0,
+                                                                      );
+                                                                    } else {
+                                                                      return Icon(
+                                                                        Icons
+                                                                            .check_sharp,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .card,
+                                                                        size:
+                                                                            16.0,
+                                                                      );
+                                                                    }
+                                                                  },
+                                                                ),
+                                                              ].divide(SizedBox(
+                                                                  width: 4.0)),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            if (containerVarItem.receiver ==
+                                                currentUserReference)
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 16.0, 0.0, 0.0),
+                                                child:
+                                                    StreamBuilder<FarmsRecord>(
+                                                  stream: FarmsRecord.getDocument(
+                                                      chatConversationChatRecord
+                                                          .farmRef!),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 40.0,
+                                                          height: 40.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              Colors
+                                                                  .transparent,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+
+                                                    final rowFarmsRecord =
+                                                        snapshot.data!;
+
+                                                    return Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          width: 36.0,
+                                                          height: 36.0,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            fadeInDuration:
+                                                                Duration(
                                                                     milliseconds:
-                                                                        4000),
-                                                                backgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primarytheme,
-                                                              ),
-                                                            );
-                                                          }
-                                                        },
-                                                        child: Container(
+                                                                        500),
+                                                            fadeOutDuration:
+                                                                Duration(
+                                                                    milliseconds:
+                                                                        500),
+                                                            imageUrl:
+                                                                valueOrDefault<
+                                                                    String>(
+                                                              rowFarmsRecord
+                                                                  .farmProfilePhoto,
+                                                              'https://firebasestorage.googleapis.com/v0/b/agricoo-b9c46.firebasestorage.app/o/dummy-avatar.jpg?alt=media&token=bdf937fd-feef-4343-8872-27ba98a9a17d',
+                                                            ),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                        Container(
                                                           constraints:
                                                               BoxConstraints(
                                                             maxWidth: 260.0,
                                                           ),
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
-                                                                0xFF3BB273),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .card,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -416,19 +741,15 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        12.0,
-                                                                        8.0,
-                                                                        12.0,
-                                                                        8.0),
+                                                                EdgeInsets.all(
+                                                                    12.0),
                                                             child: Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .min,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
-                                                                      .end,
+                                                                      .start,
                                                               children: [
                                                                 Builder(
                                                                   builder:
@@ -439,9 +760,9 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                                                                             '') {
                                                                       return Column(
                                                                         mainAxisSize:
-                                                                            MainAxisSize.min,
+                                                                            MainAxisSize.max,
                                                                         crossAxisAlignment:
-                                                                            CrossAxisAlignment.end,
+                                                                            CrossAxisAlignment.start,
                                                                         children: [
                                                                           InkWell(
                                                                             splashColor:
@@ -492,10 +813,11 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                                                                               child: Text(
                                                                                 containerVarItem.message,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
-                                                                                      color: FlutterFlowTheme.of(context).card,
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -509,13 +831,15 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                                                                         mainAxisSize:
                                                                             MainAxisSize.min,
                                                                         crossAxisAlignment:
-                                                                            CrossAxisAlignment.end,
+                                                                            CrossAxisAlignment.start,
                                                                         children: [
                                                                           FlutterFlowVideoPlayer(
                                                                             path:
                                                                                 containerVarItem.video,
                                                                             videoType:
                                                                                 VideoType.network,
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 0.5,
                                                                             autoPlay:
                                                                                 false,
                                                                             looping:
@@ -534,10 +858,11 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                                                                               child: Text(
                                                                                 containerVarItem.message,
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
-                                                                                      color: FlutterFlowTheme.of(context).card,
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 16.0,
                                                                                       letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -550,847 +875,561 @@ class _ChatConversationWidgetState extends State<ChatConversationWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
-                                                                              color: FlutterFlowTheme.of(context).card,
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontSize: 16.0,
                                                                               letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       );
                                                                     }
                                                                   },
                                                                 ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          8.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .end,
-                                                                    children: [
-                                                                      Text(
-                                                                        dateTimeFormat(
-                                                                          "jm",
-                                                                          containerVarItem
-                                                                              .messageTime!,
-                                                                          locale:
-                                                                              FFLocalizations.of(context).languageCode,
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Satoshi',
-                                                                              color: FlutterFlowTheme.of(context).card,
-                                                                              fontSize: 13.0,
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                      Builder(
-                                                                        builder:
-                                                                            (context) {
-                                                                          if (chatConversationChatRecord.usera == chatConversationChatRecord.users.where((e) => e != currentUserReference).toList().firstOrNull
-                                                                              ? ((chatConversationChatRecord.timea! >= containerVarItem.messageTime!) || chatConversationChatRecord.onlineusers.contains(chatConversationChatRecord.usera))
-                                                                              : ((chatConversationChatRecord.timeb! >= containerVarItem.messageTime!) || chatConversationChatRecord.onlineusers.contains(chatConversationChatRecord.userb))) {
-                                                                            return Icon(
-                                                                              FFIcons.kseen,
-                                                                              color: FlutterFlowTheme.of(context).card,
-                                                                              size: 16.0,
-                                                                            );
-                                                                          } else {
-                                                                            return Icon(
-                                                                              Icons.check_sharp,
-                                                                              color: FlutterFlowTheme.of(context).card,
-                                                                              size: 16.0,
-                                                                            );
-                                                                          }
-                                                                        },
-                                                                      ),
-                                                                    ].divide(SizedBox(
-                                                                        width:
-                                                                            4.0)),
+                                                                Text(
+                                                                  dateTimeFormat(
+                                                                    "jm",
+                                                                    containerVarItem
+                                                                        .messageTime!,
+                                                                    locale: FFLocalizations.of(
+                                                                            context)
+                                                                        .languageCode,
                                                                   ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        fontSize:
+                                                                            13.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                      ),
                                                                 ),
                                                               ],
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  if (containerVarItem
-                                                          .receiver ==
-                                                      currentUserReference)
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: StreamBuilder<
-                                                          FarmsRecord>(
-                                                        stream: FarmsRecord
-                                                            .getDocument(
-                                                                chatConversationChatRecord
-                                                                    .farmRef!),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 40.0,
-                                                                height: 40.0,
-                                                                child:
-                                                                    CircularProgressIndicator(
-                                                                  valueColor:
-                                                                      AlwaysStoppedAnimation<
-                                                                          Color>(
-                                                                    Colors
-                                                                        .transparent,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-
-                                                          final rowFarmsRecord =
-                                                              snapshot.data!;
-
-                                                          return Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Container(
-                                                                width: 36.0,
-                                                                height: 36.0,
-                                                                clipBehavior: Clip
-                                                                    .antiAlias,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                ),
-                                                                child:
-                                                                    CachedNetworkImage(
-                                                                  fadeInDuration:
-                                                                      Duration(
-                                                                          milliseconds:
-                                                                              500),
-                                                                  fadeOutDuration:
-                                                                      Duration(
-                                                                          milliseconds:
-                                                                              500),
-                                                                  imageUrl:
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                    rowFarmsRecord
-                                                                        .farmProfilePhoto,
-                                                                    'https://firebasestorage.googleapis.com/v0/b/agricoo-b9c46.firebasestorage.app/o/dummy-avatar.jpg?alt=media&token=bdf937fd-feef-4343-8872-27ba98a9a17d',
-                                                                  ),
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                              Container(
-                                                                constraints:
-                                                                    BoxConstraints(
-                                                                  maxWidth:
-                                                                      260.0,
-                                                                ),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .card,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12.0),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              12.0),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Builder(
-                                                                        builder:
-                                                                            (context) {
-                                                                          if (containerVarItem.image != null &&
-                                                                              containerVarItem.image !=
-                                                                                  '') {
-                                                                            return Column(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                              children: [
-                                                                                InkWell(
-                                                                                  splashColor: Colors.transparent,
-                                                                                  focusColor: Colors.transparent,
-                                                                                  hoverColor: Colors.transparent,
-                                                                                  highlightColor: Colors.transparent,
-                                                                                  onTap: () async {
-                                                                                    await Navigator.push(
-                                                                                      context,
-                                                                                      PageTransition(
-                                                                                        type: PageTransitionType.fade,
-                                                                                        child: FlutterFlowExpandedImageView(
-                                                                                          image: Image.network(
-                                                                                            containerVarItem.image,
-                                                                                            fit: BoxFit.contain,
-                                                                                          ),
-                                                                                          allowRotation: false,
-                                                                                          tag: containerVarItem.image,
-                                                                                          useHeroAnimation: true,
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                  child: Hero(
-                                                                                    tag: containerVarItem.image,
-                                                                                    transitionOnUserGestures: true,
-                                                                                    child: ClipRRect(
-                                                                                      borderRadius: BorderRadius.circular(8.0),
-                                                                                      child: Image.network(
-                                                                                        containerVarItem.image,
-                                                                                        width: 200.0,
-                                                                                        height: 200.0,
-                                                                                        fit: BoxFit.cover,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                if (containerVarItem.message != null && containerVarItem.message != '')
-                                                                                  Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
-                                                                                    child: Text(
-                                                                                      containerVarItem.message,
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Satoshi',
-                                                                                            color: FlutterFlowTheme.of(context).primaryText,
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                              ],
-                                                                            );
-                                                                          } else if (containerVarItem.video != null &&
-                                                                              containerVarItem.video != '') {
-                                                                            return Column(
-                                                                              mainAxisSize: MainAxisSize.min,
-                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                              children: [
-                                                                                FlutterFlowVideoPlayer(
-                                                                                  path: containerVarItem.video,
-                                                                                  videoType: VideoType.network,
-                                                                                  width: MediaQuery.sizeOf(context).width * 0.5,
-                                                                                  autoPlay: false,
-                                                                                  looping: true,
-                                                                                  showControls: true,
-                                                                                  allowFullScreen: true,
-                                                                                  allowPlaybackSpeedMenu: false,
-                                                                                ),
-                                                                                if (containerVarItem.message != null && containerVarItem.message != '')
-                                                                                  Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
-                                                                                    child: Text(
-                                                                                      containerVarItem.message,
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Satoshi',
-                                                                                            color: FlutterFlowTheme.of(context).primaryText,
-                                                                                            fontSize: 16.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                              ],
-                                                                            );
-                                                                          } else {
-                                                                            return Text(
-                                                                              containerVarItem.message,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontSize: 16.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                  ),
-                                                                            );
-                                                                          }
-                                                                        },
-                                                                      ),
-                                                                      Text(
-                                                                        dateTimeFormat(
-                                                                          "jm",
-                                                                          containerVarItem
-                                                                              .messageTime!,
-                                                                          locale:
-                                                                              FFLocalizations.of(context).languageCode,
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Satoshi',
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontSize: 13.0,
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ].divide(SizedBox(
-                                                                width: 8.0)),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                ],
+                                                      ].divide(
+                                                          SizedBox(width: 8.0)),
+                                                    );
+                                                  },
+                                                ),
                                               ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
+                                          ],
+                                        ),
+                                      );
+                                    },
                                   );
                                 },
                               ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                            );
+                          },
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 16.0, 12.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFF5F5F5),
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).boderdivder,
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 12.0, 16.0, 12.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF5F5F5),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    border: Border.all(
-                                      color: FlutterFlowTheme.of(context)
-                                          .boderdivder,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      if (_model.uploadedFileUrl_uploadDataFvf !=
-                                              null &&
-                                          _model.uploadedFileUrl_uploadDataFvf !=
-                                              '')
-                                        Container(
-                                          width: 90.0,
-                                          child: Stack(
-                                            alignment:
-                                                AlignmentDirectional(1.0, -1.0),
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.network(
-                                                    _model
-                                                        .uploadedFileUrl_uploadDataFvf,
-                                                    width: 85.0,
-                                                    height: 85.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 0.0, 0.0, 0.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    await FirebaseStorage
-                                                        .instance
-                                                        .refFromURL(_model
-                                                            .uploadedFileUrl_uploadDataFvf)
-                                                        .delete();
-                                                  },
-                                                  child: Icon(
-                                                    Icons.close_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primarytheme,
-                                                    size: 24.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (_model.uploadedFileUrl_uploadDataFvf !=
+                                        null &&
+                                    _model.uploadedFileUrl_uploadDataFvf != '')
+                                  Container(
+                                    width: 90.0,
+                                    child: Stack(
+                                      alignment:
+                                          AlignmentDirectional(1.0, -1.0),
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              _model
+                                                  .uploadedFileUrl_uploadDataFvf,
+                                              width: 85.0,
+                                              height: 85.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  2.0, 0.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await FirebaseStorage.instance
+                                                  .refFromURL(_model
+                                                      .uploadedFileUrl_uploadDataFvf)
+                                                  .delete();
+                                            },
+                                            child: Icon(
+                                              Icons.close_sharp,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primarytheme,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 12.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 12.0, 0.0),
+                                            12.0, 8.0, 0.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.start,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 8.0, 0.0, 8.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Builder(
-                                                    builder: (context) {
-                                                      if (!_model
-                                                          .isDataUploading_uploadDataFvf) {
-                                                        return InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            final selectedMedia =
-                                                                await selectMediaWithSourceBottomSheet(
-                                                              context: context,
-                                                              allowPhoto: true,
-                                                            );
-                                                            if (selectedMedia !=
-                                                                    null &&
-                                                                selectedMedia.every((m) =>
-                                                                    validateFileFormat(
-                                                                        m.storagePath,
-                                                                        context))) {
-                                                              safeSetState(() =>
-                                                                  _model.isDataUploading_uploadDataFvf =
-                                                                      true);
-                                                              var selectedUploadedFiles =
-                                                                  <FFUploadedFile>[];
+                                            Builder(
+                                              builder: (context) {
+                                                if (!_model
+                                                    .isDataUploading_uploadDataFvf) {
+                                                  return InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      final selectedMedia =
+                                                          await selectMediaWithSourceBottomSheet(
+                                                        context: context,
+                                                        allowPhoto: true,
+                                                      );
+                                                      if (selectedMedia !=
+                                                              null &&
+                                                          selectedMedia.every((m) =>
+                                                              validateFileFormat(
+                                                                  m.storagePath,
+                                                                  context))) {
+                                                        safeSetState(() => _model
+                                                                .isDataUploading_uploadDataFvf =
+                                                            true);
+                                                        var selectedUploadedFiles =
+                                                            <FFUploadedFile>[];
 
-                                                              var downloadUrls =
-                                                                  <String>[];
-                                                              try {
-                                                                selectedUploadedFiles =
-                                                                    selectedMedia
-                                                                        .map((m) =>
-                                                                            FFUploadedFile(
-                                                                              name: m.storagePath.split('/').last,
-                                                                              bytes: m.bytes,
-                                                                              height: m.dimensions?.height,
-                                                                              width: m.dimensions?.width,
-                                                                              blurHash: m.blurHash,
-                                                                              originalFilename: m.originalFilename,
-                                                                            ))
-                                                                        .toList();
+                                                        var downloadUrls =
+                                                            <String>[];
+                                                        try {
+                                                          selectedUploadedFiles =
+                                                              selectedMedia
+                                                                  .map((m) =>
+                                                                      FFUploadedFile(
+                                                                        name: m
+                                                                            .storagePath
+                                                                            .split('/')
+                                                                            .last,
+                                                                        bytes: m
+                                                                            .bytes,
+                                                                        height: m
+                                                                            .dimensions
+                                                                            ?.height,
+                                                                        width: m
+                                                                            .dimensions
+                                                                            ?.width,
+                                                                        blurHash:
+                                                                            m.blurHash,
+                                                                        originalFilename:
+                                                                            m.originalFilename,
+                                                                      ))
+                                                                  .toList();
 
-                                                                downloadUrls = (await Future
-                                                                        .wait(
-                                                                  selectedMedia
-                                                                      .map(
-                                                                    (m) async =>
-                                                                        await uploadData(
-                                                                            m.storagePath,
-                                                                            m.bytes),
-                                                                  ),
-                                                                ))
-                                                                    .where((u) =>
-                                                                        u !=
-                                                                        null)
-                                                                    .map((u) =>
-                                                                        u!)
-                                                                    .toList();
-                                                              } finally {
-                                                                _model.isDataUploading_uploadDataFvf =
-                                                                    false;
-                                                              }
-                                                              if (selectedUploadedFiles
-                                                                          .length ==
-                                                                      selectedMedia
-                                                                          .length &&
-                                                                  downloadUrls
-                                                                          .length ==
-                                                                      selectedMedia
-                                                                          .length) {
-                                                                safeSetState(
-                                                                    () {
-                                                                  _model.uploadedLocalFile_uploadDataFvf =
-                                                                      selectedUploadedFiles
-                                                                          .first;
-                                                                  _model.uploadedFileUrl_uploadDataFvf =
-                                                                      downloadUrls
-                                                                          .first;
-                                                                });
-                                                              } else {
-                                                                safeSetState(
-                                                                    () {});
-                                                                return;
-                                                              }
-                                                            }
-                                                          },
-                                                          child: Icon(
-                                                            FFIcons
-                                                                .kattechcustom,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .textsecondary,
-                                                            size: 24.0,
-                                                          ),
-                                                        );
-                                                      } else {
-                                                        return Container(
-                                                          width: 40.0,
-                                                          height: 40.0,
-                                                          child: custom_widgets
-                                                              .CircleProgessCustom(
-                                                            width: 40.0,
-                                                            height: 40.0,
-                                                          ),
-                                                        );
+                                                          downloadUrls =
+                                                              (await Future
+                                                                      .wait(
+                                                            selectedMedia.map(
+                                                              (m) async =>
+                                                                  await uploadData(
+                                                                      m.storagePath,
+                                                                      m.bytes),
+                                                            ),
+                                                          ))
+                                                                  .where((u) =>
+                                                                      u != null)
+                                                                  .map(
+                                                                      (u) => u!)
+                                                                  .toList();
+                                                        } finally {
+                                                          _model.isDataUploading_uploadDataFvf =
+                                                              false;
+                                                        }
+                                                        if (selectedUploadedFiles
+                                                                    .length ==
+                                                                selectedMedia
+                                                                    .length &&
+                                                            downloadUrls
+                                                                    .length ==
+                                                                selectedMedia
+                                                                    .length) {
+                                                          safeSetState(() {
+                                                            _model.uploadedLocalFile_uploadDataFvf =
+                                                                selectedUploadedFiles
+                                                                    .first;
+                                                            _model.uploadedFileUrl_uploadDataFvf =
+                                                                downloadUrls
+                                                                    .first;
+                                                          });
+                                                        } else {
+                                                          safeSetState(() {});
+                                                          return;
+                                                        }
                                                       }
                                                     },
-                                                  ),
-                                                  Container(
-                                                    width: 200.0,
-                                                    child: TextFormField(
-                                                      controller:
-                                                          _model.textController,
-                                                      focusNode: _model
-                                                          .textFieldFocusNode,
-                                                      autofocus: false,
-                                                      enabled: true,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: false,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                        hintText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          '3egh5hin' /* Type your message... */,
-                                                        ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .textprimary,
-                                                                  fontSize:
-                                                                      13.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        filled: true,
-                                                        fillColor:
-                                                            Color(0xFFF5F5F5),
-                                                      ),
-                                                      style:
+                                                    child: Icon(
+                                                      FFIcons.kattechcustom,
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .textprimary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      enableInteractiveSelection:
-                                                          true,
-                                                      validator: _model
-                                                          .textControllerValidator
-                                                          .asValidator(context),
+                                                              .textsecondary,
+                                                      size: 24.0,
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderRadius: 8.0,
-                                              buttonSize: 40.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primarytheme,
-                                              icon: Icon(
-                                                FFIcons.ksentcustom,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .card,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () async {
-                                                if ((_model.textController
-                                                                .text !=
-                                                            null &&
-                                                        _model.textController
-                                                                .text !=
-                                                            '') ||
-                                                    (_model.uploadedFileUrl_uploadDataFvf !=
-                                                            null &&
-                                                        _model.uploadedFileUrl_uploadDataFvf !=
-                                                            '')) {
-                                                  _model.chatmsg = _model
-                                                      .textController.text;
-                                                  safeSetState(() {});
-                                                  safeSetState(() {
-                                                    _model.textController
-                                                        ?.clear();
-                                                  });
-                                                  _model.farmuser =
-                                                      await FarmsRecord
-                                                          .getDocumentOnce(
-                                                              chatConversationChatRecord
-                                                                  .farmRef!);
-
-                                                  var chatMessagesRecordReference =
-                                                      ChatMessagesRecord.createDoc(
-                                                          chatConversationChatRecord
-                                                              .reference);
-                                                  await chatMessagesRecordReference
-                                                      .set(
-                                                          createChatMessagesRecordData(
-                                                    createdAt:
-                                                        getCurrentTimestamp,
-                                                    chatRef:
-                                                        chatConversationChatRecord
-                                                            .reference,
-                                                    sender:
-                                                        currentUserReference,
-                                                    receiver: _model
-                                                        .farmuser?.userRef,
-                                                    message: _model.chatmsg,
-                                                    messageTime:
-                                                        getCurrentTimestamp,
-                                                    image: _model
-                                                        .uploadedFileUrl_uploadDataFvf,
-                                                  ));
-                                                  _model.chatmessage =
-                                                      ChatMessagesRecord
-                                                          .getDocumentFromData(
-                                                              createChatMessagesRecordData(
-                                                                createdAt:
-                                                                    getCurrentTimestamp,
-                                                                chatRef:
-                                                                    chatConversationChatRecord
-                                                                        .reference,
-                                                                sender:
-                                                                    currentUserReference,
-                                                                receiver: _model
-                                                                    .farmuser
-                                                                    ?.userRef,
-                                                                message: _model
-                                                                    .chatmsg,
-                                                                messageTime:
-                                                                    getCurrentTimestamp,
-                                                                image: _model
-                                                                    .uploadedFileUrl_uploadDataFvf,
-                                                              ),
-                                                              chatMessagesRecordReference);
-                                                  safeSetState(() {
-                                                    _model.isDataUploading_uploadDataFvf =
-                                                        false;
-                                                    _model.uploadedLocalFile_uploadDataFvf =
-                                                        FFUploadedFile(
-                                                            bytes: Uint8List
-                                                                .fromList([]),
-                                                            originalFilename:
-                                                                '');
-                                                    _model.uploadedFileUrl_uploadDataFvf =
-                                                        '';
-                                                  });
-
-                                                  await chatConversationChatRecord
-                                                      .reference
-                                                      .update(
-                                                          createChatRecordData(
-                                                    lastMessage: _model.chatmsg,
-                                                    lastMeesageTime:
-                                                        getCurrentTimestamp,
-                                                    seen: false,
-                                                  ));
-                                                  triggerPushNotification(
-                                                    notificationTitle:
-                                                        valueOrDefault<String>(
-                                                      containerUsersRecord
-                                                          .displayName,
-                                                      'Name',
-                                                    ),
-                                                    notificationText:
-                                                        _model.chatmsg!,
-                                                    userRefs: [
-                                                      _model.farmuser!.userRef!
-                                                    ],
-                                                    initialPageName:
-                                                        'ProducerChatConversation',
-                                                    parameterData: {
-                                                      'chatRef': widget!
-                                                          .chatRef?.reference,
-                                                    },
                                                   );
-
-                                                  await _model
-                                                      .farmuser!.userRef!
-                                                      .update({
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'notification_count':
-                                                            FieldValue
-                                                                .increment(1),
-                                                      },
+                                                } else {
+                                                  return wrapWithModel(
+                                                    model: _model.dataLoadModel,
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    child: DataLoadWidget(
+                                                      height: 40.0,
+                                                      width: 40.0,
+                                                      cmncolor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .boderdivder,
                                                     ),
-                                                  });
-                                                  _model.chatmsg = null;
-                                                  safeSetState(() {});
+                                                  );
                                                 }
-
-                                                safeSetState(() {});
                                               },
+                                            ),
+                                            Container(
+                                              width: 200.0,
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.textController,
+                                                focusNode:
+                                                    _model.textFieldFocusNode,
+                                                autofocus: false,
+                                                enabled: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: false,
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '3egh5hin' /* Type your message... */,
+                                                  ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .textprimary,
+                                                            fontSize: 13.0,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor: Color(0xFFF5F5F5),
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .textprimary,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                                cursorColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                enableInteractiveSelection:
+                                                    true,
+                                                validator: _model
+                                                    .textControllerValidator
+                                                    .asValidator(context),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
+                                      FlutterFlowIconButton(
+                                        borderRadius: 8.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primarytheme,
+                                        icon: Icon(
+                                          FFIcons.ksentcustom,
+                                          color:
+                                              FlutterFlowTheme.of(context).card,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          if ((_model.textController.text !=
+                                                      null &&
+                                                  _model.textController.text !=
+                                                      '') ||
+                                              (_model.uploadedFileUrl_uploadDataFvf !=
+                                                      null &&
+                                                  _model.uploadedFileUrl_uploadDataFvf !=
+                                                      '')) {
+                                            _model.chatmsg =
+                                                _model.textController.text;
+                                            safeSetState(() {});
+                                            safeSetState(() {
+                                              _model.textController?.clear();
+                                            });
+                                            _model.farmuser = await FarmsRecord
+                                                .getDocumentOnce(
+                                                    chatConversationChatRecord
+                                                        .farmRef!);
+
+                                            var chatMessagesRecordReference =
+                                                ChatMessagesRecord.createDoc(
+                                                    chatConversationChatRecord
+                                                        .reference);
+                                            await chatMessagesRecordReference
+                                                .set(
+                                                    createChatMessagesRecordData(
+                                              createdAt: getCurrentTimestamp,
+                                              chatRef:
+                                                  chatConversationChatRecord
+                                                      .reference,
+                                              sender: currentUserReference,
+                                              receiver:
+                                                  _model.farmuser?.userRef,
+                                              message: _model.chatmsg,
+                                              messageTime: getCurrentTimestamp,
+                                              image: _model
+                                                  .uploadedFileUrl_uploadDataFvf,
+                                            ));
+                                            _model.chatmessage = ChatMessagesRecord
+                                                .getDocumentFromData(
+                                                    createChatMessagesRecordData(
+                                                      createdAt:
+                                                          getCurrentTimestamp,
+                                                      chatRef:
+                                                          chatConversationChatRecord
+                                                              .reference,
+                                                      sender:
+                                                          currentUserReference,
+                                                      receiver: _model
+                                                          .farmuser?.userRef,
+                                                      message: _model.chatmsg,
+                                                      messageTime:
+                                                          getCurrentTimestamp,
+                                                      image: _model
+                                                          .uploadedFileUrl_uploadDataFvf,
+                                                    ),
+                                                    chatMessagesRecordReference);
+                                            safeSetState(() {
+                                              _model.isDataUploading_uploadDataFvf =
+                                                  false;
+                                              _model.uploadedLocalFile_uploadDataFvf =
+                                                  FFUploadedFile(
+                                                      bytes: Uint8List.fromList(
+                                                          []),
+                                                      originalFilename: '');
+                                              _model.uploadedFileUrl_uploadDataFvf =
+                                                  '';
+                                            });
+
+                                            await chatConversationChatRecord
+                                                .reference
+                                                .update(createChatRecordData(
+                                              lastMessage: _model.chatmsg,
+                                              lastMeesageTime:
+                                                  getCurrentTimestamp,
+                                              seen: false,
+                                            ));
+                                            triggerPushNotification(
+                                              notificationTitle:
+                                                  currentUserDisplayName,
+                                              notificationText: _model.chatmsg!,
+                                              userRefs: [
+                                                _model.farmuser!.userRef!
+                                              ],
+                                              initialPageName:
+                                                  'ProducerChatConversation',
+                                              parameterData: {
+                                                'chatRef':
+                                                    widget!.chatRef?.reference,
+                                              },
+                                            );
+
+                                            await _model.farmuser!.userRef!
+                                                .update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'notification_count':
+                                                      FieldValue.increment(1),
+                                                },
+                                              ),
+                                            });
+                                            _model.chatmsg = null;
+                                            safeSetState(() {});
+                                          }
+
+                                          safeSetState(() {});
+                                        },
+                                      ),
                                     ],
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                        if (containerUsersRecord.isSuspend)
-                          PointerInterceptor(
-                            intercepting: isWeb,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: BackdropFilter(
-                                filter: ImageFilter.blur(
-                                  sigmaX: 4.0,
-                                  sigmaY: 4.0,
-                                ),
-                                child: wrapWithModel(
-                                  model: _model.suspendModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: SuspendWidget(
-                                    action: () async {
-                                      context.pushNamed(
-                                          HelpandsupportWidget.routeName);
-                                    },
-                                  ),
-                                ),
+                      ),
+                    ],
+                  ),
+                  if (valueOrDefault<bool>(
+                      currentUserDocument?.isSuspend, false))
+                    PointerInterceptor(
+                      intercepting: isWeb,
+                      child: AuthUserStreamWidget(
+                        builder: (context) => ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(
+                              sigmaX: 4.0,
+                              sigmaY: 4.0,
+                            ),
+                            child: wrapWithModel(
+                              model: _model.suspendModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: SuspendWidget(
+                                action: () async {
+                                  context.pushNamed(
+                                      HelpandsupportWidget.routeName);
+                                },
                               ),
                             ),
                           ),
-                      ],
+                        ),
+                      ),
                     ),
-                  );
-                },
+                ],
               ),
             ),
           ),

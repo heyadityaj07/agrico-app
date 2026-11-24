@@ -66,9 +66,11 @@ class _FindproductroutWidgetState extends State<FindproductroutWidget> {
                   '7dadt07o' /* Find producers along your rout... */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       letterSpacing: 0.0,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                     ),
               ),
               Padding(
@@ -139,12 +141,16 @@ class _FindproductroutWidgetState extends State<FindproductroutWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -176,12 +182,16 @@ class _FindproductroutWidgetState extends State<FindproductroutWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -229,10 +239,13 @@ class _FindproductroutWidgetState extends State<FindproductroutWidget> {
                     frText: 'Détecter le rayon :',
                   )}${_model.sliderValue?.toString()} km',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         color: FlutterFlowTheme.of(context).textsecondary,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -275,6 +288,7 @@ class _FindproductroutWidgetState extends State<FindproductroutWidget> {
                             frText:
                                 'Veuillez sélectionner votre lieu de destination et votre emplacement.',
                           ),
+                          Colors.red,
                         );
                       }
 
@@ -291,13 +305,17 @@ class _FindproductroutWidgetState extends State<FindproductroutWidget> {
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primarytheme,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Satoshi',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
+                          ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(12.0),
                     ),

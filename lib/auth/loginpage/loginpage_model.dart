@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/data_load_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'loginpage_widget.dart' show LoginpageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
@@ -59,8 +59,12 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   FarmsRecord? farm;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   FarmsRecord? farmcopy;
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel1;
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   FarmsRecord? farmcopys;
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel2;
 
   @override
   void initState(BuildContext context) {
@@ -68,6 +72,8 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
     textFieldPasswordVisibilityFocusNode2 = FocusNode();
     passwordVisibility = false;
     textController2Validator = _textController2Validator;
+    dataLoadModel1 = createModel(context, () => DataLoadModel());
+    dataLoadModel2 = createModel(context, () => DataLoadModel());
   }
 
   @override
@@ -78,5 +84,7 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
     textFieldPasswordVisibilityFocusNode2.dispose();
+    dataLoadModel1.dispose();
+    dataLoadModel2.dispose();
   }
 }

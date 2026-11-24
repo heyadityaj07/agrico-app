@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -67,11 +69,13 @@ class _RemoveProductWidgetState extends State<RemoveProductWidget> {
                   'qp46q46i' /* Remove Product */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 20.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                     ),
               ),
               Padding(
@@ -82,9 +86,12 @@ class _RemoveProductWidgetState extends State<RemoveProductWidget> {
                   ),
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyMediumFamily,
                         color: FlutterFlowTheme.of(context).textsecondary,
                         letterSpacing: 0.0,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                       ),
                 ),
               ),
@@ -92,7 +99,9 @@ class _RemoveProductWidgetState extends State<RemoveProductWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 12.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    await widget!.product!.delete();
+                    await widget!.product!.update(createProductRecordData(
+                      isDeleted: true,
+                    ));
                     await widget.onaction?.call();
                     Navigator.pop(context);
                   },
@@ -108,10 +117,13 @@ class _RemoveProductWidgetState extends State<RemoveProductWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).orange,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
                           color: Colors.white,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(12.0),
@@ -136,10 +148,13 @@ class _RemoveProductWidgetState extends State<RemoveProductWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primarytheme,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
                           color: FlutterFlowTheme.of(context).alternate,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).titleSmallIsCustom,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(12.0),

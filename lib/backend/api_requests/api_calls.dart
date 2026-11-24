@@ -3,6 +3,10 @@ import 'dart:typed_data';
 import '../schema/structs/index.dart';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' show Color, DateTimeRange;
+// Redundant when the data-type schema export already re-exports it.
+// ignore: unnecessary_import
+import 'package:from_css_color/from_css_color.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -652,11 +656,13 @@ class GetDeliveryQuoteCall {
   static Future<ApiCallResponse> call({
     String? pickupAddress = '',
     String? dropoffAddress = '',
+    String? orderId = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "pickup_address": ${pickupAddress == null ? 'null' : '"${escapeStringForJson(pickupAddress)}"'},
-  "dropoff_address": ${dropoffAddress == null ? 'null' : '"${escapeStringForJson(dropoffAddress)}"'}
+  "dropoff_address": ${dropoffAddress == null ? 'null' : '"${escapeStringForJson(dropoffAddress)}"'},
+  "orderId": ${orderId == null ? 'null' : '"${escapeStringForJson(orderId)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getDeliveryQuote',
@@ -768,6 +774,8 @@ class CreateDeliveryCopyCall {
     String? dropoffPhoneNumber = '',
     dynamic? manifestItemsJson,
     String? orderId = '',
+    String? quoteId = '',
+    String? token = '',
   }) async {
     final manifestItems = _serializeJson(manifestItemsJson, true);
     final ffApiRequestBody = '''
@@ -779,12 +787,8 @@ class CreateDeliveryCopyCall {
   "dropoff_name": ${dropoffName == null ? 'null' : '"${escapeStringForJson(dropoffName)}"'},
   "dropoff_phone_number": ${dropoffPhoneNumber == null ? 'null' : '"${escapeStringForJson(dropoffPhoneNumber)}"'},
   "manifest_items": ${manifestItems},
-  "test_specifications": {
-    "robo_courier_specification": {
-      "mode": "auto"
-    }
-  },
-  "manifest_reference": ${orderId == null ? 'null' : '"${escapeStringForJson(orderId)}"'}
+  "manifest_reference": ${orderId == null ? 'null' : '"${escapeStringForJson(orderId)}"'},
+  "quote_id": ${quoteId == null ? 'null' : '"${escapeStringForJson(quoteId)}"'}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createDelivery Copy',
@@ -793,6 +797,7 @@ class CreateDeliveryCopyCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${token}',
       },
       params: {},
       body: ffApiRequestBody,
@@ -846,6 +851,31 @@ class ApiPagingParams {
 String _toEncodable(dynamic item) {
   if (item is DocumentReference) {
     return item.path;
+  }
+  if (item is DateTime) {
+    return item.toIso8601String();
+  }
+  if (item is Color) {
+    return item.toCssString();
+  }
+  if (item is LatLng) {
+    return item.serialize();
+  }
+  if (item is DateTimeRange) {
+    String millis(DateTime d) =>
+        '${d.isUtc ? 'u' : 'l'}${d.millisecondsSinceEpoch}';
+    return '${millis(item.start)}|${millis(item.end)}';
+  }
+  if (item is FFPlace) {
+    return jsonEncode({
+      'latLng': item.latLng.serialize(),
+      'name': item.name,
+      'address': item.address,
+      'city': item.city,
+      'state': item.state,
+      'country': item.country,
+      'zipCode': item.zipCode,
+    });
   }
   return item;
 }

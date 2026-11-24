@@ -1,6 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
+import '/components/data_load_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -61,6 +64,8 @@ class EditProductModel extends FlutterFlowModel<EditProductWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_uploadData14f = '';
 
+  // Model for dataLoad.
+  late DataLoadModel dataLoadModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -110,6 +115,8 @@ class EditProductModel extends FlutterFlowModel<EditProductWidget> {
   // State field(s) for prodcut_categoryDropDown widget.
   String? prodcutCategoryDropDownValue;
   FormFieldController<String>? prodcutCategoryDropDownValueController;
+  // State field(s) for SwitchListTile widget.
+  bool? switchListTileValue;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
@@ -135,6 +142,7 @@ class EditProductModel extends FlutterFlowModel<EditProductWidget> {
 
   @override
   void initState(BuildContext context) {
+    dataLoadModel = createModel(context, () => DataLoadModel());
     textController1Validator = _textController1Validator;
     textController2Validator = _textController2Validator;
     textController3Validator = _textController3Validator;
@@ -143,6 +151,7 @@ class EditProductModel extends FlutterFlowModel<EditProductWidget> {
 
   @override
   void dispose() {
+    dataLoadModel.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 

@@ -1,6 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
+import '/components/data_load_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -81,16 +84,10 @@ class _EditProductWidgetState extends State<EditProductWidget> {
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primarytheme,
-                  ),
-                ),
-              ),
+            return DataLoadWidget(
+              height: 520.0,
+              width: MediaQuery.sizeOf(context).width,
+              cmncolor: FlutterFlowTheme.of(context).card,
             );
           }
 
@@ -130,12 +127,16 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context)
                                           .textprimary,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               FlutterFlowIconButton(
@@ -299,13 +300,21 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                       .getText(
                                                     's62iea1d' /* Tap to upload new Product Imag... */,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
                                                 ),
                                               ),
                                             ),
@@ -313,13 +322,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                         ],
                                       );
                                     } else {
-                                      return Container(
-                                        width: 40.0,
-                                        height: 40.0,
-                                        child:
-                                            custom_widgets.CircleProgessCustom(
-                                          width: 40.0,
+                                      return wrapWithModel(
+                                        model: _model.dataLoadModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: DataLoadWidget(
                                           height: 40.0,
+                                          width: 40.0,
+                                          cmncolor: FlutterFlowTheme.of(context)
+                                              .boderdivder,
                                         ),
                                       );
                                     }
@@ -343,10 +354,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -366,8 +382,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -376,10 +397,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -423,10 +449,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
@@ -453,10 +484,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -476,8 +512,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -486,10 +527,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -533,10 +579,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     maxLines: null,
                                     minLines: 2,
@@ -565,10 +616,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -589,8 +645,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -599,10 +660,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -646,10 +712,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     keyboardType: TextInputType.number,
                                     cursorColor: FlutterFlowTheme.of(context)
@@ -681,10 +752,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -705,8 +781,13 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
@@ -715,10 +796,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textsecondary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .labelMediumIsCustom,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -762,10 +848,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     maxLines: null,
                                     minLines: 1,
@@ -795,10 +886,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -833,8 +929,12 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
                                     'yt980wlm' /* product category */,
@@ -862,221 +962,502 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                               ].divide(SizedBox(height: 8.0)),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Flexible(
-                                  flex: 2,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
-                                        child: Text(
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.center).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 0.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .boderdivder,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 4.0, 0.0, 4.0),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: SwitchListTile.adaptive(
+                                        value: _model.switchListTileValue ??=
+                                            containerProductRecord
+                                                .isVariableWeight,
+                                        onChanged: true
+                                            ? null
+                                            : (newValue) async {
+                                                safeSetState(() =>
+                                                    _model.switchListTileValue =
+                                                        newValue!);
+                                              },
+                                        title: Text(
                                           FFLocalizations.of(context).getText(
-                                            '0x6f6onf' /* Price */,
+                                            'ws6hgozy' /* Variable Weight Product */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
-                                                color:
+                                                fontFamily:
                                                     FlutterFlowTheme.of(context)
-                                                        .textprimary,
+                                                        .bodyMediumFamily,
                                                 letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
                                               ),
                                         ),
-                                      ),
-                                      Container(
-                                        width: 200.0,
-                                        child: TextFormField(
-                                          controller: _model.textController5 ??=
-                                              TextEditingController(
-                                            text: containerProductRecord.price
-                                                .toString(),
-                                          ),
-                                          focusNode: _model.textFieldFocusNode5,
-                                          autofocus: false,
-                                          enabled: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Satoshi',
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            hintText: '3.00',
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Satoshi',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .textsecondary,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .boderdivder,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .boderdivder,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor: Color(0xFFFCFCFC),
+                                        subtitle: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'td0bjodc' /* Sold by weight bracket. Custom... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .labelMedium
                                               .override(
-                                                fontFamily: 'Satoshi',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .textprimary,
+                                                        .textsecondary,
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMediumIsCustom,
                                               ),
-                                          keyboardType: TextInputType.number,
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          enableInteractiveSelection: true,
-                                          validator: _model
-                                              .textController5Validator
-                                              .asValidator(context),
-                                          inputFormatters: [
-                                            FilteringTextInputFormatter.allow(
-                                                RegExp('^\\d+(\\.\\d*)?\$'))
-                                          ],
+                                        ),
+                                        tileColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        activeThumbColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        activeTrackColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primarytheme,
+                                        dense: false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.trailing,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
                                         ),
                                       ),
-                                    ].divide(SizedBox(height: 8.0)),
+                                    ),
                                   ),
                                 ),
-                                Flexible(
-                                  flex: 1,
+                              ),
+                              if (containerProductRecord.isVariableWeight)
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 16.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        (FFCrossAxisAlignment.start)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
                                     children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '83bhr28x' /* Unit */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Satoshi',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .textprimary,
-                                                letterSpacing: 0.0,
-                                              ),
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'ail132cz' /* Weight brackets */,
                                         ),
-                                      ),
-                                      FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .unitDropDownValueController ??=
-                                            FormFieldController<String>(
-                                          _model.unitDropDownValue ??=
-                                              containerProductRecord.unit,
-                                        ),
-                                        options: _model.prodcutCategoryDropDownValue !=
-                                                    null &&
-                                                _model.prodcutCategoryDropDownValue !=
-                                                    ''
-                                            ? functions.productunit(_model
-                                                .prodcutCategoryDropDownValue!)
-                                            : ([]),
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.unitDropDownValue = val),
-                                        width: 200.0,
-                                        height: 40.0,
-                                        textStyle: FlutterFlowTheme.of(context)
+                                        style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .textprimary,
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          'mjreaxgr' /* unit */,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final bracket =
+                                                containerProductRecord
+                                                    .productWeight
+                                                    .toList();
+
+                                            return ListView.separated(
+                                              padding: EdgeInsets.zero,
+                                              primary: false,
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.vertical,
+                                              itemCount: bracket.length,
+                                              separatorBuilder: (_, __) =>
+                                                  SizedBox(height: 8.0),
+                                              itemBuilder:
+                                                  (context, bracketIndex) {
+                                                final bracketItem =
+                                                    bracket[bracketIndex];
+                                                return Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(10.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          (FFMainAxisAlignment
+                                                                  .start)
+                                                              .flutterValue,
+                                                      crossAxisAlignment:
+                                                          (FFCrossAxisAlignment
+                                                                  .start)
+                                                              .flutterValue,
+                                                      textBaseline: TextBaseline
+                                                          .alphabetic,
+                                                      children: [
+                                                        Text(
+                                                          '${bracketItem.minWeight.toString()} - ${bracketItem.maxWeight.toString()} kg',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textprimary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          'Price per kg: €${bracketItem.pricePerKg.toString()}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .textsecondary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumIsCustom,
+                                                              ),
+                                                        ),
+                                                      ].divide(SizedBox(
+                                                          height: 4.0)),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
-                                        icon: Icon(
-                                          Icons.keyboard_arrow_down_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        elevation: 2.0,
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .boderdivder,
-                                        borderWidth: 0.0,
-                                        borderRadius: 8.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 12.0, 0.0),
-                                        hidesUnderline: true,
-                                        isOverButton: false,
-                                        isSearchable: false,
-                                        isMultiSelect: false,
                                       ),
                                     ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 16.0)),
-                            ),
+                            ],
                           ),
+                          if (!containerProductRecord.isVariableWeight)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 16.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Flexible(
+                                    flex: 2,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, -1.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '0x6f6onf' /* Price */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .textprimary,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
+                                                ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 200.0,
+                                          child: TextFormField(
+                                            controller:
+                                                _model.textController5 ??=
+                                                    TextEditingController(
+                                              text: containerProductRecord.price
+                                                  .toString(),
+                                            ),
+                                            focusNode:
+                                                _model.textFieldFocusNode5,
+                                            autofocus: false,
+                                            enabled: true,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              isDense: true,
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts:
+                                                            !FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMediumIsCustom,
+                                                      ),
+                                              hintText: '3.00',
+                                              hintStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textsecondary,
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts:
+                                                        !FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumIsCustom,
+                                                  ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .boderdivder,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .boderdivder,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              filled: true,
+                                              fillColor: Color(0xFFFCFCFC),
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .textprimary,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
+                                                ),
+                                            keyboardType: TextInputType.number,
+                                            cursorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            enableInteractiveSelection: true,
+                                            validator: _model
+                                                .textController5Validator
+                                                .asValidator(context),
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp('^\\d+(\\.\\d*)?\$'))
+                                            ],
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(height: 8.0)),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 1,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, -1.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '83bhr28x' /* Unit */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .textprimary,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
+                                                ),
+                                          ),
+                                        ),
+                                        FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .unitDropDownValueController ??=
+                                              FormFieldController<String>(
+                                            _model.unitDropDownValue ??=
+                                                containerProductRecord.unit,
+                                          ),
+                                          options: _model.prodcutCategoryDropDownValue !=
+                                                      null &&
+                                                  _model.prodcutCategoryDropDownValue !=
+                                                      ''
+                                              ? functions.productunit(_model
+                                                  .prodcutCategoryDropDownValue!)
+                                              : ([]),
+                                          onChanged: (val) => safeSetState(() =>
+                                              _model.unitDropDownValue = val),
+                                          width: 200.0,
+                                          height: 40.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                          hintText: FFLocalizations.of(context)
+                                              .getText(
+                                            'mjreaxgr' /* unit */,
+                                          ),
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .boderdivder,
+                                          borderWidth: 0.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        ),
+                                      ].divide(SizedBox(height: 8.0)),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(width: 16.0)),
+                              ),
+                            ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
@@ -1093,10 +1474,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -1120,8 +1506,12 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         letterSpacing: 0.0,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
                                     'yttnozyb' /* storage Type */,
@@ -1165,10 +1555,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -1248,8 +1643,14 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Satoshi',
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                     ),
                                                   ),
@@ -1304,10 +1705,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .textprimary,
                                             letterSpacing: 0.0,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -1349,10 +1755,15 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 ),
@@ -1431,8 +1842,14 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Satoshi',
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                             letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
                                                           ),
                                                     ),
                                                   ),
@@ -1485,11 +1902,16 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleSmallIsCustom,
                                           ),
                                       elevation: 0.0,
                                       borderRadius: BorderRadius.circular(12.0),
@@ -1600,11 +2022,16 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleSmallIsCustom,
                                           ),
                                       elevation: 0.0,
                                       borderRadius: BorderRadius.circular(12.0),

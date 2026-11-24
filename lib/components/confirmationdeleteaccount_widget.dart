@@ -59,10 +59,12 @@ class _ConfirmationdeleteaccountWidgetState
                 '4yotvi5z' /* Alert */,
               ),
               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Satoshi',
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                     fontSize: 25.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.bold,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                   ),
             ),
             Text(
@@ -71,10 +73,12 @@ class _ConfirmationdeleteaccountWidgetState
               ),
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Satoshi',
+                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                     fontSize: 16.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.bold,
+                    useGoogleFonts:
+                        !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                   ),
             ),
             Row(
@@ -95,13 +99,17 @@ class _ConfirmationdeleteaccountWidgetState
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primarytheme,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Satoshi',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
+                          ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -130,13 +138,17 @@ class _ConfirmationdeleteaccountWidgetState
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).orange,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Satoshi',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).titleSmallFamily,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .titleSmallIsCustom,
+                          ),
                       elevation: 0.0,
                       borderRadius: BorderRadius.circular(8.0),
                     ),

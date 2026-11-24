@@ -112,8 +112,11 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                           ),
                           Text(
@@ -124,12 +127,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily,
                                   color:
                                       FlutterFlowTheme.of(context).textprimary,
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .headlineMediumIsCustom,
                                 ),
                           ),
                         ],
@@ -150,8 +156,8 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                   if (!snapshot.hasData) {
                     return Center(
                       child: SizedBox(
-                        width: 40.0,
-                        height: 40.0,
+                        width: 50,
+                        height: 50,
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.transparent,
@@ -217,10 +223,14 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color: FlutterFlowTheme.of(context).card,
                                       fontSize: 10.0,
                                       letterSpacing: 0.0,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                             ),
@@ -252,16 +262,11 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primarytheme,
-                            ),
-                          ),
-                        ),
+                      return DataLoadWidget(
+                        height: 72.0,
+                        width: MediaQuery.sizeOf(context).width,
+                        cmncolor: FlutterFlowTheme.of(context).boderdivder,
+                        length: 5,
                       );
                     }
                     List<FarmsRecord> stackFarmsRecordList = snapshot.data!;
@@ -294,11 +299,17 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                 future: queryProductRecordCount(
                                                   queryBuilder:
                                                       (productRecord) =>
-                                                          productRecord.where(
-                                                    'user_ref',
-                                                    isEqualTo:
-                                                        currentUserReference,
-                                                  ),
+                                                          productRecord
+                                                              .where(
+                                                                'user_ref',
+                                                                isEqualTo:
+                                                                    currentUserReference,
+                                                              )
+                                                              .where(
+                                                                'is_deleted',
+                                                                isEqualTo:
+                                                                    false,
+                                                              ),
                                                 ),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
@@ -368,13 +379,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             fontSize:
                                                                                 24.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -404,13 +417,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Satoshi',
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .textsecondary,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                       ),
                                                                 ),
                                                               ),
@@ -536,13 +551,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             fontSize:
                                                                                 24.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -571,13 +588,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -706,13 +725,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             fontSize:
                                                                                 24.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -741,13 +762,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -814,11 +837,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                               'axogw25p' /* $ */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontSize: 24.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                         Text(
@@ -830,11 +854,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontSize: 24.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                         if (FFLocalizations.of(context).languageCode !=
@@ -844,11 +869,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                               'ntazoutk' /* € */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontSize: 24.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.bold,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                       ],
@@ -879,13 +905,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Satoshi',
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           color:
                                                                               FlutterFlowTheme.of(context).textsecondary,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
                                                                               FontWeight.w500,
+                                                                          useGoogleFonts:
+                                                                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -939,13 +967,18 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textprimary,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
                                             ),
                                       ),
                                     ),
@@ -1019,8 +1052,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -1031,6 +1065,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Text(
@@ -1046,8 +1084,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1058,6 +1097,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                         overflow:
                                                             TextOverflow.clip,
@@ -1093,19 +1136,26 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: Colors.transparent,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .primarytheme,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallIsCustom,
+                                                          ),
                                                   elevation: 0.0,
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
@@ -1192,8 +1242,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -1204,6 +1255,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Text(
@@ -1217,8 +1272,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1229,6 +1285,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ].divide(
@@ -1263,19 +1323,26 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: Colors.transparent,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .primarytheme,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallIsCustom,
+                                                          ),
                                                   elevation: 0.0,
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
@@ -1362,8 +1429,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -1374,6 +1442,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                       Text(
@@ -1387,8 +1459,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textsecondary,
@@ -1399,6 +1472,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ].divide(
@@ -1432,19 +1509,26 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: Colors.transparent,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Satoshi',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .primarytheme,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallIsCustom,
+                                                          ),
                                                   elevation: 0.0,
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
@@ -1479,18 +1563,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primarytheme,
-                                              ),
-                                            ),
-                                          ),
+                                        return DataLoadWidget(
+                                          height: 150.0,
+                                          width:
+                                              MediaQuery.sizeOf(context).width,
+                                          cmncolor:
+                                              FlutterFlowTheme.of(context).card,
                                         );
                                       }
                                       List<OrderRecord>
@@ -1531,8 +1609,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Satoshi',
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .textprimary,
@@ -1543,6 +1622,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
                                                                 ),
                                                       ),
                                                     ),
@@ -1574,8 +1657,9 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primarytheme,
@@ -1588,6 +1672,10 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                 decoration:
                                                                     TextDecoration
                                                                         .underline,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                       ),
@@ -1665,11 +1753,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textprimary,
                                                                               fontSize: 12.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -1679,10 +1768,11 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               fontSize: 12.0,
                                                                               letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ].divide(SizedBox(
@@ -1737,7 +1827,7 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: () {
                                                                                   if (ordresItem.orderStatus == 'Approved') {
                                                                                     return FlutterFlowTheme.of(context).warning;
@@ -1750,6 +1840,7 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                                   }
                                                                                 }(),
                                                                                 letterSpacing: 0.0,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -1779,7 +1870,7 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textsecondary,
                                                                             fontSize:
@@ -1788,6 +1879,8 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                                 0.0,
                                                                             fontWeight:
                                                                                 FontWeight.normal,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                   ].divide(SizedBox(
@@ -1840,13 +1933,15 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textsecondary,
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                     Row(
@@ -1861,11 +1956,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                               '01us9urq' /* $ */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                         Text(
@@ -1878,11 +1974,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).primarytheme,
                                                                                 fontSize: 16.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w500,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                         if (FFLocalizations.of(context).languageCode ==
@@ -1892,11 +1989,12 @@ class _ProducerHomeWidgetState extends State<ProducerHomeWidget> {
                                                                               'zeymp39y' /* € */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                       ],

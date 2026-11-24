@@ -77,7 +77,7 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                           fit: BoxFit.cover,
                           alignment: AlignmentDirectional(-1.0, 0.0),
                           image: Image.asset(
-                            'assets/images/Page1.png',
+                            'assets/images/Page1_optimisee_500Ko.jpg',
                           ).image,
                         ),
                       ),
@@ -113,12 +113,17 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .offwhite,
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                   Padding(
@@ -132,12 +137,17 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Satoshi',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
                                             color: FlutterFlowTheme.of(context)
                                                 .card,
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .bodyMediumIsCustom,
                                           ),
                                     ),
                                   ),
@@ -168,12 +178,17 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleSmallIsCustom,
                                             ),
                                         elevation: 0.0,
                                         borderRadius:
@@ -205,13 +220,18 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Satoshi',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .titleSmallIsCustom,
                                             ),
                                         elevation: 0.0,
                                         borderSide: BorderSide(
@@ -234,7 +254,7 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: Image.asset(
-                            'assets/images/Page2.png',
+                            'assets/images/Page2_optimisee_500Ko.jpg',
                           ).image,
                         ),
                       ),
@@ -267,12 +287,16 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color:
                                           FlutterFlowTheme.of(context).offwhite,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               Padding(
@@ -286,12 +310,16 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color:
                                             FlutterFlowTheme.of(context).card,
                                         fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -319,10 +347,15 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 0.0,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -351,12 +384,17 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color:
                                               FlutterFlowTheme.of(context).card,
                                           fontSize: 18.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 0.0,
                                     borderSide: BorderSide(
@@ -378,7 +416,7 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: Image.asset(
-                            'assets/images/Page3.png',
+                            'assets/images/Page3_optimisee_500Ko.jpg',
                           ).image,
                         ),
                       ),
@@ -411,12 +449,16 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Satoshi',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
                                       color:
                                           FlutterFlowTheme.of(context).offwhite,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
+                                      useGoogleFonts:
+                                          !FlutterFlowTheme.of(context)
+                                              .bodyMediumIsCustom,
                                     ),
                               ),
                               Padding(
@@ -430,12 +472,16 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Satoshi',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
                                         color:
                                             FlutterFlowTheme.of(context).card,
                                         fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
+                                        useGoogleFonts:
+                                            !FlutterFlowTheme.of(context)
+                                                .bodyMediumIsCustom,
                                       ),
                                 ),
                               ),
@@ -463,10 +509,15 @@ class _OnbordingWidgetState extends State<OnbordingWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .titleSmallIsCustom,
                                         ),
                                     elevation: 0.0,
                                     borderRadius: BorderRadius.circular(12.0),

@@ -165,10 +165,13 @@ class _UploadWidgetState extends State<UploadWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primarytheme,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: FlutterFlowTheme.of(context).alternate,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                       ),
                   elevation: 0.0,
                   borderRadius: BorderRadius.circular(8.0),
@@ -263,10 +266,13 @@ class _UploadWidgetState extends State<UploadWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primarytheme,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Satoshi',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).titleSmallFamily,
                         color: FlutterFlowTheme.of(context).alternate,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
+                        useGoogleFonts:
+                            !FlutterFlowTheme.of(context).titleSmallIsCustom,
                       ),
                   elevation: 0.0,
                   borderRadius: BorderRadius.circular(8.0),

@@ -110,11 +110,14 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                   'fvp7gflh' /* Insights */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Satoshi',
+                      fontFamily:
+                          FlutterFlowTheme.of(context).headlineMediumFamily,
                       color: FlutterFlowTheme.of(context).textprimary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts:
+                          !FlutterFlowTheme.of(context).headlineMediumIsCustom,
                     ),
               ),
             ),
@@ -140,15 +143,13 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primarytheme,
-                            ),
-                          ),
+                      return Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: DataLoadWidget(
+                          height: 100.0,
+                          width: MediaQuery.sizeOf(context).width,
+                          cmncolor: FlutterFlowTheme.of(context).boderdivder,
+                          length: 5,
                         ),
                       );
                     }
@@ -169,10 +170,15 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return DataLoadWidget(
-                                height: MediaQuery.sizeOf(context).height,
-                                width: MediaQuery.sizeOf(context).width,
-                                cmncolor: FlutterFlowTheme.of(context).card,
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                child: DataLoadWidget(
+                                  height: 200.0,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  cmncolor: FlutterFlowTheme.of(context).card,
+                                  length: 6,
+                                ),
                               );
                             }
                             List<OrderRecord> containerOrderRecordList =
@@ -259,11 +265,12 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                                   'kyma505l' /* $ */,
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 24.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.bold,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                             Text(
@@ -275,11 +282,12 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                                 '0',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Satoshi',
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontSize: 24.0,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
+                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                   ),
                                                                             ),
                                                                             if (FFLocalizations.of(context).languageCode !=
@@ -289,11 +297,12 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                                   '84m0jt8i' /* € */,
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Satoshi',
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 24.0,
                                                                                       letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.bold,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
                                                                           ],
@@ -322,10 +331,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -413,10 +423,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 fontSize: 24.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -443,10 +454,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -541,10 +553,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 fontSize: 24.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -571,10 +584,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -662,10 +676,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 fontSize: 24.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -692,10 +707,11 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).textsecondary,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -797,11 +813,17 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                             StreamBuilder<List<ProductRecord>>(
                                               stream: queryProductRecord(
                                                 queryBuilder: (productRecord) =>
-                                                    productRecord.where(
-                                                  'farm_ref',
-                                                  isEqualTo: stackFarmsRecord
-                                                      ?.reference,
-                                                ),
+                                                    productRecord
+                                                        .where(
+                                                          'farm_ref',
+                                                          isEqualTo:
+                                                              stackFarmsRecord
+                                                                  ?.reference,
+                                                        )
+                                                        .where(
+                                                          'is_deleted',
+                                                          isEqualTo: false,
+                                                        ),
                                               ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
@@ -921,8 +943,9 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -932,6 +955,10 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -979,13 +1006,15 @@ Customers */
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textsecondary,
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                     Padding(
@@ -1000,11 +1029,12 @@ Customers */
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Satoshi',
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                               color: FlutterFlowTheme.of(context).primarytheme,
                                                                               fontSize: 18.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1051,13 +1081,15 @@ Value */
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Satoshi',
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).textsecondary,
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            useGoogleFonts:
+                                                                                !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                           ),
                                                                     ),
                                                                     Row(
@@ -1072,11 +1104,12 @@ Value */
                                                                               'mdn0h40p' /* $ */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                         Text(
@@ -1091,11 +1124,12 @@ Value */
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Satoshi',
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                 color: FlutterFlowTheme.of(context).primarytheme,
                                                                                 fontSize: 18.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w500,
+                                                                                useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
                                                                         if (FFLocalizations.of(context).languageCode !=
@@ -1105,11 +1139,12 @@ Value */
                                                                               '9javlu1n' /* € */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: 'Satoshi',
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                   color: FlutterFlowTheme.of(context).primarytheme,
                                                                                   fontSize: 18.0,
                                                                                   letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                 ),
                                                                           ),
                                                                       ],
@@ -1169,8 +1204,9 @@ Value */
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Satoshi',
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .textprimary,
@@ -1180,6 +1216,10 @@ Value */
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
+                                                                useGoogleFonts:
+                                                                    !FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMediumIsCustom,
                                                               ),
                                                         ),
                                                         Padding(
@@ -1209,7 +1249,8 @@ Value */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
@@ -1217,6 +1258,9 @@ Value */
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                               Text(
@@ -1235,7 +1279,8 @@ Value */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textprimary,
@@ -1246,6 +1291,9 @@ Value */
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],
@@ -1313,7 +1361,8 @@ Value */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textsecondary,
@@ -1321,6 +1370,9 @@ Value */
                                                                           12.0,
                                                                       letterSpacing:
                                                                           0.0,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                               Text(
@@ -1334,7 +1386,8 @@ Value */
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Satoshi',
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .textprimary,
@@ -1345,6 +1398,9 @@ Value */
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
+                                                                      useGoogleFonts:
+                                                                          !FlutterFlowTheme.of(context)
+                                                                              .bodyMediumIsCustom,
                                                                     ),
                                                               ),
                                                             ],

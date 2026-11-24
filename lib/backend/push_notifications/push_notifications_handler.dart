@@ -90,9 +90,9 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Color(0xFFF3EEDD),
+          color: Colors.transparent,
           child: Image.asset(
-            'assets/images/271AB6CA-9646-4315-9BF1-9E5A6E351536.PNG',
+            'assets/images/Agricou512.png',
             fit: BoxFit.contain,
           ),
         )
@@ -250,6 +250,12 @@ final parametersBuilderMap =
         },
       ),
   'ProducerTerm': ParameterData.none(),
+  'WeightBalance': (data) async => ParameterData(
+        allParams: {
+          'orderRef': getParameter<DocumentReference>(data, 'orderRef'),
+        },
+      ),
+  'HomePageCopy': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

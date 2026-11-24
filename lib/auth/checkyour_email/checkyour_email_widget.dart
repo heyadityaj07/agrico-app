@@ -76,12 +76,16 @@ class _CheckyourEmailWidgetState extends State<CheckyourEmailWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textprimary,
                                     fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -99,12 +103,16 @@ class _CheckyourEmailWidgetState extends State<CheckyourEmailWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .textsecondary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .bodyMediumIsCustom,
                                   ),
                             ),
                           ),
@@ -148,11 +156,15 @@ class _CheckyourEmailWidgetState extends State<CheckyourEmailWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 0.0,
                               borderRadius: BorderRadius.circular(12.0),
@@ -196,11 +208,15 @@ class _CheckyourEmailWidgetState extends State<CheckyourEmailWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Satoshi',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
+                                    useGoogleFonts:
+                                        !FlutterFlowTheme.of(context)
+                                            .titleSmallIsCustom,
                                   ),
                               elevation: 0.0,
                               borderRadius: BorderRadius.circular(12.0),

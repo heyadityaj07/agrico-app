@@ -116,12 +116,15 @@ class _ProducerNavbarWidgetState extends State<ProducerNavbarWidget> {
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: widget!.index == 0
                                 ? FlutterFlowTheme.of(context).primarytheme
                                 : FlutterFlowTheme.of(context).textsecondary,
                             fontSize: widget!.index == 0 ? 18.0 : 16.0,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -164,12 +167,15 @@ class _ProducerNavbarWidgetState extends State<ProducerNavbarWidget> {
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: widget!.index == 1
                                 ? FlutterFlowTheme.of(context).primarytheme
                                 : FlutterFlowTheme.of(context).textsecondary,
                             fontSize: widget!.index == 1 ? 18.0 : 16.0,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -212,12 +218,15 @@ class _ProducerNavbarWidgetState extends State<ProducerNavbarWidget> {
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: widget!.index == 2
                                 ? FlutterFlowTheme.of(context).primarytheme
                                 : FlutterFlowTheme.of(context).textsecondary,
                             fontSize: widget!.index == 2 ? 18.0 : 16.0,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],
@@ -260,12 +269,15 @@ class _ProducerNavbarWidgetState extends State<ProducerNavbarWidget> {
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Satoshi',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
                             color: widget!.index == 3
                                 ? FlutterFlowTheme.of(context).primarytheme
                                 : FlutterFlowTheme.of(context).textsecondary,
                             fontSize: widget!.index == 3 ? 18.0 : 16.0,
                             letterSpacing: 0.0,
+                            useGoogleFonts: !FlutterFlowTheme.of(context)
+                                .bodyMediumIsCustom,
                           ),
                     ),
                   ],

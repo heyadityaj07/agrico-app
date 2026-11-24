@@ -109,12 +109,17 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textprimary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -151,7 +156,8 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Satoshi',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
                                   color: () {
                                     if (containerOrderRecord
                                             .review.reviewStatus ==
@@ -168,6 +174,8 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                                     }
                                   }(),
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: !FlutterFlowTheme.of(context)
+                                      .bodyMediumIsCustom,
                                 ),
                           ),
                         ),
@@ -204,18 +212,12 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 40.0,
-                                              height: 40.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  Colors.transparent,
-                                                ),
-                                              ),
-                                            ),
+                                          return DataLoadWidget(
+                                            height: 24.0,
+                                            width: 180.0,
+                                            cmncolor:
+                                                FlutterFlowTheme.of(context)
+                                                    .card,
                                           );
                                         }
 
@@ -229,13 +231,20 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Satoshi',
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .textprimary,
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
+                                                  useGoogleFonts:
+                                                      !FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumIsCustom,
                                                 ),
                                           ),
                                         );
@@ -251,17 +260,10 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 40.0,
-                                      height: 40.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          Colors.transparent,
-                                        ),
-                                      ),
-                                    ),
+                                  return DataLoadWidget(
+                                    height: 24.0,
+                                    width: 140.0,
+                                    cmncolor: FlutterFlowTheme.of(context).card,
                                   );
                                 }
 
@@ -274,10 +276,15 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Satoshi',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .textsecondary,
                                           letterSpacing: 0.0,
+                                          useGoogleFonts:
+                                              !FlutterFlowTheme.of(context)
+                                                  .bodyMediumIsCustom,
                                         ),
                                   ),
                                 );
@@ -309,11 +316,14 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                   Text(
                     containerOrderRecord.review.comment,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Satoshi',
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyMediumFamily,
                           color: FlutterFlowTheme.of(context).textprimary,
                           fontSize: 14.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
+                          useGoogleFonts:
+                              !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                         ),
                   ),
                 StreamBuilder<FarmsRecord>(
@@ -367,10 +377,13 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                           locale: FFLocalizations.of(context).languageCode,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Satoshi',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).textsecondary,
                               fontSize: 14.0,
                               letterSpacing: 0.0,
+                              useGoogleFonts: !FlutterFlowTheme.of(context)
+                                  .bodyMediumIsCustom,
                             ),
                       ),
                       Builder(
