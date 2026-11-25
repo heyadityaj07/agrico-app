@@ -33,6 +33,8 @@ export '/custom_code/actions/update_order_fulfilment_status.dart'
     show updateOrderFulfilmentStatus;
 export '/custom_code/actions/start_checkout_payment.dart'
     show startCheckoutPayment;
+export '/custom_code/actions/resume_interrupted_checkout.dart'
+    show resumeInterruptedCheckout;
 export '/custom_code/actions/reject_order.dart' show rejectOrder;
 export '/custom_code/actions/reconcile_uber_delivery.dart'
     show reconcileUberDelivery;

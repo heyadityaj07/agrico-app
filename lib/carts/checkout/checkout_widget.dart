@@ -58,6 +58,9 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
       _model.farmpickup = null;
       _model.deliveryMethod = null;
       safeSetState(() {});
+      // F7: resume an interrupted checkout (read-only reconciliation; the
+      // action never creates orders, quotes, bindings or payment intents).
+      await actions.resumeInterruptedCheckout(context);
     });
 
     _model.textController1 ??= TextEditingController(
