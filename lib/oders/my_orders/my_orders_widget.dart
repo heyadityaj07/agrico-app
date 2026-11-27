@@ -267,7 +267,13 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                       .where(
                                         'is_suspend',
                                         isEqualTo: false,
-                                      ),
+                                      )
+                                      .whereIn('checkout_state', [
+                                    'payment_confirmed',
+                                    'refund_pending',
+                                    'refunded',
+                                    'reconciliation_required'
+                                  ]),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -979,7 +985,13 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                       .where(
                                         'is_suspend',
                                         isEqualTo: false,
-                                      ),
+                                      )
+                                      .whereIn('checkout_state', [
+                                    'payment_confirmed',
+                                    'refund_pending',
+                                    'refunded',
+                                    'reconciliation_required'
+                                  ]),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -989,7 +1001,7 @@ class _MyOrdersWidgetState extends State<MyOrdersWidget> {
                                       width: MediaQuery.sizeOf(context).width,
                                       cmncolor:
                                           FlutterFlowTheme.of(context).card,
-                                      length: 6,
+                                      length: 4,
                                     );
                                   }
                                   List<OrderRecord> containerOrderRecordList =

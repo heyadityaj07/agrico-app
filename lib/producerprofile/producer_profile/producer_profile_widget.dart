@@ -408,11 +408,17 @@ class _ProducerProfileWidgetState extends State<ProducerProfileWidget> {
                                             StreamBuilder<List<OrderRecord>>(
                                               stream: queryOrderRecord(
                                                 queryBuilder: (orderRecord) =>
-                                                    orderRecord.where(
-                                                  'farm_ref',
-                                                  isEqualTo: columnFarmsRecord
-                                                      ?.reference,
-                                                ),
+                                                    orderRecord
+                                                        .where(
+                                                          'producer_visible',
+                                                          isEqualTo: true,
+                                                        )
+                                                        .where(
+                                                          'farm_ref',
+                                                          isEqualTo:
+                                                              columnFarmsRecord
+                                                                  ?.reference,
+                                                        ),
                                               ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.

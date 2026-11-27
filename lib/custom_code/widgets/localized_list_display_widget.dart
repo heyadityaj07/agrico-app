@@ -33,41 +33,65 @@ class LocalizedListDisplayWidget extends StatefulWidget {
 class _LocalizedListDisplayWidgetState
     extends State<LocalizedListDisplayWidget> {
   String _getTranslatedText(String item) {
-    if (item == 'Monsoon') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Monsoon', frText: 'Mousson');
-    } else if (item == 'Winter') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Winter', frText: 'Hiver');
-    } else if (item == 'Summer') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Summer', frText: 'Été');
-    } else if (item == 'Spring') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Spring', frText: 'Printemps');
-    } else if (item == 'Autumn') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Autumn', frText: 'Automne');
-    } else if (item == 'Organic') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Organic', frText: 'Biologique');
-    } else if (item == 'Pesticide-Free') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Pesticide-Free', frText: 'Sans pesticide');
-    } else if (item == 'Local Harvest') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Local Harvest', frText: 'Récolte locale');
-    } else if (item == 'Seasonal') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Seasonal', frText: 'De saison');
-    } else if (item == 'Farm Fresh') {
-      return FFLocalizations.of(context)
-          .getVariableText(enText: 'Farm Fresh', frText: 'Frais de la ferme');
-    } else if (item == 'Naturally Ripened') {
-      return FFLocalizations.of(context).getVariableText(
-          enText: 'Naturally Ripened', frText: 'Mûri naturellement');
-    }
-    return item;
+    const Map<String, String> translations = {
+      // Seasons
+      'Spring': 'Printemps',
+      'Summer': 'Été',
+      'Autumn': 'Automne',
+      'Winter': 'Hiver',
+      'Monsoon': 'Mousson',
+      'Dry Season': 'Saison sèche',
+      'Rainy Season': 'Saison des pluies',
+      'Year-round': "Toute l'année",
+
+      // Common production practices
+      'Organic': 'Biologique',
+      'Conventional': 'Conventionnel',
+      'Integrated Farming': 'Agriculture raisonnée',
+      'Regenerative Agriculture': 'Agriculture régénératrice',
+      'Agroecology': 'Agroécologie',
+      'Biodynamic': 'Biodynamie',
+      'Traditional Production': 'Production traditionnelle',
+      'Artisanal Production': 'Production artisanale',
+      'Non-GMO': 'Sans OGM',
+
+      // Plant production
+      'Permaculture': 'Permaculture',
+      'Pesticide-Free': 'Sans pesticides',
+      'No Synthetic Pesticides': 'Sans pesticides de synthèse',
+      'No Herbicides': 'Sans herbicides',
+      'Open Field': 'Cultivé en plein champ',
+      'Greenhouse Grown': 'Cultivé sous serre',
+      'Naturally Ripened': 'Mûri naturellement',
+
+      // Animal production
+      'Antibiotic-Free': 'Sans antibiotiques',
+      'Raised Without Vaccination': 'Élevé sans vaccination',
+      'Hormone-Free': 'Sans hormones',
+      'Free-Range': 'Élevé en plein air',
+      'Grass-Fed': "Nourri à l'herbe",
+      'Pasture-Raised': 'Élevé au pâturage',
+
+      // Beekeeping
+      'Raw Honey': 'Miel brut',
+      'Unheated Honey': 'Miel non chauffé',
+
+      // Processed products
+      'Farm Processed': 'Transformé à la ferme',
+      'No Added Preservatives': 'Sans conservateurs ajoutés',
+      'No Added Colors': 'Sans colorants ajoutés',
+      'No Added Sugar': 'Sans sucres ajoutés',
+
+      // Legacy values
+      'Local Harvest': 'Récolte locale',
+      'Seasonal': 'De saison',
+      'Farm Fresh': 'Frais de la ferme',
+    };
+
+    return FFLocalizations.of(context).getVariableText(
+      enText: item,
+      frText: translations[item] ?? item,
+    );
   }
 
   @override

@@ -1302,76 +1302,45 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                             TextOverflow.clip,
                                                                       ),
                                                                     ),
-                                                                    StreamBuilder<
-                                                                        List<
-                                                                            OrderRecord>>(
-                                                                      stream:
-                                                                          queryOrderRecord(
-                                                                        queryBuilder:
-                                                                            (orderRecord) =>
-                                                                                orderRecord.where(
-                                                                          'farm_ref',
-                                                                          isEqualTo:
-                                                                              rowFarmsRecord.reference,
+                                                                    Container(
+                                                                      decoration:
+                                                                          BoxDecoration(),
+                                                                      child:
+                                                                          Visibility(
+                                                                        visible:
+                                                                            rowFarmsRecord.reviewCount >
+                                                                                0,
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0.0,
+                                                                              8.0,
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Icon(
+                                                                                Icons.star,
+                                                                                color: FlutterFlowTheme.of(context).harvestYellow,
+                                                                                size: 24.0,
+                                                                              ),
+                                                                              Text(
+                                                                                '${rowFarmsRecord.averageRating.toString()}(${rowFarmsRecord.reviewCount.toString()} Reviews )',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                      color: FlutterFlowTheme.of(context).textsecondary,
+                                                                                      fontSize: 14.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                      useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
-                                                                      builder:
-                                                                          (context,
-                                                                              snapshot) {
-                                                                        // Customize what your widget looks like when it's loading.
-                                                                        if (!snapshot
-                                                                            .hasData) {
-                                                                          return Center(
-                                                                            child:
-                                                                                SizedBox(
-                                                                              width: 40.0,
-                                                                              height: 40.0,
-                                                                              child: CircularProgressIndicator(
-                                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                  Colors.transparent,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                        }
-                                                                        List<OrderRecord>
-                                                                            containerOrderRecordList =
-                                                                            snapshot.data!;
-
-                                                                        return Container(
-                                                                          decoration:
-                                                                              BoxDecoration(),
-                                                                          child:
-                                                                              Visibility(
-                                                                            visible:
-                                                                                containerOrderRecordList.where((e) => (e.levaeReview == true) && (e.review.reviewStatus == 'Approved')).toList().length != 0,
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                children: [
-                                                                                  Icon(
-                                                                                    Icons.star,
-                                                                                    color: FlutterFlowTheme.of(context).harvestYellow,
-                                                                                    size: 24.0,
-                                                                                  ),
-                                                                                  Text(
-                                                                                    '${(functions.avargeRating(containerOrderRecordList.map((e) => e.review.rate).toList()).clamp(0.0, 5.0)).toString()}(${containerOrderRecordList.where((e) => (e.levaeReview == true) && (e.review.reviewStatus == 'Approved')).toList().length.toString()} Reviews )',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                          color: FlutterFlowTheme.of(context).textsecondary,
-                                                                                          fontSize: 14.0,
-                                                                                          letterSpacing: 0.0,
-                                                                                          useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                                                                                        ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
                                                                     ),
                                                                   ].divide(SizedBox(
                                                                       height:

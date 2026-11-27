@@ -58,6 +58,9 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
       _model.farmpickup = null;
       _model.deliveryMethod = null;
       safeSetState(() {});
+      await actions.resumeInterruptedCheckout(
+        context,
+      );
     });
 
     _model.textController1 ??= TextEditingController(
@@ -1247,8 +1250,6 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                                                             0.0;
                                                                         safeSetState(
                                                                             () {});
-                                                                        _model.deliveryMethod =
-                                                                            null;
                                                                         _model.isAgricodeliver =
                                                                             false;
                                                                         safeSetState(

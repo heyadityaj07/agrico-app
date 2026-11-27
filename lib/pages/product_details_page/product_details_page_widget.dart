@@ -956,16 +956,21 @@ class _ProductDetailsPageWidgetState extends State<ProductDetailsPageWidget> {
                                   ),
                                 StreamBuilder<List<OrderRecord>>(
                                   stream: queryOrderRecord(
-                                    queryBuilder: (orderRecord) =>
-                                        orderRecord.where(
-                                      'order_items',
-                                      arrayContains: getOrderItemsFirestoreData(
-                                        OrderItemsStruct(
-                                          productRef: widget!.product,
+                                    queryBuilder: (orderRecord) => orderRecord
+                                        .where(
+                                          'order_items',
+                                          arrayContains:
+                                              getOrderItemsFirestoreData(
+                                            OrderItemsStruct(
+                                              productRef: widget!.product,
+                                            ),
+                                            true,
+                                          ),
+                                        )
+                                        .where(
+                                          'producer_visible',
+                                          isEqualTo: true,
                                         ),
-                                        true,
-                                      ),
-                                    ),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.

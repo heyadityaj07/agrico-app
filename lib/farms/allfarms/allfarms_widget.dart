@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -999,88 +998,51 @@ class _AllfarmsWidgetState extends State<AllfarmsWidget> {
                                                                       ),
                                                                 ),
                                                               ),
-                                                              StreamBuilder<
-                                                                  List<
-                                                                      OrderRecord>>(
-                                                                stream:
-                                                                    queryOrderRecord(
-                                                                  queryBuilder:
-                                                                      (orderRecord) =>
-                                                                          orderRecord
-                                                                              .where(
-                                                                    'farm_ref',
-                                                                    isEqualTo:
-                                                                        containerVarItem
-                                                                            .reference,
+                                                              Container(
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child:
+                                                                    Visibility(
+                                                                  visible:
+                                                                      valueOrDefault<
+                                                                              int>(
+                                                                            containerVarItem.reviewCount,
+                                                                            0,
+                                                                          ) >
+                                                                          0,
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .star,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .harvestYellow,
+                                                                        size:
+                                                                            24.0,
+                                                                      ),
+                                                                      Text(
+                                                                        '${containerVarItem.averageRating.toString()}(${containerVarItem.reviewCount.toString()}${FFLocalizations.of(context).getVariableText(
+                                                                          enText:
+                                                                              ' Reviews )',
+                                                                          frText:
+                                                                              ' Commentaires )',
+                                                                        )}',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              color: FlutterFlowTheme.of(context).textsecondary,
+                                                                              fontSize: 14.0,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                            ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
-                                                                builder: (context,
-                                                                    snapshot) {
-                                                                  // Customize what your widget looks like when it's loading.
-                                                                  if (!snapshot
-                                                                      .hasData) {
-                                                                    return Center(
-                                                                      child:
-                                                                          SizedBox(
-                                                                        width:
-                                                                            50,
-                                                                        height:
-                                                                            50,
-                                                                        child:
-                                                                            CircularProgressIndicator(
-                                                                          valueColor:
-                                                                              AlwaysStoppedAnimation<Color>(
-                                                                            Colors.transparent,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  }
-                                                                  List<OrderRecord>
-                                                                      containerOrderRecordList =
-                                                                      snapshot
-                                                                          .data!;
-
-                                                                  return Container(
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child:
-                                                                        Visibility(
-                                                                      visible: containerOrderRecordList
-                                                                              .where((e) => (e.levaeReview == true) && (e.review.reviewStatus == 'Approved'))
-                                                                              .toList()
-                                                                              .length !=
-                                                                          0,
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Icon(
-                                                                            Icons.star,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).harvestYellow,
-                                                                            size:
-                                                                                24.0,
-                                                                          ),
-                                                                          Text(
-                                                                            '${(functions.avargeRating(containerOrderRecordList.map((e) => e.review.rate).toList()).clamp(0.0, 5.0)).toString()}(${containerOrderRecordList.where((e) => (e.levaeReview == true) && (e.review.reviewStatus == 'Approved')).toList().length.toString()}${FFLocalizations.of(context).getVariableText(
-                                                                              enText: ' Reviews )',
-                                                                              frText: ' Commentaires )',
-                                                                            )}',
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  color: FlutterFlowTheme.of(context).textsecondary,
-                                                                                  fontSize: 14.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                                                                                ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                },
                                                               ),
                                                             ].divide(SizedBox(
                                                                 height: 4.0)),

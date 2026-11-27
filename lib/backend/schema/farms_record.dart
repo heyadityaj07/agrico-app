@@ -181,6 +181,16 @@ class FarmsRecord extends FirestoreRecord {
   String get farmAddress => _farmAddress ?? '';
   bool hasFarmAddress() => _farmAddress != null;
 
+  // "average_rating" field.
+  double? _averageRating;
+  double get averageRating => _averageRating ?? 0.0;
+  bool hasAverageRating() => _averageRating != null;
+
+  // "review_count" field.
+  int? _reviewCount;
+  int get reviewCount => _reviewCount ?? 0;
+  bool hasReviewCount() => _reviewCount != null;
+
   void _initializeFields() {
     _farmProfilePhoto = snapshotData['farm_profile_photo'] as String?;
     _farmPhotos = getDataList(snapshotData['farm_photos']);
@@ -228,6 +238,8 @@ class FarmsRecord extends FirestoreRecord {
                 snapshotData['SelfManagedSetup']);
     _agricooDelivery = snapshotData['agricoo_delivery'] as bool?;
     _farmAddress = snapshotData['farm_address'] as String?;
+    _averageRating = castToType<double>(snapshotData['average_rating']);
+    _reviewCount = castToType<int>(snapshotData['review_count']);
   }
 
   static CollectionReference get collection =>
@@ -290,6 +302,8 @@ Map<String, dynamic> createFarmsRecordData({
   FarmDeliveryAreasStruct? selfManagedSetup,
   bool? agricooDelivery,
   String? farmAddress,
+  double? averageRating,
+  int? reviewCount,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -320,6 +334,8 @@ Map<String, dynamic> createFarmsRecordData({
       'SelfManagedSetup': FarmDeliveryAreasStruct().toMap(),
       'agricoo_delivery': agricooDelivery,
       'farm_address': farmAddress,
+      'average_rating': averageRating,
+      'review_count': reviewCount,
     }.withoutNulls,
   );
 
@@ -377,7 +393,9 @@ class FarmsRecordDocumentEquality implements Equality<FarmsRecord> {
             e2?.doyouofferyourowndeliveryservice &&
         e1?.selfManagedSetup == e2?.selfManagedSetup &&
         e1?.agricooDelivery == e2?.agricooDelivery &&
-        e1?.farmAddress == e2?.farmAddress;
+        e1?.farmAddress == e2?.farmAddress &&
+        e1?.averageRating == e2?.averageRating &&
+        e1?.reviewCount == e2?.reviewCount;
   }
 
   @override
@@ -413,7 +431,9 @@ class FarmsRecordDocumentEquality implements Equality<FarmsRecord> {
         e?.doyouofferyourowndeliveryservice,
         e?.selfManagedSetup,
         e?.agricooDelivery,
-        e?.farmAddress
+        e?.farmAddress,
+        e?.averageRating,
+        e?.reviewCount
       ]);
 
   @override

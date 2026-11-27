@@ -186,11 +186,18 @@ class _MyprofileWidgetState extends State<MyprofileWidget> {
                                         child: FutureBuilder<int>(
                                           future: queryOrderRecordCount(
                                             queryBuilder: (orderRecord) =>
-                                                orderRecord.where(
+                                                orderRecord
+                                                    .where(
                                               'user_ref',
                                               isEqualTo: containerUsersRecord
                                                   .reference,
-                                            ),
+                                            )
+                                                    .whereIn('checkout_state', [
+                                              'payment_confirmed',
+                                              'refund_pending',
+                                              'refunded',
+                                              'reconciliation_required'
+                                            ]),
                                           ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.

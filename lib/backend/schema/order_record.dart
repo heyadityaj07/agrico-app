@@ -217,6 +217,16 @@ class OrderRecord extends FirestoreRecord {
   int get refundAttempt => _refundAttempt ?? 0;
   bool hasRefundAttempt() => _refundAttempt != null;
 
+  // "producer_visible" field.
+  bool? _producerVisible;
+  bool get producerVisible => _producerVisible ?? false;
+  bool hasProducerVisible() => _producerVisible != null;
+
+  // "checkout_state" field.
+  String? _checkoutState;
+  String get checkoutState => _checkoutState ?? '';
+  bool hasCheckoutState() => _checkoutState != null;
+
   void _initializeFields() {
     _totalAmmount = castToType<double>(snapshotData['total_ammount']);
     _note = snapshotData['note'] as String?;
@@ -268,6 +278,8 @@ class OrderRecord extends FirestoreRecord {
     _refundAmount = castToType<double>(snapshotData['refund_amount']);
     _refundId = snapshotData['refund_id'] as String?;
     _refundAttempt = castToType<int>(snapshotData['refund_attempt']);
+    _producerVisible = snapshotData['producer_visible'] as bool?;
+    _checkoutState = snapshotData['checkout_state'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -342,6 +354,8 @@ Map<String, dynamic> createOrderRecordData({
   double? refundAmount,
   String? refundId,
   int? refundAttempt,
+  bool? producerVisible,
+  String? checkoutState,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -384,6 +398,8 @@ Map<String, dynamic> createOrderRecordData({
       'refund_amount': refundAmount,
       'refund_id': refundId,
       'refund_attempt': refundAttempt,
+      'producer_visible': producerVisible,
+      'checkout_state': checkoutState,
     }.withoutNulls,
   );
 
@@ -442,7 +458,9 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e1?.refundStatus == e2?.refundStatus &&
         e1?.refundAmount == e2?.refundAmount &&
         e1?.refundId == e2?.refundId &&
-        e1?.refundAttempt == e2?.refundAttempt;
+        e1?.refundAttempt == e2?.refundAttempt &&
+        e1?.producerVisible == e2?.producerVisible &&
+        e1?.checkoutState == e2?.checkoutState;
   }
 
   @override
@@ -486,7 +504,9 @@ class OrderRecordDocumentEquality implements Equality<OrderRecord> {
         e?.refundStatus,
         e?.refundAmount,
         e?.refundId,
-        e?.refundAttempt
+        e?.refundAttempt,
+        e?.producerVisible,
+        e?.checkoutState
       ]);
 
   @override

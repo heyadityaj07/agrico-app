@@ -12,7 +12,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/reviewcard/reviewcard_widget.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' hide Type;
 import 'package:styled_divider/styled_divider.dart';
@@ -22,6 +21,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:provider/provider.dart';
 import 'farm_profile_model.dart';
@@ -237,78 +237,47 @@ class _FarmProfileWidgetState extends State<FarmProfileWidget> {
                                     ),
                               ),
                             ),
-                            StreamBuilder<List<OrderRecord>>(
-                              stream: queryOrderRecord(
-                                queryBuilder: (orderRecord) =>
-                                    orderRecord.where(
-                                  'farm_ref',
-                                  isEqualTo: columnFarmsRecord.reference,
+                            Container(
+                              decoration: BoxDecoration(),
+                              child: Visibility(
+                                visible: columnFarmsRecord.reviewCount > 0,
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: FlutterFlowTheme.of(context)
+                                            .harvestYellow,
+                                        size: 24.0,
+                                      ),
+                                      Text(
+                                        '${columnFarmsRecord.averageRating.toString()}(${columnFarmsRecord.reviewCount.toString()}${FFLocalizations.of(context).getVariableText(
+                                          enText: ' Reviews )',
+                                          frText: 'Commentaires )',
+                                        )}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .textsecondary,
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return DataLoadWidget(
-                                    height: 24.0,
-                                    width: 140.0,
-                                    cmncolor: FlutterFlowTheme.of(context).card,
-                                  );
-                                }
-                                List<OrderRecord> containerOrderRecordList =
-                                    snapshot.data!;
-
-                                return Container(
-                                  decoration: BoxDecoration(),
-                                  child: Visibility(
-                                    visible: containerOrderRecordList
-                                            .where((e) =>
-                                                (e.levaeReview == true) &&
-                                                (e.review.reviewStatus ==
-                                                    'Approved'))
-                                            .toList()
-                                            .length !=
-                                        0,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Icon(
-                                            Icons.star,
-                                            color: FlutterFlowTheme.of(context)
-                                                .harvestYellow,
-                                            size: 24.0,
-                                          ),
-                                          Text(
-                                            '${(functions.avargeRating(containerOrderRecordList.map((e) => e.review.rate).toList()).clamp(0.0, 5.0)).toString()}(${containerOrderRecordList.where((e) => (e.levaeReview == true) && (e.review.reviewStatus == 'Approved')).toList().length.toString()}${FFLocalizations.of(context).getVariableText(
-                                              enText: ' Reviews )',
-                                              frText: 'Commentaires )',
-                                            )}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textsecondary,
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts:
-                                                      !FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumIsCustom,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -1700,74 +1669,87 @@ class _FarmProfileWidgetState extends State<FarmProfileWidget> {
                                           child: Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(),
-                                            child: StreamBuilder<
-                                                List<OrderRecord>>(
-                                              stream: queryOrderRecord(
-                                                queryBuilder: (orderRecord) =>
-                                                    orderRecord
-                                                        .where(
-                                                          'levae_review',
-                                                          isEqualTo: true,
-                                                        )
-                                                        .where(
-                                                          'review.review_status',
-                                                          isEqualTo: 'Approved',
-                                                        )
-                                                        .orderBy(
-                                                            'review.created_at',
-                                                            descending: true),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return DataLoadWidget(
-                                                    height: 100.0,
-                                                    width: MediaQuery.sizeOf(
-                                                            context)
-                                                        .width,
-                                                    cmncolor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .offwhite,
-                                                    length: 6,
-                                                  );
-                                                }
-                                                List<OrderRecord>
-                                                    columnOrderRecordList =
-                                                    snapshot.data!;
-                                                if (columnOrderRecordList
-                                                    .isEmpty) {
-                                                  return Center(
-                                                    child: NoChatProducerWidget(
-                                                      message: 'No reviews yet',
-                                                      submsg:
-                                                          'This farm hasn’t received any reviews so far. Be the first to share your experience.',
-                                                      index: 0,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                PagedListView<
+                                                    DocumentSnapshot<Object?>?,
+                                                    PublicReviewsRecord>.separated(
+                                                  pagingController: _model
+                                                      .setListViewController(
+                                                          PublicReviewsRecord
+                                                                  .collection(
+                                                                      widget!
+                                                                          .farm)
+                                                              .orderBy(
+                                                                  'created_at',
+                                                                  descending:
+                                                                      true),
+                                                          parent: widget!.farm),
+                                                  padding: EdgeInsets.zero,
+                                                  primary: false,
+                                                  shrinkWrap: true,
+                                                  reverse: false,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  separatorBuilder: (_, __) =>
+                                                      SizedBox(height: 8.0),
+                                                  builderDelegate:
+                                                      PagedChildBuilderDelegate<
+                                                          PublicReviewsRecord>(
+                                                    // Customize what your widget looks like when it's loading the first page.
+                                                    firstPageProgressIndicatorBuilder:
+                                                        (_) => DataLoadWidget(
+                                                      height: 100.0,
+                                                      width: MediaQuery.sizeOf(
+                                                              context)
+                                                          .width,
+                                                      cmncolor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .offwhite,
+                                                      length: 6,
                                                     ),
-                                                  );
-                                                }
-
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: List.generate(
-                                                      columnOrderRecordList
-                                                          .length,
-                                                      (columnIndex) {
-                                                    final columnOrderRecord =
-                                                        columnOrderRecordList[
-                                                            columnIndex];
-                                                    return ReviewcardWidget(
-                                                      key: Key(
-                                                          'Keyzyi_${columnIndex}_of_${columnOrderRecordList.length}'),
-                                                      orderRef:
-                                                          columnOrderRecord
-                                                              .reference,
-                                                    );
-                                                  }).divide(
-                                                      SizedBox(height: 16.0)),
-                                                );
-                                              },
+                                                    // Customize what your widget looks like when it's loading another page.
+                                                    newPageProgressIndicatorBuilder:
+                                                        (_) => DataLoadWidget(
+                                                      height: 100.0,
+                                                      width: MediaQuery.sizeOf(
+                                                              context)
+                                                          .width,
+                                                      cmncolor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .offwhite,
+                                                      length: 6,
+                                                    ),
+                                                    noItemsFoundIndicatorBuilder:
+                                                        (_) => Center(
+                                                      child:
+                                                          NoChatProducerWidget(
+                                                        message:
+                                                            'No reviews yet',
+                                                        submsg:
+                                                            'This farm hasn’t received any reviews so far. Be the first to share your experience.',
+                                                        index: 0,
+                                                      ),
+                                                    ),
+                                                    itemBuilder: (context, _,
+                                                        listViewIndex) {
+                                                      final listViewPublicReviewsRecord =
+                                                          _model.listViewPagingController!
+                                                                  .itemList![
+                                                              listViewIndex];
+                                                      return ReviewcardWidget(
+                                                        key: Key(
+                                                            'Keycu5_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
+                                                        review:
+                                                            listViewPublicReviewsRecord,
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         );
@@ -2194,7 +2176,7 @@ class _FarmProfileWidgetState extends State<FarmProfileWidget> {
                                                                                                         ),
                                                                                                   ),
                                                                                                 ),
-                                                                                              if (viewallItem.isVariableWeight)
+                                                                                              if (!viewallItem.isVariableWeight)
                                                                                                 StreamBuilder<List<CartRecord>>(
                                                                                                   stream: queryCartRecord(
                                                                                                     parent: currentUserReference,

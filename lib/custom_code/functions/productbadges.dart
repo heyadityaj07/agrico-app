@@ -16,53 +16,64 @@ import '/flutter_flow/ff_builtin_enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 List<String> productbadges(String category) {
+  final List<String> commonBadges = [
+    'Organic',
+    'Conventional',
+    'Integrated Farming',
+    'Regenerative Agriculture',
+    'Agroecology',
+    'Biodynamic',
+    'Traditional Production',
+    'Artisanal Production',
+    'Non-GMO',
+  ];
+
+  final List<String> plantBadges = [
+    'Permaculture',
+    'Pesticide-Free',
+    'No Synthetic Pesticides',
+    'No Herbicides',
+    'Open Field',
+    'Greenhouse Grown',
+  ];
+
+  final List<String> animalBadges = [
+    'Antibiotic-Free',
+    'Raised Without Vaccination',
+    'Hormone-Free',
+    'Free-Range',
+    'Grass-Fed',
+    'Pasture-Raised',
+  ];
+
   final Map<String, List<String>> categoryBadges = {
     'Fruits': [
-      'Organic',
-      'Pesticide-Free',
-      'Local Harvest',
+      ...plantBadges,
       'Naturally Ripened',
-      'Seasonal',
-      'Farm Fresh',
     ],
-    'Vegetables': [
-      'Organic',
-      'Pesticide-Free',
-      'Local Harvest',
-      'Seasonal',
-      'Farm Fresh',
-    ],
-    'Meat': [
-      'Organic',
-      'Antibiotic-Free',
-      'Hormone-Free',
+    'Vegetables': plantBadges,
+    'Grains': plantBadges,
+    'Meat': animalBadges,
+    'Milk': animalBadges,
+    'Eggs': [
       'Free-Range',
-      'Grass-Fed',
-      'Local Harvest',
-      'Farm Fresh',
+      'Antibiotic-Free',
+      'Raised Without Vaccination',
     ],
-    'Milk': [
-      'Organic',
-      'Hormone-Free',
-      'Grass-Fed',
-      'Local Harvest',
-      'Farm Fresh',
+    'Honey': [
+      'Raw Honey',
+      'Unheated Honey',
     ],
-    'Grains': [
-      'Organic',
-      'Pesticide-Free',
-      'Non-GMO',
-      'Local Harvest',
-      'Seasonal',
+    'Grocery': [
+      'Farm Processed',
+      'No Added Preservatives',
+      'No Added Colors',
+      'No Added Sugar',
     ],
   };
 
-  return categoryBadges[category] ??
-      [
-        'Organic',
-        'Pesticide-Free',
-        'Local Harvest',
-        'Seasonal',
-        'Farm Fresh',
-      ];
+  return [
+    ...commonBadges,
+    ...?categoryBadges[category],
+  ].toSet().toList();
 }

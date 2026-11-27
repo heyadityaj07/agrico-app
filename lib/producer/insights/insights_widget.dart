@@ -162,10 +162,15 @@ class _InsightsWidgetState extends State<InsightsWidget> {
                       children: [
                         StreamBuilder<List<OrderRecord>>(
                           stream: queryOrderRecord(
-                            queryBuilder: (orderRecord) => orderRecord.where(
-                              'farm_ref',
-                              isEqualTo: stackFarmsRecord?.reference,
-                            ),
+                            queryBuilder: (orderRecord) => orderRecord
+                                .where(
+                                  'farm_ref',
+                                  isEqualTo: stackFarmsRecord?.reference,
+                                )
+                                .where(
+                                  'producer_visible',
+                                  isEqualTo: true,
+                                ),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.

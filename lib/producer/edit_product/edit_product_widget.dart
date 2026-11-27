@@ -1750,7 +1750,7 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                   alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '73a1naw5' /* Badge */,
+                                      '73a1naw5' /* Product characteristics */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -1994,11 +1994,10 @@ class _EditProductWidgetState extends State<EditProductWidget> {
                                         ...mapToFirestore(
                                           {
                                             'sesson': _model.selectedsession,
-                                            'badges': _model
-                                                    .selectedbedge.isNotEmpty
-                                                ? _model.selectedbedge
-                                                : functions
-                                                    .productbadges('product'),
+                                            'badges':
+                                                _model.selectedbedge.isNotEmpty
+                                                    ? _model.selectedbedge
+                                                    : (<String>[]),
                                           },
                                         ),
                                       });

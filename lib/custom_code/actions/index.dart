@@ -38,3 +38,5 @@ export '/custom_code/actions/reconcile_uber_delivery.dart'
     show reconcileUberDelivery;
 export '/custom_code/actions/resolve_uber_dispatch_context.dart'
     show resolveUberDispatchContext;
+export '/custom_code/actions/resume_interrupted_checkout.dart'
+    show resumeInterruptedCheckout;

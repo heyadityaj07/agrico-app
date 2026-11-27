@@ -88,7 +88,7 @@ dependencies:
       path: flutter_keyboard_visibility_web
       ref: b39c1d0ca1671458e4daf3eea2ebe11741f9bcf3
   flutter_keyboard_visibility_windows: 1.0.0
-  flutter_local_notifications:
+  flutter_local_notifications: ^23.0.4
   flutter_plugin_android_lifecycle: 2.0.35
   flutter_rating_bar: 4.0.1
   flutter_stripe: 14.1.0

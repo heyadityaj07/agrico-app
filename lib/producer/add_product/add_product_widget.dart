@@ -1049,641 +1049,624 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               ),
                             ),
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 16.0, 0.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            (FFCrossAxisAlignment.start)
-                                                .flutterValue,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                -1.0, -1.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'zjub8rso' /* Min Weight (kg) */,
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .textprimary,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumIsCustom,
-                                                  ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: double.infinity,
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.minTextController,
-                                              focusNode: _model.minFocusNode,
-                                              onChanged: (_) =>
-                                                  EasyDebounce.debounce(
-                                                '_model.minTextController',
-                                                Duration(milliseconds: 0),
-                                                () => safeSetState(() {}),
-                                              ),
-                                              autofocus: false,
-                                              enabled: true,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                isDense: true,
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMediumIsCustom,
-                                                        ),
-                                                hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'psxxhgcl' /* eg. 2.0 */,
-                                                ),
-                                                hintStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .textsecondary,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .boderdivder,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .boderdivder,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                filled: true,
-                                                fillColor: Color(0xFFFCFCFC),
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .textprimary,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumIsCustom,
-                                                  ),
-                                              keyboardType:
-                                                  (FFKeyboardType.decimal)
-                                                      .flutterValue,
-                                              cursorColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              enableInteractiveSelection: true,
-                                              validator: _model
-                                                  .minTextControllerValidator
-                                                  .asValidator(context),
-                                              inputFormatters: [
-                                                FilteringTextInputFormatter
-                                                    .allow(RegExp('[0-9]'))
-                                              ],
-                                            ),
-                                          ),
-                                        ].divide(SizedBox(height: 8.0)),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 16.0, 0.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            (FFCrossAxisAlignment.start)
-                                                .flutterValue,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                -1.0, -1.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'p9hihk4m' /* Max Weight (kg) */,
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .textprimary,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumIsCustom,
-                                                  ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: double.infinity,
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.maxTextController,
-                                              focusNode: _model.maxFocusNode,
-                                              onChanged: (_) =>
-                                                  EasyDebounce.debounce(
-                                                '_model.maxTextController',
-                                                Duration(milliseconds: 0),
-                                                () => safeSetState(() {}),
-                                              ),
-                                              autofocus: false,
-                                              enabled: true,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                isDense: true,
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts:
-                                                              !FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMediumIsCustom,
-                                                        ),
-                                                hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '5vsdomqp' /* eg.3.0 */,
-                                                ),
-                                                hintStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .textsecondary,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts:
-                                                          !FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumIsCustom,
-                                                    ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .boderdivder,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .boderdivder,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                filled: true,
-                                                fillColor: Color(0xFFFCFCFC),
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .textprimary,
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts:
-                                                        !FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumIsCustom,
-                                                  ),
-                                              keyboardType:
-                                                  (FFKeyboardType.decimal)
-                                                      .flutterValue,
-                                              cursorColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              enableInteractiveSelection: true,
-                                              validator: _model
-                                                  .maxTextControllerValidator
-                                                  .asValidator(context),
-                                              inputFormatters: [
-                                                FilteringTextInputFormatter
-                                                    .allow(RegExp('[0-9]'))
-                                              ],
-                                            ),
-                                          ),
-                                        ].divide(SizedBox(height: 8.0)),
-                                      ),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(width: 8.0)),
-                              ),
-                              if (((_model.minTextController.text != null &&
-                                          _model.minTextController.text !=
-                                              '') &&
-                                      ((double.parse(
-                                              _model.minTextController.text)) >
-                                          0.0)) &&
-                                  ((_model.maxTextController.text != null &&
-                                          _model.maxTextController.text !=
-                                              '') &&
-                                      ((double.parse(
-                                              _model.maxTextController.text)) >
-                                          0.0)) &&
-                                  ((double.parse(
-                                          _model.maxTextController.text)) <=
-                                      (double.parse(
-                                          _model.minTextController.text))))
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'xhht7u4h' /* Max weight must be greater tha... */,
-                                      ),
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts:
-                                                !FlutterFlowTheme.of(context)
-                                                    .bodyMediumIsCustom,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 16.0, 0.0, 0.0),
-                                child: Column(
+                          if (_model.weightProduct)
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'k1xjnrbl' /* Price  per kg */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .textprimary,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .bodyMediumIsCustom,
-                                            ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      child: TextFormField(
-                                        controller: _model.priceTextController2,
-                                        focusNode: _model.priceFocusNode2,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.priceTextController2',
-                                          Duration(milliseconds: 0),
-                                          () => safeSetState(() {}),
-                                        ),
-                                        autofocus: false,
-                                        enabled: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          isDense: true,
-                                          labelStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelMediumIsCustom,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 16.0, 0.0, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              (FFCrossAxisAlignment.start)
+                                                  .flutterValue,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.0, -1.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'zjub8rso' /* Min Weight (kg) */,
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .textprimary,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
                                               ),
-                                          hintText: '3.33',
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .textsecondary,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts:
-                                                    !FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelMediumIsCustom,
-                                              ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .boderdivder,
-                                              width: 1.0,
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .boderdivder,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          filled: true,
-                                          fillColor: Color(0xFFFCFCFC),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .textprimary,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts:
-                                                  !FlutterFlowTheme.of(context)
-                                                      .bodyMediumIsCustom,
-                                            ),
-                                        keyboardType: TextInputType.number,
-                                        cursorColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        enableInteractiveSelection: true,
-                                        validator: _model
-                                            .priceTextController2Validator
-                                            .asValidator(context),
-                                        inputFormatters: [
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp('^\\d+(\\.\\d*)?\$'))
-                                        ],
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(height: 8.0)),
-                                ),
-                              ),
-                              if (_model.switchListTileValue ?? true)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 16.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .boderdivder,
-                                        width: 1.5,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(14.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Icon(
-                                                Icons.calculate_outlined,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primarytheme,
-                                                size: 18.0,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'ge5t7npx' /* Live Pricing Breakdown */,
-                                                  ),
-                                                  style:
+                                            Container(
+                                              width: double.infinity,
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.minTextController,
+                                                focusNode: _model.minFocusNode,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.minTextController',
+                                                  Duration(milliseconds: 0),
+                                                  () => safeSetState(() {}),
+                                                ),
+                                                autofocus: false,
+                                                enabled: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMedium
+                                                          .labelMedium
                                                           .override(
                                                             fontFamily:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMediumFamily,
+                                                                    .labelMediumFamily,
                                                             letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
                                                             useGoogleFonts:
                                                                 !FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMediumIsCustom,
+                                                                    .labelMediumIsCustom,
                                                           ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'psxxhgcl' /* eg. 2.0 */,
+                                                  ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .textsecondary,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .boderdivder,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .boderdivder,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor: Color(0xFFFCFCFC),
                                                 ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .textprimary,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                                keyboardType:
+                                                    (FFKeyboardType.decimal)
+                                                        .flutterValue,
+                                                cursorColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                enableInteractiveSelection:
+                                                    true,
+                                                validator: _model
+                                                    .minTextControllerValidator
+                                                    .asValidator(context),
+                                                inputFormatters: [
+                                                  FilteringTextInputFormatter
+                                                      .allow(RegExp('[0-9]'))
+                                                ],
                                               ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x1F2E7D32),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          6.0),
+                                            ),
+                                          ].divide(SizedBox(height: 8.0)),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 16.0, 0.0, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              (FFCrossAxisAlignment.start)
+                                                  .flutterValue,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.0, -1.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'p9hihk4m' /* Max Weight (kg) */,
                                                 ),
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 3.0, 8.0, 3.0),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .textprimary,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.maxTextController,
+                                                focusNode: _model.maxFocusNode,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.maxTextController',
+                                                  Duration(milliseconds: 0),
+                                                  () => safeSetState(() {}),
+                                                ),
+                                                autofocus: false,
+                                                enabled: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '5vsdomqp' /* eg.3.0 */,
+                                                  ),
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .textsecondary,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumIsCustom,
+                                                          ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .boderdivder,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .boderdivder,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor: Color(0xFFFCFCFC),
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .textprimary,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumIsCustom,
+                                                    ),
+                                                keyboardType:
+                                                    (FFKeyboardType.decimal)
+                                                        .flutterValue,
+                                                cursorColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                enableInteractiveSelection:
+                                                    true,
+                                                validator: _model
+                                                    .maxTextControllerValidator
+                                                    .asValidator(context),
+                                                inputFormatters: [
+                                                  FilteringTextInputFormatter
+                                                      .allow(RegExp('[0-9]'))
+                                                ],
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(height: 8.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(width: 8.0)),
+                                ),
+                                if (((_model.minTextController.text != null && _model.minTextController.text != '') && ((double.parse(_model.minTextController.text)) > 0.0)) &&
+                                    ((_model.maxTextController.text != null &&
+                                            _model.maxTextController.text !=
+                                                '') &&
+                                        ((double.parse(_model
+                                                .maxTextController.text)) >
+                                            0.0)) &&
+                                    ((double.parse(
+                                            _model.maxTextController.text)) <=
+                                        (double.parse(
+                                            _model.minTextController.text))))
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'xhht7u4h' /* Max weight must be greater tha... */,
+                                        ),
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .orange,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts:
+                                                  !FlutterFlowTheme.of(context)
+                                                      .bodyMediumIsCustom,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 16.0, 0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, -1.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'k1xjnrbl' /* Price  per kg */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .textprimary,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: double.infinity,
+                                        child: TextFormField(
+                                          controller:
+                                              _model.priceTextController2,
+                                          focusNode: _model.priceFocusNode2,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.priceTextController2',
+                                            Duration(milliseconds: 0),
+                                            () => safeSetState(() {}),
+                                          ),
+                                          autofocus: false,
+                                          enabled: true,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMediumFamily,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMediumIsCustom,
+                                                    ),
+                                            hintText: '3.33',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMediumFamily,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .textsecondary,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts:
+                                                          !FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMediumIsCustom,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .boderdivder,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .boderdivder,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            filled: true,
+                                            fillColor: Color(0xFFFCFCFC),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .textprimary,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts:
+                                                    !FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMediumIsCustom,
+                                              ),
+                                          keyboardType: TextInputType.number,
+                                          cursorColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          enableInteractiveSelection: true,
+                                          validator: _model
+                                              .priceTextController2Validator
+                                              .asValidator(context),
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter.allow(
+                                                RegExp('^\\d+(\\.\\d*)?\$'))
+                                          ],
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(height: 8.0)),
+                                  ),
+                                ),
+                                if (_model.switchListTileValue ?? true)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 16.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .boderdivder,
+                                          width: 1.5,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(14.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Icon(
+                                                  Icons.calculate_outlined,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primarytheme,
+                                                  size: 18.0,
+                                                ),
+                                                Expanded(
                                                   child: Text(
-                                                    '${formatNumber(
-                                                      _model.config
-                                                          ?.weightProductDeposit,
-                                                      formatType:
-                                                          FormatType.custom,
-                                                      format: '#.##',
-                                                      locale: '',
-                                                    )}% Deposit Rule',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'ge5t7npx' /* Live Pricing Breakdown */,
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1692,10 +1675,6 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyMediumFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primarytheme,
-                                                          fontSize: 11.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -1706,540 +1685,592 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                                                         ),
                                                   ),
                                                 ),
-                                              ),
-                                            ].divide(SizedBox(width: 6.0)),
-                                          ),
-                                          Divider(
-                                            thickness: 2.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .boderdivder,
-                                          ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              wrapWithModel(
-                                                model:
-                                                    _model.caculationCardModel1,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: CaculationCardWidget(
-                                                  label: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'e0ydd297' /* Est. Weight Range: */,
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x1F2E7D32),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6.0),
                                                   ),
-                                                  value: ((_model.minTextController.text !=
-                                                                      null &&
-                                                                  _model.minTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model
-                                                                      .minTextController
-                                                                      .text)) >
-                                                                  0.0)) &&
-                                                          ((_model.maxTextController.text !=
-                                                                      null &&
-                                                                  _model.maxTextController
-                                                                          .text !=
-                                                                      '') &&
-                                                              ((double.parse(_model
-                                                                      .maxTextController
-                                                                      .text)) >
-                                                                  0.0))
-                                                      ? '${formatNumber(
-                                                          double.parse(_model
-                                                              .minTextController
-                                                              .text),
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#.##',
-                                                          locale: '',
-                                                        )} - ${formatNumber(
-                                                          double.parse(_model
-                                                              .maxTextController
-                                                              .text),
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#.##',
-                                                          locale: '',
-                                                        )} kg (Avg: ${formatNumber(
-                                                          ((double.parse(_model
-                                                                      .minTextController
-                                                                      .text)) +
-                                                                  (double.parse(_model
-                                                                      .maxTextController
-                                                                      .text))) /
-                                                              2,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#.##',
-                                                          locale: '',
-                                                        )} kg)'
-                                                      : '--',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textprimary,
-                                                ),
-                                              ),
-                                              wrapWithModel(
-                                                model:
-                                                    _model.caculationCardModel2,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: CaculationCardWidget(
-                                                  label: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '0e6xbxpj' /* Estimated Average Price: */,
-                                                  ),
-                                                  value: ((_model
-                                                                          .minTextController
-                                                                          .text !=
-                                                                      null &&
-                                                                  _model.minTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.minTextController.text)) >
-                                                                  0.0)) &&
-                                                          ((_model.maxTextController.text !=
-                                                                      null &&
-                                                                  _model.maxTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.maxTextController.text)) >
-                                                                  0.0)) &&
-                                                          ((_model.priceTextController2.text !=
-                                                                      null &&
-                                                                  _model.priceTextController2.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.priceTextController2.text)) >
-                                                                  0.0))
-                                                      ? formatNumber(
-                                                          (((double.parse(_model
-                                                                          .minTextController
-                                                                          .text)) +
-                                                                      (double.parse(_model
-                                                                          .maxTextController
-                                                                          .text))) /
-                                                                  2) *
-                                                              (double.parse(_model
-                                                                  .priceTextController2
-                                                                  .text)),
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#.##',
-                                                          locale: '',
-                                                        )
-                                                      : '--',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textprimary,
-                                                ),
-                                              ),
-                                              wrapWithModel(
-                                                model:
-                                                    _model.caculationCardModel3,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: CaculationCardWidget(
-                                                  label:
-                                                      'Deposit due at checkout (${formatNumber(
-                                                    _model.config
-                                                        ?.weightProductDeposit,
-                                                    formatType:
-                                                        FormatType.custom,
-                                                    format: '#.##',
-                                                    locale: '',
-                                                  )}%):',
-                                                  value: ((_model
-                                                                          .minTextController
-                                                                          .text !=
-                                                                      null &&
-                                                                  _model.minTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.minTextController.text)) >
-                                                                  0.0)) &&
-                                                          ((_model.maxTextController.text !=
-                                                                      null &&
-                                                                  _model.maxTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.maxTextController.text)) >
-                                                                  0.0)) &&
-                                                          ((_model.priceTextController2.text !=
-                                                                      null &&
-                                                                  _model.priceTextController2.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.priceTextController2.text)) > 0.0))
-                                                      ? formatNumber(
-                                                          ((((double.parse(_model
-                                                                              .minTextController
-                                                                              .text)) +
-                                                                          (double.parse(_model
-                                                                              .maxTextController
-                                                                              .text))) /
-                                                                      2) *
-                                                                  (double.parse(_model
-                                                                      .priceTextController2
-                                                                      .text))) *
-                                                              (_model.config!
-                                                                      .weightProductDeposit /
-                                                                  100),
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#.##',
-                                                          locale: '',
-                                                        )
-                                                      : '--',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                              wrapWithModel(
-                                                model:
-                                                    _model.caculationCardModel4,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: CaculationCardWidget(
-                                                  label:
-                                                      'Remaining balance on delivery (${formatNumber(
-                                                    100 -
-                                                        _model.config!
-                                                            .weightProductDeposit,
-                                                    formatType:
-                                                        FormatType.custom,
-                                                    format: '#.##',
-                                                    locale: '',
-                                                  )}%):',
-                                                  value: ((_model
-                                                                          .minTextController
-                                                                          .text !=
-                                                                      null &&
-                                                                  _model.minTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.minTextController.text)) >
-                                                                  0.0)) &&
-                                                          ((_model.maxTextController.text !=
-                                                                      null &&
-                                                                  _model.maxTextController.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.maxTextController.text)) >
-                                                                  0.0)) &&
-                                                          ((_model.priceTextController2.text !=
-                                                                      null &&
-                                                                  _model.priceTextController2.text !=
-                                                                      '') &&
-                                                              ((double.parse(_model.priceTextController2.text)) > 0.0))
-                                                      ? formatNumber(
-                                                          ((((double.parse(_model
-                                                                              .minTextController
-                                                                              .text)) +
-                                                                          (double.parse(_model
-                                                                              .maxTextController
-                                                                              .text))) /
-                                                                      2) *
-                                                                  (double.parse(_model
-                                                                      .priceTextController2
-                                                                      .text))) *
-                                                              ((100 -
-                                                                      _model
-                                                                          .config!
-                                                                          .weightProductDeposit) /
-                                                                  100),
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#.##',
-                                                          locale: '',
-                                                        )
-                                                      : '--',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .textprimary,
-                                                ),
-                                              ),
-                                            ].divide(SizedBox(height: 6.0)),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 16.0, 0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    if (_model.minTextController.text == null ||
-                                        _model.minTextController.text == '') {
-                                      await actions.toast(
-                                        context,
-                                        'Enter minimum weight',
-                                        Colors.red,
-                                      );
-                                      return;
-                                    } else if (_model.maxTextController.text ==
-                                            null ||
-                                        _model.maxTextController.text == '') {
-                                      await actions.toast(
-                                        context,
-                                        'Enter maximum weight',
-                                        Colors.red,
-                                      );
-                                      return;
-                                    } else if (_model.priceTextController2.text ==
-                                            null ||
-                                        _model.priceTextController2.text ==
-                                            '') {
-                                      await actions.toast(
-                                        context,
-                                        'Enter price per kg',
-                                        Colors.red,
-                                      );
-                                      return;
-                                    } else if ((_model.selectedWeightBrackets
-                                            .isNotEmpty) &&
-                                        (_model.selectedWeightBrackets
-                                            .where((e) =>
-                                                (_model.minTextController.text ==
-                                                    e.minWeight.toString()) &&
-                                                (_model.maxTextController.text ==
-                                                    e.maxWeight.toString()))
-                                            .toList()
-                                            .isNotEmpty)) {
-                                      await actions.toast(
-                                        context,
-                                        'This weight bracket already exists',
-                                        Colors.red,
-                                      );
-                                      return;
-                                    } else if ((double.parse(_model.priceTextController2.text)) <=
-                                        0.0) {
-                                      await actions.toast(
-                                        context,
-                                        'Enter a valid price per kg',
-                                        Colors.red,
-                                      );
-                                      return;
-                                    } else if ((double.parse(
-                                            _model.maxTextController.text)) <=
-                                        (double.parse(_model.minTextController.text))) {
-                                      await actions.toast(
-                                        context,
-                                        'Max weight must be greater than Min weight',
-                                        Colors.red,
-                                      );
-                                      return;
-                                    }
-
-                                    _model.addToSelectedWeightBrackets(
-                                        ProductWeightStruct(
-                                      minWeight: double.tryParse(
-                                          _model.minTextController.text),
-                                      maxWeight: double.tryParse(
-                                          _model.maxTextController.text),
-                                      pricePerKg: double.tryParse(
-                                          _model.priceTextController2.text),
-                                    ));
-                                    safeSetState(() {});
-                                    safeSetState(() {
-                                      _model.maxTextController?.clear();
-                                      _model.priceTextController2?.clear();
-                                      _model.minTextController?.clear();
-                                    });
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'fpp2fuoz' /* Add weight bracket */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primarytheme,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          useGoogleFonts:
-                                              !FlutterFlowTheme.of(context)
-                                                  .titleSmallIsCustom,
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                ),
-                              ),
-                              if (_model.selectedWeightBrackets.isNotEmpty)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final bracket = _model
-                                          .selectedWeightBrackets
-                                          .toList();
-
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: bracket.length,
-                                        itemBuilder: (context, bracketIndex) {
-                                          final bracketItem =
-                                              bracket[bracketIndex];
-                                          return Container(
-                                            width: double.infinity,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  (FFMainAxisAlignment.start)
-                                                      .flutterValue,
-                                              crossAxisAlignment:
-                                                  (FFCrossAxisAlignment.center)
-                                                      .flutterValue,
-                                              textBaseline:
-                                                  TextBaseline.alphabetic,
-                                              children: [
-                                                Expanded(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(10.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          (FFMainAxisAlignment
-                                                                  .start)
-                                                              .flutterValue,
-                                                      crossAxisAlignment:
-                                                          (FFCrossAxisAlignment
-                                                                  .start)
-                                                              .flutterValue,
-                                                      textBaseline: TextBaseline
-                                                          .alphabetic,
-                                                      children: [
-                                                        Text(
-                                                          '${formatNumber(
-                                                            bracketItem
-                                                                .minWeight,
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 3.0,
+                                                                8.0, 3.0),
+                                                    child: Text(
+                                                      '${formatNumber(
+                                                        _model.config
+                                                            ?.weightProductDeposit,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        format: '#.##',
+                                                        locale: '',
+                                                      )}% Deposit Rule',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primarytheme,
+                                                            fontSize: 11.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                !FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumIsCustom,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ].divide(SizedBox(width: 6.0)),
+                                            ),
+                                            Divider(
+                                              thickness: 2.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .boderdivder,
+                                            ),
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .caculationCardModel1,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: CaculationCardWidget(
+                                                    label: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      'e0ydd297' /* Est. Weight Range: */,
+                                                    ),
+                                                    value: ((_model.minTextController.text !=
+                                                                        null &&
+                                                                    _model.minTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model
+                                                                        .minTextController
+                                                                        .text)) >
+                                                                    0.0)) &&
+                                                            ((_model.maxTextController
+                                                                            .text !=
+                                                                        null &&
+                                                                    _model.maxTextController
+                                                                            .text !=
+                                                                        '') &&
+                                                                ((double.parse(_model
+                                                                        .maxTextController
+                                                                        .text)) >
+                                                                    0.0))
+                                                        ? '${formatNumber(
+                                                            double.parse(_model
+                                                                .minTextController
+                                                                .text),
                                                             formatType:
                                                                 FormatType
                                                                     .custom,
                                                             format: '#.##',
                                                             locale: '',
                                                           )} - ${formatNumber(
-                                                            bracketItem
-                                                                .maxWeight,
+                                                            double.parse(_model
+                                                                .maxTextController
+                                                                .text),
                                                             formatType:
                                                                 FormatType
                                                                     .custom,
                                                             format: '#.##',
                                                             locale: '',
-                                                          )} kg',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .textprimary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts:
-                                                                    !FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMediumIsCustom,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          'Price per kg: ${formatNumber(
-                                                            bracketItem
-                                                                .pricePerKg,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#.##',
-                                                            locale: '',
-                                                          )} | Avg. weight: ${formatNumber(
-                                                            (bracketItem.minWeight +
-                                                                    bracketItem
-                                                                        .maxWeight) /
+                                                          )} kg (Avg: ${formatNumber(
+                                                            ((double.parse(_model
+                                                                        .minTextController
+                                                                        .text)) +
+                                                                    (double.parse(_model
+                                                                        .maxTextController
+                                                                        .text))) /
                                                                 2,
                                                             formatType:
                                                                 FormatType
                                                                     .custom,
                                                             format: '#.##',
                                                             locale: '',
-                                                          )} kg',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .textsecondary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts:
-                                                                    !FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMediumIsCustom,
-                                                              ),
-                                                        ),
-                                                      ].divide(SizedBox(
-                                                          height: 4.0)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  buttonSize: 44.0,
-                                                  icon: Icon(
-                                                    Icons.delete_outline,
+                                                          )} kg)'
+                                                        : '--',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .error,
-                                                    size: 20.0,
+                                                        .textprimary,
                                                   ),
-                                                  onPressed: () async {
-                                                    _model
-                                                        .removeFromSelectedWeightBrackets(
-                                                            bracketItem);
-                                                    safeSetState(() {});
-                                                  },
                                                 ),
-                                              ].divide(SizedBox(width: 8.0)),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .caculationCardModel2,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: CaculationCardWidget(
+                                                    label: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      '0e6xbxpj' /* Estimated Average Price: */,
+                                                    ),
+                                                    value: ((_model
+                                                                            .minTextController
+                                                                            .text !=
+                                                                        null &&
+                                                                    _model.minTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.minTextController.text)) >
+                                                                    0.0)) &&
+                                                            ((_model.maxTextController.text !=
+                                                                        null &&
+                                                                    _model.maxTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.maxTextController.text)) >
+                                                                    0.0)) &&
+                                                            ((_model.priceTextController2.text !=
+                                                                        null &&
+                                                                    _model.priceTextController2.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.priceTextController2.text)) >
+                                                                    0.0))
+                                                        ? formatNumber(
+                                                            (((double.parse(_model
+                                                                            .minTextController
+                                                                            .text)) +
+                                                                        (double.parse(_model
+                                                                            .maxTextController
+                                                                            .text))) /
+                                                                    2) *
+                                                                (double.parse(_model
+                                                                    .priceTextController2
+                                                                    .text)),
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '#.##',
+                                                            locale: '',
+                                                          )
+                                                        : '--',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textprimary,
+                                                  ),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .caculationCardModel3,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: CaculationCardWidget(
+                                                    label:
+                                                        'Deposit due at checkout (${formatNumber(
+                                                      _model.config
+                                                          ?.weightProductDeposit,
+                                                      formatType:
+                                                          FormatType.custom,
+                                                      format: '#.##',
+                                                      locale: '',
+                                                    )}%):',
+                                                    value: ((_model
+                                                                            .minTextController
+                                                                            .text !=
+                                                                        null &&
+                                                                    _model.minTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.minTextController.text)) >
+                                                                    0.0)) &&
+                                                            ((_model.maxTextController.text !=
+                                                                        null &&
+                                                                    _model.maxTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.maxTextController.text)) >
+                                                                    0.0)) &&
+                                                            ((_model.priceTextController2.text !=
+                                                                        null &&
+                                                                    _model.priceTextController2.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.priceTextController2.text)) > 0.0))
+                                                        ? formatNumber(
+                                                            ((((double.parse(_model.minTextController.text)) +
+                                                                            (double.parse(_model
+                                                                                .maxTextController.text))) /
+                                                                        2) *
+                                                                    (double.parse(_model
+                                                                        .priceTextController2
+                                                                        .text))) *
+                                                                (_model.config!
+                                                                        .weightProductDeposit /
+                                                                    100),
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '#.##',
+                                                            locale: '',
+                                                          )
+                                                        : '--',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .caculationCardModel4,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: CaculationCardWidget(
+                                                    label:
+                                                        'Remaining balance on delivery (${formatNumber(
+                                                      100 -
+                                                          _model.config!
+                                                              .weightProductDeposit,
+                                                      formatType:
+                                                          FormatType.custom,
+                                                      format: '#.##',
+                                                      locale: '',
+                                                    )}%):',
+                                                    value: ((_model
+                                                                            .minTextController
+                                                                            .text !=
+                                                                        null &&
+                                                                    _model.minTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.minTextController.text)) >
+                                                                    0.0)) &&
+                                                            ((_model.maxTextController.text !=
+                                                                        null &&
+                                                                    _model.maxTextController.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.maxTextController.text)) >
+                                                                    0.0)) &&
+                                                            ((_model.priceTextController2.text !=
+                                                                        null &&
+                                                                    _model.priceTextController2.text !=
+                                                                        '') &&
+                                                                ((double.parse(_model.priceTextController2.text)) > 0.0))
+                                                        ? formatNumber(
+                                                            ((((double.parse(_model.minTextController.text)) +
+                                                                            (double.parse(_model
+                                                                                .maxTextController.text))) /
+                                                                        2) *
+                                                                    (double.parse(_model
+                                                                        .priceTextController2
+                                                                        .text))) *
+                                                                ((100 -
+                                                                        _model
+                                                                            .config!
+                                                                            .weightProductDeposit) /
+                                                                    100),
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '#.##',
+                                                            locale: '',
+                                                          )
+                                                        : '--',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .textprimary,
+                                                  ),
+                                                ),
+                                              ].divide(SizedBox(height: 6.0)),
                                             ),
-                                          );
-                                        },
-                                      );
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 16.0, 0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (_model.minTextController.text == null ||
+                                          _model.minTextController.text == '') {
+                                        await actions.toast(
+                                          context,
+                                          'Enter minimum weight',
+                                          Colors.red,
+                                        );
+                                        return;
+                                      } else if (_model.maxTextController.text ==
+                                              null ||
+                                          _model.maxTextController.text == '') {
+                                        await actions.toast(
+                                          context,
+                                          'Enter maximum weight',
+                                          Colors.red,
+                                        );
+                                        return;
+                                      } else if (_model.priceTextController2.text ==
+                                              null ||
+                                          _model.priceTextController2.text ==
+                                              '') {
+                                        await actions.toast(
+                                          context,
+                                          'Enter price per kg',
+                                          Colors.red,
+                                        );
+                                        return;
+                                      } else if ((_model.selectedWeightBrackets
+                                              .isNotEmpty) &&
+                                          (_model.selectedWeightBrackets
+                                              .where((e) =>
+                                                  (_model.minTextController.text ==
+                                                      e.minWeight.toString()) &&
+                                                  (_model.maxTextController.text ==
+                                                      e.maxWeight.toString()))
+                                              .toList()
+                                              .isNotEmpty)) {
+                                        await actions.toast(
+                                          context,
+                                          'This weight bracket already exists',
+                                          Colors.red,
+                                        );
+                                        return;
+                                      } else if ((double.parse(_model.priceTextController2.text)) <=
+                                          0.0) {
+                                        await actions.toast(
+                                          context,
+                                          'Enter a valid price per kg',
+                                          Colors.red,
+                                        );
+                                        return;
+                                      } else if ((double.parse(
+                                              _model.maxTextController.text)) <=
+                                          (double.parse(_model.minTextController.text))) {
+                                        await actions.toast(
+                                          context,
+                                          'Max weight must be greater than Min weight',
+                                          Colors.red,
+                                        );
+                                        return;
+                                      }
+
+                                      _model.addToSelectedWeightBrackets(
+                                          ProductWeightStruct(
+                                        minWeight: double.tryParse(
+                                            _model.minTextController.text),
+                                        maxWeight: double.tryParse(
+                                            _model.maxTextController.text),
+                                        pricePerKg: double.tryParse(
+                                            _model.priceTextController2.text),
+                                      ));
+                                      safeSetState(() {});
+                                      safeSetState(() {
+                                        _model.maxTextController?.clear();
+                                        _model.priceTextController2?.clear();
+                                        _model.minTextController?.clear();
+                                      });
                                     },
+                                    text: FFLocalizations.of(context).getText(
+                                      'fpp2fuoz' /* Add weight bracket */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: double.infinity,
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primarytheme,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts:
+                                                !FlutterFlowTheme.of(context)
+                                                    .titleSmallIsCustom,
+                                          ),
+                                      elevation: 0.0,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
                                   ),
                                 ),
-                            ],
-                          ),
+                                if (_model.selectedWeightBrackets.isNotEmpty)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final bracket = _model
+                                            .selectedWeightBrackets
+                                            .toList();
+
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: bracket.length,
+                                          itemBuilder: (context, bracketIndex) {
+                                            final bracketItem =
+                                                bracket[bracketIndex];
+                                            return Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment
+                                                            .center)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsets.all(10.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            (FFMainAxisAlignment
+                                                                    .start)
+                                                                .flutterValue,
+                                                        crossAxisAlignment:
+                                                            (FFCrossAxisAlignment
+                                                                    .start)
+                                                                .flutterValue,
+                                                        textBaseline:
+                                                            TextBaseline
+                                                                .alphabetic,
+                                                        children: [
+                                                          Text(
+                                                            '${formatNumber(
+                                                              bracketItem
+                                                                  .minWeight,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#.##',
+                                                              locale: '',
+                                                            )} - ${formatNumber(
+                                                              bracketItem
+                                                                  .maxWeight,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#.##',
+                                                              locale: '',
+                                                            )} kg',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .textprimary,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMediumIsCustom,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            'Price per kg: ${formatNumber(
+                                                              bracketItem
+                                                                  .pricePerKg,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#.##',
+                                                              locale: '',
+                                                            )} | Avg. weight: ${formatNumber(
+                                                              (bracketItem.minWeight +
+                                                                      bracketItem
+                                                                          .maxWeight) /
+                                                                  2,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#.##',
+                                                              locale: '',
+                                                            )} kg',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .textsecondary,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      !FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMediumIsCustom,
+                                                                ),
+                                                          ),
+                                                        ].divide(SizedBox(
+                                                            height: 4.0)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  FlutterFlowIconButton(
+                                                    buttonSize: 44.0,
+                                                    icon: Icon(
+                                                      Icons.delete_outline,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .orange,
+                                                      size: 20.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      _model
+                                                          .removeFromSelectedWeightBrackets(
+                                                              bracketItem);
+                                                      safeSetState(() {});
+                                                    },
+                                                  ),
+                                                ].divide(SizedBox(width: 8.0)),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
+                              ],
+                            ),
                         ],
                       ),
                       Padding(
@@ -2465,7 +2496,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
                               alignment: AlignmentDirectional(-1.0, -1.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'ldl4rn87' /* Production Method */,
+                                  'ldl4rn87' /* Product characteristics */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -2777,7 +2808,7 @@ JPG, PNG (max ... */
                                                   fillColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .tometoRed,
+                                                          .orange,
                                                   icon: Icon(
                                                     Icons.close,
                                                     color: FlutterFlowTheme.of(
@@ -2922,15 +2953,14 @@ JPG, PNG (max ... */
                                     ),
                                     ...mapToFirestore(
                                       {
-                                        'sesson': _model
-                                                .selectedsesson.isNotEmpty
-                                            ? _model.selectedsesson
-                                            : (['Monsoon', 'Winter', 'Summer']),
+                                        'sesson':
+                                            _model.selectedsesson.isNotEmpty
+                                                ? _model.selectedsesson
+                                                : (<String>[]),
                                         'badges':
                                             _model.selectedbedge.isNotEmpty
                                                 ? _model.selectedbedge
-                                                : functions
-                                                    .productbadges('product'),
+                                                : (<String>[]),
                                         'product_weight':
                                             getProductWeightListFirestoreData(
                                           _model.selectedWeightBrackets,

@@ -156,6 +156,10 @@ class _OrdermanegementWidgetState extends State<OrdermanegementWidget> {
                             .where(
                               'is_suspend',
                               isEqualTo: false,
+                            )
+                            .where(
+                              'producer_visible',
+                              isEqualTo: true,
                             ),
                       ),
                       builder: (context, snapshot) {

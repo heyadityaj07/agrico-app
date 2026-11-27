@@ -5848,8 +5848,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Saison',
     },
     'ldl4rn87': {
-      'en': 'Production Method',
-      'fr': 'Méthode de production',
+      'en': 'Product characteristics',
+      'fr': 'Caractéristiques du produit',
     },
     'x2c1rklw': {
       'en': 'Product Image',
@@ -6081,8 +6081,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Produit actif',
     },
     '73a1naw5': {
-      'en': 'Badge',
-      'fr': 'Badge',
+      'en': 'Product characteristics',
+      'fr': 'Caractéristiques du produit',
     },
     'abqv4rem': {
       'en': 'Cancel',

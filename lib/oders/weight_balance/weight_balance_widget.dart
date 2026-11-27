@@ -907,10 +907,6 @@ class _WeightBalanceWidgetState extends State<WeightBalanceWidget> {
                                             'payment_requested') ||
                                         (containerOrderRecord
                                                 .balancePaymentStatus ==
-                                            'failed')) &&
-                                    (!_model.isPaymentProcessing ||
-                                        (containerOrderRecord
-                                                .balancePaymentStatus ==
                                             'failed')))
                                   Expanded(
                                     child: FFButtonWidget(

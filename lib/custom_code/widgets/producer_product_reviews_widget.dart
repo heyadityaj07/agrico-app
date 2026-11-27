@@ -69,10 +69,11 @@ class _ProducerProductReviewsWidgetState
           ),
           StreamBuilder<List<OrderRecord>>(
             stream: queryOrderRecord(
-              queryBuilder: (orderRecord) => orderRecord.where(
-                'farm_ref',
-                isEqualTo: widget.farmRef,
-              ),
+              queryBuilder: (orderRecord) =>
+                  orderRecord.where('producer_visible', isEqualTo: true).where(
+                        'farm_ref',
+                        isEqualTo: widget.farmRef,
+                      ),
               limit: _limit,
             ),
             builder: (context, snapshot) {

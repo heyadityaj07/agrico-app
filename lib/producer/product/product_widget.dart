@@ -570,15 +570,30 @@ class _ProductWidgetState extends State<ProductWidget> {
                                                                                 useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                               ),
                                                                         ),
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.min,
-                                                                          children: [
-                                                                            if (FFLocalizations.of(context).languageCode !=
-                                                                                'fr')
+                                                                        if (!prodcutItem
+                                                                            .isVariableWeight)
+                                                                          Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.min,
+                                                                            children: [
+                                                                              if (FFLocalizations.of(context).languageCode != 'fr')
+                                                                                Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    '1n5yxfe0' /* $ */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                        color: FlutterFlowTheme.of(context).primarytheme,
+                                                                                        fontSize: 14.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                      ),
+                                                                                ),
                                                                               Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  '1n5yxfe0' /* $ */,
+                                                                                valueOrDefault<String>(
+                                                                                  prodcutItem.price.toString(),
+                                                                                  '0',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
@@ -589,26 +604,22 @@ class _ProductWidgetState extends State<ProductWidget> {
                                                                                       useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
-                                                                            Text(
-                                                                              valueOrDefault<String>(
-                                                                                prodcutItem.price.toString(),
-                                                                                '0',
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                    fontSize: 14.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                              if (FFLocalizations.of(context).languageCode == 'fr')
+                                                                                Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    '5kxu8mm7' /* € */,
                                                                                   ),
-                                                                            ),
-                                                                            if (FFLocalizations.of(context).languageCode ==
-                                                                                'fr')
-                                                                              Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  '5kxu8mm7' /* € */,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                        color: FlutterFlowTheme.of(context).primarytheme,
+                                                                                        fontSize: 14.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                      ),
                                                                                 ),
+                                                                              Text(
+                                                                                ' / ${prodcutItem.unit}',
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                       color: FlutterFlowTheme.of(context).primarytheme,
@@ -618,19 +629,21 @@ class _ProductWidgetState extends State<ProductWidget> {
                                                                                       useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
                                                                                     ),
                                                                               ),
-                                                                            Text(
-                                                                              ' / ${prodcutItem.unit}',
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    color: FlutterFlowTheme.of(context).primarytheme,
-                                                                                    fontSize: 14.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                    useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
+                                                                            ],
+                                                                          ),
+                                                                        if (prodcutItem
+                                                                            .isVariableWeight)
+                                                                          Text(
+                                                                            '${prodcutItem.productWeight.length.toString()} Weight brackets',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                  color: FlutterFlowTheme.of(context).primarytheme,
+                                                                                  fontSize: 14.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                  useGoogleFonts: !FlutterFlowTheme.of(context).bodyMediumIsCustom,
+                                                                                ),
+                                                                          ),
                                                                       ].divide(SizedBox(
                                                                               height: 5.0)),
                                                                     ),
